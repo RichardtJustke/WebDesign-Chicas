@@ -6,6 +6,16 @@
   <title>Chicas Eventos — Home</title>
   <link rel="icon" href="assets/public/img/favicon.png">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind config com prefixo -->
+  <script>
+    tailwind.config = {
+      prefix: 'tw-',
+      corePlugins: { preflight: false }
+    }
+  </script>
 </head>
 <body>
 
@@ -42,29 +52,55 @@
   </header>
 
   <main>
-   
     <!-- SECTION 1 — HERO SPLIT -->
-<!-- SECTION 1 — HERO SPLIT (pastel, sem selo) -->
-<section class="section hero-split">
-  <div class="container hsplit">
-    <!-- Painel pastel (texto) -->
-    <div class="hs-left">
-      <h1>Buffet exclusivo<br>para eventos inesquecíveis</h1>
-      <p>Integramos <b>Buffet</b>, <b>Audiovisual</b>, <b>RH</b> e <b>Organização</b> para sua empresa com estética e eficiência.</p>
-      <div class="actions">
-        <a class="btn primary" href="/pages/briefing.html">Pedir orçamento</a>
-        <a class="btn ghost" href="/pages/portfolio.html">Ver portfólio</a>
+    <section class="tw-w-full tw-bg-[#f7faf9] tw-py-10">
+      <div
+        class="container tw-mx-auto tw-max-w-6xl
+               tw-grid tw-grid-cols-1 md:tw-grid-cols-2
+               tw-gap-0 tw-items-stretch">
+
+        <!-- Bloco branco (texto) -->
+        <div
+          class="tw-bg-white tw-shadow-[0_10px_20px_rgba(0,0,0,.08),0_2px_6px_rgba(0,0,0,.04)]
+                 tw-rounded-t-[28px] md:tw-rounded-l-[28px] md:tw-rounded-tr-none
+                 tw-p-8 md:tw-p-12
+                 tw-flex tw-items-center
+                 tw-h-auto md:tw-h-[440px]">
+          <div class="tw-max-w-[44ch]">
+            <h1 class="tw-text-4xl md:tw-text-5xl tw-font-extrabold tw-leading-tight tw-text-slate-900">
+              Buffet exclusivo <br/> para eventos <br/> inesquecíveis
+            </h1>
+            <p class="tw-mt-4 tw-text-slate-600">
+              Integramos <b>Buffet</b>, <b>Audiovisual</b>, <b>RH</b> e <b>Organização</b>
+              para sua empresa com estética e eficiência.
+            </p>
+            <div class="tw-mt-6 tw-flex tw-gap-3">
+              <a href="/pages/briefing.html"
+                 class="tw-px-5 tw-py-3 tw-rounded-xl tw-bg-emerald-700 tw-text-white tw-font-semibold tw-shadow hover:tw-opacity-95 tw-transition">
+                Pedir orçamento
+              </a>
+              <a href="/pages/portfolio.html"
+                 class="tw-px-5 tw-py-3 tw-rounded-xl tw-bg-white tw-text-slate-900 tw-font-semibold tw-shadow tw-border tw-border-slate-100 hover:tw-bg-slate-50 tw-transition">
+                Ver portfólio
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagem -->
+        <figure
+          class="tw-rounded-b-[28px] md:tw-rounded-r-[28px] md:tw-rounded-bl-none
+                 tw-overflow-hidden tw-shadow-[0_10px_20px_rgba(0,0,0,.08),0_2px_6px_rgba(0,0,0,.04)]
+                 tw-h-[260px] md:tw-h-[440px] tw-m-0">
+          <img
+            src="assets/public/img/1.jpg"
+            alt="Buffet corporativo"
+            loading="eager"
+            class="tw-w-full tw-h-full tw-object-cover tw-object-[50%_80%]" />
+        </figure>
+
       </div>
-    </div>
-
-    <!-- Foto grande -->
-    <figure class="hs-right">
-      <img src="assets/public/img/1.jpg" alt="Buffet corporativo" loading="eager">
-    </figure>
-  </div>
-</section>
-
-
+    </section>
 
     <!-- SECTION 2 — SERVIÇOS -->
     <section class="section">
@@ -231,17 +267,6 @@
         </form>
       </div>
     </div>
-    <!--&copy JustkeDev 2025 
-▒▒▒▒▒▒▒▒█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-▒▒▒▒▒▒▒█░▒▒▒▒▒▒▒▓▒▒▓▒▒▒▒▒▒▒░█
-▒▒▒▒▒▒▒█░▒▒▓▒▒▒▒▒▒▒▒▒▄▄▒▓▒▒░█░▄▄
-▒▒▄▀▀▄▄█░▒▒▒▒▒▒▓▒▒▒▒█░░▀▄▄▄▄▄▀░░█
-▒▒█░░░░█░▒▒▒▒▒▒▒▒▒▒▒█░░░░░░░░░░░█
-▒▒▒▀▀▄▄█░▒▒▒▒▓▒▒▒▓▒█░░░█▒░░░░█▒░░█
-▒▒▒▒▒▒▒█░▒▓▒▒▒▒▓▒▒▒█░░░░░░░▀░░░░░█
-▒▒▒▒▒▄▄█░▒▒▒▓▒▒▒▒▒▒▒█░░█▄▄█▄▄█░░█
-▒▒▒▒█░░░█▄▄▄▄▄▄▄▄▄▄█░█▄▄▄▄▄▄▄▄▄█
--->
   </footer>
 
   <!-- JS do menu mobile -->

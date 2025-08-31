@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chicas Eventos — Soluções completas para o seu evento</title>
+  <meta name="description" content="Buffet, audiovisual, RH e organização — tudo integrado para o seu evento corporativo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="public/img/favicon.png">
+  <style>
+    :root{
+      --ink:#0f172a;
+      --forest:#0b3d2e;
+      --leaf:#106f4d;
+      --river:#1c7cc7;
+      --sunset:#ff7a00;
+      --gold:#f2c94c;
+      --sand:#f6f5f0;
+      --card:#ffffff;
+      --muted:#64748b;
+      --radius:18px;
+      --shadow:0 10px 20px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink); background:linear-gradient(180deg, #eef4f2 0%, #f9fafb 100%);
+    }
+    .container{width:min(1120px, 92vw); margin-inline:auto}
+    .pill{padding:.35rem .75rem; border-radius:999px; font-size:.8rem; font-weight:600; letter-spacing:.02em; display:inline-flex; gap:.5rem; align-items:center}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; border:0; border-radius:12px; padding:.9rem 1.1rem; font-weight:700; cursor:pointer; transition:.2s transform ease, .2s box-shadow ease; box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg, var(--leaf), var(--river)); color:#fff}
+    .btn.primary:hover{transform:translateY(-1px)}
+    .btn.ghost{background:#fff; color:var(--leaf); border:2px solid rgba(16,111,77,.15)}
+    .btn.ghost:hover{transform:translateY(-1px)}
+    .section{padding:84px 0}
+    h1{font-family:"Playfair Display", serif; font-size:clamp(2rem, 5vw, 3.5rem); line-height:1.05; margin:0 0 14px}
+    h2{font-size:clamp(1.6rem, 4vw, 2.2rem); margin:0 0 18px}
+    h3{font-size:1.2rem; margin:0 0 10px}
+    p{color:var(--muted)}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(6px); background:rgba(255,255,255,.7); border-bottom:1px solid rgba(2,8,20,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800}
+    .brand svg{width:36px; height:36px}
+    nav ul{display:flex; gap:1rem; list-style:none; padding:0; margin:0}
+    nav a{display:block; text-decoration:none; color:var(--ink); font-weight:600; padding:10px 12px; border-radius:10px}
+    nav a:hover{background:rgba(2,8,20,.04)}
+    .hamb{display:none; background:transparent; border:0; padding:10px}
+    @media (max-width:880px){
+      nav ul{position:fixed; inset:60px 16px auto 16px; background:#fff; border:1px solid rgba(2,8,20,.06); border-radius:16px; box-shadow:var(--shadow); flex-direction:column; padding:14px; display:none}
+      nav ul.open{display:flex}
+      .hamb{display:block}
+    }
+    .hero{position:relative; padding:86px 0 96px; overflow:hidden}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
+    .hero .tag{background:rgba(16,111,77,.1); color:var(--leaf)}
+    .hero p{font-size:1.05rem; max-width:56ch}
+    .hero-art{position:relative; aspect-ratio:4/3; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); background:
+      radial-gradient(60% 60% at 20% 30%, rgba(28,124,199,.18), transparent 60%),
+      radial-gradient(60% 60% at 80% 70%, rgba(16,111,77,.20), transparent 60%),
+      linear-gradient(120deg, #ffffff, #f3f8f6);
+      border:1px solid rgba(2,8,20,.06)
+    }
+    .hero-art::before{
+      content:""; position:absolute; inset:0; background-image:
+        repeating-linear-gradient(45deg, rgba(242,201,76,.18) 0 12px, transparent 12px 24px),
+        repeating-linear-gradient(-45deg, rgba(255,122,0,.10) 0 12px, transparent 12px 24px);
+      mix-blend-mode:multiply; opacity:.6
+    }
+    .hero-badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:18px}
+    .card{background:var(--card); border:1px solid rgba(2,8,20,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card p{margin:6px 0 0}
+    .service-icon{width:42px; height:42px; border-radius:12px; display:grid; place-items:center; box-shadow:inset 0 -10px 18px rgba(0,0,0,.06)}
+    .icon-leaf{background:linear-gradient(135deg, var(--gold), #fff)}
+    .icon-camera{background:linear-gradient(135deg, var(--river), #fff)}
+    .icon-people{background:linear-gradient(135deg, var(--forest), #fff)}
+    .icon-clipboard{background:linear-gradient(135deg, var(--sunset), #fff)}
+    .features{display:grid; grid-template-columns:repeat(2,1fr); gap:8px 16px; margin-top:10px}
+    .features li{list-style:none; display:flex; gap:8px; align-items:flex-start; color:var(--muted)}
+    .features svg{flex:0 0 18px; margin-top:3px}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    .filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px}
+    .filters button{border:1px solid rgba(2,8,20,.08); background:#fff; border-radius:999px; padding:.5rem .9rem; cursor:pointer; font-weight:600}
+    .filters button.active{background:linear-gradient(135deg, var(--leaf), var(--river)); color:#fff; border-color:transparent}
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .shot{aspect-ratio:4/3; border-radius:16px; overflow:hidden; position:relative; border:1px solid rgba(2,8,20,.06); box-shadow:var(--shadow); background:
+      linear-gradient(120deg, #fff, #f1f5f9)}
+    .shot .label{position:absolute; left:10px; bottom:10px; background:rgba(255,255,255,.86); backdrop-filter:blur(6px); padding:6px 10px; border-radius:10px; font-weight:700; font-size:.85rem}
+    .shot .ph{position:absolute; inset:0; display:grid; place-items:center; color:#94a3b8; font-weight:700}
+    @media (max-width:1000px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.gallery{grid-template-columns:1fr}}
+    .cta{display:flex; align-items:center; justify-content:space-between; gap:18px; background:linear-gradient(135deg, rgba(16,111,77,.10), rgba(28,124,199,.10)); border:1px dashed rgba(16,111,77,.25); padding:18px; border-radius:18px}
+    dialog{border:none; border-radius:20px; padding:0; width:min(720px, 92vw); box-shadow:0 30px 60px rgba(0,0,0,.25)}
+    .modal{padding:18px}
+    .modal header{position:static; background:#fff; border-bottom:1px solid rgba(2,8,20,.06)}
+    .modal .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .modal label{font-weight:600; font-size:.95rem}
+    .modal input, .modal select, .modal textarea{width:100%; padding:.8rem .9rem; border:1px solid rgba(2,8,20,.12); border-radius:12px; background:#fff}
+    .modal textarea{min-height:110px; resize:vertical}
+    .close-x{background:#fff; border:1px solid rgba(2,8,20,.06); border-radius:10px; padding:.5rem .6rem; cursor:pointer}
+    @media (max-width:720px){.modal .grid2{grid-template-columns:1fr}}
+    .center{display:flex; align-items:center; justify-content:center}
+    .muted{color:var(--muted)}
+    .mb8{margin-bottom:8px} .mb12{margin-bottom:12px} .mb18{margin-bottom:18px} .mb24{margin-bottom:24px} .mb32{margin-bottom:32px}
+    .reveal{opacity:0; transform:translateY(10px); transition:.5s ease}
+    .reveal.in{opacity:1; transform:none}
+    footer{padding:38px 0 60px; color:#475569}
+    footer a{color:inherit}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Chicas Eventos">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="var(--leaf)"/><stop offset="1" stop-color="var(--river)"/></linearGradient></defs>
+          <rect x="2" y="2" width="60" height="60" rx="16" ry="16" fill="url(#g1)"/>
+          <path d="M18 40c0-9 7-16 16-16 5 0 10 2 13 6-2 8-9 14-17 14-4 0-8-1-12-4z" fill="#fff" opacity=".9"/>
+          <circle cx="46" cy="22" r="4" fill="#fff"/>
+        </svg>
+        <span>Chicas Eventos</span>
+      </div>
+      <nav>
+        <button class="hamb" aria-label="Abrir menu" id="hamb"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <ul id="menu">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#orcamento" id="ctaTop">Solicitar orçamento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill tag">Amazônia + corporativo</span>
+        <h1>"Soluções completas para o seu evento" — do briefing ao brinde final.</h1>
+        <p class="mb18">Integramos <strong>Buffet</strong>, <strong>Audiovisual</strong>, <strong>Recursos Humanos</strong> e <strong>Organização</strong> em um só lugar para sua empresa. Praticidade, profissionalismo e estética com toque regional.</p>
+        <div class="hero-badges">
+          <button class="btn primary" id="ctaHero">Monte seu evento com a gente</button>
+          <a class="btn ghost" href="#portfolio">Ver portfólio</a>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Composição visual com padrões regionais e cores amazônicas"></div>
+    </div>
+  </section>
+
+  <section id="servicos" class="section">
+    <div class="container">
+      <h2 class="mb8">Nossos serviços</h2>
+      <p class="mb18">Quatro frentes integradas para entregar eventos sem dor de cabeça.</p>
+      <div class="grid reveal">
+        <article class="card">
+          <div class="service-icon icon-leaf mb12" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 4c7 0 16 3 16 12-8 0-12 4-12 4 0-4 2-8 8-10-4-2-8-2-12-2z" fill="currentColor"/></svg>
+          </div>
+          <h3>Buffet Corporativo</h3>
+          <ul class="features">
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--leaf)" stroke-width="2" fill="none"/></svg> Coffee breaks, coquetéis e brunchs</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--leaf)" stroke-width="2" fill="none"/></svg> Menus personalizados para reuniões e treinamentos</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--leaf)" stroke-width="2" fill="none"/></svg> Montagem rápida e serviço completo</li>
+          </ul>
+          <button class="btn primary" data-open>Solicitar orçamento</button>
+        </article>
+        <article class="card">
+          <div class="service-icon icon-camera mb12" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 7h4l2-2h4l2 2h2a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V9a2 2 0 012-2z" fill="currentColor"/></svg>
+          </div>
+          <h3>Captação Audiovisual</h3>
+          <ul class="features">
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--river)" stroke-width="2" fill="none"/></svg> Fotografia de eventos e ensaios institucionais</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--river)" stroke-width="2" fill="none"/></svg> Filmagem mobile (social) e profissional (cinematográfica)</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--river)" stroke-width="2" fill="none"/></svg> Cobertura em tempo real para redes sociais</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--river)" stroke-width="2" fill="none"/></svg> Vídeos institucionais e drone</li>
+          </ul>
+          <button class="btn primary" data-open>Solicitar orçamento</button>
+        </article>
+        <article class="card">
+          <div class="service-icon icon-people mb12" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 1114 0H5z" fill="#fff"/></svg>
+          </div>
+          <h3>Recursos Humanos</h3>
+          <ul class="features">
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--forest)" stroke-width="2" fill="none"/></svg> Recepcionistas e credenciamento</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--forest)" stroke-width="2" fill="none"/></svg> Garçons e apoio operacional</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--forest)" stroke-width="2" fill="none"/></svg> Segurança e controle de acesso</li>
+          </ul>
+          <button class="btn primary" data-open>Solicitar orçamento</button>
+        </article>
+        <article class="card">
+          <div class="service-icon icon-clipboard mb12" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path d="M9 3h6v2h3a1 1 0 011 1v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6a1 1 0 011-1h3V3z" fill="currentColor"/></svg>
+          </div>
+          <h3>Organização e Cerimonial</h3>
+          <ul class="features">
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--sunset)" stroke-width="2" fill="none"/></svg> Planejamento, cronograma e fornecedores</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--sunset)" stroke-width="2" fill="none"/></svg> Coordenação de montagem e execução</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" stroke="var(--sunset)" stroke-width="2" fill="none"/></svg> Acompanhamento no dia do evento</li>
+          </ul>
+          <button class="btn primary" data-open>Solicitar orçamento</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="section" aria-labelledby="portTitle">
+    <div class="container">
+      <h2 id="portTitle" class="mb8">Portfólio</h2>
+      <p class="mb18">Explore alguns registros (mock) — filtre por categoria.</p>
+      <div class="filters mb18" role="tablist" aria-label="Filtros do portfólio">
+        <button class="active" data-filter="all" role="tab" aria-selected="true">Todas</button>
+        <button data-filter="buffet" role="tab">Buffet</button>
+        <button data-filter="audiovisual" role="tab">Audiovisual</button>
+        <button data-filter="rh" role="tab">RH</button>
+        <button data-filter="organizacao" role="tab">Organização</button>
+      </div>
+      <div class="gallery reveal" id="gallery">
+        <figure class="shot" data-cat="buffet"><div class="ph">IMG • Buffet</div><figcaption class="label">Coffee break executivo</figcaption></figure>
+        <figure class="shot" data-cat="audiovisual"><div class="ph">IMG • AV</div><figcaption class="label">Videomaker em ação</figcaption></figure>
+        <figure class="shot" data-cat="organizacao"><div class="ph">IMG • Org</div><figcaption class="label">Cronograma na prática</figcaption></figure>
+        <figure class="shot" data-cat="rh"><div class="ph">IMG • RH</div><figcaption class="label">Credenciamento</figcaption></figure>
+        <figure class="shot" data-cat="audiovisual"><div class="ph">IMG • AV</div><figcaption class="label">Drone • vista aérea</figcaption></figure>
+        <figure class="shot" data-cat="buffet"><div class="ph">IMG • Buffet</div><figcaption class="label">Coquetel corporativo</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Convite">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h3 class="mb8">Pronto para montar seu evento?</h3>
+          <p class="muted">Conte pra gente o que você precisa e montamos um combo sob medida.</p>
+        </div>
+        <div>
+          <button class="btn primary" id="ctaMid">Montar meu evento</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <div class="container">
+      <div class="mb24"><strong>Chicas Eventos</strong> — Belém / PA • Atuação nacional
+      <br><span class="muted">Buffet • Audiovisual • RH • Organização</span></div>
+      <div class="mb12">WhatsApp: <a href="#" aria-label="WhatsApp">(91) 9 9999-9999</a> • E-mail: <a href="#" aria-label="E-mail">contato@chicaseventos.com.br</a></div>
+      <div class="muted">© 2025 Chicas Eventos. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <dialog id="modal">
+    <div class="modal">
+      <header class="container nav" style="padding:12px 18px">
+        <strong>Solicitar orçamento</strong>
+        <button class="close-x" id="closeModal" aria-label="Fechar">✕</button>
+      </header>
+      <div class="container" style="padding:12px 18px 22px">
+        <form id="formBudget">
+          <p class="muted mb12">Selecione os serviços e preencha os dados. A proposta será montada com base no seu escopo.</p>
+          <div class="mb18" role="group" aria-labelledby="legendServ">
+            <div id="legendServ" class="mb8" style="font-weight:700">Serviços desejados</div>
+            <label class="mb8"><input type="checkbox" name="service" value="Buffet"> Buffet corporativo</label><br>
+            <label class="mb8"><input type="checkbox" name="service" value="Audiovisual"> Captação audiovisual</label><br>
+            <label class="mb8"><input type="checkbox" name="service" value="RH"> Recursos humanos</label><br>
+            <label class="mb8"><input type="checkbox" name="service" value="Organização"> Organização / cerimonial</label>
+          </div>
+
+          <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:12px">
+            <div>
+              <label for="name">Nome</label>
+              <input id="name" name="name" required placeholder="Seu nome" />
+            </div>
+            <div>
+              <label for="company">Empresa</label>
+              <input id="company" name="company" placeholder="Ex.: ACME S.A." />
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" required placeholder="voce@empresa.com" />
+            </div>
+            <div>
+              <label for="phone">Telefone</label>
+              <input id="phone" name="phone" placeholder="(00) 00000-0000" />
+            </div>
+            <div>
+              <label for="date">Data do evento</label>
+              <input id="date" name="date" type="date" />
+            </div>
+            <div>
+              <label for="city">Cidade</label>
+              <input id="city" name="city" placeholder="Cidade/UF" />
+            </div>
+            <div style="grid-column:1 / -1">
+              <label for="notes">Observações</label>
+              <textarea id="notes" name="notes" placeholder="Quantidade de pessoas, duração, necessidades específicas…"></textarea>
+            </div>
+          </div>
+
+          <div class="center" style="margin-top:16px; gap:10px">
+            <button class="btn primary" type="submit">Enviar solicitação</button>
+            <button class="btn ghost" type="button" id="cancel">Cancelar</button>
+          </div>
+          <p class="muted center" style="margin-top:10px; font-size:.9rem">Ao enviar, abriremos seu app de e-mail com os dados preenchidos.</p>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const hamb = document.getElementById('hamb');
+    const menu = document.getElementById('menu');
+    hamb?.addEventListener('click', ()=> menu.classList.toggle('open'));
+    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> menu.classList.remove('open')));
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }) }, {threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+    const filterBtns = document.querySelectorAll('.filters button');
+    const shots = document.querySelectorAll('.shot');
+    filterBtns.forEach(btn=> btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=> b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      shots.forEach(s=>{ const show = f === 'all' || s.dataset.cat === f; s.style.display = show ? 'block' : 'none'; });
+    }));
+    const modal = document.getElementById('modal');
+    const openers = document.querySelectorAll('[data-open], #ctaHero, #ctaTop, #ctaMid');
+    const closeModal = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancel');
+    openers.forEach(o=> o.addEventListener('click', ()=> modal.showModal()));
+    function close(){ modal.close(); }
+    closeModal?.addEventListener('click', close);
+    cancelBtn?.addEventListener('click', close);
+    const form = document.getElementById('formBudget');
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const services = data.getAll('service').join(', ') || '—';
+      const name = data.get('name')||'';
+      const company = data.get('company')||'';
+      const email = data.get('email')||'';
+      const phone = data.get('phone')||'';
+      const date = data.get('date')||'';
+      const city = data.get('city')||'';
+      const notes = (data.get('notes')||'').toString().trim();
+      const subject = encodeURIComponent('Orçamento — Chicas Eventos');
+      const body = encodeURIComponent(
+`Nome: ${name}
+Empresa: ${company}
+E-mail: ${email}
+Telefone: ${phone}
+Cidade: ${city}
+Data do evento: ${date}
+
+Serviços desejados: ${services}
+
+Observações:
+${notes}`);
+      const to = 'contato@chicaseventos.com.br';
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      modal.close();
+    });
+  </script>
+</body>
+</html>

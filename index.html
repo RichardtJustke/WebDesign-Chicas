@@ -21,18 +21,22 @@
 
   <!-- HEADER ÚNICO -->
   <header class="site-header">
-    <div class="container nav">
+    <div class="container nav tw-flex tw-items-center tw-justify-between">
       <!-- logo -->
       <a class="brand" href="/">
         <span class="logo"></span>
         <strong>Chicas Eventos</strong>
       </a>
 
-      <!-- hambúrguer (mobile) -->
-      <button class="hamb" id="hamb" aria-label="Abrir menu">☰</button>
+      <!-- hambúrguer (mobile apenas) -->
+      <button
+        class="hamb tw-ml-auto tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-xl tw-border tw-border-gray-200 tw-bg-white tw-shadow-sm
+               tw-block md:tw-hidden"
+        id="hamb"
+        aria-label="Abrir menu">☰</button>
 
-      <!-- navegação (desktop) -->
-      <nav>
+      <!-- navegação (desktop apenas) -->
+      <nav class="tw-hidden md:tw-block">
         <ul id="menu" class="nav-list">
           <li><a href="/pages/servicos.html">Serviços</a></li>
           <li><a href="/pages/portfolio.html">Portfólio</a></li>
@@ -102,89 +106,164 @@
       </div>
     </section>
 
-    <!-- SECTION 2 — SERVIÇOS -->
-    <section class="section">
-      <div class="container">
-        <h2 class="title">Nossos serviços</h2>
-        <div class="grid-4">
-          <article class="card">
-            <div class="ico i-gold"></div>
-            <h3>Buffet corporativo</h3>
-            <p>Coffee breaks, coquetéis e menus sob medida.</p>
-            <a class="link" href="/pages/servicos/buffet.html">Ver detalhes →</a>
+    <!-- SECTION 2 — SERVIÇOS (imagem full-bleed nos cards) -->
+    <section class="section tw-py-16">
+      <div class="container tw-mx-auto tw-max-w-6xl">
+        <!-- Título centralizado -->
+        <h2 class="title tw-text-3xl md:tw-text-4xl tw-font-bold tw-text-center tw-mb-10">
+          Nossos serviços
+        </h2>
+
+        <div class="tw-grid tw-gap-6 md:tw-grid-cols-4">
+          <!-- Card base: reaproveitado 4x -->
+          <!-- 1 Buffet -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+            <!-- imagem -->
+            <img src="assets/public/img/ale.jpg" alt="Buffet corporativo"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover" />
+            <!-- overlay gradiente p/ contraste -->
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <!-- conteúdo -->
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Buffet corporativo</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Coffee breaks, coquetéis e menus sob medida.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="/pages/servicos/buffet.html">Ver detalhes →</a>
+            </div>
           </article>
-          <article class="card">
-            <div class="ico i-blue"></div>
-            <h3>Captação audiovisual</h3>
-            <p>Foto, vídeo, cobertura social e drone.</p>
-            <a class="link" href="/pages/servicos/audiovisual.html">Ver detalhes →</a>
+
+          <!-- 2 Audiovisual -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+            <img src="assets/public/img/ale.jpg" alt="Captação audiovisual"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Captação audiovisual</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Foto, vídeo, cobertura social e drone.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="/pages/servicos/audiovisual.html">Ver detalhes →</a>
+            </div>
           </article>
-          <article class="card">
-            <div class="ico i-green"></div>
-            <h3>Recursos humanos</h3>
-            <p>Recepção, apoio e controle de acesso.</p>
-            <a class="link" href="/pages/servicos/rh.html">Ver detalhes →</a>
+
+          <!-- 3 RH -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+            <img src="assets/public/img/ale.jpg" alt="Recursos humanos"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Recursos humanos</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Recepção, apoio e controle de acesso.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="/pages/servicos/rh.html">Ver detalhes →</a>
+            </div>
           </article>
-          <article class="card">
-            <div class="ico i-orange"></div>
-            <h3>Organização & cerimonial</h3>
-            <p>Planejamento, fornecedores e execução.</p>
-            <a class="link" href="/pages/servicos/cerimonial.html">Ver detalhes →</a>
+
+          <!-- 4 Cerimonial -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+            <img src="assets/public/img/ale.jpg" alt="Organização & cerimonial"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Organização & cerimonial</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Planejamento, fornecedores e execução.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="/pages/servicos/cerimonial.html">Ver detalhes →</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3 — DIFERENCIAIS -->
-    <section class="section alt">
-      <div class="container">
-        <h2 class="title">Por que a Chicas?</h2>
-        <div class="grid-3">
-          <article class="feature">
-            <div class="dot"></div>
-            <div>
-              <h4>Quatro frentes integradas</h4>
-              <p>Buffet, audiovisual, RH e cerimonial sob a mesma direção.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="dot"></div>
-            <div>
-              <h4>Operação ágil</h4>
-              <p>Cronograma claro e time treinado para montagem rápida.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="dot"></div>
-            <div>
-              <h4>Estética + funcionalidade</h4>
-              <p>Design bonito sem perder a praticidade do evento.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="dot"></div>
-            <div>
-              <h4>Toque regional</h4>
-              <p>Identidade amazônica aplicada com bom gosto.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="dot"></div>
-            <div>
-              <h4>Fornecedores homologados</h4>
-              <p>Rede confiável para garantir qualidade ponta-a-ponta.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="dot"></div>
-            <div>
-              <h4>Acompanhamento no dia</h4>
-              <p>Equipe presente do pré ao pós-evento.</p>
-            </div>
-          </article>
+<!-- SECTION 3 — DIFERENCIAIS -->
+<section class="section alt tw-py-16">
+  <div class="container tw-mx-auto tw-max-w-6xl tw-text-center">
+    
+    <!-- Título -->
+    <h2 class="tw-text-3xl md:tw-text-4xl tw-font-bold tw-mb-4">
+      Por que escolher a Chicas Eventos?
+    </h2>
+    
+    <!-- Subtítulo -->
+    <p class="tw-text-slate-600 tw-mb-10 max-w-2xl tw-mx-auto">
+      Transformamos cada detalhe em uma experiência única. Conheça os diferenciais que fazem da Chicas a escolha certa para o seu evento.
+    </p>
+
+    <!-- Grid de diferenciais -->
+    <div class="tw-grid tw-gap-6 md:tw-grid-cols-3">
+      
+      <!-- Integração completa -->
+      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+        <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
+          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 6v6h6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          <h4 class="tw-font-bold tw-text-lg">Integração completa</h4>
         </div>
-      </div>
-    </section>
+        <p class="tw-text-slate-600">Tudo em um só lugar: buffet, audiovisual, RH e cerimonial com gestão unificada.</p>
+      </article>
+      
+      <!-- Agilidade garantida -->
+      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+        <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
+          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 8v4l3 3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          <h4 class="tw-font-bold tw-text-lg">Agilidade garantida</h4>
+        </div>
+        <p class="tw-text-slate-600">Equipe treinada e cronograma ágil para montar e executar sem atrasos.</p>
+      </article>
+      
+      <!-- Beleza funcional -->
+      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+        <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
+          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h4 class="tw-font-bold tw-text-lg">Beleza funcional</h4>
+        </div>
+        <p class="tw-text-slate-600">Soluções que unem estética impecável e praticidade no dia do evento.</p>
+      </article>
+      
+      <!-- Identidade regional -->
+      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+        <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
+          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 2l4 8h-8l4-8zM2 22h20l-10-8-10 8z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h4 class="tw-font-bold tw-text-lg">Identidade regional</h4>
+        </div>
+        <p class="tw-text-slate-600">Valorizamos a cultura amazônica, trazendo um toque único e autêntico.</p>
+      </article>
+      
+      <!-- Rede confiável -->
+      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+        <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
+          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h4 class="tw-font-bold tw-text-lg">Rede confiável</h4>
+        </div>
+        <p class="tw-text-slate-600">Fornecedores homologados que asseguram qualidade em cada etapa.</p>
+      </article>
+      
+      <!-- Acompanhamento total -->
+      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+        <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
+          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7H3v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h4 class="tw-font-bold tw-text-lg">Acompanhamento total</h4>
+        </div>
+        <p class="tw-text-slate-600">Estamos ao seu lado do pré até o pós-evento, sem deixar nada escapar.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
 
     <!-- SECTION 4 — PORTFÓLIO -->
     <section class="section">

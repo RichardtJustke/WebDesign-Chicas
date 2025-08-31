@@ -262,43 +262,192 @@
     </div>
   </div>
 </section>
+<!-- =============== SECTION — PORTFÓLIO (ESTEIRA + FILTROS, BOTÕES EM UMA LINHA) =============== -->
+<section class="tw-bg-[#f7faf9] tw-py-16">
+  <div class="container tw-mx-auto tw-max-w-6xl">
 
-
-
-    <!-- SECTION 4 — PORTFÓLIO -->
-    <section class="section">
-      <div class="container">
-        <div class="title-row">
-          <h2 class="title">Portfólio</h2>
-          <div class="filters">
-            <button class="chip">Todos</button>
-            <button class="chip">Buffet</button>
-            <button class="chip">Audiovisual</button>
-            <button class="chip">RH</button>
-            <button class="chip">Organização</button>
-          </div>
-        </div>
-        <div class="gallery">
-          <figure class="shot"><figcaption>Buffet</figcaption></figure>
-          <figure class="shot"><figcaption>Audiovisual</figcaption></figure>
-          <figure class="shot"><figcaption>Organização</figcaption></figure>
-          <figure class="shot"><figcaption>RH</figcaption></figure>
-          <figure class="shot"><figcaption>Drone</figcaption></figure>
-          <figure class="shot"><figcaption>Coquetel</figcaption></figure>
-        </div>
+    <!-- Cabeçalho -->
+    <div class="tw-flex tw-flex-col tw-items-start tw-gap-4 tw-mb-6">
+      <div>
+        <h2 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900">
+          Portfólio
+        </h2>
+        <p class="tw-text-slate-600 tw-mt-2 tw-max-w-xl">
+          Um recorte dos nossos últimos trabalhos. Veja por categoria ou acesse o portfólio completo.
+        </p>
       </div>
-    </section>
 
-    <!-- SECTION 5 — CTA -->
-    <section class="section cta">
-      <div class="container cta-box">
-        <div>
-          <h3>Pronto para montar seu evento?</h3>
-          <p>Envie o briefing e respondemos com uma proposta sob medida.</p>
-        </div>
-        <a class="btn primary" href="/pages/briefing.html">Enviar briefing</a>
+      <!-- Botões: todos iguais e em uma só linha -->
+      <div class="tw-flex tw-flex-wrap tw-gap-3">
+        <a href="/pages/portfolio.html"
+           class="pf-chip pf-primary">Ver portfólio</a>
+
+        <button class="pf-chip pf-active" data-filter="all">Todas</button>
+        <button class="pf-chip" data-filter="buffet">Buffet</button>
+        <button class="pf-chip" data-filter="aud">Audiovisual</button>
+        <button class="pf-chip" data-filter="rh">RH</button>
+        <button class="pf-chip" data-filter="org">Organização</button>
       </div>
-    </section>
+    </div>
+
+    <!-- Esteiras -->
+    <div class="tw-space-y-4">
+      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div id="pf-track-1" class="pf-track pf-track-rtl"></div>
+      </div>
+      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div id="pf-track-2" class="pf-track pf-track-rtl pf-slower"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estilos -->
+  <style>
+    /* chips/botões unificados */
+    .pf-chip{
+      padding:.625rem 1.25rem;
+      border-radius:9999px;
+      font-weight:600;
+      font-size:.9rem;
+      background:#fff;
+      color:#0f172a;
+      border:1px solid #e2e8f0;
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .pf-chip:hover{ background:#f8fafc; }
+    .pf-active{ background:#059669; color:#fff; border-color:#059669; }
+    .pf-primary{ background:#059669; color:#fff; border-color:#059669; }
+    .pf-primary:hover{ filter:brightness(.95); }
+
+    /* esteira */
+    .pf-marquee-wrap { height:200px; background:#fff; }
+    @media (min-width:768px){ .pf-marquee-wrap{ height:240px; } }
+
+    .pf-track{ display:flex; align-items:center; gap:16px; width:max-content; height:100%; }
+    .pf-item{ height:100%; width:360px; object-fit:cover; border-radius:16px; box-shadow:0 6px 14px rgba(0,0,0,.08); }
+    @media (max-width:767px){ .pf-item{ width:260px; border-radius:14px; } }
+
+    @keyframes pf-move-right { 0%{ transform:translateX(-50%) } 100%{ transform:translateX(0) } }
+    .pf-track-rtl{ animation: pf-move-right 30s linear infinite; will-change: transform; }
+    .pf-slower{ animation-duration:38s; }
+
+    /* (opcional) pausar a esteira no hover */
+    /* .pf-marquee-wrap:hover .pf-track{ animation-play-state: paused; } */
+  </style>
+
+  <!-- Script -->
+  <script>
+    // catálogo por pasta
+    const PF = {
+      buffet: [
+        "assets/public/img/buffet/buffet.jpg",
+        "assets/public/img/buffet/brunch1.jpg",
+        "assets/public/img/buffet/brunch2.jpg",
+        "assets/public/img/buffet/buffet2.jpg",
+        "assets/public/img/buffet/coffeebreak1.jpg",
+        "assets/public/img/buffet/coqueteis1.jpg"
+      ],
+      aud: [
+        "assets/public/img/aud/cobertura.jpg",
+        "assets/public/img/aud/cobertura1.jpg",
+        "assets/public/img/aud/fotografo2.jpg",
+        "assets/public/img/aud/fotografo3.jpg",
+        "assets/public/img/aud/fotografo4.jpg",
+        "assets/public/img/aud/fotografo5.jpg"
+      ],
+      rh: [
+        "assets/public/img/rh/operacional1.jpg",
+        "assets/public/img/rh/operacional2.jpg",
+        "assets/public/img/rh/operacional3.jpg",
+        "assets/public/img/rh/operacional4.jpg"
+      ],
+      org: [
+        "assets/public/img/org/ale.jpg"
+      ]
+    };
+    const ALL = Object.values(PF).flat();
+
+    const track1 = document.getElementById('pf-track-1');
+    const track2 = document.getElementById('pf-track-2');
+    const chips  = Array.from(document.querySelectorAll('.pf-chip[data-filter]'));
+
+    function buildItems(srcs){
+      const seq = srcs.concat(srcs); // duplica para loop contínuo
+      return seq.map(src => `<img src="${src}" alt="" class="pf-item" />`).join('');
+    }
+
+    function render(filter='all'){
+      const list = filter === 'all' ? ALL : (PF[filter] || []);
+      // separa entre linhas (se faltar, reaproveita)
+      const half = Math.ceil(list.length / 2) || 1;
+      const l1 = (list.slice(0, half).length ? list.slice(0, half) : list);
+      const l2 = (list.slice(half).length ? list.slice(half) : list);
+
+      // pausa animação, troca conteúdo e retoma
+      track1.style.animationPlayState = 'paused';
+      track2.style.animationPlayState = 'paused';
+      track1.innerHTML = buildItems(l1);
+      track2.innerHTML = buildItems(l2);
+      void track1.offsetWidth; // reflow
+      track1.style.animationPlayState = 'running';
+      track2.style.animationPlayState = 'running';
+    }
+
+    function setActive(name){
+      chips.forEach(c => c.classList.remove('pf-active'));
+      const hit = chips.find(c => c.dataset.filter === name);
+      hit && hit.classList.add('pf-active');
+    }
+
+    chips.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        render(f);
+        setActive(f);
+      });
+    });
+
+    // inicial
+    render('all');
+  </script>
+</section>
+
+
+<!-- SECTION 5 — CTA (box igual antes, mas sem fundo verde da página) -->
+<section class="tw-py-16 tw-bg-white">
+  <div class="container">
+    <div
+      class="tw-flex tw-flex-col tw-items-center tw-text-center
+             tw-rounded-2xl md:tw-rounded-[28px]
+             tw-px-6 md:tw-px-10 tw-py-10
+             tw-bg-gradient-to-r tw-from-emerald-50 tw-to-sky-50
+             tw-border tw-border-emerald-100 tw-shadow-sm">
+
+      <!-- Texto -->
+      <h3 class="tw-text-2xl md:tw-text-3xl tw-font-extrabold tw-text-slate-900">
+        Pronto para montar seu evento?
+      </h3>
+      <p class="tw-text-slate-600 tw-mt-2 max-w-2xl">
+        Envie o briefing e respondemos com uma proposta sob medida.
+      </p>
+
+      <!-- Botão -->
+      <a href="/pages/briefing.html"
+         class="tw-mt-6 tw-inline-flex tw-items-center tw-justify-center
+                tw-px-6 tw-py-3 tw-rounded-xl
+                tw-bg-emerald-700 tw-text-white tw-font-semibold
+                tw-shadow hover:tw-opacity-95 tw-transition">
+        Seu orçamento agora
+      </a>
+    </div>
+  </div>
+</section>
+
+
   </main>
 
   <!-- FOOTER -->

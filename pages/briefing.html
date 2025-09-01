@@ -5,20 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Briefing — Chicas Eventos</title>
   <link rel="icon" href="../assets/public/img/favicon.png">
-
-  <!-- CSS da home -->
   <link rel="stylesheet" href="../assets/css/style.css">
-
-  <!-- Tailwind (prefixo tw-) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };
   </script>
 </head>
-
 <body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
 
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
@@ -32,7 +27,7 @@
         </ul>
       </nav>
     </div>
-    <ul id="menuMobile" class="nav-mobile">
+    <ul id="menuMobile" class="nav-mobile" style="display:none">
       <li><a href="/pages/servicos.html">Serviços</a></li>
       <li><a href="/pages/portfolio.html">Portfólio</a></li>
       <li><a href="/pages/sobre.html">Sobre</a></li>
@@ -40,25 +35,31 @@
     </ul>
   </header>
 
-  <!-- ===== CONTEÚDO ===== -->
+  <!-- CONTEÚDO -->
   <main class="tw-flex-1 tw-py-10">
     <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
-
-      <!-- Balão do formulário -->
       <section class="tw-mx-auto tw-max-w-3xl tw-p-0 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm tw-overflow-hidden">
-        <!-- Barra de progresso -->
-        <div class="tw-relative tw-h-2 tw-bg-slate-100">
-          <div id="progressBar"
-               class="tw-absolute tw-left-0 tw-top-0 tw-h-full tw-bg-emerald-600 tw-w-[12%] tw-transition-all tw-duration-300"></div>
-        </div>
-
-        <div class="tw-p-6 md:tw-p-10">
-          <div class="tw-text-center tw-mb-6">
+        
+        <!-- Cabeçalho do balão -->
+        <div class="tw-px-6 tw-pt-6 md:tw-px-10 md:tw-pt-10">
+          <div class="tw-text-center">
             <span class="tw-text-xs tw-tracking-wide tw-font-semibold tw-text-emerald-700 tw-uppercase">Orçamento</span>
             <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Briefing rápido</h1>
             <p class="tw-text-slate-600 tw-mt-2">Leva menos de 2 min. Assim entendemos sua necessidade e preparamos um orçamento sob medida.</p>
           </div>
+        </div>
 
+        <!-- Barra de progresso centralizada -->
+        <div class="tw-px-6 md:tw-px-10 tw-mt-4">
+          <div class="tw-flex tw-justify-center">
+            <div class="tw-w-[88%] md:tw-w-[82%] tw-max-w-[680px] tw-h-[6px] tw-bg-slate-100 tw-rounded-full">
+              <div id="progressBar" class="tw-h-full tw-bg-emerald-600 tw-rounded-full tw-w-[12%] tw-transition-all tw-duration-300"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="tw-p-6 md:tw-p-10">
           <form id="briefingForm" class="tw-space-y-10">
             <!-- STEP 1 -->
             <div class="step" data-step="1">
@@ -80,9 +81,9 @@
             </div>
 
             <!-- STEP 2 -->
-            <div class="step" data-step="2">
+            <div class="step" data-step="2" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">2) Que tipo de evento será?</h2>
-              <select class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="tipo_evento" required>
+              <select class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" name="tipo_evento" required>
                 <option value="" disabled selected>Selecione…</option>
                 <option>Corporativo</option>
                 <option>Conferência / Feira</option>
@@ -94,7 +95,7 @@
             </div>
 
             <!-- STEP 3 -->
-            <div class="step" data-step="3">
+            <div class="step" data-step="3" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">3) Buffet</h2>
               <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
                 <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="sim">Preciso de buffet</button>
@@ -107,16 +108,14 @@
                 <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Brunch">Brunch</button>
                 <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Almoço/Jantar">Almoço/Jantar</button>
               </div>
-
-              <!-- Preferências do buffet (opcional) -->
               <div id="buffetCustomWrap" class="tw-hidden tw-mt-4">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Preferências do buffet (opcional)</label>
-                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="buffet_custom" placeholder="Ex.: Coquetel com opções sem lactose, incluir sucos naturais..."></textarea>
+                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="buffet_custom" placeholder="Ex.: Coquetel com opções sem lactose, incluir sucos naturais..."></textarea>
               </div>
             </div>
 
             <!-- STEP 4 -->
-            <div class="step" data-step="4">
+            <div class="step" data-step="4" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">4) Cobertura audiovisual</h2>
               <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
                 <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="sim">Preciso de cobertura</button>
@@ -124,81 +123,60 @@
               </div>
               <div id="audTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-3">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-3">De que tipo?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_aud" data-value="Foto">Foto</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_aud" data-value="Vídeo">Vídeo</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_aud" data-value="Drone">Drone</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_aud" data-value="Social media (reels/stories)">Social media</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_aud" data-value="Pacote completo">Pacote completo</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Foto">Foto</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Vídeo">Vídeo</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Drone">Drone</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Social media (reels/stories)">Social media</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Pacote completo">Pacote completo</button>
               </div>
             </div>
 
             <!-- STEP 5 -->
-            <div class="step" data-step="5">
+            <div class="step" data-step="5" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">5) Equipe operacional (RH)</h2>
               <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="rh" data-value="sim">Preciso de equipe</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="rh" data-value="nao">Não preciso</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="rh" data-value="sim">Preciso de equipe</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="rh" data-value="nao">Não preciso</button>
               </div>
               <div id="rhTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-2">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-2">Qual(is) desses?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_rh" data-value="Garçom">Garçom</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_rh" data-value="Recepcionista">Recepcionista</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_rh" data-value="Segurança">Segurança</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_rh" data-value="Apoio/Operacional">Apoio/Operacional</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Garçom">Garçom</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Recepcionista">Recepcionista</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Segurança">Segurança</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Apoio/Operacional">Apoio/Operacional</button>
               </div>
             </div>
 
             <!-- STEP 6 -->
-            <div class="step" data-step="6">
+            <div class="step" data-step="6" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">6) Cerimonial</h2>
               <p class="tw-text-slate-700 tw-mb-3">Nosso cerimonial cuida do planejamento completo, cronograma, fornecedores e execução no dia.</p>
               <div class="tw-flex tw-gap-3 tw-flex-wrap">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="cerim" data-value="sim">Quero cerimonial</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="cerim" data-value="nao">Não preciso</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="cerim" data-value="sim">Quero cerimonial</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="cerim" data-value="nao">Não preciso</button>
               </div>
               <div class="tw-mt-4">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Observações (opcional)</label>
-                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="obs" placeholder="Datas, horários, local, estimativa de público…"></textarea>
-              </div>
-            </div>
-
-            <!-- STEP 7 -->
-            <div class="step" data-step="7">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-1">Resumo</h2>
-              <p class="tw-text-slate-600 tw-mb-4">Confira as informações antes de enviar:</p>
-              <div id="resume" class="tw-bg-slate-50 tw-border tw-border-slate-200 tw-rounded-xl tw-p-4 tw-text-slate-800"></div>
-
-              <div class="tw-mt-6 tw-text-center tw-text-emerald-700 tw-font-semibold">
-                Nossa equipe entrará em contato em breve. 💬
-              </div>
-
-              <div class="tw-mt-6 tw-flex tw-justify-center">
-                <a href="/pages/portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-slate-900 tw-border tw-border-slate-200 hover:tw-bg-slate-50">Ver portfólio</a>
+                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="obs" placeholder="Datas, horários, local, estimativa de público…"></textarea>
               </div>
             </div>
 
             <!-- Navegação -->
             <div class="tw-flex tw-justify-between tw-items-center">
-              <button type="button" id="prevBtn"
-                class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-slate-900 tw-border tw-border-slate-200 hover:tw-bg-slate-50">← Voltar</button>
+              <button type="button" id="prevBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-slate-900 tw-border tw-border-slate-200 hover:tw-bg-slate-50">← Voltar</button>
               <div class="tw-flex tw-gap-2">
-                <button type="button" id="nextBtn"
-                  class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Próximo →</button>
-                <button type="submit" id="sendBtn"
-                  class="tw-hidden tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Enviar</button>
+                <button type="button" id="nextBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Próximo →</button>
               </div>
             </div>
           </form>
 
-          <!-- feedback -->
           <div id="statusBox" class="tw-hidden tw-mt-6 tw-text-center"></div>
         </div>
       </section>
-      <!-- /balão -->
     </div>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer class="site-footer tw-mt-10">
     <div class="container footer-wrap">
       <div class="f-col">
@@ -206,10 +184,7 @@
           <img src="../assets/public/img/favicon.png" alt="" class="f-logo" />
           <span class="f-brand">Chicas Eventos</span>
         </div>
-        <p class="f-desc">
-          Sabores que marcam momentos especiais! Personalize seu cardápio e torne
-          seu evento inesquecível com nosso buffet exclusivo.
-        </p>
+        <p class="f-desc">Sabores que marcam momentos especiais! Personalize seu cardápio e torne seu evento inesquecível com nosso buffet exclusivo.</p>
         <div class="f-copy">© 2025 · Justke Design</div>
       </div>
       <div class="f-col">
@@ -237,109 +212,93 @@
     const hamb = document.getElementById('hamb');
     const menuMobile = document.getElementById('menuMobile');
     hamb?.addEventListener('click', () => {
-      menuMobile.style.display = menuMobile.style.display === 'block' ? 'none' : 'block';
+      const show = menuMobile.style.display !== 'block';
+      menuMobile.style.display = show ? 'block' : 'none';
     });
     menuMobile?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       menuMobile.style.display = 'none';
     }));
   </script>
 
-  <!-- Integração com Apps Script -->
+  <!-- Lógica -->
   <script>
-    /******** CONFIG ********/
-    const COMPANY_NAME   = 'Chicas Eventos';
-    const WEBHOOK_URL    = 'https://script.google.com/macros/s/AKfycbyjCqA5RK-G57UUWKPA6NmxBZ4uSjA_nLJ6hLPq-E733l0sc4iD-em-KdHicTwQSPSF/execP_EXEC'; // <= troque
-    const NOTIFY_EMAILS  = ['rj.justke@gmail.com'];          // opcional, pode deixar vazio []
+    // URL do seu Apps Script (nova)
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzbfANL3UPIMbceYdLhNYN7a6-4F3ZJLbDrczqJlGKrha1yyxb9THnYFC0lrymYYKwF/exec';
+    // opcional: e-mail extra para cópia (o servidor já envia ao NOTIFY_TO)
+    const EXTRA_NOTIFY = 'rj.justke@gmail.com'; // ex.: 'atendimento@chicas.com.br'
 
-    /******** PASSOS/ESTADO ********/
     const steps = Array.from(document.querySelectorAll('.step'));
+    const totalSteps = steps.length;
     const progressBar = document.getElementById('progressBar');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
-    const sendBtn = document.getElementById('sendBtn');
     const form = document.getElementById('briefingForm');
-    const resumeEl = document.getElementById('resume');
     const statusBox = document.getElementById('statusBox');
 
     let current = 0;
+    const state = { buffet:null, tipo_buffet:new Set(), aud:null, tipo_aud:new Set(), rh:null, tipo_rh:new Set(), cerim:null };
 
-    const state = {
-      buffet: null, tipo_buffet: new Set(),
-      aud: null,   tipo_aud: new Set(),
-      rh: null,    tipo_rh: new Set(),
-      cerim: null
-    };
-
-    /******** UI ********/
+    function updateProgress(){
+      const pct = Math.round(((current+1)/totalSteps)*100);
+      progressBar.style.width = pct + '%';
+    }
     function updateUI(){
       steps.forEach((s,i)=> s.style.display = i===current ? 'block' : 'none');
-      const pct = Math.round(((current+1)/steps.length)*100);
-      progressBar.style.width = pct + '%';
+      updateProgress();
       prevBtn.disabled = current === 0;
       prevBtn.classList.toggle('tw-opacity-50', prevBtn.disabled);
-      const last = current === steps.length-1;
-      nextBtn.classList.toggle('tw-hidden', last);
-      sendBtn.classList.toggle('tw-hidden', !last);
+      nextBtn.textContent = (current === totalSteps-1) ? 'Enviar' : 'Próximo →';
     }
+    function goNext(){ if (current < totalSteps-1){ current++; updateUI(); window.scrollTo({top:0, behavior:'smooth'});} else { submitNow(); } }
+    function goPrev(){ if (current > 0){ current--; updateUI(); window.scrollTo({top:0, behavior:'smooth'});} }
+    nextBtn.addEventListener('click', goNext);
+    prevBtn.addEventListener('click', goPrev);
 
-    nextBtn.addEventListener('click', () => {
-      if (current < steps.length-1) current++;
-      if (current === steps.length-1) buildResume();
-      updateUI(); window.scrollTo({top:0, behavior:'smooth'});
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (current > 0) current--;
-      updateUI(); window.scrollTo({top:0, behavior:'smooth'});
-    });
-
-    const buffetCustomWrap = document.getElementById('buffetCustomWrap');
-
-    /******** CHIPS ********/
     function toggleSingle(group, value){
       document.querySelectorAll(`.tw-inline-flex[data-toggle="${group}"]`).forEach(el=>{
-        el.dataset.checked = (el.dataset.value === value) ? "true" : "false";
-        if (el.dataset.value === value) {
-          el.classList.add('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-        } else {
-          el.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-        }
+        el.dataset.checked = (el.dataset.value===value)?"true":"false";
+        el.classList.toggle('tw-bg-emerald-700', el.dataset.checked==="true");
+        el.classList.toggle('tw-text-white', el.dataset.checked==="true");
+        el.classList.toggle('tw-border-emerald-700', el.dataset.checked==="true");
       });
       state[group] = value;
-
-      if (group==='buffet'){
+      if(group==='buffet'){
         document.getElementById('buffetTipos').classList.toggle('tw-hidden', value!=='sim');
-        buffetCustomWrap.classList.toggle('tw-hidden', value!=='sim');
-        if (value!=='sim') {
+        document.getElementById('buffetCustomWrap').classList.toggle('tw-hidden', value!=='sim');
+        if(value!=='sim'){
           state.tipo_buffet.clear();
-          document.querySelector('[name="buffet_custom"]').value = '';
+          document.querySelectorAll('[data-multi="tipo_buffet"]').forEach(b=>{
+            b.dataset.checked="false";
+            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+          });
+          const tx = document.querySelector('[name="buffet_custom"]'); if (tx) tx.value='';
         }
-        document.querySelectorAll('[data-multi="tipo_buffet"]').forEach(b=>{
-          b.dataset.checked="false";
-          b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-        });
       }
-      if (group==='aud'){
+      if(group==='aud'){
         document.getElementById('audTipos').classList.toggle('tw-hidden', value!=='sim');
-        if (value!=='sim') state.tipo_aud.clear();
-        document.querySelectorAll('[data-multi="tipo_aud"]').forEach(b=>{
-          b.dataset.checked="false";
-          b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-        });
+        if(value!=='sim'){
+          state.tipo_aud.clear();
+          document.querySelectorAll('[data-multi="tipo_aud"]').forEach(b=>{
+            b.dataset.checked="false";
+            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+          });
+        }
       }
-      if (group==='rh'){
+      if(group==='rh'){
         document.getElementById('rhTipos').classList.toggle('tw-hidden', value!=='sim');
-        if (value!=='sim') state.tipo_rh.clear();
-        document.querySelectorAll('[data-multi="tipo_rh"]').forEach(b=>{
-          b.dataset.checked="false";
-          b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-        });
+        if(value!=='sim'){
+          state.tipo_rh.clear();
+          document.querySelectorAll('[data-multi="tipo_rh"]').forEach(b=>{
+            b.dataset.checked="false";
+            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+          });
+        }
       }
+      if(group==='cerim'){ /* nada extra */ }
     }
-
     function toggleMulti(group, value, el){
       const set = state[group];
-      if (set.has(value)) {
+      if(set.has(value)){
         set.delete(value);
         el.dataset.checked="false";
         el.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
@@ -349,194 +308,123 @@
         el.classList.add('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
       }
     }
-
-    document.querySelectorAll('[data-toggle]').forEach(btn=>{
-      btn.addEventListener('click', ()=> toggleSingle(btn.dataset.toggle, btn.dataset.value));
-    });
-    document.querySelectorAll('[data-multi]').forEach(btn=>{
-      btn.addEventListener('click', ()=> toggleMulti(btn.dataset.multi, btn.dataset.value, btn));
-    });
-
-    /******** RESUMO ********/
-    function buildResume(){
-      const fd = new FormData(form);
-      const list = set => set.size ? Array.from(set).join(', ') : '—';
-      resumeEl.innerHTML = `
-        <div class="tw-grid tw-gap-3">
-          <div><span class="tw-font-semibold">Nome:</span> ${fd.get('nome')||'—'}</div>
-          <div><span class="tw-font-semibold">Telefone:</span> ${fd.get('telefone')||'—'}</div>
-          <div><span class="tw-font-semibold">E-mail:</span> ${fd.get('email')||'—'}</div>
-          <div><span class="tw-font-semibold">Tipo de evento:</span> ${fd.get('tipo_evento')||'—'}</div>
-          <hr class="tw-my-2">
-          <div><span class="tw-font-semibold">Buffet:</span> ${state.buffet||'—'}</div>
-          <div><span class="tw-font-semibold">Tipos de buffet:</span> ${list(state.tipo_buffet)}</div>
-          <div><span class="tw-font-semibold">Preferências do buffet:</span> ${fd.get('buffet_custom')||'—'}</div>
-          <div><span class="tw-font-semibold">Audiovisual:</span> ${state.aud||'—'}</div>
-          <div><span class="tw-font-semibold">Tipos de audiovisual:</span> ${list(state.tipo_aud)}</div>
-          <div><span class="tw-font-semibold">RH:</span> ${state.rh||'—'}</div>
-          <div><span class="tw-font-semibold">Cargos solicitados:</span> ${list(state.tipo_rh)}</div>
-          <div><span class="tw-font-semibold">Cerimonial:</span> ${state.cerim||'—'}</div>
-          <div><span class="tw-font-semibold">Observações:</span> ${fd.get('obs')||'—'}</div>
-        </div>`;
-    }
+    document.querySelectorAll('[data-toggle]').forEach(btn=> btn.addEventListener('click', ()=> toggleSingle(btn.dataset.toggle, btn.dataset.value)));
+    document.querySelectorAll('[data-multi]').forEach(btn=> btn.addEventListener('click', ()=> toggleMulti(btn.dataset.multi, btn.dataset.value, btn)));
 
     function formToObject(){
       const fd = new FormData(form);
-      const obj = Object.fromEntries(fd.entries());
-      obj.tipo_buffet = Array.from(state.tipo_buffet);
-      obj.tipo_aud    = Array.from(state.tipo_aud);
-      obj.tipo_rh     = Array.from(state.tipo_rh);
-      obj.buffet      = state.buffet;
-      obj.aud         = state.aud;
-      obj.rh          = state.rh;
-      obj.cerim       = state.cerim;
-      obj.timestamp   = new Date().toISOString();
-      if (NOTIFY_EMAILS?.length) obj.notify_email = NOTIFY_EMAILS; // opcional
-      return obj;
-    }
-
-    function buildSummaryText(data){
-      const j = (a) => Array.isArray(a) && a.length ? a.join(', ') : '—';
-      const get = (k) => data[k] || '—';
-      let t  = `${COMPANY_NAME} — Briefing rápido\n`;
-      t += `Data/Hora: ${new Date().toLocaleString()}\n`;
-      t += `----------------------------------------\n`;
-      t += `Nome: ${get('nome')}\n`;
-      t += `Telefone: ${get('telefone')}\n`;
-      t += `E-mail: ${get('email')}\n`;
-      t += `Tipo de evento: ${get('tipo_evento')}\n\n`;
-      t += `Buffet: ${get('buffet')}\n`;
-      t += `Tipos de buffet: ${j(data.tipo_buffet)}\n`;
-      t += `Preferências do buffet: ${get('buffet_custom')}\n\n`;
-      t += `Audiovisual: ${get('aud')}\n`;
-      t += `Tipos de audiovisual: ${j(data.tipo_aud)}\n\n`;
-      t += `RH: ${get('rh')}\n`;
-      t += `Cargos solicitados: ${j(data.tipo_rh)}\n\n`;
-      t += `Cerimonial: ${get('cerim')}\n`;
-      t += `Observações: ${get('obs')}\n`;
-      return t;
-    }
-
-    function downloadTxt(filename, content){
-      const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    }
-
-    async function sendToWebhook(data){
-      // tentar CORS normal
-      try{
-        const res = await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(data),
-          mode: 'cors',
-        });
-        // se Apps Script retornar JSON { ok, folderUrl, fileUrl }, usamos:
-        const maybeJson = await res.json().catch(()=>null);
-        return maybeJson || { ok: res.ok };
-      }catch(err){
-        return { ok:false, error: String(err) };
-      }
-    }
-
-    // fallback por <form> oculto (útil se o ambiente travar CORS)
-    function postViaHiddenForm(json){
-      const form = document.createElement('form');
-      form.action = WEBHOOK_URL;
-      form.method = 'POST';
-      form.target = '_hidden_iframe';
-      form.style.display = 'none';
-
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = 'payload';               // no Apps Script, pegue em e.parameter.payload e JSON.parse
-      input.value = JSON.stringify(json);
-      form.appendChild(input);
-
-      let iframe = document.getElementById('_hidden_iframe');
-      if (!iframe){
-        iframe = document.createElement('iframe');
-        iframe.name = '_hidden_iframe';
-        iframe.id = '_hidden_iframe';
-        iframe.style.display='none';
-        document.body.appendChild(iframe);
-      }
-      document.body.appendChild(form);
-      form.submit();
+      return {
+        nome: fd.get('nome') || '',
+        telefone: fd.get('telefone') || '',
+        email: fd.get('email') || '',
+        tipo_evento: fd.get('tipo_evento') || '',
+        buffet: state.buffet,
+        tipo_buffet: Array.from(state.tipo_buffet),
+        buffet_custom: fd.get('buffet_custom') || '',
+        aud: state.aud,
+        tipo_aud: Array.from(state.tipo_aud),
+        rh: state.rh,
+        tipo_rh: Array.from(state.tipo_rh),
+        cerim: state.cerim,
+        obs: fd.get('obs') || '',
+        timestamp: new Date().toISOString(),
+        ...(EXTRA_NOTIFY ? { notify_email: EXTRA_NOTIFY } : {})
+      };
     }
 
     function setLoading(isLoading){
-      const btns = [prevBtn, nextBtn, sendBtn];
-      btns.forEach(b => b && (b.disabled = isLoading));
-      if (isLoading){
-        sendBtn?.classList.add('tw-opacity-60','tw-cursor-not-allowed');
-        sendBtn && (sendBtn.textContent = 'Enviando…');
-      } else {
-        sendBtn?.classList.remove('tw-opacity-60','tw-cursor-not-allowed');
-        sendBtn && (sendBtn.textContent = 'Enviar');
-      }
+      [prevBtn,nextBtn].forEach(b=> b && (b.disabled=isLoading));
+      if(isLoading){ nextBtn?.classList.add('tw-opacity-60','tw-cursor-not-allowed'); nextBtn && (nextBtn.textContent='Enviando…'); }
+      else { nextBtn?.classList.remove('tw-opacity-60','tw-cursor-not-allowed'); updateUI(); }
     }
 
-    function showStatus(ok, msg, extraHtml=''){
-      statusBox.className = 'tw-mt-6 tw-text-center';
-      statusBox.classList.add(ok ? 'tw-text-emerald-700' : 'tw-text-red-600');
-      statusBox.innerHTML = `<div class="tw-font-semibold">${msg}</div>${extraHtml}`;
+    function showStatus(ok,msg){
+      statusBox.className='tw-mt-6 tw-text-center';
+      statusBox.classList.add(ok?'tw-text-emerald-700':'tw-text-red-600');
+      statusBox.innerHTML=`<div class="tw-font-semibold">${msg}</div>`;
       statusBox.classList.remove('tw-hidden');
     }
 
-    /******** SUBMIT ********/
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      buildResume();
+    // sendJSON robusto: em no-cors manda FormData(payload) para evitar preflight
+    async function sendJSON(url, data, mode='cors'){
+      if (mode === 'no-cors'){
+        const fd = new FormData();
+        fd.append('payload', JSON.stringify(data));
+        return fetch(url, { method:'POST', mode:'no-cors', body: fd });
+      }
+      return fetch(url, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify(data),
+        mode:'cors'
+      });
+    }
 
+    function renderSuccessScreen() {
+      steps.forEach(s => s.style.display='none');
+      const msg = `
+        <div class="tw-text-center tw-space-y-4 tw-pt-4">
+          <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing enviado!</h3>
+          <p class="tw-text-slate-700">Em instantes a nossa equipe irá entrar em contato. Muito obrigado.</p>
+          <a href="/pages/portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+            Ver portfólio →
+          </a>
+        </div>
+      `;
+      statusBox.className = 'tw-mt-6';
+      statusBox.innerHTML = msg;
+      statusBox.classList.remove('tw-hidden');
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+    }
+
+    function postViaHiddenForm(url, payloadObj){
+      const f = document.createElement('form');
+      f.action = url; f.method = 'POST'; f.target = '_hidden_iframe'; f.style.display='none';
+      const input = document.createElement('input');
+      input.type = 'hidden'; input.name = 'payload'; input.value = JSON.stringify(payloadObj);
+      f.appendChild(input);
+      let iframe = document.getElementById('_hidden_iframe');
+      if (!iframe){ iframe = document.createElement('iframe'); iframe.name='_hidden_iframe'; iframe.id='_hidden_iframe'; iframe.style.display='none'; document.body.appendChild(iframe); }
+      document.body.appendChild(f); f.submit();
+    }
+
+    async function submitNow(){
       const data = formToObject();
-      localStorage.setItem('chicas:last_briefing', JSON.stringify(data));
-
-      const text = buildSummaryText(data);
-      downloadTxt(`briefing-${Date.now()}.txt`, text);
-
       setLoading(true);
-      let result = await sendToWebhook(data);
-
-      // se falhou, tenta fallback por form oculto
-      if (!result.ok){
-        try{
-          postViaHiddenForm({ ...data, _compat: true });
-          // damos feedback otimista no fallback
-          result = { ok:true };
-        }catch(e){
+      try{
+        // 1) tenta CORS normal
+        let res = await sendJSON(WEBHOOK_URL, data, 'cors');
+        if (!res.ok){
+          // 2) tenta no-cors
+          await sendJSON(WEBHOOK_URL, data, 'no-cors');
           setLoading(false);
-          showStatus(false, 'Não foi possível enviar agora. Tente novamente em alguns instantes.');
+          renderSuccessScreen();
+          window.scrollTo({top:0,behavior:'smooth'});
           return;
         }
+        await res.json().catch(()=>null);
+        setLoading(false);
+        renderSuccessScreen();
+        window.scrollTo({top:0,behavior:'smooth'});
+      }catch(err){
+        // 3) fallback por form oculto
+        try{
+          postViaHiddenForm(WEBHOOK_URL, data);
+          setLoading(false);
+          renderSuccessScreen();
+          window.scrollTo({top:0,behavior:'smooth'});
+        }catch(_){
+          setLoading(false);
+          showStatus(false, 'Não foi possível enviar. Verifique a URL do Web App e as permissões.');
+        }
       }
+    }
 
-      setLoading(false);
+    // Evita submit tradicional
+    form.addEventListener('submit', (e)=> e.preventDefault());
 
-      // Se tiver links de retorno do Apps Script, mostramos; se não, só confirma.
-      if (result.folderUrl || result.fileUrl){
-        const links = `
-          <div class="tw-mt-2 tw-text-sm">
-            ${result.folderUrl ? `<a class="tw-underline" href="${result.folderUrl}" target="_blank" rel="noopener">Abrir pasta do cliente</a>` : ''}
-            ${result.fileUrl ? ` · <a class="tw-underline" href="${result.fileUrl}" target="_blank" rel="noopener">Ver briefing no Drive</a>` : ''}
-          </div>`;
-        showStatus(true, 'Briefing enviado! Nossa equipe já recebeu 👍', links);
-      } else {
-        showStatus(true, 'Briefing enviado! Nossa equipe já recebeu 👍');
-      }
-
-      // opcional: levar o usuário pro topo
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    /******** INIT ********/
+    // inicia interface
     updateUI();
   </script>
 </body>

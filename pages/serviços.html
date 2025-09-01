@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços — Chicas Eventos</title>
+  <link rel="icon" href="../assets/public/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+
+  <!-- HEADER (mesmo do site) -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <button class="hamb md:tw-hidden" id="hamb" aria-label="Abrir menu">☰</button>
+      <nav class="tw-hidden md:tw-block">
+        <ul class="nav-list">
+          <li><a href="/pages/servicos.html" class="is-active">Serviços</a></li>
+          <li><a href="/pages/portfolio.html">Portfólio</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
+          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+        </ul>
+      </nav>
+    </div>
+    <ul id="menuMobile" class="nav-mobile" style="display:none">
+      <li><a href="/pages/servicos.html">Serviços</a></li>
+      <li><a href="/pages/portfolio.html">Portfólio</a></li>
+      <li><a href="/pages/sobre.html">Sobre</a></li>
+      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+    </ul>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="tw-flex-1 tw-py-12">
+    <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+
+      <!-- Título + Sub -->
+      <header class="tw-text-center tw-max-w-3xl tw-mx-auto tw-mb-8">
+        <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Serviços</span>
+        <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">
+          Tudo que seu evento precisa, do jeito certo
+        </h1>
+        <p class="tw-text-slate-600 tw-mt-3">
+          Organizamos e executamos cada parte do seu evento com cuidado e eficiência.
+          Escolha abaixo o que você precisa e veja os detalhes de cada serviço.
+        </p>
+      </header>
+
+      <!-- Botões de seleção -->
+      <div class="tw-flex tw-flex-wrap tw-gap-3 tw-justify-center tw-mb-8">
+        <button class="svc-btn tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm"
+                data-key="buffet">🍽️ Buffet</button>
+        <button class="svc-btn tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm"
+                data-key="audiovisual">🎥 Audiovisual</button>
+        <button class="svc-btn tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm"
+                data-key="cerimonial">📋 Cerimonial</button>
+        <button class="svc-btn tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm"
+                data-key="rh">🧑‍🍳 Equipe (RH)</button>
+      </div>
+
+      <!-- CARD dinâmico -->
+      <section id="svcCard"
+        class="tw-relative tw-overflow-hidden tw-rounded-[24px] tw-border tw-border-slate-200 tw-bg-white tw-shadow-xl tw-grid md:tw-grid-cols-2">
+
+        <!-- Imagem -->
+        <div class="tw-relative tw-aspect-[16/10] md:tw-aspect-auto tw-min-h-[260px]">
+          <img id="svcImg" src="../assets/public/img/servicos/buffet.jpg" alt="Imagem do serviço"
+               class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover">
+          <!-- etiqueta -->
+          <div class="tw-absolute tw-top-4 tw-left-4 tw-bg-emerald-700/90 tw-text-white tw-text-xs tw-font-semibold tw-tracking-wider tw-rounded-full tw-px-3 tw-py-1"
+               id="svcTag">BUFFET</div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="tw-p-6 md:tw-p-8 tw-flex tw-flex-col tw-gap-4">
+          <h2 id="svcTitle" class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Buffet completo</h2>
+          <p id="svcDesc" class="tw-text-slate-700">
+            Cardápios sob medida: coffee break, coquetel, brunch, almoço/jantar e opções especiais.
+            Equipe treinada e serviço impecável do início ao fim.
+          </p>
+          <ul id="svcBullets" class="tw-grid tw-gap-2 tw-text-slate-700 tw-text-sm tw-list-disc tw-pl-5">
+            <li>Menu personalizado para o seu público</li>
+            <li>Montagem, serviço e logística</li>
+            <li>Opções sem lactose/veg/vegana</li>
+          </ul>
+
+          <div class="tw-pt-2">
+            <a id="svcCTA" href="/pages/servicos/buffet.html"
+               class="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+              Ver detalhes do Buffet →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Texto de base da página -->
+      <section class="tw-max-w-3xl tw-mx-auto tw-text-center tw-mt-12">
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900">Vai com a Chicas que dá certo</h3>
+        <p class="tw-text-slate-600 tw-mt-2">
+          Da gastronomia à operação, passando por audiovisual e cerimonial, nosso time
+          cuida de tudo para você curtir seu evento sem dor de cabeça.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER (mesmo do site) -->
+  <footer class="site-footer tw-mt-10">
+    <div class="container footer-wrap">
+      <div class="f-col">
+        <div class="brand-line">
+          <img src="../assets/public/img/favicon.png" alt="" class="f-logo" />
+          <span class="f-brand">Chicas Eventos</span>
+        </div>
+        <p class="f-desc">Sabores que marcam momentos especiais! Personalize seu cardápio e torne seu evento inesquecível com nosso buffet exclusivo.</p>
+        <div class="f-copy">© 2025 · Justke Design</div>
+      </div>
+      <div class="f-col">
+        <h4 class="f-title">Navegue pelo site</h4>
+        <ul class="f-links">
+          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
+          <li><a href="/pages/portfolio.html">Galeria</a></li>
+          <li><a href="/pages/sobre.html">Sobre Nós</a></li>
+          <li><a href="/pages/briefing.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4 class="f-title">Receba novidades e promoções!</h4>
+        <p class="f-hint">Fique por dentro das novidades!</p>
+        <form class="f-news" onsubmit="event.preventDefault(); alert('Valeu! (plugaremos depois)')">
+          <input type="email" placeholder="Endereço de e-mail" required>
+          <button aria-label="Enviar"><span class="dot"></span></button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Menu mobile -->
+  <script>
+    const hamb = document.getElementById('hamb');
+    const menuMobile = document.getElementById('menuMobile');
+    hamb?.addEventListener('click', () => {
+      const show = menuMobile.style.display !== 'block';
+      menuMobile.style.display = show ? 'block' : 'none';
+    });
+    menuMobile?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menuMobile.style.display = 'none';
+    }));
+  </script>
+
+  <!-- Lógica do card dinâmico -->
+  <script>
+    // catálogo: imagem, título, descrição, bullets, CTA
+const SERVICES = {
+  buffet: {
+    tag: 'BUFFET',
+    title: 'Buffet completo',
+    img: '../assets/public/img/buffet/buffet1.jpg',
+    desc: 'Cardápios sob medida: coffee break, coquetel, brunch, almoço/jantar e opções especiais. Equipe treinada e serviço impecável.',
+    bullets: [
+      'Menu personalizado para o seu público',
+      'Montagem, serviço e logística',
+      'Opções sem lactose/veg/vegana'
+    ],
+    ctaHref: '/pages/servicos/buffet.html',
+    ctaText: 'Ver detalhes do Buffet →'
+  },
+  audiovisual: {
+    tag: 'AUDIOVISUAL',
+    title: 'Cobertura audiovisual',
+    img: '../assets/public/img/aud/cobertura1.jpg',
+    desc: 'Foto, vídeo, drone e social media em tempo real. Conteúdo profissional para eternizar e divulgar seu evento.',
+    bullets: [
+      'Fotografia e filmagem profissional',
+      'Drone & captação aérea (onde permitido)',
+      'Entrega rápida de reels/stories'
+    ],
+    ctaHref: '/pages/servicos/audiovisual.html',
+    ctaText: 'Ver detalhes de Audiovisual →'
+  },
+  cerimonial: {
+    tag: 'CERIMONIAL',
+    title: 'Cerimonial & produção',
+    img: '../assets/public/img/org/ale.jpg',
+    desc: 'Planejamento, cronograma, fornecedores e execução no dia. Você curte, a gente coordena.',
+    bullets: [
+      'Roteiro e cronograma do evento',
+      'Gestão de fornecedores e prazos',
+      'Coordenação completa no grande dia'
+    ],
+    ctaHref: '/pages/servicos/cerimonial.html',
+    ctaText: 'Ver detalhes do Cerimonial →'
+  },
+  rh: {
+    tag: 'EQUIPE',
+    title: 'Equipe operacional (RH)',
+    img: '../assets/public/img/rh/operacional1.jpg',
+    desc: 'Garçons, recepcionistas, segurança e apoio. Time treinado para atender bem e manter o fluxo do evento.',
+    bullets: [
+      'Escala e briefing conforme sua demanda',
+      'Equipe uniformizada e orientada',
+      'Cobertura do início ao fim'
+    ],
+    ctaHref: '/pages/servicos/rh.html',
+    ctaText: 'Ver detalhes da Equipe →'
+  }
+};
+
+    const svcImg   = document.getElementById('svcImg');
+    const svcTag   = document.getElementById('svcTag');
+    const svcTitle = document.getElementById('svcTitle');
+    const svcDesc  = document.getElementById('svcDesc');
+    const svcList  = document.getElementById('svcBullets');
+    const svcCTA   = document.getElementById('svcCTA');
+
+    function setActive(btn){
+      document.querySelectorAll('.svc-btn').forEach(b=>{
+        b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+      });
+      btn.classList.add('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+    }
+
+    function renderService(key, btn){
+      const s = SERVICES[key]; if(!s) return;
+      setActive(btn);
+      svcImg.src   = s.img;
+      svcImg.alt   = s.title;
+      svcTag.textContent = s.tag;
+      svcTitle.textContent = s.title;
+      svcDesc.textContent  = s.desc;
+      svcList.innerHTML = '';
+      (s.bullets||[]).forEach(t=>{
+        const li = document.createElement('li'); li.textContent = t; svcList.appendChild(li);
+      });
+      svcCTA.href = s.ctaHref;
+      svcCTA.textContent = s.ctaText;
+    }
+
+    // Eventos dos botões
+    document.querySelectorAll('.svc-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=> renderService(btn.dataset.key, btn));
+    });
+
+    // Estado inicial
+    const first = document.querySelector('.svc-btn[data-key="buffet"]');
+    renderService('buffet', first);
+  </script>
+</body>
+</html>

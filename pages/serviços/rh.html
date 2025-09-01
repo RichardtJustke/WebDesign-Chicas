@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equipe (RH) — Chicas Eventos</title>
+  <link rel="icon" href="../../assets/public/img/favicon.png">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={prefix:'tw-',corePlugins:{preflight:false}};</script>
+  <style>
+    .svc-card{position:relative;overflow:hidden;border-radius:20px}
+    .svc-card img{width:100%;height:100%;object-fit:cover}
+    .svc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.6))}
+    .svc-title{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;font-weight:800;font-size:1.25rem}
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(4px);display:none;z-index:60}
+    .modal.open{display:flex}
+  </style>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+    <button class="hamb md:tw-hidden" id="hamb">☰</button>
+    <nav class="tw-hidden md:tw-block">
+      <ul class="nav-list">
+        <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
+        <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
+        <li><a class="is-active" href="/pages/servicos/rh.html">RH</a></li>
+        <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
+        <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="tw-flex-1 tw-py-10">
+  <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+    <header class="tw-text-center tw-max-w-3xl tw-mx-auto">
+      <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Serviço</span>
+      <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Equipe Operacional (RH)</h1>
+      <p class="tw-text-slate-600 tw-mt-2">Garçons, recepção, segurança e apoio. Escala planejada e briefing antes do evento.</p>
+    </header>
+
+    <section class="tw-mt-8 tw-grid md:tw-grid-cols-2 tw-gap-5">
+      <a class="svc-card" data-id="garcom"><img src="../../assets/public/img/rh/operacional1.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Garçom/Bar</span></a>
+      <a class="svc-card" data-id="recepcao"><img src="../../assets/public/img/rh/operacional2.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Recepção</span></a>
+    </section>
+    <section class="tw-mt-6 tw-grid md:tw-grid-cols-2 tw-gap-5">
+      <a class="svc-card" data-id="seguranca"><img src="../../assets/public/img/rh/operacional3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Segurança</span></a>
+      <a class="svc-card" data-id="apoio"><img src="../../assets/public/img/rh/operacional4.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Apoio/Operação</span></a>
+      <a class="svc-card" data-id="coord"><img src="../../assets/public/img/rh/operacional.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Coordenação de Sala</span></a>
+      <a class="svc-card" data-id="limpeza"><img src="../../assets/public/img/buffet/buffet2.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Limpeza de Área</span></a>
+    </section>
+  </div>
+</main>
+
+<div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">…(estrutura do modal igual das outras)…</div>
+<footer class="site-footer tw-mt-10">…</footer>
+
+<script>
+  // DATA
+  const CARDS={
+    garcom:{title:'Garçom/Bar',desc:'Serviço de salão com garçons, runners e bartenders.',bullets:['Briefing pré-evento','Uniforme padronizado','Líder de equipe'],images:['../../assets/public/img/rh/operacional1.jpg','../../assets/public/img/buffet/coqueteis2.jpg']},
+    recepcao:{title:'Recepção',desc:'Credenciamento, orientação e fluxo de público.',bullets:['Check-in rápido','Comunicação alinhada','Postura e apresentação'],images:['../../assets/public/img/rh/operacional2.jpg']},
+    seguranca:{title:'Segurança',desc:'Profissionais habilitados conforme a necessidade.',bullets:['Controle de acesso','Rondas preventivas','Integração com produção'],images:['../../assets/public/img/rh/operacional3.jpg']},
+    apoio:{title:'Apoio/Operação',desc:'Montagem, logística e apoio técnico.',bullets:['Carregamento e montagem','Backstage e palco','Reação rápida'],images:['../../assets/public/img/rh/operacional4.jpg']},
+    coord:{title:'Coordenação de Sala',desc:'Coordenação de horários e comunicação com palco.',bullets:['Roteiro de sala','Ponto com equipe','Interface com cerimonial'],images:['../../assets/public/img/rh/operacional.jpg']},
+    limpeza:{title:'Limpeza de Área',desc:'Higienização contínua e pós-evento.',bullets:['Equipe perfil turno','Insumos incluídos (sob demanda)','Roteiro por área'],images:['../../assets/public/img/buffet/buffet2.jpg']}
+  };
+  // ---- reutilize a mesma engine do modal das páginas anteriores (cole aqui o mesmo JS do buffet para modal/bind) ----
+</script>
+</body>
+</html>

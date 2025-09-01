@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buffet — Chicas Eventos</title>
+  <link rel="icon" href="../../assets/public/img/favicon.png">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={prefix:'tw-',corePlugins:{preflight:false}};</script>
+  <style>
+    .svc-card{position:relative;overflow:hidden;border-radius:20px}
+    .svc-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .svc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.0),rgba(2,6,23,.55) 66%,rgba(2,6,23,.75))}
+    .svc-title{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;font-weight:800;font-size:1.25rem;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+    .svc-card:hover .svc-overlay{background:linear-gradient(180deg,rgba(2,6,23,.05),rgba(2,6,23,.65) 66%,rgba(2,6,23,.85))}
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(4px);display:none;z-index:60}
+    .modal.open{display:flex}
+  </style>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <button class="hamb md:tw-hidden" id="hamb">☰</button>
+      <nav class="tw-hidden md:tw-block">
+        <ul class="nav-list">
+          <li><a class="is-active" href="/pages/servicos/buffet.html">Buffet</a></li>
+          <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
+          <li><a href="/pages/servicos/rh.html">RH</a></li>
+          <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
+          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+        </ul>
+      </nav>
+    </div>
+    <ul id="menuMobile" class="nav-mobile" style="display:none">
+      <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
+      <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
+      <li><a href="/pages/servicos/rh.html">RH</a></li>
+      <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
+      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+    </ul>
+  </header>
+
+  <main class="tw-flex-1 tw-py-10">
+    <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+
+      <header class="tw-text-center tw-max-w-3xl tw-mx-auto">
+        <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Serviço</span>
+        <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Buffet</h1>
+        <p class="tw-text-slate-600 tw-mt-2">
+          Cardápios sob medida para cada ocasião: coquetéis, coffee break, brunch e refeições completas. Clique nos cartões para ver os detalhes.
+        </p>
+      </header>
+
+      <!-- Lateralizados -->
+      <section class="tw-mt-8 tw-grid md:tw-grid-cols-2 tw-gap-5">
+        <a class="svc-card" data-id="coqueteis">
+          <img src="../../assets/public/img/buffet/coqueteis3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'">
+          <span class="svc-overlay"></span><span class="svc-title">Coquetéis</span>
+        </a>
+        <a class="svc-card" data-id="coffeebreak">
+          <img src="../../assets/public/img/buffet/Coffeebreak.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'">
+          <span class="svc-overlay"></span><span class="svc-title">Coffee Break</span>
+        </a>
+      </section>
+
+      <!-- Grade 2x2 -->
+      <section class="tw-mt-6 tw-grid md:tw-grid-cols-2 tw-gap-5">
+        <a class="svc-card" data-id="brunch">
+          <img src="../../assets/public/img/buffet/brunch3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'">
+          <span class="svc-overlay"></span><span class="svc-title">Brunch</span>
+        </a>
+        <a class="svc-card" data-id="almoco">
+          <img src="../../assets/public/img/buffet/buffet4.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'">
+          <span class="svc-overlay"></span><span class="svc-title">Almoço/Jantar</span>
+        </a>
+        <a class="svc-card" data-id="sobremesas">
+          <img src="../../assets/public/img/buffet/buffet3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'">
+          <span class="svc-overlay"></span><span class="svc-title">Sobremesas & Doces</span>
+        </a>
+        <a class="svc-card" data-id="bebidas">
+          <img src="../../assets/public/img/buffet/coqueteis2.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'">
+          <span class="svc-overlay"></span><span class="svc-title">Bebidas & Bar</span>
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
+    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden">
+      <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
+        <div>
+          <h3 id="mTitle" class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Título</h3>
+          <p id="mMeta" class="tw-text-sm tw-text-slate-500">Buffet</p>
+        </div>
+        <button id="mClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200">✕</button>
+      </div>
+      <div class="tw-p-5 tw-grid md:tw-grid-cols-3 tw-gap-4">
+        <div class="md:tw-col-span-1">
+          <p id="mDesc" class="tw-text-slate-700 tw-leading-relaxed">Descrição…</p>
+          <ul id="mBullets" class="tw-list-disc tw-pl-5 tw-mt-3 tw-text-sm tw-text-slate-700"></ul>
+        </div>
+        <div class="md:tw-col-span-2">
+          <div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-aspect-[16/9] tw-bg-slate-100">
+            <img id="mHero" class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover" src="">
+            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow">‹</button>
+            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow">›</button>
+          </div>
+          <div id="mThumbs" class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer tw-mt-10">
+    <div class="container footer-wrap">
+      <div class="f-col">
+        <div class="brand-line"><img src="../../assets/public/img/favicon.png" class="f-logo" /><span class="f-brand">Chicas Eventos</span></div>
+        <p class="f-desc">Sabores que marcam momentos especiais!</p>
+        <div class="f-copy">© 2025 · Justke Design</div>
+      </div>
+      <div class="f-col">
+        <h4 class="f-title">Navegue</h4>
+        <ul class="f-links">
+          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
+          <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
+          <li><a href="/pages/servicos/rh.html">RH</a></li>
+          <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4 class="f-title">Contato</h4>
+        <form class="f-news" onsubmit="event.preventDefault();alert('Valeu!')">
+          <input type="email" placeholder="E-mail">
+          <button aria-label="Enviar"><span class="dot"></span></button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS comum -->
+  <script>
+    const hamb=document.getElementById('hamb'), menuMobile=document.getElementById('menuMobile');
+    hamb?.addEventListener('click',()=>{menuMobile.style.display=menuMobile.style.display!=='block'?'block':'none';});
+    menuMobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menuMobile.style.display='none'));
+
+    // ---- DATA (BUFFET) ----
+    const CARDS = {
+      coqueteis: {
+        title:'Coquetéis',
+        desc:'Serviço volante com finger foods, mini porções e bar com bebidas clássicas e autorais.',
+        bullets:['Cardápio finger sob medida','Equipe de garçons e bar','Opções sem lactose/veg/vegana'],
+        images:[
+          '../../assets/public/img/buffet/coqueteis3.jpg',
+          '../../assets/public/img/buffet/coqueteis2.jpg',
+          '../../assets/public/img/buffet/coqueteis.jpg',
+          '../../assets/public/img/buffet/buffet2.jpg'
+        ]
+      },
+      coffeebreak: {
+        title:'Coffee Break',
+        desc:'Perfeito para reuniões e conferências. Montagem rápida, quente/frio e reposição.',
+        bullets:['Bebidas quentes e frias','Salgados e doces variados','Atendimento por turno'],
+        images:[
+          '../../assets/public/img/buffet/Coffeebreak.jpg',
+          '../../assets/public/img/buffet/buffet1.jpg',
+          '../../assets/public/img/buffet/buffet3.jpg'
+        ]
+      },
+      brunch: {
+        title:'Brunch',
+        desc:'Mix café da manhã + almoço com preparos leves e itens frescos.',
+        bullets:['Frutas, mini sanduíches, ovos','Sucos naturais e cafés','Estação doce'],
+        images:[
+          '../../assets/public/img/buffet/brunch3.jpg',
+          '../../assets/public/img/buffet/brunch2.jpg',
+          '../../assets/public/img/buffet/brunch1.jpg'
+        ]
+      },
+      almoco: {
+        title:'Almoço/Jantar',
+        desc:'Buffet quente completo com proteínas, acompanhamentos e saladas.',
+        bullets:['Montagem e operação completa','Louças e utensílios (opcional)','Cardápio personalizado'],
+        images:[
+          '../../assets/public/img/buffet/buffet4.jpg',
+          '../../assets/public/img/buffet/buffet2.jpg',
+          '../../assets/public/img/buffet/buffet3.jpg'
+        ]
+      },
+      sobremesas:{
+        title:'Sobremesas & Doces',
+        desc:'Finalização doce com mesa temática, mini tortas e verrines.',
+        bullets:['Doces finos e caseiros','Apresentação caprichada','Harmoniza com café e espumante'],
+        images:[
+          '../../assets/public/img/buffet/buffet3.jpg',
+          '../../assets/public/img/buffet/buffet1.jpg'
+        ]
+      },
+      bebidas:{
+        title:'Bebidas & Bar',
+        desc:'Bar de drinks, espumantes e não alcoólicos. Opção de bar temático.',
+        bullets:['Carta de drinks','Bar dry ou completo','Equipe de bartenders'],
+        images:[
+          '../../assets/public/img/buffet/coqueteis2.jpg',
+          '../../assets/public/img/buffet/coqueteis3.jpg'
+        ]
+      }
+    };
+
+    // ---- Modal engine (reuso em todas) ----
+    const modal=document.getElementById('modal'), mTitle=document.getElementById('mTitle'),
+      mMeta=document.getElementById('mMeta'), mDesc=document.getElementById('mDesc'),
+      mBullets=document.getElementById('mBullets'), mHero=document.getElementById('mHero'),
+      mThumbs=document.getElementById('mThumbs'), mPrev=document.getElementById('mPrev'),
+      mNext=document.getElementById('mNext'), mClose=document.getElementById('mClose');
+    let gallery=[], idx=0;
+
+    function openModal(id){
+      const d=CARDS[id]; if(!d) return;
+      mTitle.textContent=d.title; mMeta.textContent='Buffet';
+      mDesc.textContent=d.desc||'';
+      mBullets.innerHTML=(d.bullets||[]).map(x=>`<li>${x}</li>`).join('');
+      gallery=(d.images||['../../assets/public/img/org/ale.jpg']);
+      idx=0; updateHero(); buildThumbs();
+      modal.classList.add('open'); document.body.style.overflow='hidden';
+    }
+    function updateHero(){ mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-emerald-600',i===idx);}); }
+    function buildThumbs(){ mThumbs.innerHTML=''; gallery.forEach((src,i)=>{const im=document.createElement('img'); im.src=src; im.className='tw-w-full tw-h-20 tw-object-cover tw-rounded-lg tw-cursor-pointer'; im.onclick=()=>{idx=i;updateHero();}; mThumbs.appendChild(im);}); }
+    function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+    mClose.onclick=close; modal.addEventListener('click',e=>{ if(e.target===modal) close(); });
+    document.addEventListener('keydown',e=>{ if(!modal.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowRight'){idx=(idx+1)%gallery.length;updateHero();} if(e.key==='ArrowLeft'){idx=(idx-1+gallery.length)%gallery.length;updateHero();} });
+    mNext.onclick=()=>{idx=(idx+1)%gallery.length;updateHero();}; mPrev.onclick=()=>{idx=(idx-1+gallery.length)%gallery.length;updateHero();};
+
+    // bind cards
+    document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+  </script>
+</body>
+</html>

@@ -23,14 +23,14 @@
   <header class="site-header">
     <div class="container nav tw-flex tw-items-center tw-justify-between">
       <!-- logo -->
-      <a class="brand" href="/">
+      <a class="brand" href="index.html">
         <span class="logo"></span>
         <strong>Chicas Eventos</strong>
       </a>
 
       <!-- hambúrguer (mobile apenas) -->
       <button
-        class="hamb tw-ml-auto tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-xl tw-border tw-border-gray-200 tw-bg-white tw-shadow-sm
+        class="hamb tw-ml-auto tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-xl tw-border tw-border-gray-200 tw-bg-white
                tw-block md:tw-hidden"
         id="hamb"
         aria-label="Abrir menu">☰</button>
@@ -38,7 +38,7 @@
       <!-- navegação (desktop apenas) -->
       <nav class="tw-hidden md:tw-block">
         <ul id="menu" class="nav-list">
-          <li><a href="pages/serviços.html">Serviços</a></li>
+          <li><a href="pages/servicos.html">Serviços</a></li>
           <li><a href="pages/portfolio.html">Portfólio</a></li>
           <li><a href="pages/sobre.html">Sobre</a></li>
           <li><a class="nav-cta" href="pages/briefing.html">Fazer orçamento</a></li>
@@ -48,7 +48,7 @@
 
     <!-- navegação (mobile) -->
     <ul id="menuMobile" class="nav-mobile">
-      <li><a href="pages/serviços.html">Serviços</a></li>
+      <li><a href="pages/servicos.html">Serviços</a></li>
       <li><a href="pages/portfolio.html">Portfólio</a></li>
       <li><a href="pages/sobre.html">Sobre</a></li>
       <li><a class="nav-cta" href="pages/briefing.html">Fazer orçamento</a></li>
@@ -57,7 +57,7 @@
 
   <main>
     <!-- SECTION 1 — HERO SPLIT -->
-    <section class="tw-w-full tw-bg-[#f7faf9] tw-py-10">
+    <section class="tw-w-full tw-bg-white tw-py-10">
       <div
         class="container tw-mx-auto tw-max-w-6xl
                tw-grid tw-grid-cols-1 md:tw-grid-cols-2
@@ -65,8 +65,8 @@
 
         <!-- Bloco branco (texto) -->
         <div
-          class="tw-bg-white tw-shadow-[0_10px_20px_rgba(0,0,0,.08),0_2px_6px_rgba(0,0,0,.04)]
-                 tw-rounded-t-[28px] md:tw-rounded-l-[28px] md:tw-rounded-tr-none
+          class="tw-bg-white tw-border tw-border-gray-200
+                 tw-rounded-t-lg md:tw-rounded-l-lg md:tw-rounded-tr-none
                  tw-p-8 md:tw-p-12
                  tw-flex tw-items-center
                  tw-h-auto md:tw-h-[440px]">
@@ -79,12 +79,12 @@
               para sua empresa com estética e eficiência.
             </p>
             <div class="tw-mt-6 tw-flex tw-gap-3">
-              <a href="/pages/briefing.html"
-                 class="tw-px-5 tw-py-3 tw-rounded-xl tw-bg-emerald-700 tw-text-white tw-font-semibold tw-shadow hover:tw-opacity-95 tw-transition">
+              <a href="pages/briefing.html"
+                 class="tw-px-5 tw-py-3 tw-rounded-lg tw-bg-slate-900 tw-text-white tw-font-semibold hover:tw-opacity-90 tw-transition">
                 Pedir orçamento
               </a>
-              <a href="/pages/portfolio.html"
-                 class="tw-px-5 tw-py-3 tw-rounded-xl tw-bg-white tw-text-slate-900 tw-font-semibold tw-shadow tw-border tw-border-slate-100 hover:tw-bg-slate-50 tw-transition">
+              <a href="pages/portfolio.html"
+                 class="tw-px-5 tw-py-3 tw-rounded-lg tw-bg-white tw-text-slate-900 tw-font-semibold tw-border tw-border-slate-300 hover:tw-bg-slate-50 tw-transition">
                 Ver portfólio
               </a>
             </div>
@@ -93,8 +93,8 @@
 
         <!-- Imagem -->
         <figure
-          class="tw-rounded-b-[28px] md:tw-rounded-r-[28px] md:tw-rounded-bl-none
-                 tw-overflow-hidden tw-shadow-[0_10px_20px_rgba(0,0,0,.08),0_2px_6px_rgba(0,0,0,.04)]
+          class="tw-rounded-b-lg md:tw-rounded-r-lg md:tw-rounded-bl-none
+                 tw-overflow-hidden tw-border tw-border-gray-200
                  tw-h-[260px] md:tw-h-[440px] tw-m-0">
           <img
             src="assets/public/img/1.jpg"
@@ -117,7 +117,7 @@
         <div class="tw-grid tw-gap-6 md:tw-grid-cols-4">
           <!-- Card base: reaproveitado 4x -->
           <!-- 1 Buffet -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-transition tw-h-[260px] md:tw-h-[300px]">
             <!-- imagem -->
             <img src="assets/public/img/ale.jpg" alt="Buffet corporativo"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover" />
@@ -127,47 +127,47 @@
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Buffet corporativo</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Coffee breaks, coquetéis e menus sob medida.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="/pages/servicos/buffet.html">Ver detalhes →</a>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-slate-300 hover:tw-text-slate-500"
+                 href="pages/servicos/buffet.html">Ver detalhes →</a>
             </div>
           </article>
 
           <!-- 2 Audiovisual -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-transition tw-h-[260px] md:tw-h-[300px]">
             <img src="assets/public/img/ale.jpg" alt="Captação audiovisual"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center" />
             <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Captação audiovisual</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Foto, vídeo, cobertura social e drone.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="/pages/servicos/audiovisual.html">Ver detalhes →</a>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-slate-300 hover:tw-text-slate-500"
+                 href="pages/servicos/audiovisual.html">Ver detalhes →</a>
             </div>
           </article>
 
           <!-- 3 RH -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-transition tw-h-[260px] md:tw-h-[300px]">
             <img src="assets/public/img/ale.jpg" alt="Recursos humanos"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center" />
             <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Recursos humanos</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Recepção, apoio e controle de acesso.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="/pages/servicos/rh.html">Ver detalhes →</a>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-slate-300 hover:tw-text-slate-500"
+                 href="pages/servicos/rh.html">Ver detalhes →</a>
             </div>
           </article>
 
           <!-- 4 Cerimonial -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px]">
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-transition tw-h-[260px] md:tw-h-[300px]">
             <img src="assets/public/img/ale.jpg" alt="Organização & cerimonial"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center" />
             <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Organização & cerimonial</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Planejamento, fornecedores e execução.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="/pages/servicos/cerimonial.html">Ver detalhes →</a>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-slate-300 hover:tw-text-slate-500"
+                 href="pages/servicos/cerimonial.html">Ver detalhes →</a>
             </div>
           </article>
         </div>
@@ -192,9 +192,9 @@
     <div class="tw-grid tw-gap-6 md:tw-grid-cols-3">
       
       <!-- Integração completa -->
-      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+      <article class="tw-bg-white tw-rounded-xl tw-p-6 tw-text-left tw-transition">
         <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
-          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="tw-w-6 tw-h-6 tw-text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M12 6v6h6" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="12" cy="12" r="10" />
           </svg>
@@ -204,9 +204,9 @@
       </article>
       
       <!-- Agilidade garantida -->
-      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+      <article class="tw-bg-white tw-rounded-xl tw-p-6 tw-text-left tw-transition">
         <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
-          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="tw-w-6 tw-h-6 tw-text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M12 8v4l3 3" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="12" cy="12" r="10" />
           </svg>
@@ -216,9 +216,9 @@
       </article>
       
       <!-- Beleza funcional -->
-      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+      <article class="tw-bg-white tw-rounded-xl tw-p-6 tw-text-left tw-transition">
         <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
-          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="tw-w-6 tw-h-6 tw-text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M4 6h16M4 12h16M4 18h7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <h4 class="tw-font-bold tw-text-lg">Beleza funcional</h4>
@@ -227,9 +227,9 @@
       </article>
       
       <!-- Identidade regional -->
-      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+      <article class="tw-bg-white tw-rounded-xl tw-p-6 tw-text-left tw-transition">
         <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
-          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="tw-w-6 tw-h-6 tw-text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M12 2l4 8h-8l4-8zM2 22h20l-10-8-10 8z" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <h4 class="tw-font-bold tw-text-lg">Identidade regional</h4>
@@ -238,9 +238,9 @@
       </article>
       
       <!-- Rede confiável -->
-      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+      <article class="tw-bg-white tw-rounded-xl tw-p-6 tw-text-left tw-transition">
         <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
-          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="tw-w-6 tw-h-6 tw-text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <h4 class="tw-font-bold tw-text-lg">Rede confiável</h4>
@@ -249,9 +249,9 @@
       </article>
       
       <!-- Acompanhamento total -->
-      <article class="tw-bg-white tw-rounded-xl tw-shadow tw-p-6 tw-text-left hover:tw-shadow-lg tw-transition">
+      <article class="tw-bg-white tw-rounded-xl tw-p-6 tw-text-left tw-transition">
         <div class="tw-flex tw-items-center tw-gap-3 tw-mb-2">
-          <svg class="tw-w-6 tw-h-6 tw-text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="tw-w-6 tw-h-6 tw-text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7H3v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <h4 class="tw-font-bold tw-text-lg">Acompanhamento total</h4>
@@ -263,7 +263,7 @@
   </div>
 </section>
 <!-- =============== SECTION — PORTFÓLIO (ESTEIRA + FILTROS, BOTÕES EM UMA LINHA) =============== -->
-<section class="tw-bg-[#f7faf9] tw-py-16">
+<section class="tw-bg-white tw-py-16">
   <div class="container tw-mx-auto tw-max-w-6xl">
 
     <!-- Cabeçalho -->
@@ -279,7 +279,7 @@
 
       <!-- Botões: todos iguais e em uma só linha -->
       <div class="tw-flex tw-flex-wrap tw-gap-3">
-        <a href="/pages/portfolio.html"
+        <a href="pages/portfolio.html"
            class="pf-chip pf-primary">Ver portfólio</a>
 
         <button class="pf-chip pf-active" data-filter="all">Todas</button>
@@ -292,10 +292,10 @@
 
     <!-- Esteiras -->
     <div class="tw-space-y-4">
-      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
         <div id="pf-track-1" class="pf-track pf-track-rtl"></div>
       </div>
-      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
         <div id="pf-track-2" class="pf-track pf-track-rtl pf-slower"></div>
       </div>
     </div>
@@ -424,8 +424,8 @@
       class="tw-flex tw-flex-col tw-items-center tw-text-center
              tw-rounded-2xl md:tw-rounded-[28px]
              tw-px-6 md:tw-px-10 tw-py-10
-             tw-bg-gradient-to-r tw-from-emerald-50 tw-to-sky-50
-             tw-border tw-border-emerald-100 tw-shadow-sm">
+             tw-bg-white
+             tw-border tw-border-gray-200">
 
       <!-- Texto -->
       <h3 class="tw-text-2xl md:tw-text-3xl tw-font-extrabold tw-text-slate-900">
@@ -438,9 +438,9 @@
       <!-- Botão -->
       <a href="pages/briefing.html"
          class="tw-mt-6 tw-inline-flex tw-items-center tw-justify-center
-                tw-px-6 tw-py-3 tw-rounded-xl
-                tw-bg-emerald-700 tw-text-white tw-font-semibold
-                tw-shadow hover:tw-opacity-95 tw-transition">
+                tw-px-6 tw-py-3 tw-rounded-lg
+                tw-bg-slate-900 tw-text-white tw-font-semibold
+                hover:tw-opacity-90 tw-transition">
         Seu orçamento agora
       </a>
     </div>
@@ -478,10 +478,10 @@
       <div class="f-col">
         <h4 class="f-title">Navegue pelo site</h4>
         <ul class="f-links">
-          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/portfolio.html">Galeria</a></li>
-          <li><a href="/pages/sobre.html">Sobre Nós</a></li>
-          <li><a href="/pages/briefing.html">Contato</a></li>
+          <li><a href="pages/servicos/buffet.html">Buffet</a></li>
+          <li><a href="pages/portfolio.html">Galeria</a></li>
+          <li><a href="pages/sobre.html">Sobre Nós</a></li>
+          <li><a href="pages/briefing.html">Contato</a></li>
         </ul>
       </div>
 

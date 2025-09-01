@@ -28,27 +28,27 @@
     .pf-modal.open{display:flex}
   </style>
 </head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-white">
 
   <!-- HEADER igual -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <a class="brand" href="../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
       <button class="hamb md:tw-hidden" id="hamb" aria-label="Abrir menu">☰</button>
       <nav class="tw-hidden md:tw-block">
         <ul class="nav-list">
-          <li><a href="/pages/servicos.html">Serviços</a></li>
-          <li><a class="is-active" href="/pages/portfolio.html">Portfólio</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a class="is-active" href="portfolio.html">Portfólio</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
         </ul>
       </nav>
     </div>
     <ul id="menuMobile" class="nav-mobile" style="display:none">
-      <li><a href="/pages/servicos.html">Serviços</a></li>
-      <li><a href="/pages/portfolio.html">Portfólio</a></li>
-      <li><a href="/pages/sobre.html">Sobre</a></li>
-      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="portfolio.html">Portfólio</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
     </ul>
   </header>
 
@@ -66,7 +66,7 @@
 
         <!-- Filtros continuam (opcional) — "Todas" mostra TODAS as fotos -->
         <div class="tw-flex tw-flex-wrap tw-gap-3">
-          <a href="/pages/portfolio.html" class="pf-chip pf-primary">Ver portfólio</a>
+          <a href="portfolio.html" class="pf-chip pf-primary">Ver portfólio</a>
           <button class="pf-chip pf-active" data-filter="all">Todas</button>
           <button class="pf-chip" data-filter="buffet">Buffet</button>
           <button class="pf-chip" data-filter="aud">Audiovisual</button>
@@ -77,22 +77,22 @@
 
       <!-- 6 Esteiras -->
       <div class="tw-space-y-4">
-        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
           <div id="pf-track-1" class="pf-track pf-track-rtl"></div>
         </div>
-        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
           <div id="pf-track-2" class="pf-track pf-track-rtl pf-slower"></div>
         </div>
-        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
           <div id="pf-track-3" class="pf-track pf-track-rtl pf-slowest"></div>
         </div>
-        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
           <div id="pf-track-4" class="pf-track pf-track-rtl"></div>
         </div>
-        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
           <div id="pf-track-5" class="pf-track pf-track-rtl pf-slower"></div>
         </div>
-        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl">
           <div id="pf-track-6" class="pf-track pf-track-rtl pf-slowest"></div>
         </div>
       </div>
@@ -101,7 +101,7 @@
 
   <!-- MODAL -->
   <div id="pfModal" class="pf-modal tw-items-center tw-justify-center tw-px-4">
-    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden">
+    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-overflow-hidden">
       <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
         <div>
           <h3 id="mTitle" class="tw-text-xl md:tw-text-2xl tw-font-extrabold tw-text-slate-900">Evento</h3>
@@ -117,8 +117,8 @@
         <div class="md:tw-col-span-2">
           <div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-aspect-[16/9] tw-bg-slate-100">
             <img id="mHero" src="" alt="" class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover">
-            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow" aria-label="Anterior">‹</button>
-            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow" aria-label="Próxima">›</button>
+            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2" aria-label="Anterior">‹</button>
+            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2" aria-label="Próxima">›</button>
           </div>
           <div id="mThumbs" class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-3"></div>
         </div>
@@ -140,10 +140,10 @@
       <div class="f-col">
         <h4 class="f-title">Navegue pelo site</h4>
         <ul class="f-links">
-          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/portfolio.html">Galeria</a></li>
-          <li><a href="/pages/sobre.html">Sobre Nós</a></li>
-          <li><a href="/pages/briefing.html">Contato</a></li>
+          <li><a href="servicos/buffet.html">Buffet</a></li>
+          <li><a href="portfolio.html">Galeria</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="briefing.html">Contato</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -389,7 +389,7 @@
       mHero.alt = `Foto ${index+1}`;
       Array.from(mThumbs.children).forEach((t,i)=>{
         t.classList.toggle('tw-ring-2', i===index);
-        t.classList.toggle('tw-ring-emerald-600', i===index);
+        t.classList.toggle('tw-ring-slate-900', i===index);
       });
     }
 

@@ -18,29 +18,29 @@
     .modal.open{display:flex}
   </style>
 </head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-white">
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <a class="brand" href="../../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
       <button class="hamb md:tw-hidden" id="hamb">☰</button>
       <nav class="tw-hidden md:tw-block">
         <ul class="nav-list">
-          <li><a class="is-active" href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
-          <li><a href="/pages/servicos/rh.html">RH</a></li>
-          <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
-          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+          <li><a class="is-active" href="buffet.html">Buffet</a></li>
+          <li><a href="audiovisual.html">Audiovisual</a></li>
+          <li><a href="rh.html">RH</a></li>
+          <li><a href="cerimonial.html">Cerimonial</a></li>
+          <li><a class="nav-cta" href="../briefing.html">Fazer orçamento</a></li>
         </ul>
       </nav>
     </div>
     <ul id="menuMobile" class="nav-mobile" style="display:none">
-      <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-      <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
-      <li><a href="/pages/servicos/rh.html">RH</a></li>
-      <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
-      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+      <li><a href="buffet.html">Buffet</a></li>
+      <li><a href="audiovisual.html">Audiovisual</a></li>
+      <li><a href="rh.html">RH</a></li>
+      <li><a href="cerimonial.html">Cerimonial</a></li>
+      <li><a class="nav-cta" href="../briefing.html">Fazer orçamento</a></li>
     </ul>
   </header>
 
@@ -48,7 +48,7 @@
     <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
 
       <header class="tw-text-center tw-max-w-3xl tw-mx-auto">
-        <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Serviço</span>
+        <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-slate-900 tw-uppercase">Serviço</span>
         <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Buffet</h1>
         <p class="tw-text-slate-600 tw-mt-2">
           Cardápios sob medida para cada ocasião: coquetéis, coffee break, brunch e refeições completas. Clique nos cartões para ver os detalhes.
@@ -91,7 +91,7 @@
 
   <!-- MODAL -->
   <div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
-    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden">
+    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-overflow-hidden">
       <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
         <div>
           <h3 id="mTitle" class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Título</h3>
@@ -107,8 +107,8 @@
         <div class="md:tw-col-span-2">
           <div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-aspect-[16/9] tw-bg-slate-100">
             <img id="mHero" class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover" src="">
-            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow">‹</button>
-            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow">›</button>
+            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2">‹</button>
+            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2">›</button>
           </div>
           <div id="mThumbs" class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-3"></div>
         </div>
@@ -127,10 +127,10 @@
       <div class="f-col">
         <h4 class="f-title">Navegue</h4>
         <ul class="f-links">
-          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
-          <li><a href="/pages/servicos/rh.html">RH</a></li>
-          <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
+          <li><a href="buffet.html">Buffet</a></li>
+          <li><a href="audiovisual.html">Audiovisual</a></li>
+          <li><a href="rh.html">RH</a></li>
+          <li><a href="cerimonial.html">Cerimonial</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -229,7 +229,7 @@
       idx=0; updateHero(); buildThumbs();
       modal.classList.add('open'); document.body.style.overflow='hidden';
     }
-    function updateHero(){ mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-emerald-600',i===idx);}); }
+    function updateHero(){ mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-slate-900',i===idx);}); }
     function buildThumbs(){ mThumbs.innerHTML=''; gallery.forEach((src,i)=>{const im=document.createElement('img'); im.src=src; im.className='tw-w-full tw-h-20 tw-object-cover tw-rounded-lg tw-cursor-pointer'; im.onclick=()=>{idx=i;updateHero();}; mThumbs.appendChild(im);}); }
     function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
     mClose.onclick=close; modal.addEventListener('click',e=>{ if(e.target===modal) close(); });

@@ -11,39 +11,39 @@
     tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };
   </script>
 </head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-white">
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <a class="brand" href="../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
       <button class="hamb md:tw-hidden" id="hamb" aria-label="Abrir menu">☰</button>
       <nav class="tw-hidden md:tw-block">
         <ul class="nav-list">
-          <li><a href="/pages/servicos.html">Serviços</a></li>
-          <li><a href="/pages/portfolio.html">Portfólio</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
         </ul>
       </nav>
     </div>
     <ul id="menuMobile" class="nav-mobile" style="display:none">
-      <li><a href="/pages/servicos.html">Serviços</a></li>
-      <li><a href="/pages/portfolio.html">Portfólio</a></li>
-      <li><a href="/pages/sobre.html">Sobre</a></li>
-      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="portfolio.html">Portfólio</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
     </ul>
   </header>
 
   <!-- CONTEÚDO -->
   <main class="tw-flex-1 tw-py-10">
     <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
-      <section class="tw-mx-auto tw-max-w-3xl tw-p-0 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm tw-overflow-hidden">
+      <section class="tw-mx-auto tw-max-w-3xl tw-p-0 tw-rounded-[28px] tw-border tw-border-slate-200 tw-bg-white/85 tw-backdrop-blur-sm tw-overflow-hidden">
         
         <!-- Cabeçalho do balão -->
         <div class="tw-px-6 tw-pt-6 md:tw-px-10 md:tw-pt-10">
           <div class="tw-text-center">
-            <span class="tw-text-xs tw-tracking-wide tw-font-semibold tw-text-emerald-700 tw-uppercase">Orçamento</span>
+            <span class="tw-text-xs tw-tracking-wide tw-font-semibold tw-text-slate-900 tw-uppercase">Orçamento</span>
             <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Briefing rápido</h1>
             <p class="tw-text-slate-600 tw-mt-2">Leva menos de 2 min. Assim entendemos sua necessidade e preparamos um orçamento sob medida.</p>
           </div>
@@ -53,7 +53,7 @@
         <div class="tw-px-6 md:tw-px-10 tw-mt-4">
           <div class="tw-flex tw-justify-center">
             <div class="tw-w-[88%] md:tw-w-[82%] tw-max-w-[680px] tw-h-[6px] tw-bg-slate-100 tw-rounded-full">
-              <div id="progressBar" class="tw-h-full tw-bg-emerald-600 tw-rounded-full tw-w-[12%] tw-transition-all tw-duration-300"></div>
+              <div id="progressBar" class="tw-h-full tw-bg-slate-900 tw-rounded-full tw-w-[12%] tw-transition-all tw-duration-300"></div>
             </div>
           </div>
         </div>
@@ -67,15 +67,15 @@
               <div class="tw-grid tw-gap-4 md:tw-grid-cols-2">
                 <div class="md:tw-col-span-2">
                   <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Nome</label>
-                  <input class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="nome" required placeholder="Seu nome completo">
+                  <input class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-slate-700" name="nome" required placeholder="Seu nome completo">
                 </div>
                 <div>
                   <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Telefone</label>
-                  <input class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="telefone" required placeholder="(00) 00000-0000">
+                  <input class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-slate-700" name="telefone" required placeholder="(00) 00000-0000">
                 </div>
                 <div>
                   <label class="tw-text-sm tw-font-semibold tw-text-slate-700">E-mail</label>
-                  <input type="email" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="email" required placeholder="voce@email.com">
+                  <input type="email" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-slate-700" name="email" required placeholder="voce@email.com">
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
             <!-- STEP 2 -->
             <div class="step" data-step="2" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">2) Que tipo de evento será?</h2>
-              <select class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" name="tipo_evento" required>
+              <select class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-text-slate-900 focus:tw-outline-none focus:tw-border-slate-700" name="tipo_evento" required>
                 <option value="" disabled selected>Selecione…</option>
                 <option>Corporativo</option>
                 <option>Conferência / Feira</option>
@@ -98,19 +98,19 @@
             <div class="step" data-step="3" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">3) Buffet</h2>
               <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="sim">Preciso de buffet</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="nao">Não preciso</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="sim">Preciso de buffet</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="nao">Não preciso</button>
               </div>
               <div id="buffetTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-2">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-2">Que tipo de buffet?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Coffee break">Coffee break</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Coquetel">Coquetel</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Brunch">Brunch</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Almoço/Jantar">Almoço/Jantar</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Coffee break">Coffee break</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Coquetel">Coquetel</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Brunch">Brunch</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Almoço/Jantar">Almoço/Jantar</button>
               </div>
               <div id="buffetCustomWrap" class="tw-hidden tw-mt-4">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Preferências do buffet (opcional)</label>
-                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="buffet_custom" placeholder="Ex.: Coquetel com opções sem lactose, incluir sucos naturais..."></textarea>
+                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-text-slate-900 focus:tw-outline-none focus:tw-border-slate-700" rows="3" name="buffet_custom" placeholder="Ex.: Coquetel com opções sem lactose, incluir sucos naturais..."></textarea>
               </div>
             </div>
 
@@ -118,16 +118,16 @@
             <div class="step" data-step="4" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">4) Cobertura audiovisual</h2>
               <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="sim">Preciso de cobertura</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="nao">Não preciso</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="sim">Preciso de cobertura</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="nao">Não preciso</button>
               </div>
               <div id="audTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-3">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-3">De que tipo?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Foto">Foto</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Vídeo">Vídeo</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Drone">Drone</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Social media (reels/stories)">Social media</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Pacote completo">Pacote completo</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Foto">Foto</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Vídeo">Vídeo</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Drone">Drone</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Social media (reels/stories)">Social media</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Pacote completo">Pacote completo</button>
               </div>
             </div>
 
@@ -135,15 +135,15 @@
             <div class="step" data-step="5" style="display:none">
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">5) Equipe operacional (RH)</h2>
               <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="rh" data-value="sim">Preciso de equipe</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="rh" data-value="nao">Não preciso</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-toggle="rh" data-value="sim">Preciso de equipe</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-toggle="rh" data-value="nao">Não preciso</button>
               </div>
               <div id="rhTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-2">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-2">Qual(is) desses?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Garçom">Garçom</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Recepcionista">Recepcionista</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Segurança">Segurança</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Apoio/Operacional">Apoio/Operacional</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Garçom">Garçom</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Recepcionista">Recepcionista</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Segurança">Segurança</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Apoio/Operacional">Apoio/Operacional</button>
               </div>
             </div>
 
@@ -152,20 +152,20 @@
               <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">6) Cerimonial</h2>
               <p class="tw-text-slate-700 tw-mb-3">Nosso cerimonial cuida do planejamento completo, cronograma, fornecedores e execução no dia.</p>
               <div class="tw-flex tw-gap-3 tw-flex-wrap">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="cerim" data-value="sim">Quero cerimonial</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="cerim" data-value="nao">Não preciso</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-toggle="cerim" data-value="sim">Quero cerimonial</button>
+                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 hover:tw-border-slate-300" data-toggle="cerim" data-value="nao">Não preciso</button>
               </div>
               <div class="tw-mt-4">
                 <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Observações (opcional)</label>
-                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="obs" placeholder="Datas, horários, local, estimativa de público…"></textarea>
+                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-text-slate-900 focus:tw-outline-none focus:tw-border-slate-700" rows="3" name="obs" placeholder="Datas, horários, local, estimativa de público…"></textarea>
               </div>
             </div>
 
             <!-- Navegação -->
             <div class="tw-flex tw-justify-between tw-items-center">
-              <button type="button" id="prevBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-slate-900 tw-border tw-border-slate-200 hover:tw-bg-slate-50">← Voltar</button>
+              <button type="button" id="prevBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-bg-white tw-text-slate-900 tw-border tw-border-slate-200 hover:tw-bg-slate-50">← Voltar</button>
               <div class="tw-flex tw-gap-2">
-                <button type="button" id="nextBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Próximo →</button>
+                <button type="button" id="nextBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-bg-slate-900 tw-text-white hover:tw-opacity-95">Próximo →</button>
               </div>
             </div>
           </form>
@@ -190,10 +190,10 @@
       <div class="f-col">
         <h4 class="f-title">Navegue pelo site</h4>
         <ul class="f-links">
-          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/portfolio.html">Galeria</a></li>
-          <li><a href="/pages/sobre.html">Sobre Nós</a></li>
-          <li><a href="/pages/briefing.html">Contato</a></li>
+          <li><a href="servicos/buffet.html">Buffet</a></li>
+          <li><a href="portfolio.html">Galeria</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="briefing.html">Contato</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -257,9 +257,9 @@
     function toggleSingle(group, value){
       document.querySelectorAll(`.tw-inline-flex[data-toggle="${group}"]`).forEach(el=>{
         el.dataset.checked = (el.dataset.value===value)?"true":"false";
-        el.classList.toggle('tw-bg-emerald-700', el.dataset.checked==="true");
+        el.classList.toggle('tw-bg-slate-900', el.dataset.checked==="true");
         el.classList.toggle('tw-text-white', el.dataset.checked==="true");
-        el.classList.toggle('tw-border-emerald-700', el.dataset.checked==="true");
+        el.classList.toggle('tw-border-slate-900', el.dataset.checked==="true");
       });
       state[group] = value;
       if(group==='buffet'){
@@ -269,7 +269,7 @@
           state.tipo_buffet.clear();
           document.querySelectorAll('[data-multi="tipo_buffet"]').forEach(b=>{
             b.dataset.checked="false";
-            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+            b.classList.remove('tw-bg-slate-900','tw-text-white','tw-border-slate-900');
           });
           const tx = document.querySelector('[name="buffet_custom"]'); if (tx) tx.value='';
         }
@@ -280,7 +280,7 @@
           state.tipo_aud.clear();
           document.querySelectorAll('[data-multi="tipo_aud"]').forEach(b=>{
             b.dataset.checked="false";
-            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+            b.classList.remove('tw-bg-slate-900','tw-text-white','tw-border-slate-900');
           });
         }
       }
@@ -290,7 +290,7 @@
           state.tipo_rh.clear();
           document.querySelectorAll('[data-multi="tipo_rh"]').forEach(b=>{
             b.dataset.checked="false";
-            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+            b.classList.remove('tw-bg-slate-900','tw-text-white','tw-border-slate-900');
           });
         }
       }
@@ -301,11 +301,11 @@
       if(set.has(value)){
         set.delete(value);
         el.dataset.checked="false";
-        el.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+        el.classList.remove('tw-bg-slate-900','tw-text-white','tw-border-slate-900');
       } else {
         set.add(value);
         el.dataset.checked="true";
-        el.classList.add('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
+        el.classList.add('tw-bg-slate-900','tw-text-white','tw-border-slate-900');
       }
     }
     document.querySelectorAll('[data-toggle]').forEach(btn=> btn.addEventListener('click', ()=> toggleSingle(btn.dataset.toggle, btn.dataset.value)));
@@ -340,7 +340,7 @@
 
     function showStatus(ok,msg){
       statusBox.className='tw-mt-6 tw-text-center';
-      statusBox.classList.add(ok?'tw-text-emerald-700':'tw-text-red-600');
+      statusBox.classList.add(ok?'tw-text-slate-900':'tw-text-red-600');
       statusBox.innerHTML=`<div class="tw-font-semibold">${msg}</div>`;
       statusBox.classList.remove('tw-hidden');
     }
@@ -364,9 +364,9 @@
       steps.forEach(s => s.style.display='none');
       const msg = `
         <div class="tw-text-center tw-space-y-4 tw-pt-4">
-          <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing enviado!</h3>
+          <h3 class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Briefing enviado!</h3>
           <p class="tw-text-slate-700">Em instantes a nossa equipe irá entrar em contato. Muito obrigado.</p>
-          <a href="/pages/portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+          <a href="portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-bg-slate-900 tw-text-white hover:tw-opacity-95">
             Ver portfólio →
           </a>
         </div>

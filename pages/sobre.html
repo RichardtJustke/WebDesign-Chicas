@@ -9,27 +9,27 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
 </head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-white">
 
   <!-- HEADER igual -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <a class="brand" href="../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
       <button class="hamb md:tw-hidden" id="hamb" aria-label="Abrir menu">☰</button>
       <nav class="tw-hidden md:tw-block">
         <ul class="nav-list">
-          <li><a href="/pages/servicos.html">Serviços</a></li>
-          <li><a href="/pages/portfolio.html">Portfólio</a></li>
-          <li><a class="is-active" href="/pages/sobre.html">Sobre</a></li>
-          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a class="is-active" href="sobre.html">Sobre</a></li>
+          <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
         </ul>
       </nav>
     </div>
     <ul id="menuMobile" class="nav-mobile" style="display:none">
-      <li><a href="/pages/servicos.html">Serviços</a></li>
-      <li><a href="/pages/portfolio.html">Portfólio</a></li>
-      <li><a href="/pages/sobre.html">Sobre</a></li>
-      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="portfolio.html">Portfólio</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
     </ul>
   </header>
 
@@ -37,7 +37,7 @@
     <!-- Hero -->
     <section class="tw-py-12 md:tw-py-16">
       <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4 tw-text-center">
-        <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Quem somos</span>
+        <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-slate-900 tw-uppercase">Quem somos</span>
         <h1 class="tw-text-3xl md:tw-text-5xl tw-font-extrabold tw-text-slate-900 tw-mt-2">Histórias servidas com sabor e cuidado</h1>
         <p class="tw-text-slate-600 tw-mt-3 tw-max-w-2xl tw-mx-auto">
           A Chicas nasceu da vontade de transformar encontros em memórias. Da cozinha ao cerimonial,
@@ -64,10 +64,10 @@
             </p>
           </div>
           <div class="tw-grid tw-gap-4">
-            <img src="../assets/public/img/buffet/buffet2.jpg" class="tw-w-full tw-rounded-2xl tw-shadow-md tw-object-cover tw-aspect-[16/10]" alt="Buffet em evento">
+            <img src="../assets/public/img/buffet/buffet2.jpg" class="tw-w-full tw-rounded-2xl tw-object-cover tw-aspect-[16/10]" alt="Buffet em evento">
             <div class="tw-grid md:tw-grid-cols-2 tw-gap-4">
-              <img src="../assets/public/img/aud/cobertura1.jpg" class="tw-w-full tw-rounded-2xl tw-shadow-md tw-object-cover tw-aspect-[16/10]" alt="Cobertura audiovisual">
-              <img src="../assets/public/img/rh/operacional1.jpg" class="tw-w-full tw-rounded-2xl tw-shadow-md tw-object-cover tw-aspect-[16/10]" alt="Equipe operacional">
+              <img src="../assets/public/img/aud/cobertura1.jpg" class="tw-w-full tw-rounded-2xl tw-object-cover tw-aspect-[16/10]" alt="Cobertura audiovisual">
+              <img src="../assets/public/img/rh/operacional1.jpg" class="tw-w-full tw-rounded-2xl tw-object-cover tw-aspect-[16/10]" alt="Equipe operacional">
             </div>
           </div>
         </div>
@@ -81,16 +81,16 @@
           <h3 class="tw-text-xl md:tw-text-2xl tw-font-extrabold tw-text-slate-900">O que guiamos em cada projeto</h3>
         </div>
         <div class="tw-grid md:tw-grid-cols-3 tw-gap-6">
-          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow p-6">
-            <div class="tw-text-emerald-700 tw-font-bold tw-mb-1">Cuidado</div>
+          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl p-6">
+            <div class="tw-text-slate-900 tw-font-bold tw-mb-1">Cuidado</div>
             <p class="tw-text-slate-700">Atenção aos detalhes: do menu ao fluxo de convidados.</p>
           </div>
-          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow p-6">
-            <div class="tw-text-emerald-700 tw-font-bold tw-mb-1">Agilidade</div>
+          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl p-6">
+            <div class="tw-text-slate-900 tw-font-bold tw-mb-1">Agilidade</div>
             <p class="tw-text-slate-700">Processos claros, prazos cumpridos e comunicação direta.</p>
           </div>
-          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow p-6">
-            <div class="tw-text-emerald-700 tw-font-bold tw-mb-1">Personalização</div>
+          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl p-6">
+            <div class="tw-text-slate-900 tw-font-bold tw-mb-1">Personalização</div>
             <p class="tw-text-slate-700">Propostas sob medida para o seu público e orçamento.</p>
           </div>
         </div>
@@ -100,10 +100,10 @@
     <!-- CTA -->
     <section class="tw-py-8">
       <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
-        <div class="tw-text-center tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow tw-p-6 md:tw-p-8">
+        <div class="tw-text-center tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-p-6 md:tw-p-8">
           <h4 class="tw-text-xl tw-font-extrabold tw-text-slate-900">Vamos planejar seu próximo evento?</h4>
           <p class="tw-text-slate-700 tw-mt-2">Leva 2 min pra enviar o briefing. A gente responde rapidinho!</p>
-          <a href="/pages/briefing.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white tw-mt-4 hover:tw-opacity-95">
+          <a href="briefing.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-bg-slate-900 tw-text-white tw-mt-4 hover:tw-opacity-95">
             Fazer orçamento →
           </a>
         </div>
@@ -114,7 +114,7 @@
     <section class="tw-py-10">
       <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
         <div class="tw-text-center tw-mb-6">
-          <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Contato</span>
+          <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-slate-900 tw-uppercase">Contato</span>
           <h3 class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Fale com a gente</h3>
           <p class="tw-text-slate-600 tw-mt-2">Dúvidas rápidas? Chama no Whats ou no Instagram.</p>
         </div>
@@ -122,39 +122,39 @@
         <div class="tw-grid md:tw-grid-cols-3 tw-gap-6">
           <!-- WhatsApp -->
           <a href="https://wa.me/5599999999999" target="_blank" rel="noopener"
-             class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow tw-p-6 tw-flex tw-flex-col tw-gap-2 hover:tw-border-emerald-600">
+             class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-p-6 tw-flex tw-flex-col tw-gap-2 hover:tw-border-slate-900">
             <div class="tw-text-slate-500 tw-text-sm">WhatsApp</div>
             <div class="tw-text-slate-900 tw-font-bold tw-text-lg">+55 (99) 99999-9999</div>
-            <div class="tw-text-emerald-700 tw-font-semibold">Abrir conversa →</div>
+            <div class="tw-text-slate-900 tw-font-semibold">Abrir conversa →</div>
           </a>
 
           <!-- E-mail -->
           <a href="mailto:contato@chicas.com.br"
-             class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow tw-p-6 tw-flex tw-flex-col tw-gap-2 hover:tw-border-emerald-600">
+             class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-p-6 tw-flex tw-flex-col tw-gap-2 hover:tw-border-slate-900">
             <div class="tw-text-slate-500 tw-text-sm">E-mail</div>
             <div class="tw-text-slate-900 tw-font-bold tw-text-lg">contato@chicas.com.br</div>
-            <div class="tw-text-emerald-700 tw-font-semibold">Enviar e-mail →</div>
+            <div class="tw-text-slate-900 tw-font-semibold">Enviar e-mail →</div>
           </a>
 
           <!-- Instagram -->
           <a href="https://instagram.com/seuuser" target="_blank" rel="noopener"
-             class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow tw-p-6 tw-flex tw-flex-col tw-gap-2 hover:tw-border-emerald-600">
+             class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-p-6 tw-flex tw-flex-col tw-gap-2 hover:tw-border-slate-900">
             <div class="tw-text-slate-500 tw-text-sm">Instagram</div>
             <div class="tw-text-slate-900 tw-font-bold tw-text-lg">@seuuser</div>
-            <div class="tw-text-emerald-700 tw-font-semibold">Ver perfil →</div>
+            <div class="tw-text-slate-900 tw-font-semibold">Ver perfil →</div>
           </a>
         </div>
 
         <!-- Endereço + Mapa -->
         <div class="tw-grid md:tw-grid-cols-2 tw-gap-6 tw-mt-6">
-          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow tw-p-6">
+          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-p-6">
             <div class="tw-text-slate-500 tw-text-sm">Endereço</div>
             <div class="tw-text-slate-900 tw-font-bold">Rua Exemplo, 123 — Centro, Sua Cidade</div>
             <p class="tw-text-slate-700 tw-mt-2">Atendimento com hora marcada.</p>
           </div>
 
           <!-- MAPA -->
-          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-shadow tw-overflow-hidden">
+          <div class="tw-bg-white tw-border tw-border-slate-200 tw-rounded-2xl tw-overflow-hidden">
             <div class="tw-aspect-[16/9]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.523640318688!2d-46.662325!3d-23.585593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8b3b1c1ad%3A0x0000000000000000!2sSeu%20Endere%C3%A7o!5e0!3m2!1spt-BR!2sBR!4v0000000000000"
@@ -182,10 +182,10 @@
       <div class="f-col">
         <h4 class="f-title">Navegue pelo site</h4>
         <ul class="f-links">
-          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/portfolio.html">Galeria</a></li>
-          <li><a href="/pages/sobre.html">Sobre Nós</a></li>
-          <li><a href="/pages/briefing.html">Contato</a></li>
+          <li><a href="servicos/buffet.html">Buffet</a></li>
+          <li><a href="portfolio.html">Galeria</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="briefing.html">Contato</a></li>
         </ul>
       </div>
       <div class="f-col">

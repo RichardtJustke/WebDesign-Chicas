@@ -17,18 +17,18 @@
     .modal.open{display:flex}
   </style>
 </head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-white">
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+    <a class="brand" href="../../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
     <button class="hamb md:tw-hidden" id="hamb">☰</button>
     <nav class="tw-hidden md:tw-block">
       <ul class="nav-list">
-        <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-        <li><a class="is-active" href="/pages/servicos/audiovisual.html">Audiovisual</a></li>
-        <li><a href="/pages/servicos/rh.html">RH</a></li>
-        <li><a href="/pages/servicos/cerimonial.html">Cerimonial</a></li>
-        <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+        <li><a href="buffet.html">Buffet</a></li>
+        <li><a class="is-active" href="audiovisual.html">Audiovisual</a></li>
+        <li><a href="rh.html">RH</a></li>
+        <li><a href="cerimonial.html">Cerimonial</a></li>
+        <li><a class="nav-cta" href="../briefing.html">Fazer orçamento</a></li>
       </ul>
     </nav>
   </div>
@@ -37,7 +37,7 @@
 <main class="tw-flex-1 tw-py-10">
   <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
     <header class="tw-text-center tw-max-w-3xl tw-mx-auto">
-      <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase">Serviço</span>
+      <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-slate-900 tw-uppercase">Serviço</span>
       <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Audiovisual</h1>
       <p class="tw-text-slate-600 tw-mt-2">Foto, vídeo, drone e social media. Conteúdo com linguagem de marca e entrega rápida.</p>
     </header>
@@ -56,7 +56,7 @@
 </main>
 
 <div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
-  <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden">
+  <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-overflow-hidden">
     <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
       <div><h3 id="mTitle" class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Título</h3><p id="mMeta" class="tw-text-sm tw-text-slate-500">Audiovisual</p></div>
       <button id="mClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200">✕</button>
@@ -66,8 +66,8 @@
       <div class="md:tw-col-span-2">
         <div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-aspect-[16/9] tw-bg-slate-100">
           <img id="mHero" class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover">
-          <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow">‹</button>
-          <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow">›</button>
+          <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2">‹</button>
+          <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2">›</button>
         </div>
         <div id="mThumbs" class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-3"></div>
       </div>
@@ -94,7 +94,7 @@
   // modal engine (igual buffet)
   const modal=document.getElementById('modal'), mTitle=document.getElementById('mTitle'), mMeta=document.getElementById('mMeta'), mDesc=document.getElementById('mDesc'), mBullets=document.getElementById('mBullets'), mHero=document.getElementById('mHero'), mThumbs=document.getElementById('mThumbs'), mPrev=document.getElementById('mPrev'), mNext=document.getElementById('mNext'), mClose=document.getElementById('mClose'); let gallery=[], idx=0;
   function openModal(id){const d=CARDS[id]; if(!d) return; mTitle.textContent=d.title; mMeta.textContent='Audiovisual'; mDesc.textContent=d.desc||''; mBullets.innerHTML=(d.bullets||[]).map(x=>`<li>${x}</li>`).join(''); gallery=d.images||['../../assets/public/img/org/ale.jpg']; idx=0; updateHero(); buildThumbs(); modal.classList.add('open'); document.body.style.overflow='hidden';}
-  function updateHero(){mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-emerald-600',i===idx);});}
+  function updateHero(){mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-slate-900',i===idx);});}
   function buildThumbs(){mThumbs.innerHTML=''; gallery.forEach((s,i)=>{const im=document.createElement('img'); im.src=s; im.className='tw-w-full tw-h-20 tw-object-cover tw-rounded-lg tw-cursor-pointer'; im.onclick=()=>{idx=i;updateHero();}; mThumbs.appendChild(im);});}
   function close(){modal.classList.remove('open'); document.body.style.overflow='';}
   mClose.onclick=close; modal.addEventListener('click',e=>{if(e.target===modal) close();}); document.addEventListener('keydown',e=>{if(!modal.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowRight'){idx=(idx+1)%gallery.length;updateHero();} if(e.key==='ArrowLeft'){idx=(idx-1+gallery.length)%gallery.length;updateHero();}});

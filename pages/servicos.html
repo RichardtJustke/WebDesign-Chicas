@@ -14,22 +14,22 @@
   <!-- HEADER (mesmo do site) -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/"><span class="logo"></span><strong>Chicas Eventos</strong></a>
+      <a class="brand" href="../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
       <button class="hamb md:tw-hidden" id="hamb" aria-label="Abrir menu">☰</button>
       <nav class="tw-hidden md:tw-block">
         <ul class="nav-list">
-          <li><a href="/pages/servicos.html" class="is-active">Serviços</a></li>
-          <li><a href="/pages/portfolio.html">Portfólio</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+          <li><a href="servicos.html" class="is-active">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
         </ul>
       </nav>
     </div>
     <ul id="menuMobile" class="nav-mobile" style="display:none">
-      <li><a href="/pages/servicos.html">Serviços</a></li>
-      <li><a href="/pages/portfolio.html">Portfólio</a></li>
-      <li><a href="/pages/sobre.html">Sobre</a></li>
-      <li><a class="nav-cta" href="/pages/briefing.html">Fazer orçamento</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="portfolio.html">Portfólio</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
     </ul>
   </header>
 
@@ -67,7 +67,7 @@
 
         <!-- Imagem -->
         <div class="tw-relative tw-aspect-[16/10] md:tw-aspect-auto tw-min-h-[260px]">
-          <img id="svcImg" src="../assets/public/img/servicos/buffet.jpg" alt="Imagem do serviço"
+          <img id="svcImg" src="../assets/public/img/buffet/buffet1.jpg" alt="Imagem do serviço"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover">
           <!-- etiqueta -->
           <div class="tw-absolute tw-top-4 tw-left-4 tw-bg-emerald-700/90 tw-text-white tw-text-xs tw-font-semibold tw-tracking-wider tw-rounded-full tw-px-3 tw-py-1"
@@ -88,7 +88,7 @@
           </ul>
 
           <div class="tw-pt-2">
-            <a id="svcCTA" href="/pages/servicos/buffet.html"
+            <a id="svcCTA" href="servicos/buffet.html"
                class="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
               Ver detalhes do Buffet →
             </a>
@@ -121,10 +121,10 @@
       <div class="f-col">
         <h4 class="f-title">Navegue pelo site</h4>
         <ul class="f-links">
-          <li><a href="/pages/servicos/buffet.html">Buffet</a></li>
-          <li><a href="/pages/portfolio.html">Galeria</a></li>
-          <li><a href="/pages/sobre.html">Sobre Nós</a></li>
-          <li><a href="/pages/briefing.html">Contato</a></li>
+          <li><a href="servicos/buffet.html">Buffet</a></li>
+          <li><a href="portfolio.html">Galeria</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="briefing.html">Contato</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -165,7 +165,7 @@ const SERVICES = {
       'Montagem, serviço e logística',
       'Opções sem lactose/veg/vegana'
     ],
-    ctaHref: '/pages/servicos/buffet.html',
+    ctaHref: 'servicos/buffet.html',
     ctaText: 'Ver detalhes do Buffet →'
   },
   audiovisual: {
@@ -178,7 +178,7 @@ const SERVICES = {
       'Drone & captação aérea (onde permitido)',
       'Entrega rápida de reels/stories'
     ],
-    ctaHref: '/pages/servicos/audiovisual.html',
+    ctaHref: 'servicos/audiovisual.html',
     ctaText: 'Ver detalhes de Audiovisual →'
   },
   cerimonial: {
@@ -191,7 +191,7 @@ const SERVICES = {
       'Gestão de fornecedores e prazos',
       'Coordenação completa no grande dia'
     ],
-    ctaHref: '/pages/servicos/cerimonial.html',
+    ctaHref: 'servicos/cerimonial.html',
     ctaText: 'Ver detalhes do Cerimonial →'
   },
   rh: {
@@ -204,7 +204,7 @@ const SERVICES = {
       'Equipe uniformizada e orientada',
       'Cobertura do início ao fim'
     ],
-    ctaHref: '/pages/servicos/rh.html',
+    ctaHref: 'servicos/rh.html',
     ctaText: 'Ver detalhes da Equipe →'
   }
 };

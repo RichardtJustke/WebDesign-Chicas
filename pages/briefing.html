@@ -1,127 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Briefing — Chicas Eventos</title>
-  <link rel="icon" href="../assets/public/img/favicon.png">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };
-  </script>
-</head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chicas Eventos • Briefing</title>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html"><span class="logo"></span><strong>Chicas Eventos</strong></a>
-      <button class="hamb md:tw-hidden" id="hamb" aria-label="Abrir menu">☰</button>
+  <!-- Fonte (opcional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN + prefixo `tw-` -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { prefix: 'tw-' }; </script>
+
+  <style>
+    html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  </style>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-slate-50">
+
+  <!-- CABEÇALHO -->
+  <header class="site-cabecalho tw-border-b tw-bg-white">
+    <div class="container nav tw-max-w-6xl tw-mx-auto tw-px-4 tw-h-16 tw-flex tw-items-center tw-justify-between">
+      <a class="marca tw-inline-flex tw-items-center tw-gap-2" href="../index.html">
+        <span class="logotipo tw-w-7 tw-h-7 tw-rounded-full tw-bg-emerald-700 tw-block"></span>
+        <strong class="tw-text-slate-900">Chicas Eventos</strong>
+      </a>
+
+      <button class="hamb md:tw-hidden tw-text-2xl" id="hamb" aria-label="Abrir menu">☰</button>
+
       <nav class="tw-hidden md:tw-block">
-        <ul class="nav-list">
-          <li><a href="../index.html#servicos">Serviços</a></li>
-          <li><a href="portfolio.html">Portfólio</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
+        <ul class="nav-lista tw-flex tw-items-center tw-gap-6">
+          <li><a href="../index.html#servicos" class="tw-text-slate-700 hover:tw-text-slate-900">Serviços</a></li>
+          <li><a href="portfolio.html" class="tw-text-slate-700 hover:tw-text-slate-900">Portfólio</a></li>
+          <li><a href="sobre.html" class="tw-text-slate-700 hover:tw-text-slate-900">Sobre</a></li>
+          <li><a class="nav-cta tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95" href="briefing.html">Fazer orçamento</a></li>
         </ul>
       </nav>
     </div>
-    <ul id="menuMobile" class="nav-mobile" style="display:none">
-      <li><a href="../index.html#servicos">Serviços</a></li>
-      <li><a href="portfolio.html">Portfólio</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a class="nav-cta" href="briefing.html">Fazer orçamento</a></li>
+
+    <!-- Menu mobile -->
+    <ul id="menuMobile" class="nav-movel tw-hidden md:tw-hidden tw-border-t tw-bg-white">
+      <li><a href="../index.html#servicos" class="tw-block tw-px-4 tw-py-3">Serviços</a></li>
+      <li><a href="portfolio.html" class="tw-block tw-px-4 tw-py-3">Portfólio</a></li>
+      <li><a href="sobre.html" class="tw-block tw-px-4 tw-py-3">Sobre</a></li>
+      <li><a href="briefing.html" class="tw-block tw-px-4 tw-py-3">Fazer orçamento</a></li>
     </ul>
   </header>
 
   <!-- CONTEÚDO -->
   <main class="tw-flex-1 tw-py-10">
-    <div class="tw-container tw-mx-auto tw-max-w-3xl tw-px-4">
-      <section class="tw-p-6 md:tw-p-10 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm">
-        <div class="tw-text-center tw-space-y-4">
-          <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900">Briefing</h1>
-          <p class="tw-text-slate-600">Fill it out quickly and we’ll return with your quote. If you prefer, contact us directly on WhatsApp.</p>
-          <a href="https://wa.me/5599999999999?text=Hello!%20I%E2%80%99d%20like%20a%20quote%20and%20preferred%20to%20contact%20you%20directly%20here." target="_blank" rel="noopener" class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Contact on WhatsApp now</a>
+    <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+      <section class="tw-mx-auto tw-max-w-3xl tw-p-0 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm tw-overflow-hidden">
+
+        <!-- Cabeçalho do cartão -->
+        <div class="tw-px-6 tw-py-6 md:tw-px-10 md:tw-py-10">
+          <div class="tw-text-center">
+            <span class="tw-text-xs tw-tracking-wide tw-font-semibold tw-text-emerald-700 tw-uppercase">texto para mudar</span>
+            <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Orçamento rápido</h1>
+            <p class="tw-text-slate-600 tw-mt-2">
+              Leva menos de 2 min. É assim que entendemos sua necessidade e preparamos um orçamento sob medida.
+            </p>
+          </div>
         </div>
 
-        <form id="briefingForm" class="tw-mt-8 tw-space-y-6">
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Full Name</label>
-            <input name="nome" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="Your full name">
-          </div>
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">WhatsApp</label>
-            <input id="whatsapp" name="whatsapp" type="tel" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="(00) 00000-0000">
-          </div>
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">E-mail</label>
-            <input type="email" name="email" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="you@example.com">
-          </div>
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Event Date</label>
-            <input type="date" name="data_evento" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400">
-          </div>
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Event Location</label>
-            <input type="text" name="local_evento" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="Address/Neighborhood/City">
-          </div>
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Number of Guests</label>
-            <input type="number" name="convidados" min="1" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="e.g., 100">
-          </div>
-          <div>
-            <span class="tw-text-sm tw-font-semibold tw-text-slate-700">Service of Interest</span>
-            <div class="tw-mt-2 tw-flex tw-flex-wrap tw-gap-4">
-              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="Buffet" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>Buffet</span></label>
-              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="Audiovisual" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>Audiovisual</span></label>
-              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="Ceremonial" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>Ceremonial</span></label>
-              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="HR" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>HR</span></label>
+        <!-- Formulário (única etapa) -->
+        <div class="tw-p-6 md:tw-p-10">
+          <form id="briefingForm" class="tw-space-y-6" novalidate>
+            <!-- 1) Nome completo (obrigatório) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="nome">Nome completo</label>
+              <input id="nome" name="nome" type="text" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="Seu nome completo" />
             </div>
-          </div>
-          <div>
-            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Event Description</label>
-            <textarea name="descricao" rows="4" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="Describe your event"></textarea>
-          </div>
-          <div class="tw-text-center">
-            <button type="submit" id="submitBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Submit Briefing</button>
-          </div>
-        </form>
 
-        <div id="successBox" class="tw-hidden tw-text-center tw-space-y-4 tw-mt-8">
-          <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing sent!</h3>
-          <div class="tw-flex tw-justify-center tw-gap-4">
-            <a href="https://wa.me/5599999999999?text=Hello!%20I%E2%80%99d%20like%20a%20quote%20and%20preferred%20to%20contact%20you%20directly%20here." target="_blank" rel="noopener" class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Contact on WhatsApp</a>
-            <a href="portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-emerald-700 tw-border tw-border-emerald-700 hover:tw-bg-emerald-50">View Portfolio</a>
-          </div>
+            <!-- 2) WhatsApp (obrigatório, com máscara) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="(00) 00000-0000" />
+              <p class="tw-text-xs tw-text-slate-500 tw-mt-1">Formato: (99) 99999-9999</p>
+            </div>
+
+            <!-- 3) E-mail (opcional) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="email">E-mail (opcional)</label>
+              <input id="email" name="email" type="email"
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="voce@email.com" />
+            </div>
+
+            <!-- 4) Data do evento (obrigatório) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="data_evento">Data do evento</label>
+              <input id="data_evento" name="data_evento" type="date" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" />
+            </div>
+
+            <!-- 5) Local do evento (obrigatório) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="local_evento">Local do evento</label>
+              <input id="local_evento" name="local_evento" type="text" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="Endereço/Bairro/Cidade" />
+            </div>
+
+            <!-- 6) Quantidade de pessoas (obrigatório, inteiro positivo) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="convidados">Quantidade de pessoas</label>
+              <input id="convidados" name="convidados" type="number" inputmode="numeric" min="1" step="1" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="ex.: 100" />
+            </div>
+
+            <!-- 7) Serviço de interesse (obrigatório) -->
+            <div>
+              <span class="tw-text-sm tw-font-semibold tw-text-slate-700">Serviço de interesse</span>
+              <div class="tw-mt-2 tw-flex tw-flex-wrap tw-gap-4">
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="Buffet"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>Buffet</span>
+                </label>
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="Audiovisual"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>Audiovisual</span>
+                </label>
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="Cerimonial"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>Cerimonial</span>
+                </label>
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="RH"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>RH</span>
+                </label>
+              </div>
+              <p class="tw-text-xs tw-text-slate-500 tw-mt-1">Selecione pelo menos um serviço.</p>
+            </div>
+
+            <!-- 8) Descrição do evento (opcional) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="descricao">Descrição do evento (opcional)</label>
+              <textarea id="descricao" name="descricao" rows="4"
+                        class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                        placeholder="Ex.: Aniversário, casamento, lançamento de produto, etc."></textarea>
+            </div>
+
+            <!-- Ações -->
+            <div class="tw-text-center">
+              <button type="submit" id="submitBtn"
+                      class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+                Enviar Briefing
+              </button>
+            </div>
+
+            <!-- Status / Sucesso -->
+            <div id="statusBox" class="tw-hidden tw-mt-6 tw-text-center"></div>
+            <div id="boxSucesso" class="tw-hidden tw-text-center tw-space-y-4 tw-mt-8">
+              <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing enviado!</h3>
+              <div class="tw-flex tw-justify-center tw-gap-4 tw-flex-wrap">
+                <a href="https://wa.me/5599999999999?text=Hello!%20I%E2%80%99d%20like%20a%20quote%20and%20preferred%20to%20contact%20you%20directly%20here."
+                   target="_blank" rel="noopener"
+                   class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+                  Contato no WhatsApp
+                </a>
+                <a href="portfolio.html"
+                   class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-emerald-700 tw-border tw-border-emerald-700 hover:tw-bg-emerald-50">
+                  Ver Portfólio
+                </a>
+              </div>
+            </div>
+          </form>
         </div>
 
       </section>
     </div>
   </main>
 
+  <!-- RODAPÉ -->
+  <footer class="site-rodape tw-mt-10 tw-border-t tw-bg-white">
+    <div class="tw-max-w-6xl tw-mx-auto tw-px-4 tw-py-8 tw-grid md:tw-grid-cols-3 tw-gap-8">
+      <div class="tw-space-y-2">
+        <div class="tw-inline-flex tw-items-center tw-gap-2">
+          <img src="../assets/public/img/favicon.png" alt="" class="tw-w-6 tw-h-6" />
+          <span class="tw-font-semibold">Chicas Eventos</span>
+        </div>
+        <p class="tw-text-slate-600">
+          Sabores que marcam momentos especiais! Personalize seu cardápio e torne seu evento inesquecível.
+        </p>
+        <div class="tw-text-slate-500">© 2025 · Justke Design</div>
+      </div>
+
+      <div>
+        <h4 class="tw-font-semibold tw-mb-2">Navegue</h4>
+        <ul class="tw-space-y-1">
+          <li><a href="servicos/buffet.html" class="tw-text-slate-700 hover:tw-text-slate-900">Buffet</a></li>
+          <li><a href="portfolio.html" class="tw-text-slate-700 hover:tw-text-slate-900">Galeria</a></li>
+          <li><a href="sobre.html" class="tw-text-slate-700 hover:tw-text-slate-900">Sobre nós</a></li>
+          <li><a href="briefing.html" class="tw-text-slate-700 hover:tw-text-slate-900">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="tw-font-semibold tw-mb-2">Novidades & promoções</h4>
+        <form class="tw-flex tw-gap-2" onsubmit="event.preventDefault(); alert('Valeu! (plugaremos depois)')">
+          <input type="email" placeholder="Seu e-mail" required
+                 class="tw-flex-1 tw-px-3 tw-py-2 tw-rounded-xl tw-border tw-border-slate-200 focus:tw-outline-none focus:tw-border-emerald-400" />
+          <button aria-label="Enviar"
+                  class="tw-px-4 tw-py-2 tw-rounded-xl tw-bg-emerald-700 tw-text-white tw-font-semibold hover:tw-opacity-95">OK</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LÓGICA -->
   <script>
+    // === CONFIG ===
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxNj1Cx5EOjSEsgXsDN25qul8rCbfSxGeh4AMnROMS5sFG7GPSgyoUJUQmlU2_RgnIY/exec';
+    const EXTRA_NOTIFY = 'rj.justke@gmail.com'; // opcional: cópia
+
+    // === MENU MOBILE ===
     const hamb = document.getElementById('hamb');
     const menuMobile = document.getElementById('menuMobile');
-    hamb?.addEventListener('click', () => {
-      const show = menuMobile.style.display !== 'block';
-      menuMobile.style.display = show ? 'block' : 'none';
-    });
-    menuMobile?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      menuMobile.style.display = 'none';
-    }));
-  </script>
+    if (hamb && menuMobile) {
+      hamb.addEventListener('click', () => {
+        const isHidden = menuMobile.classList.contains('tw-hidden');
+        menuMobile.classList.toggle('tw-hidden', !isHidden);
+      });
+      menuMobile.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => menuMobile.classList.add('tw-hidden'));
+      });
+    }
 
-  <script>
-    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzbfANL3UPIMbceYdLhNYN7a6-4F3ZJLbDrczqJlGKrha1yyxb9THnYFC0lrymYYKwF/exec';
-    const EXTRA_NOTIFY = 'rj.justke@gmail.com';
-
+    // === FORM ===
     const form = document.getElementById('briefingForm');
     const submitBtn = document.getElementById('submitBtn');
-    const successBox = document.getElementById('successBox');
+    const statusBox = document.getElementById('statusBox');
+    const successBox = document.getElementById('boxSucesso');
 
-    function formToObject(){
+    // Máscara simples de WhatsApp
+    const wInput = document.getElementById('whatsapp');
+    if (wInput) {
+      wInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 11); // 11 dígitos
+        v = v.replace(/^(\d{2})(\d)/, '($1) $2');
+        v = v.replace(/(\d{5})(\d)/, '$1-$2');
+        e.target.value = v;
+      });
+    }
+
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      submitBtn.classList.toggle('tw-opacity-60', isLoading);
+      submitBtn.classList.toggle('tw-cursor-not-allowed', isLoading);
+      submitBtn.textContent = isLoading ? 'Enviando…' : 'Enviar Briefing';
+    }
+
+    function showStatus(ok, msg) {
+      statusBox.className = 'tw-mt-6 tw-text-center ' + (ok ? 'tw-text-emerald-700' : 'tw-text-red-600');
+      statusBox.innerHTML = '<div class="tw-font-semibold">' + msg + '</div>';
+      statusBox.classList.remove('tw-hidden');
+    }
+
+    function formToObject() {
       const fd = new FormData(form);
+      const servicos = Array.from(form.querySelectorAll('input[name="servicos"]:checked')).map(c => c.value);
       return {
         nome: fd.get('nome') || '',
         whatsapp: fd.get('whatsapp') || '',
@@ -129,96 +276,88 @@
         data_evento: fd.get('data_evento') || '',
         local_evento: fd.get('local_evento') || '',
         convidados: fd.get('convidados') || '',
-        servicos: Array.from(form.querySelectorAll('input[name="servicos"]:checked')).map(c=>c.value),
+        servicos,
         descricao: fd.get('descricao') || '',
         timestamp: new Date().toISOString(),
         ...(EXTRA_NOTIFY ? { notify_email: EXTRA_NOTIFY } : {})
       };
     }
 
-    async function sendJSON(url, data, mode='cors'){
-      if (mode === 'no-cors'){
+    function validateBasic() {
+      if (!form.nome.value.trim()) { form.nome.focus(); return 'Informe seu nome completo.'; }
+      const digits = (form.whatsapp.value.match(/\d/g) || []).join('');
+      if (digits.length !== 11) { form.whatsapp.focus(); return 'Informe um WhatsApp válido (11 dígitos).'; }
+      if (!form.data_evento.value) { form.data_evento.focus(); return 'Selecione a data do evento.'; }
+      if (!form.local_evento.value.trim()) { form.local_evento.focus(); return 'Informe o local do evento.'; }
+      const qty = Number(form.convidados.value);
+      if (!Number.isInteger(qty) || qty < 1) { form.convidados.focus(); return 'Quantidade de pessoas deve ser um inteiro positivo.'; }
+      const hasService = form.querySelectorAll('input[name="servicos"]:checked').length > 0;
+      if (!hasService) { return 'Selecione pelo menos um serviço de interesse.'; }
+      return null;
+    }
+
+    async function sendJSON(url, data, mode = 'cors') {
+      if (mode === 'no-cors') {
         const fd = new FormData();
         fd.append('payload', JSON.stringify(data));
-        return fetch(url, { method:'POST', mode:'no-cors', body: fd });
+        return fetch(url, { method: 'POST', mode: 'no-cors', body: fd });
       }
       return fetch(url, {
-        method:'POST',
-        headers:{ 'Content-Type':'application/json' },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-        mode:'cors'
+        mode: 'cors'
       });
     }
 
-    function postViaHiddenForm(url, payloadObj){
-      const f = document.createElement('form');
-      f.action = url; f.method = 'POST'; f.target = '_hidden_iframe'; f.style.display='none';
-      const input = document.createElement('input');
-      input.type = 'hidden'; input.name = 'payload'; input.value = JSON.stringify(payloadObj);
-      f.appendChild(input);
-      let iframe = document.getElementById('_hidden_iframe');
-      if (!iframe){ iframe = document.createElement('iframe'); iframe.name='_hidden_iframe'; iframe.id='_hidden_iframe'; iframe.style.display='none'; document.body.appendChild(iframe); }
-      document.body.appendChild(f); f.submit();
-    }
-
-    function setLoading(isLoading){
-      submitBtn.disabled = isLoading;
-      if(isLoading){
-        submitBtn.classList.add('tw-opacity-60','tw-cursor-not-allowed');
-        submitBtn.textContent = 'Sending…';
-      } else {
-        submitBtn.classList.remove('tw-opacity-60','tw-cursor-not-allowed');
-        submitBtn.textContent = 'Submit Briefing';
-      }
-    }
-
-    function showSuccess(){
+    function showSuccess() {
       form.classList.add('tw-hidden');
       successBox.classList.remove('tw-hidden');
-      window.scrollTo({top:0, behavior:'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    form.addEventListener('submit', async (e)=>{
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const services = form.querySelectorAll('input[name="servicos"]:checked');
-      if(!services.length){
-        alert('Please select at least one service of interest.');
-        return;
-      }
+      statusBox.classList.add('tw-hidden');
+
+      const err = validateBasic();
+      if (err) { showStatus(false, err); return; }
+
       const data = formToObject();
       setLoading(true);
-      try{
+      try {
         let res = await sendJSON(WEBHOOK_URL, data, 'cors');
-        if(!res.ok){
+        if (!res.ok) {
           await sendJSON(WEBHOOK_URL, data, 'no-cors');
           setLoading(false);
           showSuccess();
           return;
         }
-        await res.json().catch(()=>null);
         setLoading(false);
         showSuccess();
-      }catch(err){
-        try{
-          postViaHiddenForm(WEBHOOK_URL, data);
+      } catch (err) {
+        try {
+          const f = document.createElement('form');
+          f.action = WEBHOOK_URL; f.method = 'POST'; f.target = '_hidden_iframe'; f.style.display = 'none';
+          const input = document.createElement('input');
+          input.type = 'hidden'; input.name = 'payload'; input.value = JSON.stringify(data);
+          f.appendChild(input);
+          let iframe = document.getElementById('_hidden_iframe');
+          if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.name = '_hidden_iframe'; iframe.id = '_hidden_iframe'; iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+          }
+          document.body.appendChild(f); f.submit();
           setLoading(false);
           showSuccess();
-        }catch(_){
+        } catch (_) {
           setLoading(false);
+          showStatus(false, 'Não foi possível enviar. Verifique a URL do Web App e as permissões.');
           alert('Could not send. Check the Web App URL and permissions.');
         }
       }
     });
-
-    const wInput = document.getElementById('whatsapp');
-    wInput.addEventListener('input', (e)=>{
-      let v = e.target.value.replace(/\D/g, '').slice(0,11);
-      v = v.replace(/^(\d{2})(\d)/, '($1) $2');
-      v = v.replace(/(\d{5})(\d)/, '$1-$2');
-      e.target.value = v;
-    });
   </script>
-
 </body>
 </html>
-

@@ -101,27 +101,12 @@
         <button id="pkgClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200">✕</button>
       </div>
       <div class="tw-p-5">
-        <div id="pkgList" class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
-          <div class="pkg-card" data-id="ouro">
-            <img src="../../assets/public/img/buffet/buffet1.jpg" class="tw-w-full tw-h-40 tw-object-cover tw-rounded-xl">
-            <button class="pkg-more tw-mt-2 tw-font-semibold tw-text-emerald-700">Saiba mais</button>
-          </div>
-          <div class="pkg-card" data-id="bronze">
-            <img src="../../assets/public/img/buffet/brunch2.jpg" class="tw-w-full tw-h-40 tw-object-cover tw-rounded-xl">
-            <button class="pkg-more tw-mt-2 tw-font-semibold tw-text-emerald-700">Saiba mais</button>
-          </div>
-          <div class="pkg-card" data-id="diamante">
-            <img src="../../assets/public/img/buffet/coqueteis3.jpg" class="tw-w-full tw-h-40 tw-object-cover tw-rounded-xl">
-            <button class="pkg-more tw-mt-2 tw-font-semibold tw-text-emerald-700">Saiba mais</button>
-          </div>
+        <div id="pkgTabs" class="tw-flex tw-border-b tw-border-slate-200">
+          <button class="pkg-tab tw-flex-1 tw-py-2 tw-font-semibold tw-text-slate-600 tw-border-b-2 tw-border-transparent" data-id="ouro">Ouro</button>
+          <button class="pkg-tab tw-flex-1 tw-py-2 tw-font-semibold tw-text-slate-600 tw-border-b-2 tw-border-transparent" data-id="bronze">Bronze</button>
+          <button class="pkg-tab tw-flex-1 tw-py-2 tw-font-semibold tw-text-slate-600 tw-border-b-2 tw-border-transparent" data-id="diamante">Diamante</button>
         </div>
-        <div id="pkgDetail" hidden>
-          <button id="pkgBack" class="tw-text-emerald-700 tw-font-semibold">← Voltar</button>
-          <h4 id="pkgTitle" class="tw-text-xl tw-font-bold tw-mt-2"></h4>
-          <p id="pkgText" class="tw-text-slate-700 tw-mt-2"></p>
-          <a id="pkgWhats" href="#" target="_blank" rel="noopener" class="tw-inline-block tw-mt-4 tw-mb-4 tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg hover:tw-bg-emerald-800">Chamar no WhatsApp</a>
-          <div id="pkgImages" class="tw-grid tw-grid-cols-3 tw-gap-2"></div>
-        </div>
+        <div id="pkgBody" class="tw-pt-4"></div>
       </div>
     </div>
   </div>
@@ -283,13 +268,8 @@
     const btnPackages=document.getElementById('btnPackages');
     const pkgModal=document.getElementById('pkgModal');
     const pkgClose=document.getElementById('pkgClose');
-    const pkgList=document.getElementById('pkgList');
-    const pkgDetail=document.getElementById('pkgDetail');
-    const pkgTitle=document.getElementById('pkgTitle');
-    const pkgText=document.getElementById('pkgText');
-    const pkgWhats=document.getElementById('pkgWhats');
-    const pkgImages=document.getElementById('pkgImages');
-    const pkgBack=document.getElementById('pkgBack');
+    const pkgTabs=document.querySelectorAll('.pkg-tab');
+    const pkgBody=document.getElementById('pkgBody');
     const imgOverlay=document.getElementById('imgOverlay');
     const overlayImg=document.getElementById('overlayImg');
 
@@ -299,32 +279,26 @@
       diamante:{name:'Diamante',desc:'Descrição simbólica do pacote Diamante.',images:['../../assets/public/img/buffet/coqueteis3.jpg','../../assets/public/img/buffet/coqueteis2.jpg','../../assets/public/img/buffet/coqueteis1.jpg']}
     };
 
-    function openPkg(){ pkgModal.classList.add('open'); document.body.style.overflow='hidden'; pkgList.hidden=false; pkgDetail.hidden=true; }
+    function openPkg(){ pkgModal.classList.add('open'); document.body.style.overflow='hidden'; showPkg('ouro'); }
     function closePkg(){ pkgModal.classList.remove('open'); document.body.style.overflow=''; }
+
+    function showPkg(id){
+      const d=PACKAGES[id]; if(!d) return;
+      pkgTabs.forEach(t=>t.classList.remove('tw-border-emerald-700','tw-text-emerald-700'));
+      document.querySelector(`.pkg-tab[data-id="${id}"]`)?.classList.add('tw-border-emerald-700','tw-text-emerald-700');
+      pkgBody.innerHTML=`<h4 class="tw-text-xl tw-font-bold">Pacote ${d.name}</h4>
+        <p class="tw-text-slate-700 tw-mt-2">${d.desc}</p>
+        <a href="https://wa.me/5599999999999?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20pacote%20${encodeURIComponent(d.name)}." target="_blank" rel="noopener" class="tw-inline-block tw-mt-4 tw-mb-4 tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg hover:tw-bg-emerald-800">Chamar no WhatsApp</a>
+        <div class="tw-grid tw-grid-cols-3 tw-gap-2">${d.images.map(src=>`<img src='${src}' class='pkg-thumb tw-w-full tw-h-32 tw-object-cover tw-rounded-lg tw-cursor-pointer tw-transition tw-duration-200 hover:tw-scale-110 hover:tw-z-10'/>`).join('')}</div>`;
+      pkgBody.querySelectorAll('.pkg-thumb').forEach(im=>{
+        im.addEventListener('click',()=>{ overlayImg.src=im.src; imgOverlay.classList.add('open'); });
+      });
+    }
 
     btnPackages?.addEventListener('click',openPkg);
     pkgClose?.addEventListener('click',closePkg);
     pkgModal?.addEventListener('click',e=>{ if(e.target===pkgModal) closePkg(); });
-
-    document.querySelectorAll('.pkg-card .pkg-more').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const id=btn.parentElement.dataset.id;
-        const d=PACKAGES[id]; if(!d) return;
-        pkgTitle.textContent='Pacote '+d.name;
-        pkgText.textContent=d.desc;
-        pkgWhats.href=`https://wa.me/5599999999999?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20pacote%20${encodeURIComponent(d.name)}.`;
-        pkgImages.innerHTML='';
-        d.images.forEach(src=>{
-          const im=document.createElement('img');
-          im.src=src;
-          im.className='pkg-thumb tw-w-full tw-h-32 tw-object-cover tw-rounded-lg tw-cursor-pointer tw-transition tw-duration-200 hover:tw-scale-110 hover:tw-z-10';
-          im.onclick=()=>{ overlayImg.src=src; imgOverlay.classList.add('open'); };
-          pkgImages.appendChild(im);
-        });
-        pkgList.hidden=true; pkgDetail.hidden=false;
-      });
-    });
-    pkgBack?.addEventListener('click',()=>{ pkgDetail.hidden=true; pkgList.hidden=false; });
+    pkgTabs.forEach(tab=>tab.addEventListener('click',()=>showPkg(tab.dataset.id)));
     imgOverlay?.addEventListener('click',()=>imgOverlay.classList.remove('open'));
   </script>
 </body>

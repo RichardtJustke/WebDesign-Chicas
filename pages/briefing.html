@@ -37,222 +37,69 @@
 
   <!-- CONTEÚDO -->
   <main class="tw-flex-1 tw-py-10">
-    <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
-      <section class="tw-mx-auto tw-max-w-3xl tw-p-0 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm tw-overflow-hidden">
-        
-        <!-- Cabeçalho do balão -->
-        <div class="tw-px-6 tw-pt-6 md:tw-px-10 md:tw-pt-10">
+    <div class="tw-container tw-mx-auto tw-max-w-3xl tw-px-4">
+      <section class="tw-p-6 md:tw-p-10 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm">
+        <div class="tw-text-center tw-space-y-4">
+          <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900">Briefing</h1>
+          <p class="tw-text-slate-600">Fill it out quickly and we’ll return with your quote. If you prefer, contact us directly on WhatsApp.</p>
+          <a href="https://wa.me/5599999999999?text=Hello!%20I%E2%80%99d%20like%20a%20quote%20and%20preferred%20to%20contact%20you%20directly%20here." target="_blank" rel="noopener" class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Contact on WhatsApp now</a>
+        </div>
+
+        <form id="briefingForm" class="tw-mt-8 tw-space-y-6">
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Full Name</label>
+            <input name="nome" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="Your full name">
+          </div>
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">WhatsApp</label>
+            <input id="whatsapp" name="whatsapp" type="tel" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="(00) 00000-0000">
+          </div>
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">E-mail</label>
+            <input type="email" name="email" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="you@example.com">
+          </div>
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Event Date</label>
+            <input type="date" name="data_evento" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400">
+          </div>
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Event Location</label>
+            <input type="text" name="local_evento" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="Address/Neighborhood/City">
+          </div>
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Number of Guests</label>
+            <input type="number" name="convidados" min="1" required class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="e.g., 100">
+          </div>
+          <div>
+            <span class="tw-text-sm tw-font-semibold tw-text-slate-700">Service of Interest</span>
+            <div class="tw-mt-2 tw-flex tw-flex-wrap tw-gap-4">
+              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="Buffet" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>Buffet</span></label>
+              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="Audiovisual" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>Audiovisual</span></label>
+              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="Ceremonial" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>Ceremonial</span></label>
+              <label class="tw-inline-flex tw-items-center tw-gap-2"><input type="checkbox" name="servicos" value="HR" class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500"><span>HR</span></label>
+            </div>
+          </div>
+          <div>
+            <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Event Description</label>
+            <textarea name="descricao" rows="4" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" placeholder="Describe your event"></textarea>
+          </div>
           <div class="tw-text-center">
-            <span class="tw-text-xs tw-tracking-wide tw-font-semibold tw-text-emerald-700 tw-uppercase">Orçamento</span>
-            <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Briefing rápido</h1>
-            <p class="tw-text-slate-600 tw-mt-2">Leva menos de 2 min. Assim entendemos sua necessidade e preparamos um orçamento sob medida.</p>
+            <button type="submit" id="submitBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Submit Briefing</button>
+          </div>
+        </form>
+
+        <div id="successBox" class="tw-hidden tw-text-center tw-space-y-4 tw-mt-8">
+          <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing sent!</h3>
+          <div class="tw-flex tw-justify-center tw-gap-4">
+            <a href="https://wa.me/5599999999999?text=Hello!%20I%E2%80%99d%20like%20a%20quote%20and%20preferred%20to%20contact%20you%20directly%20here." target="_blank" rel="noopener" class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Contact on WhatsApp</a>
+            <a href="portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-emerald-700 tw-border tw-border-emerald-700 hover:tw-bg-emerald-50">View Portfolio</a>
           </div>
         </div>
 
-        <!-- Barra de progresso centralizada -->
-        <div class="tw-px-6 md:tw-px-10 tw-mt-4">
-          <div class="tw-flex tw-justify-center">
-            <div class="tw-w-[88%] md:tw-w-[82%] tw-max-w-[680px] tw-h-[6px] tw-bg-slate-100 tw-rounded-full">
-              <div id="progressBar" class="tw-h-full tw-bg-emerald-600 tw-rounded-full tw-w-[12%] tw-transition-all tw-duration-300"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Formulário -->
-        <div class="tw-p-6 md:tw-p-10">
-          <form id="briefingForm" class="tw-space-y-10">
-            <!-- STEP 1 -->
-            <div class="step" data-step="1">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">1) Seus dados</h2>
-              <div class="tw-grid tw-gap-4 md:tw-grid-cols-2">
-                <div class="md:tw-col-span-2">
-                  <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Nome</label>
-                  <input class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="nome" required placeholder="Seu nome completo">
-                </div>
-                <div>
-                  <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Telefone</label>
-                  <input class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="telefone" required placeholder="(00) 00000-0000">
-                </div>
-                <div>
-                  <label class="tw-text-sm tw-font-semibold tw-text-slate-700">E-mail</label>
-                  <input type="email" class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400" name="email" required placeholder="voce@email.com">
-                </div>
-              </div>
-            </div>
-
-            <!-- STEP 2 -->
-            <div class="step" data-step="2" style="display:none">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">2) Que tipo de evento será?</h2>
-              <select class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" name="tipo_evento" required>
-                <option value="" disabled selected>Selecione…</option>
-                <option>Corporativo</option>
-                <option>Conferência / Feira</option>
-                <option>Aniversário</option>
-                <option>Casamento</option>
-                <option>Lançamento de produto</option>
-                <option>Outro</option>
-              </select>
-            </div>
-
-            <!-- STEP 3 -->
-            <div class="step" data-step="3" style="display:none">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">3) Buffet</h2>
-              <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="sim">Preciso de buffet</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="buffet" data-value="nao">Não preciso</button>
-              </div>
-              <div id="buffetTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-2">
-                <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-2">Que tipo de buffet?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Coffee break">
-                  <img src="../assets/public/img/buffet/Coffeebreak1.jpg" alt="Coffee break" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Coffee break
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Coquetel">
-                  <img src="../assets/public/img/buffet/coqueteis1.jpg" alt="Coquetel" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Coquetel
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Brunch">
-                  <img src="../assets/public/img/buffet/brunch.jpg" alt="Brunch" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Brunch
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-multi="tipo_buffet" data-value="Almoço/Jantar">
-                  <img src="../assets/public/img/buffet/buffet.jpg" alt="Almoço ou Jantar" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Almoço/Jantar
-                </button>
-              </div>
-              <div id="buffetCustomWrap" class="tw-hidden tw-mt-4">
-                <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Preferências do buffet (opcional)</label>
-                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="buffet_custom" placeholder="Ex.: Coquetel com opções sem lactose, incluir sucos naturais..."></textarea>
-              </div>
-            </div>
-
-            <!-- STEP 4 -->
-            <div class="step" data-step="4" style="display:none">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">4) Cobertura audiovisual</h2>
-              <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="sim">Preciso de cobertura</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300 tw-transition" data-toggle="aud" data-value="nao">Não preciso</button>
-              </div>
-              <div id="audTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-3">
-                <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-3">De que tipo?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Foto">
-                  <img src="../assets/public/img/aud/fotografo1.jpg" alt="Foto" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Foto
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Vídeo">
-                  <img src="../assets/public/img/aud/cobertura1.jpg" alt="Vídeo" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Vídeo
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Drone">
-                  <img src="../assets/public/img/aud/cobertura3.jpg" alt="Drone" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Drone
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Social media (reels/stories)">
-                  <img src="../assets/public/img/aud/fotografo4.jpg" alt="Social media" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Social media
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_aud" data-value="Pacote completo">
-                  <img src="../assets/public/img/aud/cobertura.jpg" alt="Pacote completo" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Pacote completo
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 5 -->
-            <div class="step" data-step="5" style="display:none">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">5) Equipe operacional (RH)</h2>
-              <div class="tw-flex tw-gap-3 tw-flex-wrap tw-mb-3">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="rh" data-value="sim">Preciso de equipe</button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="rh" data-value="nao">Não preciso</button>
-              </div>
-              <div id="rhTipos" class="tw-hidden tw-grid tw-gap-3 md:tw-grid-cols-2">
-                <label class="tw-text-sm tw-font-semibold tw-text-slate-700 md:tw-col-span-2">Qual(is) desses?</label>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Garçom">
-                  <img src="../assets/public/img/rh/operacional1.jpg" alt="Garçom" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Garçom
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Recepcionista">
-                  <img src="../assets/public/img/rh/operacional2.jpg" alt="Recepcionista" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Recepcionista
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Segurança">
-                  <img src="../assets/public/img/rh/operacional3.jpg" alt="Segurança" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Segurança
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-multi="tipo_rh" data-value="Apoio/Operacional">
-                  <img src="../assets/public/img/rh/operacional4.jpg" alt="Apoio ou Operacional" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Apoio/Operacional
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 6 -->
-            <div class="step" data-step="6" style="display:none">
-              <h2 class="tw-text-base tw-font-bold tw-text-slate-900 tw-mb-3">6) Cerimonial</h2>
-              <p class="tw-text-slate-700 tw-mb-3">Nosso cerimonial cuida do planejamento completo, cronograma, fornecedores e execução no dia.</p>
-              <div class="tw-flex tw-gap-3 tw-flex-wrap">
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="cerim" data-value="sim">
-                  <img src="../assets/public/img/org/ale.jpg" alt="Cerimonial" class="tw-w-10 tw-h-10 tw-object-cover tw-rounded-full">
-                  Quero cerimonial
-                </button>
-                <button type="button" class="tw-inline-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-rounded-full tw-border tw-border-slate-200 tw-bg-white tw-text-slate-800 tw-shadow-sm hover:tw-border-slate-300" data-toggle="cerim" data-value="nao">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="tw-w-8 tw-h-8 tw-text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                  Não preciso
-                </button>
-              </div>
-              <div class="tw-mt-4">
-                <label class="tw-text-sm tw-font-semibold tw-text-slate-700">Observações (opcional)</label>
-                <textarea class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" rows="3" name="obs" placeholder="Datas, horários, local, estimativa de público…"></textarea>
-              </div>
-            </div>
-
-            <!-- Navegação -->
-            <div class="tw-flex tw-justify-between tw-items-center">
-              <button type="button" id="prevBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-slate-900 tw-border tw-border-slate-200 hover:tw-bg-slate-50">← Voltar</button>
-              <div class="tw-flex tw-gap-2">
-                <button type="button" id="nextBtn" class="tw-inline-flex tw-items-center tw-justify-center tw-px-5 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">Próximo →</button>
-              </div>
-            </div>
-          </form>
-
-          <div id="statusBox" class="tw-hidden tw-mt-6 tw-text-center"></div>
-        </div>
       </section>
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer tw-mt-10">
-    <div class="container footer-wrap">
-      <div class="f-col">
-        <div class="brand-line">
-          <img src="../assets/public/img/favicon.png" alt="" class="f-logo" />
-          <span class="f-brand">Chicas Eventos</span>
-        </div>
-        <p class="f-desc">Sabores que marcam momentos especiais! Personalize seu cardápio e torne seu evento inesquecível com nosso buffet exclusivo.</p>
-        <div class="f-copy">© 2025 · Justke Design</div>
-      </div>
-      <div class="f-col">
-        <h4 class="f-title">Navegue pelo site</h4>
-        <ul class="f-links">
-          <li><a href="servicos/buffet.html">Buffet</a></li>
-          <li><a href="portfolio.html">Galeria</a></li>
-          <li><a href="sobre.html">Sobre Nós</a></li>
-          <li><a href="briefing.html">Contato</a></li>
-        </ul>
-      </div>
-      <div class="f-col">
-        <h4 class="f-title">Receba novidades e promoções!</h4>
-        <p class="f-hint">Fique por dentro das novidades!</p>
-        <form class="f-news" onsubmit="event.preventDefault(); alert('Valeu! (plugaremos depois)')">
-          <input type="email" placeholder="Endereço de e-mail" required>
-          <button aria-label="Enviar"><span class="dot"></span></button>
-        </form>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Menu mobile -->
   <script>
     const hamb = document.getElementById('hamb');
     const menuMobile = document.getElementById('menuMobile');
@@ -265,132 +112,30 @@
     }));
   </script>
 
-  <!-- Lógica -->
   <script>
-    // URL do seu Apps Script (nova)
     const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzbfANL3UPIMbceYdLhNYN7a6-4F3ZJLbDrczqJlGKrha1yyxb9THnYFC0lrymYYKwF/exec';
-    // opcional: e-mail extra para cópia (o servidor já envia ao NOTIFY_TO)
-    const EXTRA_NOTIFY = 'rj.justke@gmail.com'; // ex.: 'atendimento@chicas.com.br'
+    const EXTRA_NOTIFY = 'rj.justke@gmail.com';
 
-    const steps = Array.from(document.querySelectorAll('.step'));
-    const totalSteps = steps.length;
-    const progressBar = document.getElementById('progressBar');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
     const form = document.getElementById('briefingForm');
-    const statusBox = document.getElementById('statusBox');
-
-    let current = 0;
-    const state = { buffet:null, tipo_buffet:new Set(), aud:null, tipo_aud:new Set(), rh:null, tipo_rh:new Set(), cerim:null };
-
-    function updateProgress(){
-      const pct = Math.round(((current+1)/totalSteps)*100);
-      progressBar.style.width = pct + '%';
-    }
-    function updateUI(){
-      steps.forEach((s,i)=> s.style.display = i===current ? 'block' : 'none');
-      updateProgress();
-      prevBtn.disabled = current === 0;
-      prevBtn.classList.toggle('tw-opacity-50', prevBtn.disabled);
-      nextBtn.textContent = (current === totalSteps-1) ? 'Enviar' : 'Próximo →';
-    }
-    function goNext(){ if (current < totalSteps-1){ current++; updateUI(); window.scrollTo({top:0, behavior:'smooth'});} else { submitNow(); } }
-    function goPrev(){ if (current > 0){ current--; updateUI(); window.scrollTo({top:0, behavior:'smooth'});} }
-    nextBtn.addEventListener('click', goNext);
-    prevBtn.addEventListener('click', goPrev);
-
-    function toggleSingle(group, value){
-      document.querySelectorAll(`.tw-inline-flex[data-toggle="${group}"]`).forEach(el=>{
-        el.dataset.checked = (el.dataset.value===value)?"true":"false";
-        el.classList.toggle('tw-bg-emerald-700', el.dataset.checked==="true");
-        el.classList.toggle('tw-text-white', el.dataset.checked==="true");
-        el.classList.toggle('tw-border-emerald-700', el.dataset.checked==="true");
-      });
-      state[group] = value;
-      if(group==='buffet'){
-        document.getElementById('buffetTipos').classList.toggle('tw-hidden', value!=='sim');
-        document.getElementById('buffetCustomWrap').classList.toggle('tw-hidden', value!=='sim');
-        if(value!=='sim'){
-          state.tipo_buffet.clear();
-          document.querySelectorAll('[data-multi="tipo_buffet"]').forEach(b=>{
-            b.dataset.checked="false";
-            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-          });
-          const tx = document.querySelector('[name="buffet_custom"]'); if (tx) tx.value='';
-        }
-      }
-      if(group==='aud'){
-        document.getElementById('audTipos').classList.toggle('tw-hidden', value!=='sim');
-        if(value!=='sim'){
-          state.tipo_aud.clear();
-          document.querySelectorAll('[data-multi="tipo_aud"]').forEach(b=>{
-            b.dataset.checked="false";
-            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-          });
-        }
-      }
-      if(group==='rh'){
-        document.getElementById('rhTipos').classList.toggle('tw-hidden', value!=='sim');
-        if(value!=='sim'){
-          state.tipo_rh.clear();
-          document.querySelectorAll('[data-multi="tipo_rh"]').forEach(b=>{
-            b.dataset.checked="false";
-            b.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-          });
-        }
-      }
-      if(group==='cerim'){ /* nada extra */ }
-    }
-    function toggleMulti(group, value, el){
-      const set = state[group];
-      if(set.has(value)){
-        set.delete(value);
-        el.dataset.checked="false";
-        el.classList.remove('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-      } else {
-        set.add(value);
-        el.dataset.checked="true";
-        el.classList.add('tw-bg-emerald-700','tw-text-white','tw-border-emerald-700');
-      }
-    }
-    document.querySelectorAll('[data-toggle]').forEach(btn=> btn.addEventListener('click', ()=> toggleSingle(btn.dataset.toggle, btn.dataset.value)));
-    document.querySelectorAll('[data-multi]').forEach(btn=> btn.addEventListener('click', ()=> toggleMulti(btn.dataset.multi, btn.dataset.value, btn)));
+    const submitBtn = document.getElementById('submitBtn');
+    const successBox = document.getElementById('successBox');
 
     function formToObject(){
       const fd = new FormData(form);
       return {
         nome: fd.get('nome') || '',
-        telefone: fd.get('telefone') || '',
+        whatsapp: fd.get('whatsapp') || '',
         email: fd.get('email') || '',
-        tipo_evento: fd.get('tipo_evento') || '',
-        buffet: state.buffet,
-        tipo_buffet: Array.from(state.tipo_buffet),
-        buffet_custom: fd.get('buffet_custom') || '',
-        aud: state.aud,
-        tipo_aud: Array.from(state.tipo_aud),
-        rh: state.rh,
-        tipo_rh: Array.from(state.tipo_rh),
-        cerim: state.cerim,
-        obs: fd.get('obs') || '',
+        data_evento: fd.get('data_evento') || '',
+        local_evento: fd.get('local_evento') || '',
+        convidados: fd.get('convidados') || '',
+        servicos: Array.from(form.querySelectorAll('input[name="servicos"]:checked')).map(c=>c.value),
+        descricao: fd.get('descricao') || '',
         timestamp: new Date().toISOString(),
         ...(EXTRA_NOTIFY ? { notify_email: EXTRA_NOTIFY } : {})
       };
     }
 
-    function setLoading(isLoading){
-      [prevBtn,nextBtn].forEach(b=> b && (b.disabled=isLoading));
-      if(isLoading){ nextBtn?.classList.add('tw-opacity-60','tw-cursor-not-allowed'); nextBtn && (nextBtn.textContent='Enviando…'); }
-      else { nextBtn?.classList.remove('tw-opacity-60','tw-cursor-not-allowed'); updateUI(); }
-    }
-
-    function showStatus(ok,msg){
-      statusBox.className='tw-mt-6 tw-text-center';
-      statusBox.classList.add(ok?'tw-text-emerald-700':'tw-text-red-600');
-      statusBox.innerHTML=`<div class="tw-font-semibold">${msg}</div>`;
-      statusBox.classList.remove('tw-hidden');
-    }
-
-    // sendJSON robusto: em no-cors manda FormData(payload) para evitar preflight
     async function sendJSON(url, data, mode='cors'){
       if (mode === 'no-cors'){
         const fd = new FormData();
@@ -405,24 +150,6 @@
       });
     }
 
-    function renderSuccessScreen() {
-      steps.forEach(s => s.style.display='none');
-      const msg = `
-        <div class="tw-text-center tw-space-y-4 tw-pt-4">
-          <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing enviado!</h3>
-          <p class="tw-text-slate-700">Em instantes a nossa equipe irá entrar em contato. Muito obrigado.</p>
-          <a href="portfolio.html" class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
-            Ver portfólio →
-          </a>
-        </div>
-      `;
-      statusBox.className = 'tw-mt-6';
-      statusBox.innerHTML = msg;
-      statusBox.classList.remove('tw-hidden');
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
-    }
-
     function postViaHiddenForm(url, payloadObj){
       const f = document.createElement('form');
       f.action = url; f.method = 'POST'; f.target = '_hidden_iframe'; f.style.display='none';
@@ -434,43 +161,64 @@
       document.body.appendChild(f); f.submit();
     }
 
-    async function submitNow(){
+    function setLoading(isLoading){
+      submitBtn.disabled = isLoading;
+      if(isLoading){
+        submitBtn.classList.add('tw-opacity-60','tw-cursor-not-allowed');
+        submitBtn.textContent = 'Sending…';
+      } else {
+        submitBtn.classList.remove('tw-opacity-60','tw-cursor-not-allowed');
+        submitBtn.textContent = 'Submit Briefing';
+      }
+    }
+
+    function showSuccess(){
+      form.classList.add('tw-hidden');
+      successBox.classList.remove('tw-hidden');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const services = form.querySelectorAll('input[name="servicos"]:checked');
+      if(!services.length){
+        alert('Please select at least one service of interest.');
+        return;
+      }
       const data = formToObject();
       setLoading(true);
       try{
-        // 1) tenta CORS normal
         let res = await sendJSON(WEBHOOK_URL, data, 'cors');
-        if (!res.ok){
-          // 2) tenta no-cors
+        if(!res.ok){
           await sendJSON(WEBHOOK_URL, data, 'no-cors');
           setLoading(false);
-          renderSuccessScreen();
-          window.scrollTo({top:0,behavior:'smooth'});
+          showSuccess();
           return;
         }
         await res.json().catch(()=>null);
         setLoading(false);
-        renderSuccessScreen();
-        window.scrollTo({top:0,behavior:'smooth'});
+        showSuccess();
       }catch(err){
-        // 3) fallback por form oculto
         try{
           postViaHiddenForm(WEBHOOK_URL, data);
           setLoading(false);
-          renderSuccessScreen();
-          window.scrollTo({top:0,behavior:'smooth'});
+          showSuccess();
         }catch(_){
           setLoading(false);
-          showStatus(false, 'Não foi possível enviar. Verifique a URL do Web App e as permissões.');
+          alert('Could not send. Check the Web App URL and permissions.');
         }
       }
-    }
+    });
 
-    // Evita submit tradicional
-    form.addEventListener('submit', (e)=> e.preventDefault());
-
-    // inicia interface
-    updateUI();
+    const wInput = document.getElementById('whatsapp');
+    wInput.addEventListener('input', (e)=>{
+      let v = e.target.value.replace(/\D/g, '').slice(0,11);
+      v = v.replace(/^(\d{2})(\d)/, '($1) $2');
+      v = v.replace(/(\d{5})(\d)/, '$1-$2');
+      e.target.value = v;
+    });
   </script>
+
 </body>
 </html>
+

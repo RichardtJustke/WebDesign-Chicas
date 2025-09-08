@@ -55,6 +55,10 @@
         </p>
       </header>
 
+      <div class="tw-text-center tw-mt-4">
+        <button id="btnPackages" class="tw-bg-emerald-600 tw-text-white tw-px-5 tw-py-3 tw-rounded-lg hover:tw-bg-emerald-700">Ver Pacotes</button>
+      </div>
+
       <!-- Lateralizados -->
       <section class="tw-mt-8 tw-grid md:tw-grid-cols-2 tw-gap-5">
         <a class="svc-card" data-id="coqueteis">
@@ -88,6 +92,28 @@
       </section>
     </div>
   </main>
+
+  <!-- PACKAGES MODAL -->
+  <div id="pkgModal" class="modal tw-items-center tw-justify-center tw-px-4">
+    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-md tw-shadow-2xl">
+      <div class="tw-flex tw-justify-between tw-items-start tw-p-5 tw-border-b tw-border-slate-200">
+        <h3 class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Pacotes</h3>
+        <button id="pkgClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200">✕</button>
+      </div>
+      <div class="tw-p-5">
+        <div class="tw-flex tw-gap-2 tw-mb-4">
+          <button data-tab="ouro" class="pkg-tab tw-px-3 tw-py-1 tw-rounded tw-border tw-border-emerald-600 tw-text-emerald-700 tw-font-semibold tw-cursor-pointer">Ouro</button>
+          <button data-tab="bronze" class="pkg-tab tw-px-3 tw-py-1 tw-rounded tw-border tw-border-transparent tw-text-slate-600 tw-font-semibold tw-cursor-pointer">Bronze</button>
+          <button data-tab="diamante" class="pkg-tab tw-px-3 tw-py-1 tw-rounded tw-border tw-border-transparent tw-text-slate-600 tw-font-semibold tw-cursor-pointer">Diamante</button>
+        </div>
+        <div id="pkgPanels">
+          <div data-content="ouro" class="pkg-panel">Detalhes do Pacote Ouro.</div>
+          <div data-content="bronze" class="pkg-panel" hidden>Detalhes do Pacote Bronze.</div>
+          <div data-content="diamante" class="pkg-panel" hidden>Detalhes do Pacote Diamante.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL -->
   <div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
@@ -238,6 +264,33 @@
 
     // bind cards
     document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+
+    // ---- Packages modal ----
+    const btnPackages=document.getElementById('btnPackages');
+    const pkgModal=document.getElementById('pkgModal');
+    const pkgClose=document.getElementById('pkgClose');
+    const pkgTabs=document.querySelectorAll('.pkg-tab');
+    const pkgPanels=document.querySelectorAll('.pkg-panel');
+
+    function openPkg(){ pkgModal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closePkg(){ pkgModal.classList.remove('open'); document.body.style.overflow=''; }
+
+    btnPackages?.addEventListener('click',openPkg);
+    pkgClose?.addEventListener('click',closePkg);
+    pkgModal?.addEventListener('click',e=>{ if(e.target===pkgModal) closePkg(); });
+
+    pkgTabs.forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        const t=tab.dataset.tab;
+        pkgTabs.forEach(b=>{
+          b.classList.toggle('tw-border-emerald-600',b===tab);
+          b.classList.toggle('tw-text-emerald-700',b===tab);
+          b.classList.toggle('tw-border-transparent',b!==tab);
+          b.classList.toggle('tw-text-slate-600',b!==tab);
+        });
+        pkgPanels.forEach(p=>p.hidden=p.dataset.content!==t);
+      });
+    });
   </script>
 </body>
 </html>

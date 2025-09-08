@@ -55,6 +55,10 @@
         </p>
       </header>
 
+      <div class="tw-text-center tw-mt-4">
+        <button id="btnPackages" class="tw-bg-emerald-600 tw-text-white tw-px-5 tw-py-3 tw-rounded-lg hover:tw-bg-emerald-700">Ver Pacotes</button>
+      </div>
+
       <!-- Lateralizados -->
       <section class="tw-mt-8 tw-grid md:tw-grid-cols-2 tw-gap-5">
         <a class="svc-card" data-id="coqueteis">
@@ -88,6 +92,42 @@
       </section>
     </div>
   </main>
+
+  <!-- PACKAGES MODAL -->
+  <div id="pkgModal" class="modal tw-items-center tw-justify-center tw-px-4">
+    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-3xl tw-shadow-2xl">
+      <div class="tw-flex tw-justify-between tw-items-start tw-p-5 tw-border-b tw-border-slate-200">
+        <h3 class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Pacotes</h3>
+        <button id="pkgClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200">✕</button>
+      </div>
+      <div class="tw-p-5">
+        <div id="pkgList" class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
+          <div class="pkg-card" data-id="ouro">
+            <img src="../../assets/public/img/buffet/buffet1.jpg" class="tw-w-full tw-h-40 tw-object-cover tw-rounded-xl">
+            <button class="pkg-more tw-mt-2 tw-font-semibold tw-text-emerald-700">Saiba mais</button>
+          </div>
+          <div class="pkg-card" data-id="bronze">
+            <img src="../../assets/public/img/buffet/brunch2.jpg" class="tw-w-full tw-h-40 tw-object-cover tw-rounded-xl">
+            <button class="pkg-more tw-mt-2 tw-font-semibold tw-text-emerald-700">Saiba mais</button>
+          </div>
+          <div class="pkg-card" data-id="diamante">
+            <img src="../../assets/public/img/buffet/coqueteis3.jpg" class="tw-w-full tw-h-40 tw-object-cover tw-rounded-xl">
+            <button class="pkg-more tw-mt-2 tw-font-semibold tw-text-emerald-700">Saiba mais</button>
+          </div>
+        </div>
+        <div id="pkgDetail" hidden>
+          <button id="pkgBack" class="tw-text-emerald-700 tw-font-semibold">← Voltar</button>
+          <h4 id="pkgTitle" class="tw-text-xl tw-font-bold tw-mt-2"></h4>
+          <p id="pkgText" class="tw-text-slate-700 tw-mt-2"></p>
+          <a id="pkgWhats" href="#" target="_blank" rel="noopener" class="tw-inline-block tw-mt-4 tw-mb-4 tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg hover:tw-bg-emerald-800">Chamar no WhatsApp</a>
+          <div id="pkgImages" class="tw-grid tw-grid-cols-3 tw-gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="imgOverlay" class="modal tw-items-center tw-justify-center">
+    <img id="overlayImg" class="tw-max-w-full tw-max-h-full tw-rounded-xl" src="">
+  </div>
 
   <!-- MODAL -->
   <div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
@@ -238,6 +278,54 @@
 
     // bind cards
     document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+
+    // ---- Packages modal ----
+    const btnPackages=document.getElementById('btnPackages');
+    const pkgModal=document.getElementById('pkgModal');
+    const pkgClose=document.getElementById('pkgClose');
+    const pkgList=document.getElementById('pkgList');
+    const pkgDetail=document.getElementById('pkgDetail');
+    const pkgTitle=document.getElementById('pkgTitle');
+    const pkgText=document.getElementById('pkgText');
+    const pkgWhats=document.getElementById('pkgWhats');
+    const pkgImages=document.getElementById('pkgImages');
+    const pkgBack=document.getElementById('pkgBack');
+    const imgOverlay=document.getElementById('imgOverlay');
+    const overlayImg=document.getElementById('overlayImg');
+
+    const PACKAGES={
+      ouro:{name:'Ouro',desc:'Descrição simbólica do pacote Ouro.',images:['../../assets/public/img/buffet/buffet1.jpg','../../assets/public/img/buffet/buffet2.jpg','../../assets/public/img/buffet/buffet3.jpg']},
+      bronze:{name:'Bronze',desc:'Descrição simbólica do pacote Bronze.',images:['../../assets/public/img/buffet/brunch2.jpg','../../assets/public/img/buffet/brunch3.jpg','../../assets/public/img/buffet/Coffeebreak.jpg']},
+      diamante:{name:'Diamante',desc:'Descrição simbólica do pacote Diamante.',images:['../../assets/public/img/buffet/coqueteis3.jpg','../../assets/public/img/buffet/coqueteis2.jpg','../../assets/public/img/buffet/coqueteis1.jpg']}
+    };
+
+    function openPkg(){ pkgModal.classList.add('open'); document.body.style.overflow='hidden'; pkgList.hidden=false; pkgDetail.hidden=true; }
+    function closePkg(){ pkgModal.classList.remove('open'); document.body.style.overflow=''; }
+
+    btnPackages?.addEventListener('click',openPkg);
+    pkgClose?.addEventListener('click',closePkg);
+    pkgModal?.addEventListener('click',e=>{ if(e.target===pkgModal) closePkg(); });
+
+    document.querySelectorAll('.pkg-card .pkg-more').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const id=btn.parentElement.dataset.id;
+        const d=PACKAGES[id]; if(!d) return;
+        pkgTitle.textContent='Pacote '+d.name;
+        pkgText.textContent=d.desc;
+        pkgWhats.href=`https://wa.me/5599999999999?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20pacote%20${encodeURIComponent(d.name)}.`;
+        pkgImages.innerHTML='';
+        d.images.forEach(src=>{
+          const im=document.createElement('img');
+          im.src=src;
+          im.className='pkg-thumb tw-w-full tw-h-32 tw-object-cover tw-rounded-lg tw-cursor-pointer tw-transition tw-duration-200 hover:tw-scale-110 hover:tw-z-10';
+          im.onclick=()=>{ overlayImg.src=src; imgOverlay.classList.add('open'); };
+          pkgImages.appendChild(im);
+        });
+        pkgList.hidden=true; pkgDetail.hidden=false;
+      });
+    });
+    pkgBack?.addEventListener('click',()=>{ pkgDetail.hidden=true; pkgList.hidden=false; });
+    imgOverlay?.addEventListener('click',()=>imgOverlay.classList.remove('open'));
   </script>
 </body>
 </html>

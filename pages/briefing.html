@@ -8,43 +8,68 @@
   <!-- Fonte (opcional) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
   <!-- Tailwind CDN + prefixo `tw-` -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script> tailwind.config = { prefix: 'tw-' }; </script>
 
   <style>
     html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    
+    @keyframes firework {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-slate-50">
 
-  <!-- CABEÇALHO -->
-  <header class="site-cabecalho tw-border-b tw-bg-white">
-    <div class="container nav tw-max-w-6xl tw-mx-auto tw-px-4 tw-h-16 tw-flex tw-items-center tw-justify-between">
-      <a class="marca tw-inline-flex tw-items-center tw-gap-2" href="../index.html">
-        <span class="logotipo tw-w-7 tw-h-7 tw-rounded-full tw-bg-emerald-700 tw-block"></span>
-        <strong class="tw-text-slate-900">Chicas Eventos</strong>
-      </a>
+  <!-- HEADER MINIMALISTA -->
+  <header class="header-modern">
+    <div class="container">
+      <nav class="nav-modern">
+        <!-- Logo -->
+        <a class="logo-modern" href="../index.html">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Chicas Eventos</span>
+        </a>
 
-      <button class="hamb md:tw-hidden tw-text-2xl" id="hamb" aria-label="Abrir menu">☰</button>
+        <!-- Menu Desktop -->
+        <div class="nav-menu">
+          <a href="../index.html#servicos" class="nav-link menu-item">Serviços</a>
+          <a href="portfolio.html" class="nav-link menu-item">Portfólio</a>
+          <a href="sobre.html" class="nav-link menu-item">Sobre</a>
+          <a href="briefing.html" class="nav-cta-modern">Orçamento</a>
+        </div>
 
-      <nav class="tw-hidden md:tw-block">
-        <ul class="nav-lista tw-flex tw-items-center tw-gap-6">
-          <li><a href="../index.html#servicos" class="tw-text-slate-700 hover:tw-text-slate-900">Serviços</a></li>
-          <li><a href="portfolio.html" class="tw-text-slate-700 hover:tw-text-slate-900">Portfólio</a></li>
-          <li><a href="sobre.html" class="tw-text-slate-700 hover:tw-text-slate-900">Sobre</a></li>
-          <li><a class="nav-cta tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95" href="briefing.html">Fazer orçamento</a></li>
-        </ul>
+        <!-- Menu Mobile -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
-    </div>
 
-    <!-- Menu mobile -->
-    <ul id="menuMobile" class="nav-movel tw-hidden md:tw-hidden tw-border-t tw-bg-white">
-      <li><a href="../index.html#servicos" class="tw-block tw-px-4 tw-py-3">Serviços</a></li>
-      <li><a href="portfolio.html" class="tw-block tw-px-4 tw-py-3">Portfólio</a></li>
-      <li><a href="sobre.html" class="tw-block tw-px-4 tw-py-3">Sobre</a></li>
-      <li><a href="briefing.html" class="tw-block tw-px-4 tw-py-3">Fazer orçamento</a></li>
-    </ul>
+      <!-- Menu Mobile Overlay -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html#servicos" class="mobile-link">Serviços</a>
+        <a href="portfolio.html" class="mobile-link">Portfólio</a>
+        <a href="sobre.html" class="mobile-link">Sobre</a>
+        <a href="briefing.html" class="mobile-cta">Orçamento</a>
+      </div>
+    </div>
   </header>
 
   <!-- CONTEÚDO -->
@@ -181,38 +206,63 @@
     </div>
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="site-rodape tw-mt-10 tw-border-t tw-bg-white">
-    <div class="tw-max-w-6xl tw-mx-auto tw-px-4 tw-py-8 tw-grid md:tw-grid-cols-3 tw-gap-8">
-      <div class="tw-space-y-2">
-        <div class="tw-inline-flex tw-items-center tw-gap-2">
-          <img src="../assets/public/img/favicon.png" alt="" class="tw-w-6 tw-h-6" />
-          <span class="tw-font-semibold">Chicas Eventos</span>
+  <!-- FOOTER MINIMALISTA -->
+  <footer class="footer-modern">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Logo e descrição -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Chicas Eventos</span>
+          </div>
+          <p class="footer-desc">
+            Transformamos cada evento em uma experiência única e inesquecível.
+          </p>
         </div>
-        <p class="tw-text-slate-600">
-          Sabores que marcam momentos especiais! Personalize seu cardápio e torne seu evento inesquecível.
-        </p>
-        <div class="tw-text-slate-500">© 2025 · Justke Design</div>
-      </div>
 
-      <div>
-        <h4 class="tw-font-semibold tw-mb-2">Navegue</h4>
-        <ul class="tw-space-y-1">
-          <li><a href="servicos/buffet.html" class="tw-text-slate-700 hover:tw-text-slate-900">Buffet</a></li>
-          <li><a href="portfolio.html" class="tw-text-slate-700 hover:tw-text-slate-900">Galeria</a></li>
-          <li><a href="sobre.html" class="tw-text-slate-700 hover:tw-text-slate-900">Sobre nós</a></li>
-          <li><a href="briefing.html" class="tw-text-slate-700 hover:tw-text-slate-900">Contato</a></li>
-        </ul>
-      </div>
+        <!-- Links -->
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>Serviços</h4>
+            <a href="servicos/buffet.html">Buffet</a>
+            <a href="servicos/audiovisual.html">Audiovisual</a>
+            <a href="servicos/rh.html">RH</a>
+            <a href="servicos/cerimonial.html">Cerimonial</a>
+          </div>
+          <div class="link-group">
+            <h4>Empresa</h4>
+            <a href="sobre.html">Sobre</a>
+            <a href="portfolio.html">Portfólio</a>
+            <a href="briefing.html">Contato</a>
+          </div>
+        </div>
 
-      <div>
-        <h4 class="tw-font-semibold tw-mb-2">Novidades & promoções</h4>
-        <form class="tw-flex tw-gap-2" onsubmit="event.preventDefault(); alert('Valeu! (plugaremos depois)')">
-          <input type="email" placeholder="Seu e-mail" required
-                 class="tw-flex-1 tw-px-3 tw-py-2 tw-rounded-xl tw-border tw-border-slate-200 focus:tw-outline-none focus:tw-border-emerald-400" />
-          <button aria-label="Enviar"
-                  class="tw-px-4 tw-py-2 tw-rounded-xl tw-bg-emerald-700 tw-text-white tw-font-semibold hover:tw-opacity-95">OK</button>
-        </form>
+        <!-- Social -->
+        <div class="footer-social">
+          <h4>Conecte-se</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Chicas Eventos. Todos os direitos reservados.</p>
       </div>
     </div>
   </footer>
@@ -223,18 +273,6 @@
     const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxNj1Cx5EOjSEsgXsDN25qul8rCbfSxGeh4AMnROMS5sFG7GPSgyoUJUQmlU2_RgnIY/exec';
     const EXTRA_NOTIFY = 'rj.justke@gmail.com'; // opcional: cópia
 
-    // === MENU MOBILE ===
-    const hamb = document.getElementById('hamb');
-    const menuMobile = document.getElementById('menuMobile');
-    if (hamb && menuMobile) {
-      hamb.addEventListener('click', () => {
-        const isHidden = menuMobile.classList.contains('tw-hidden');
-        menuMobile.classList.toggle('tw-hidden', !isHidden);
-      });
-      menuMobile.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => menuMobile.classList.add('tw-hidden'));
-      });
-    }
 
     // === FORM ===
     const form = document.getElementById('briefingForm');
@@ -311,9 +349,41 @@
     }
 
     function showSuccess() {
+      // Efeito de fogos de artifício
+      createFireworks();
+      
       form.classList.add('tw-hidden');
       successBox.classList.remove('tw-hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function createFireworks() {
+      const colors = ['#059669', '#0ea5e9', '#f59e0b', '#ef4444', '#8b5cf6'];
+      const container = document.body;
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const firework = document.createElement('div');
+          firework.style.cssText = `
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            left: ${Math.random() * window.innerWidth}px;
+            top: ${Math.random() * window.innerHeight}px;
+            animation: firework 2s ease-out forwards;
+          `;
+          
+          container.appendChild(firework);
+          
+          setTimeout(() => {
+            firework.remove();
+          }, 2000);
+        }, i * 50);
+      }
     }
 
     form.addEventListener('submit', async (e) => {
@@ -359,5 +429,24 @@
       }
     });
   </script>
+
+  <!-- Sistema de Animações removido da página de briefing -->
+
+  <!-- Botão Flutuante WhatsApp -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Chicas Eventos." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="whatsapp-btn"
+       aria-label="Fale conosco no WhatsApp">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+      </svg>
+      <span class="whatsapp-tooltip">Fale conosco!</span>
+    </a>
+  </div>
+
+  <!-- Sistema de Animações -->
+  <script src="../assets/js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teste do Sistema de Carrinho — Chicas Eventos</title>
+  <link rel="icon" href="assets/public/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={prefix:'tw-',corePlugins:{preflight:false}};</script>
+</head>
+<body class="tw-bg-slate-50 tw-p-8">
+  <div class="tw-max-w-4xl tw-mx-auto">
+    <h1 class="tw-text-3xl tw-font-bold tw-text-slate-900 tw-mb-8">Teste do Sistema de Carrinho</h1>
+    
+    <div class="tw-grid tw-gap-6 md:tw-grid-cols-2">
+      <!-- Painel de Teste -->
+      <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6">
+        <h2 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Adicionar Itens de Teste</h2>
+        
+        <div class="tw-space-y-4">
+          <button onclick="testarAdicionarItem('audiovisual')" 
+                  class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-emerald-700">
+            Adicionar Serviço Audiovisual
+          </button>
+          
+          <button onclick="testarAdicionarItem('buffet')" 
+                  class="tw-w-full tw-bg-blue-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-blue-700">
+            Adicionar Serviço Buffet
+          </button>
+          
+          <button onclick="testarAdicionarItem('cerimonial')" 
+                  class="tw-w-full tw-bg-purple-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-purple-700">
+            Adicionar Serviço Cerimonial
+          </button>
+          
+          <button onclick="testarAdicionarItem('rh')" 
+                  class="tw-w-full tw-bg-orange-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-orange-700">
+            Adicionar Serviço RH
+          </button>
+          
+          <button onclick="limparCarrinho()" 
+                  class="tw-w-full tw-bg-red-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-red-700">
+            Limpar Carrinho
+          </button>
+        </div>
+      </div>
+      
+      <!-- Status do Carrinho -->
+      <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6">
+        <h2 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Status do Carrinho</h2>
+        
+        <div id="statusCarrinho" class="tw-space-y-2">
+          <p class="tw-text-slate-600">Carregando...</p>
+        </div>
+        
+        <div class="tw-mt-4">
+          <a href="pages/carrinho.html" 
+             class="tw-inline-block tw-bg-emerald-600 tw-text-white tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-emerald-700">
+            Ver Carrinho Completo
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Log de Ações -->
+    <div class="tw-mt-8 tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6">
+      <h2 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Log de Ações</h2>
+      <div id="logAcoes" class="tw-bg-slate-100 tw-rounded-lg tw-p-4 tw-h-40 tw-overflow-y-auto">
+        <p class="tw-text-slate-600">Aguardando ações...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sistema de Carrinho -->
+  <script src="assets/js/carrinho.js"></script>
+  
+  <script>
+    // Funções de teste
+    function testarAdicionarItem(categoria) {
+      const itensTeste = {
+        audiovisual: {
+          nome: 'Fotografia Profissional',
+          opcao: 'Completo (8h) - R$ 2.000',
+          preco: 2000,
+          categoria: 'audiovisual'
+        },
+        buffet: {
+          nome: 'Coffee Break Executivo',
+          opcao: '100 pessoas - R$ 1.500',
+          preco: 1500,
+          categoria: 'buffet'
+        },
+        cerimonial: {
+          nome: 'Planejamento Completo',
+          opcao: 'Completo (2 meses) - R$ 4.000',
+          preco: 4000,
+          categoria: 'cerimonial'
+        },
+        rh: {
+          nome: 'Equipe de Garçons',
+          opcao: '50 pessoas - R$ 7.500',
+          preco: 7500,
+          categoria: 'rh'
+        }
+      };
+      
+      const item = itensTeste[categoria];
+      if (item) {
+        carrinhoManager.adicionarItem(item);
+        logAcao(`Item adicionado: ${item.nome} - R$ ${item.preco.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`);
+        atualizarStatusCarrinho();
+      }
+    }
+    
+    function limparCarrinho() {
+      carrinhoManager.limparCarrinho();
+      logAcao('Carrinho limpo');
+      atualizarStatusCarrinho();
+    }
+    
+    function atualizarStatusCarrinho() {
+      const statusDiv = document.getElementById('statusCarrinho');
+      const carrinho = carrinhoManager.carrinho;
+      const totalItens = carrinhoManager.contarItens();
+      const totalValor = carrinhoManager.calcularTotal();
+      
+      if (carrinho.length === 0) {
+        statusDiv.innerHTML = '<p class="tw-text-slate-600">Carrinho vazio</p>';
+      } else {
+        let html = `
+          <p class="tw-font-semibold">Total de itens: ${totalItens}</p>
+          <p class="tw-font-semibold">Valor total: R$ ${totalValor.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+          <div class="tw-mt-3">
+            <p class="tw-text-sm tw-text-slate-600 tw-mb-2">Itens no carrinho:</p>
+        `;
+        
+        carrinho.forEach(item => {
+          html += `
+            <div class="tw-text-sm tw-bg-slate-100 tw-p-2 tw-rounded tw-mb-1">
+              ${item.nome} - R$ ${(item.preco * item.quantidade).toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+            </div>
+          `;
+        });
+        
+        html += '</div>';
+        statusDiv.innerHTML = html;
+      }
+    }
+    
+    function logAcao(acao) {
+      const logDiv = document.getElementById('logAcoes');
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = document.createElement('div');
+      logEntry.className = 'tw-text-sm tw-mb-1';
+      logEntry.innerHTML = `<span class="tw-text-slate-500">[${timestamp}]</span> ${acao}`;
+      
+      if (logDiv.children.length === 1 && logDiv.children[0].textContent === 'Aguardando ações...') {
+        logDiv.innerHTML = '';
+      }
+      
+      logDiv.appendChild(logEntry);
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+    
+    // Inicializar quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      atualizarStatusCarrinho();
+      logAcao('Sistema de carrinho inicializado');
+    });
+  </script>
+</body>
+</html>

@@ -72,6 +72,16 @@
       <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-800" data-id="roteiro"><img src="../../assets/public/img/aud/fotografo3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Roteiro & Timeline</span></a>
       <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-900" data-id="pos"><img src="../../assets/public/img/buffet/buffet3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Pós-Evento</span></a>
     </section>
+
+    <!-- Botão Adicionar ao Evento -->
+    <div class="tw-mt-12 tw-text-center scroll-reveal" data-animation="animate-fade-in-up">
+      <button onclick="abrirPopupAdicionar()" class="tw-bg-emerald-600 tw-text-white tw-px-8 tw-py-4 tw-rounded-full tw-font-bold tw-text-lg hover:tw-bg-emerald-700 tw-transition-colors tw-shadow-lg hover:tw-shadow-xl">
+        <svg class="tw-w-6 tw-h-6 tw-inline-block tw-mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+        Adicionar ao Evento
+      </button>
+    </div>
   </div>
 </main>
 
@@ -106,6 +116,168 @@
     </div>
   </div>
 </div>
+
+<!-- Popup Adicionar ao Evento -->
+<div id="popupAdicionar" class="modal tw-items-center tw-justify-center tw-px-4">
+  <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden animate-fade-in-scale">
+    <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-6 tw-border-b tw-border-slate-200">
+      <div>
+        <h3 class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Adicionar ao Evento</h3>
+        <p class="tw-text-sm tw-text-slate-500">Selecione os serviços de cerimonial para seu evento</p>
+      </div>
+      <button onclick="fecharPopupAdicionar()" class="tw-p-2 tw-rounded-lg hover:tw-bg-slate-100 tw-transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="tw-p-6">
+      <div class="tw-grid md:tw-grid-cols-2 tw-gap-6">
+        <!-- Lista de serviços -->
+        <div>
+          <h4 class="tw-text-lg tw-font-bold tw-text-slate-900 tw-mb-4">Serviços Disponíveis</h4>
+          <div class="tw-space-y-3">
+            <!-- Planejamento -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="planejamento" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="planejamento" class="tw-font-semibold tw-text-slate-900">Planejamento</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 2.500</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Levantamento de objetivos, público e orçamento</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-planejamento">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (1 mês) - R$ 2.500</option>
+                  <option value="completo">Completo (2 meses) - R$ 4.000</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Coordenação do Dia -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="diac" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="diac" class="tw-font-semibold tw-text-slate-900">Coordenação do Dia</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 1.800</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Execução do roteiro, comunicação com equipes</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-diac">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (8h) - R$ 1.800</option>
+                  <option value="completo">Completo (12h) - R$ 2.500</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Gestão de Fornecedores -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="fornecedores" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="fornecedores" class="tw-font-semibold tw-text-slate-900">Gestão de Fornecedores</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 1.200</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Cotação, contratação e acompanhamento de entregas</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-fornecedores">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (até 5 fornecedores) - R$ 1.200</option>
+                  <option value="completo">Completo (até 10 fornecedores) - R$ 2.000</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Consultoria -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="consultoria" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="consultoria" class="tw-font-semibold tw-text-slate-900">Consultoria</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 800</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Para quem precisa de direção e recomendações</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-consultoria">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (2h) - R$ 800</option>
+                  <option value="completo">Completo (4h) - R$ 1.400</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Roteiro & Timeline -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="roteiro" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="roteiro" class="tw-font-semibold tw-text-slate-900">Roteiro & Timeline</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 600</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Minutagem detalhada com marcos, avisos e responsáveis</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-roteiro">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (evento simples) - R$ 600</option>
+                  <option value="completo">Completo (evento complexo) - R$ 1.000</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Pós-Evento -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="pos" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="pos" class="tw-font-semibold tw-text-slate-900">Pós-Evento</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 500</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Relatório, materiais e consolidação de aprendizados</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-pos">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (relatório simples) - R$ 500</option>
+                  <option value="completo">Completo (relatório detalhado) - R$ 800</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumo -->
+        <div>
+          <h4 class="tw-text-lg tw-font-bold tw-text-slate-900 tw-mb-4">Resumo da Seleção</h4>
+          <div class="tw-bg-slate-50 tw-rounded-lg tw-p-4">
+            <div id="resumoItens" class="tw-space-y-2 tw-mb-4">
+              <p class="tw-text-slate-600 tw-text-sm">Nenhum item selecionado</p>
+            </div>
+            <div class="tw-border-t tw-border-slate-200 tw-pt-4">
+              <div class="tw-flex tw-justify-between tw-text-lg tw-font-bold">
+                <span>Total:</span>
+                <span id="totalSelecao" class="tw-text-emerald-600">R$ 0,00</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tw-mt-6 tw-space-y-3">
+            <button onclick="adicionarAoCarrinho()" class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-emerald-700 tw-transition-colors">
+              Adicionar ao Carrinho
+            </button>
+            <button onclick="fecharPopupAdicionar()" class="tw-w-full tw-bg-slate-100 tw-text-slate-700 tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-slate-200 tw-transition-colors">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- FOOTER MINIMALISTA -->
   <footer class="footer-modern scroll-reveal" data-animation="animate-fade-in-up">
     <div class="container">
@@ -202,6 +374,90 @@
 
   // bind cards
   document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+
+  // Popup Adicionar ao Evento
+  const popupAdicionar = document.getElementById('popupAdicionar');
+  
+  function abrirPopupAdicionar() {
+    popupAdicionar.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function fecharPopupAdicionar() {
+    popupAdicionar.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  
+  // Fechar popup clicando fora
+  popupAdicionar.addEventListener('click', e => {
+    if (e.target === popupAdicionar) fecharPopupAdicionar();
+  });
+  
+  // Fechar com ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && popupAdicionar.classList.contains('open')) {
+      fecharPopupAdicionar();
+    }
+  });
+  
+  // Controlar checkboxes e mostrar opções
+  const checkboxes = document.querySelectorAll('#popupAdicionar input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const opcoes = document.getElementById(`opcoes-${this.id}`);
+      if (this.checked) {
+        opcoes.classList.remove('tw-hidden');
+      } else {
+        opcoes.classList.add('tw-hidden');
+      }
+      atualizarResumo();
+    });
+  });
+  
+  // Atualizar resumo da seleção
+  function atualizarResumo() {
+    const itensSelecionados = [];
+    let total = 0;
+    
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const opcoes = document.getElementById(`opcoes-${checkbox.id}`);
+        const select = opcoes.querySelector('select');
+        const opcaoSelecionada = select.options[select.selectedIndex];
+        const preco = parseFloat(opcaoSelecionada.textContent.match(/R\$\s*([\d.,]+)/)[1].replace('.', '').replace(',', '.'));
+        
+        itensSelecionados.push({
+          nome: checkbox.nextElementSibling.textContent,
+          opcao: opcaoSelecionada.textContent,
+          preco: preco
+        });
+        total += preco;
+      }
+    });
+    
+    const resumoItens = document.getElementById('resumoItens');
+    const totalSelecao = document.getElementById('totalSelecao');
+    
+    if (itensSelecionados.length === 0) {
+      resumoItens.innerHTML = '<p class="tw-text-slate-600 tw-text-sm">Nenhum item selecionado</p>';
+    } else {
+      resumoItens.innerHTML = itensSelecionados.map(item => 
+        `<div class="tw-flex tw-justify-between tw-text-sm">
+          <span>${item.nome}</span>
+          <span class="tw-font-semibold">R$ ${item.preco.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</span>
+        </div>`
+      ).join('');
+    }
+    
+    totalSelecao.textContent = `R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+  }
+  
+  // Função adicionarAoCarrinho será fornecida pelo sistema unificado
+  
+  // Atualizar resumo quando mudar seleção
+  document.querySelectorAll('#popupAdicionar select').forEach(select => {
+    select.addEventListener('change', atualizarResumo);
+  });
 </script>
 
 <!-- Botão Flutuante WhatsApp -->
@@ -218,6 +474,9 @@
   </a>
 </div>
 
+  <!-- Sistema de Carrinho -->
+  <script src="../../assets/js/carrinho.js"></script>
+  
   <!-- Sistema de Animações -->
   <script src="../../assets/js/app.js"></script>
 </body>

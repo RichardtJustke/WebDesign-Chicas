@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chicas Eventos • Briefing</title>
+
+  <!-- Fonte (opcional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- Tailwind CDN + prefixo `tw-` -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { prefix: 'tw-' }; </script>
+
+  <style>
+    html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    
+    @keyframes firework {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-slate-50">
+
+  <!-- HEADER MINIMALISTA -->
+  <header class="header-modern">
+    <div class="container">
+      <nav class="nav-modern">
+        <!-- Logo -->
+        <a class="logo-modern" href="../index.html">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Chicas Eventos</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <div class="nav-menu">
+          <a href="../index.html#servicos" class="nav-link menu-item">Serviços</a>
+          <a href="portfolio.html" class="nav-link menu-item">Portfólio</a>
+          <a href="sobre.html" class="nav-link menu-item">Sobre</a>
+          <a href="briefing.html" class="nav-cta-modern">Orçamento</a>
+        </div>
+
+        <!-- Menu Mobile -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <!-- Menu Mobile Overlay -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html#servicos" class="mobile-link">Serviços</a>
+        <a href="portfolio.html" class="mobile-link">Portfólio</a>
+        <a href="sobre.html" class="mobile-link">Sobre</a>
+        <a href="briefing.html" class="mobile-cta">Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="tw-flex-1 tw-py-10">
+    <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+      <section class="tw-mx-auto tw-max-w-3xl tw-p-0 tw-rounded-[28px] tw-border tw-border-slate-200 tw-shadow-2xl tw-bg-white/85 tw-backdrop-blur-sm tw-overflow-hidden">
+
+        <!-- Cabeçalho do cartão -->
+        <div class="tw-px-6 tw-py-6 md:tw-px-10 md:tw-py-10">
+          <div class="tw-text-center">
+            <span class="tw-text-xs tw-tracking-wide tw-font-semibold tw-text-emerald-700 tw-uppercase">texto para mudar</span>
+            <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1">Orçamento rápido</h1>
+            <p class="tw-text-slate-600 tw-mt-2">
+              Leva menos de 2 min. É assim que entendemos sua necessidade e preparamos um orçamento sob medida.
+            </p>
+          </div>
+        </div>
+
+        <!-- Formulário (única etapa) -->
+        <div class="tw-p-6 md:tw-p-10">
+          <form id="briefingForm" class="tw-space-y-6" novalidate>
+            <!-- 1) Nome completo (obrigatório) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="nome">Nome completo</label>
+              <input id="nome" name="nome" type="text" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="Seu nome completo" />
+            </div>
+
+            <!-- 2) WhatsApp (obrigatório, com máscara) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="(00) 00000-0000" />
+              <p class="tw-text-xs tw-text-slate-500 tw-mt-1">Formato: (99) 99999-9999</p>
+            </div>
+
+            <!-- 3) E-mail (opcional) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="email">E-mail (opcional)</label>
+              <input id="email" name="email" type="email"
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="voce@email.com" />
+            </div>
+
+            <!-- 4) Data do evento (obrigatório) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="data_evento">Data do evento</label>
+              <input id="data_evento" name="data_evento" type="date" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 focus:tw-outline-none focus:tw-border-emerald-400" />
+            </div>
+
+            <!-- 5) Local do evento (obrigatório) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="local_evento">Local do evento</label>
+              <input id="local_evento" name="local_evento" type="text" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="Endereço/Bairro/Cidade" />
+            </div>
+
+            <!-- 6) Quantidade de pessoas (obrigatório, inteiro positivo) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="convidados">Quantidade de pessoas</label>
+              <input id="convidados" name="convidados" type="number" inputmode="numeric" min="1" step="1" required
+                     class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                     placeholder="ex.: 100" />
+            </div>
+
+            <!-- 7) Serviço de interesse (obrigatório) -->
+            <div>
+              <span class="tw-text-sm tw-font-semibold tw-text-slate-700">Serviço de interesse</span>
+              <div class="tw-mt-2 tw-flex tw-flex-wrap tw-gap-4">
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="Buffet"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>Buffet</span>
+                </label>
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="Audiovisual"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>Audiovisual</span>
+                </label>
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="Cerimonial"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>Cerimonial</span>
+                </label>
+                <label class="tw-inline-flex tw-items-center tw-gap-2">
+                  <input type="checkbox" name="servicos" value="RH"
+                         class="tw-rounded tw-border-slate-300 tw-text-emerald-600 focus:tw-ring-emerald-500" />
+                  <span>RH</span>
+                </label>
+              </div>
+              <p class="tw-text-xs tw-text-slate-500 tw-mt-1">Selecione pelo menos um serviço.</p>
+            </div>
+
+            <!-- 8) Descrição do evento (opcional) -->
+            <div>
+              <label class="tw-text-sm tw-font-semibold tw-text-slate-700" for="descricao">Descrição do evento (opcional)</label>
+              <textarea id="descricao" name="descricao" rows="4"
+                        class="tw-w-full tw-px-4 tw-py-3 tw-rounded-xl tw-border tw-border-slate-200 tw-shadow-sm tw-text-slate-900 placeholder:tw-text-slate-400 focus:tw-outline-none focus:tw-border-emerald-400"
+                        placeholder="Ex.: Aniversário, casamento, lançamento de produto, etc."></textarea>
+            </div>
+
+            <!-- Ações -->
+            <div class="tw-text-center">
+              <button type="submit" id="submitBtn"
+                      class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+                Enviar Briefing
+              </button>
+            </div>
+
+            <!-- Status / Sucesso -->
+            <div id="statusBox" class="tw-hidden tw-mt-6 tw-text-center"></div>
+            <div id="boxSucesso" class="tw-hidden tw-text-center tw-space-y-4 tw-mt-8">
+              <h3 class="tw-text-2xl tw-font-extrabold tw-text-emerald-700">Briefing enviado!</h3>
+              <div class="tw-flex tw-justify-center tw-gap-4 tw-flex-wrap">
+                <a href="https://wa.me/5599999999999?text=Hello!%20I%E2%80%99d%20like%20a%20quote%20and%20preferred%20to%20contact%20you%20directly%20here."
+                   target="_blank" rel="noopener"
+                   class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-emerald-700 tw-text-white hover:tw-opacity-95">
+                  Contato no WhatsApp
+                </a>
+                <a href="portfolio.html"
+                   class="tw-inline-flex tw-items-center tw-justify-center tw-px-4 tw-py-2 tw-rounded-xl tw-font-semibold tw-shadow tw-bg-white tw-text-emerald-700 tw-border tw-border-emerald-700 hover:tw-bg-emerald-50">
+                  Ver Portfólio
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER MINIMALISTA -->
+  <footer class="footer-modern">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Logo e descrição -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Chicas Eventos</span>
+          </div>
+          <p class="footer-desc">
+            Transformamos cada evento em uma experiência única e inesquecível.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>Serviços</h4>
+            <a href="servicos/buffet.html">Buffet</a>
+            <a href="servicos/audiovisual.html">Audiovisual</a>
+            <a href="servicos/rh.html">RH</a>
+            <a href="servicos/cerimonial.html">Cerimonial</a>
+          </div>
+          <div class="link-group">
+            <h4>Empresa</h4>
+            <a href="sobre.html">Sobre</a>
+            <a href="portfolio.html">Portfólio</a>
+            <a href="briefing.html">Contato</a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social">
+          <h4>Conecte-se</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Chicas Eventos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LÓGICA -->
+  <script>
+    // === CONFIG ===
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxNj1Cx5EOjSEsgXsDN25qul8rCbfSxGeh4AMnROMS5sFG7GPSgyoUJUQmlU2_RgnIY/exec';
+    const EXTRA_NOTIFY = 'rj.justke@gmail.com'; // opcional: cópia
+
+
+    // === FORM ===
+    const form = document.getElementById('briefingForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusBox = document.getElementById('statusBox');
+    const successBox = document.getElementById('boxSucesso');
+
+    // Máscara simples de WhatsApp
+    const wInput = document.getElementById('whatsapp');
+    if (wInput) {
+      wInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 11); // 11 dígitos
+        v = v.replace(/^(\d{2})(\d)/, '($1) $2');
+        v = v.replace(/(\d{5})(\d)/, '$1-$2');
+        e.target.value = v;
+      });
+    }
+
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      submitBtn.classList.toggle('tw-opacity-60', isLoading);
+      submitBtn.classList.toggle('tw-cursor-not-allowed', isLoading);
+      submitBtn.textContent = isLoading ? 'Enviando…' : 'Enviar Briefing';
+    }
+
+    function showStatus(ok, msg) {
+      statusBox.className = 'tw-mt-6 tw-text-center ' + (ok ? 'tw-text-emerald-700' : 'tw-text-red-600');
+      statusBox.innerHTML = '<div class="tw-font-semibold">' + msg + '</div>';
+      statusBox.classList.remove('tw-hidden');
+    }
+
+    function formToObject() {
+      const fd = new FormData(form);
+      const servicos = Array.from(form.querySelectorAll('input[name="servicos"]:checked')).map(c => c.value);
+      return {
+        nome: fd.get('nome') || '',
+        whatsapp: fd.get('whatsapp') || '',
+        email: fd.get('email') || '',
+        data_evento: fd.get('data_evento') || '',
+        local_evento: fd.get('local_evento') || '',
+        convidados: fd.get('convidados') || '',
+        servicos,
+        descricao: fd.get('descricao') || '',
+        timestamp: new Date().toISOString(),
+        ...(EXTRA_NOTIFY ? { notify_email: EXTRA_NOTIFY } : {})
+      };
+    }
+
+    function validateBasic() {
+      if (!form.nome.value.trim()) { form.nome.focus(); return 'Informe seu nome completo.'; }
+      const digits = (form.whatsapp.value.match(/\d/g) || []).join('');
+      if (digits.length !== 11) { form.whatsapp.focus(); return 'Informe um WhatsApp válido (11 dígitos).'; }
+      if (!form.data_evento.value) { form.data_evento.focus(); return 'Selecione a data do evento.'; }
+      if (!form.local_evento.value.trim()) { form.local_evento.focus(); return 'Informe o local do evento.'; }
+      const qty = Number(form.convidados.value);
+      if (!Number.isInteger(qty) || qty < 1) { form.convidados.focus(); return 'Quantidade de pessoas deve ser um inteiro positivo.'; }
+      const hasService = form.querySelectorAll('input[name="servicos"]:checked').length > 0;
+      if (!hasService) { return 'Selecione pelo menos um serviço de interesse.'; }
+      return null;
+    }
+
+    async function sendJSON(url, data, mode = 'cors') {
+      if (mode === 'no-cors') {
+        const fd = new FormData();
+        fd.append('payload', JSON.stringify(data));
+        return fetch(url, { method: 'POST', mode: 'no-cors', body: fd });
+      }
+      return fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        mode: 'cors'
+      });
+    }
+
+    function showSuccess() {
+      // Efeito de fogos de artifício
+      createFireworks();
+      
+      form.classList.add('tw-hidden');
+      successBox.classList.remove('tw-hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function createFireworks() {
+      const colors = ['#059669', '#0ea5e9', '#f59e0b', '#ef4444', '#8b5cf6'];
+      const container = document.body;
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const firework = document.createElement('div');
+          firework.style.cssText = `
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            left: ${Math.random() * window.innerWidth}px;
+            top: ${Math.random() * window.innerHeight}px;
+            animation: firework 2s ease-out forwards;
+          `;
+          
+          container.appendChild(firework);
+          
+          setTimeout(() => {
+            firework.remove();
+          }, 2000);
+        }, i * 50);
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusBox.classList.add('tw-hidden');
+
+      const err = validateBasic();
+      if (err) { showStatus(false, err); return; }
+
+      const data = formToObject();
+      setLoading(true);
+      try {
+        let res = await sendJSON(WEBHOOK_URL, data, 'cors');
+        if (!res.ok) {
+          await sendJSON(WEBHOOK_URL, data, 'no-cors');
+          setLoading(false);
+          showSuccess();
+          return;
+        }
+        setLoading(false);
+        showSuccess();
+      } catch (err) {
+        try {
+          const f = document.createElement('form');
+          f.action = WEBHOOK_URL; f.method = 'POST'; f.target = '_hidden_iframe'; f.style.display = 'none';
+          const input = document.createElement('input');
+          input.type = 'hidden'; input.name = 'payload'; input.value = JSON.stringify(data);
+          f.appendChild(input);
+          let iframe = document.getElementById('_hidden_iframe');
+          if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.name = '_hidden_iframe'; iframe.id = '_hidden_iframe'; iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+          }
+          document.body.appendChild(f); f.submit();
+          setLoading(false);
+          showSuccess();
+        } catch (_) {
+          setLoading(false);
+          showStatus(false, 'Não foi possível enviar. Verifique a URL do Web App e as permissões.');
+          alert('Could not send. Check the Web App URL and permissions.');
+        }
+      }
+    });
+  </script>
+
+  <!-- Sistema de Animações removido da página de briefing -->
+
+  <!-- Botão Flutuante WhatsApp -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Chicas Eventos." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="whatsapp-btn"
+       aria-label="Fale conosco no WhatsApp">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+      </svg>
+      <span class="whatsapp-tooltip">Fale conosco!</span>
+    </a>
+  </div>
+
+  <!-- Sistema de Animações -->
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

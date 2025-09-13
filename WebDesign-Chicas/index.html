@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chicas Eventos — Home</title>
+  <link rel="icon" href="assets/public/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind config com prefixo -->
+  <script>
+    tailwind.config = {
+      prefix: 'tw-',
+      corePlugins: { preflight: false }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- HEADER MINIMALISTA -->
+  <header class="header-modern animate-slide-in-top">
+    <div class="container">
+      <nav class="nav-modern">
+        <!-- Logo -->
+        <a class="logo-modern hover-bounce" href="index.html">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Chicas Eventos</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <div class="nav-menu">
+          <a href="#servicos" class="nav-link menu-item">Serviços</a>
+          <a href="pages/portfolio.html" class="nav-link menu-item">Portfólio</a>
+          <a href="pages/sobre.html" class="nav-link menu-item">Sobre</a>
+          <a href="pages/login.html" class="nav-link menu-item">Login</a>
+          <a href="pages/briefing.html" class="nav-cta-modern btn-animate">Orçamento</a>
+        </div>
+
+        <!-- Menu Mobile -->
+        <button class="menu-toggle hover-pulse" id="menuToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <!-- Menu Mobile Overlay -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos" class="mobile-link">Serviços</a>
+        <a href="pages/portfolio.html" class="mobile-link">Portfólio</a>
+        <a href="pages/sobre.html" class="mobile-link">Sobre</a>
+        <a href="pages/login.html" class="mobile-link">Login</a>
+        <a href="pages/briefing.html" class="mobile-cta">Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1 — HERO SPLIT -->
+    <section class="tw-w-full tw-bg-[#f7faf9] tw-py-10 hero-animate scroll-reveal" data-animation="animate-fade-in-up">
+      <div
+        class="container tw-mx-auto tw-max-w-6xl
+               tw-grid tw-grid-cols-1 md:tw-grid-cols-2
+               tw-gap-0 tw-items-stretch">
+
+        <!-- Bloco branco (texto) -->
+        <div
+          class="tw-bg-white tw-shadow-[0_10px_20px_rgba(0,0,0,.08),0_2px_6px_rgba(0,0,0,.04)]
+                 tw-rounded-t-[28px] md:tw-rounded-l-[28px] md:tw-rounded-tr-none
+                 tw-p-8 md:tw-p-12
+                 tw-flex tw-items-center
+                 tw-h-auto md:tw-h-[440px] animate-fade-in-left animate-delay-200">
+          <div class="tw-max-w-[44ch]">
+            <h1 class="tw-text-4xl md:tw-text-5xl tw-font-extrabold tw-leading-tight tw-text-slate-900">
+              Seu evento corporativo,<br/> impecável do início ao fim(texto que pode mudar)
+            </h1>
+            <p class="tw-mt-4 tw-text-slate-600 animate-fade-in-up animate-delay-400">
+              Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.(texto que pode mudar)
+            </p>
+          </div>
+        </div>
+
+        <!-- Imagem -->
+        <figure
+          class="tw-rounded-b-[28px] md:tw-rounded-r-[28px] md:tw-rounded-bl-none
+                 tw-overflow-hidden tw-shadow-[0_10px_20px_rgba(0,0,0,.08),0_2px_6px_rgba(0,0,0,.04)]
+                 tw-h-[260px] md:tw-h-[440px] tw-m-0 img-zoom animate-fade-in-right animate-delay-300">
+          <img
+            src="assets/public/img/1.jpg"
+            alt="Buffet corporativo"
+            loading="eager"
+            class="tw-w-full tw-h-full tw-object-cover tw-object-[50%_80%]" />
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2 — SERVIÇOS (imagem full-bleed nos cards) -->
+    <section id="servicos" class="section tw-py-16 scroll-reveal" data-animation="animate-fade-in-up">
+      <div class="container tw-mx-auto tw-max-w-6xl">
+        <!-- Título centralizado -->
+        <h2 class="title tw-text-3xl md:tw-text-4xl tw-font-bold tw-text-center tw-mb-10 text-reveal animate-fade-in-up">
+          Nossos serviços
+        </h2>
+
+        <div class="tw-grid tw-gap-6 md:tw-grid-cols-4">
+          <!-- Card base: reaproveitado 4x -->
+          <!-- 1 Buffet -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200 service-card" data-stagger>
+            <!-- imagem -->
+            <img src="assets/public/img/buffet/buffet.jpg" alt="Buffet corporativo"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" />
+            <!-- overlay gradiente p/ contraste -->
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <!-- conteúdo -->
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Buffet corporativo</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Coffee breaks, coquetéis e menus sob medida.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="pages/servicos/buffet.html">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- 2 Audiovisual -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300 service-card" data-stagger>
+            <img src="assets/public/img/aud/fotografo.jpg" alt="Captação audiovisual"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center service-card-img" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Captação audiovisual</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Foto, vídeo, cobertura social e drone.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="pages/servicos/audiovisual.html">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- 3 RH -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400 service-card" data-stagger>
+            <img src="assets/public/img/rh/operacional.jpg" alt="Recursos humanos"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center service-card-img" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Recursos humanos</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Recepção, apoio e controle de acesso.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="pages/servicos/rh.html">Ver detalhes →</a>
+            </div>
+          </article>
+
+          <!-- 4 Cerimonial -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500 service-card" data-stagger>
+            <img src="assets/public/img/org/ale.jpg" alt="Organização & cerimonial"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center service-card-img" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Organização & cerimonial</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Planejamento, fornecedores e execução.</p>
+              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
+                 href="pages/servicos/cerimonial.html">Ver detalhes →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<!-- SECTION 3 — DIFERENCIAIS -->
+<section class="tw-py-16 tw-bg-slate-50 scroll-reveal" data-animation="animate-fade-in-up">
+  <div class="container tw-mx-auto tw-max-w-6xl tw-px-4">
+    <div class="tw-text-center tw-mb-12">
+      <span class="tw-text-sm tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase tw-mb-2 tw-block">Nossos diferenciais</span>
+      <h2 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mb-4">Por que escolher a Chicas Eventos?</h2>
+      <p class="tw-text-lg tw-text-slate-600 tw-leading-relaxed tw-max-w-2xl tw-mx-auto">
+        Transformamos cada detalhe em uma experiência única. Conheça os diferenciais que fazem da Chicas a escolha certa para o seu evento.
+      </p>
+    </div>
+    
+    <div class="tw-grid md:tw-grid-cols-3 tw-gap-8">
+      <!-- Integração completa -->
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-emerald-500 card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-emerald-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          </svg>
+        </div>
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-3">Integração completa</h3>
+        <p class="tw-text-slate-600 tw-leading-relaxed">
+          Tudo em um só lugar: buffet, audiovisual, RH e cerimonial com gestão unificada.
+        </p>
+      </div>
+      
+      <!-- Agilidade garantida -->
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-blue-500 card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-blue-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-3">Agilidade garantida</h3>
+        <p class="tw-text-slate-600 tw-leading-relaxed">
+          Equipe treinada e cronograma ágil para montar e executar sem atrasos.
+        </p>
+      </div>
+      
+      <!-- Beleza funcional -->
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-purple-500 card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-purple-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
+        </div>
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-3">Beleza funcional</h3>
+        <p class="tw-text-slate-600 tw-leading-relaxed">
+          Soluções que unem estética impecável e praticidade no dia do evento.
+        </p>
+      </div>
+      
+      <!-- Identidade regional -->
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-orange-500 card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-orange-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l4 8h-8l4-8zM2 22h20l-10-8-10 8z"></path>
+          </svg>
+        </div>
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-3">Identidade regional</h3>
+        <p class="tw-text-slate-600 tw-leading-relaxed">
+          Valorizamos a cultura amazônica, trazendo um toque único e autêntico.
+        </p>
+      </div>
+      
+      <!-- Rede confiável -->
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-green-500 card-animate hover-lift stagger-5 animate-fade-in-up animate-delay-600" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-green-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-3">Rede confiável</h3>
+        <p class="tw-text-slate-600 tw-leading-relaxed">
+          Fornecedores homologados que asseguram qualidade em cada etapa.
+        </p>
+      </div>
+      
+      <!-- Acompanhamento total -->
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-indigo-500 card-animate hover-lift stagger-6 animate-fade-in-up animate-delay-700" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-indigo-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7H3v12a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-3">Acompanhamento total</h3>
+        <p class="tw-text-slate-600 tw-leading-relaxed">
+          Estamos ao seu lado do pré até o pós-evento, sem deixar nada escapar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =============== SECTION — PORTFÓLIO (ESTEIRA + FILTROS, BOTÕES EM UMA LINHA) =============== -->
+<section class="tw-bg-[#f7faf9] tw-py-16 scroll-reveal" data-animation="animate-fade-in-up">
+  <div class="container tw-mx-auto tw-max-w-6xl">
+
+    <!-- Cabeçalho -->
+    <div class="tw-mb-6">
+      <div class="tw-text-center tw-mb-6">
+        <h2 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mb-4 animate-fade-in-up">
+          Portfólio
+        </h2>
+        <p class="tw-text-slate-600 tw-text-lg tw-leading-relaxed tw-max-w-2xl tw-mx-auto animate-fade-in-up animate-delay-200">
+          Um recorte dos nossos últimos trabalhos. Veja por categoria ou acesse o portfólio completo.
+        </p>
+      </div>
+
+      <!-- Botões: todos iguais e em uma só linha -->
+      <div class="tw-flex tw-flex-wrap tw-gap-3 tw-justify-center animate-fade-in-up animate-delay-300">
+        <a href="pages/portfolio.html"
+           class="pf-chip pf-primary btn-animate">Ver portfólio</a>
+
+        <button class="pf-chip pf-active btn-animate" data-filter="all">Todas</button>
+        <button class="pf-chip btn-animate" data-filter="buffet">Buffet</button>
+        <button class="pf-chip btn-animate" data-filter="aud">Audiovisual</button>
+        <button class="pf-chip btn-animate" data-filter="rh">RH</button>
+        <button class="pf-chip btn-animate" data-filter="org">Organização</button>
+      </div>
+    </div>
+
+    <!-- Esteiras -->
+    <div class="tw-space-y-4 animate-fade-in-up animate-delay-400">
+      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div id="pf-track-1" class="pf-track pf-track-rtl"></div>
+      </div>
+      <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow">
+        <div id="pf-track-2" class="pf-track pf-track-rtl pf-slower"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estilos -->
+  <style>
+    /* chips/botões unificados */
+    .pf-chip{
+      padding:.625rem 1.25rem;
+      border-radius:9999px;
+      font-weight:600;
+      font-size:.9rem;
+      background:#fff;
+      color:#0f172a;
+      border:1px solid #e2e8f0;
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .pf-chip:hover{ background:#f8fafc; }
+    .pf-active{ background:#059669; color:#fff; border-color:#059669; }
+    .pf-primary{ background:#059669; color:#fff; border-color:#059669; }
+    .pf-primary:hover{ filter:brightness(.95); }
+
+    /* esteira */
+    .pf-marquee-wrap { height:200px; background:#fff; }
+    @media (min-width:768px){ .pf-marquee-wrap{ height:240px; } }
+
+    .pf-track{ display:flex; align-items:center; gap:16px; width:max-content; height:100%; }
+    .pf-item{ height:100%; width:360px; object-fit:cover; border-radius:16px; box-shadow:0 6px 14px rgba(0,0,0,.08); }
+    @media (max-width:767px){ .pf-item{ width:260px; border-radius:14px; } }
+
+    @keyframes pf-move-right { 0%{ transform:translateX(-50%) } 100%{ transform:translateX(0) } }
+    .pf-track-rtl{ animation: pf-move-right 30s linear infinite; will-change: transform; }
+    .pf-slower{ animation-duration:38s; }
+
+    /* (opcional) pausar a esteira no hover */
+    /* .pf-marquee-wrap:hover .pf-track{ animation-play-state: paused; } */
+  </style>
+
+  <!-- Script -->
+  <script>
+    // catálogo por pasta
+    const PF = {
+      buffet: [
+        "assets/public/img/buffet/buffet.jpg",
+        "assets/public/img/buffet/brunch1.jpg",
+        "assets/public/img/buffet/brunch2.jpg",
+        "assets/public/img/buffet/buffet2.jpg",
+        "assets/public/img/buffet/coffeebreak1.jpg",
+        "assets/public/img/buffet/coqueteis1.jpg"
+      ],
+      aud: [
+        "assets/public/img/aud/cobertura.jpg",
+        "assets/public/img/aud/cobertura1.jpg",
+        "assets/public/img/aud/fotografo2.jpg",
+        "assets/public/img/aud/fotografo3.jpg",
+        "assets/public/img/aud/fotografo4.jpg",
+        "assets/public/img/aud/fotografo5.jpg"
+      ],
+      rh: [
+        "assets/public/img/rh/operacional1.jpg",
+        "assets/public/img/rh/operacional2.jpg",
+        "assets/public/img/rh/operacional3.jpg",
+        "assets/public/img/rh/operacional4.jpg"
+      ],
+      org: [
+        "assets/public/img/org/ale.jpg"
+      ]
+    };
+    const ALL = Object.values(PF).flat();
+
+    const track1 = document.getElementById('pf-track-1');
+    const track2 = document.getElementById('pf-track-2');
+    const chips  = Array.from(document.querySelectorAll('.pf-chip[data-filter]'));
+
+    function buildItems(srcs){
+      const seq = srcs.concat(srcs); // duplica para loop contínuo
+      return seq.map(src => `<img src="${src}" alt="" class="pf-item" />`).join('');
+    }
+
+    function render(filter='all'){
+      const list = filter === 'all' ? ALL : (PF[filter] || []);
+      // separa entre linhas (se faltar, reaproveita)
+      const half = Math.ceil(list.length / 2) || 1;
+      const l1 = (list.slice(0, half).length ? list.slice(0, half) : list);
+      const l2 = (list.slice(half).length ? list.slice(half) : list);
+
+      // pausa animação, troca conteúdo e retoma
+      track1.style.animationPlayState = 'paused';
+      track2.style.animationPlayState = 'paused';
+      track1.innerHTML = buildItems(l1);
+      track2.innerHTML = buildItems(l2);
+      void track1.offsetWidth; // reflow
+      track1.style.animationPlayState = 'running';
+      track2.style.animationPlayState = 'running';
+    }
+
+    function setActive(name){
+      chips.forEach(c => c.classList.remove('pf-active'));
+      const hit = chips.find(c => c.dataset.filter === name);
+      hit && hit.classList.add('pf-active');
+    }
+
+    chips.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        render(f);
+        setActive(f);
+      });
+    });
+
+    // inicial
+    render('all');
+  </script>
+</section>
+
+
+
+
+  </main>
+
+  <!-- FOOTER MINIMALISTA -->
+  <footer class="footer-modern scroll-reveal" data-animation="animate-fade-in-up">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Logo e descrição -->
+        <div class="footer-brand">
+          <div class="footer-logo hover-bounce">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Chicas Eventos</span>
+          </div>
+          <p class="footer-desc">
+            Transformamos cada evento em uma experiência única e inesquecível.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>Serviços</h4>
+            <a href="pages/servicos/buffet.html" class="hover-pulse">Buffet</a>
+            <a href="pages/servicos/audiovisual.html" class="hover-pulse">Audiovisual</a>
+            <a href="pages/servicos/rh.html" class="hover-pulse">RH</a>
+            <a href="pages/servicos/cerimonial.html" class="hover-pulse">Cerimonial</a>
+          </div>
+          <div class="link-group">
+            <h4>Empresa</h4>
+            <a href="pages/sobre.html" class="hover-pulse">Sobre</a>
+            <a href="pages/portfolio.html" class="hover-pulse">Portfólio</a>
+            <a href="pages/briefing.html" class="hover-pulse">Contato</a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social">
+          <h4>Conecte-se</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Chicas Eventos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Botão Flutuante WhatsApp -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Chicas Eventos." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="whatsapp-btn"
+       aria-label="Fale conosco no WhatsApp">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+      </svg>
+      <span class="whatsapp-tooltip">Fale conosco!</span>
+    </a>
+  </div>
+
+  <!-- Sistema de Carrinho -->
+  <script src="assets/js/carrinho.js"></script>
+  
+  <!-- Sistema de Animações -->
+  <script src="assets/js/app.js"></script>
+  
+  <!-- Sistema de Autenticação -->
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

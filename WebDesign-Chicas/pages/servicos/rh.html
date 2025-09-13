@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equipe (RH) — Chicas Eventos</title>
+  <link rel="icon" href="../../assets/public/img/favicon.png">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={prefix:'tw-',corePlugins:{preflight:false}};</script>
+  <style>
+    .svc-card{position:relative;overflow:hidden;border-radius:20px}
+    .svc-card img{width:100%;height:100%;object-fit:cover}
+    .svc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.6))}
+    .svc-title{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;font-weight:800;font-size:1.25rem}
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(4px);display:none;z-index:60}
+    .modal.open{display:flex}
+  </style>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+  <!-- HEADER MINIMALISTA -->
+  <header class="header-modern animate-slide-in-top">
+    <div class="container">
+      <nav class="nav-modern">
+        <!-- Logo -->
+        <a class="logo-modern hover-bounce" href="../../index.html">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Chicas Eventos</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <div class="nav-menu">
+          <a href="../../index.html#servicos" class="nav-link menu-item">Serviços</a>
+          <a href="../portfolio.html" class="nav-link menu-item">Portfólio</a>
+          <a href="../sobre.html" class="nav-link menu-item">Sobre</a>
+          <a href="../briefing.html" class="nav-cta-modern btn-animate">Orçamento</a>
+        </div>
+
+        <!-- Menu Mobile -->
+        <button class="menu-toggle hover-pulse" id="menuToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <!-- Menu Mobile Overlay -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="../../index.html#servicos" class="mobile-link">Serviços</a>
+        <a href="../portfolio.html" class="mobile-link">Portfólio</a>
+        <a href="../sobre.html" class="mobile-link">Sobre</a>
+        <a href="../briefing.html" class="mobile-cta">Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+<main class="tw-flex-1 tw-py-10">
+  <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+    <header class="tw-text-center tw-max-w-3xl tw-mx-auto scroll-reveal" data-animation="animate-fade-in-up">
+      <span class="tw-text-xs tw-font-semibold tw-tracking-widest tw-text-emerald-700 tw-uppercase animate-fade-in-up">Serviço</span>
+      <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1 text-reveal animate-fade-in-up animate-delay-200">Equipe Operacional (RH)</h1>
+      <p class="tw-text-slate-600 tw-mt-2 animate-fade-in-up animate-delay-300">Garçons, recepção, segurança e apoio. Escala planejada e briefing antes do evento.</p>
+    </header>
+
+    <section class="tw-mt-8 tw-grid md:tw-grid-cols-2 tw-gap-5 scroll-reveal" data-animation="animate-fade-in-up">
+      <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-400" data-id="garcom"><img src="../../assets/public/img/rh/operacional1.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Garçom/Bar</span></a>
+      <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-500" data-id="recepcao"><img src="../../assets/public/img/rh/operacional2.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Recepção</span></a>
+    </section>
+    <section class="tw-mt-6 tw-grid md:tw-grid-cols-2 tw-gap-5 scroll-reveal" data-animation="animate-fade-in-up">
+      <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-600" data-id="seguranca"><img src="../../assets/public/img/rh/operacional3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Segurança</span></a>
+      <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-700" data-id="apoio"><img src="../../assets/public/img/rh/operacional4.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Apoio/Operação</span></a>
+      <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-800" data-id="coord"><img src="../../assets/public/img/rh/operacional.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Coordenação de Sala</span></a>
+      <a class="svc-card card-animate hover-lift animate-fade-in-up animate-delay-900" data-id="limpeza"><img src="../../assets/public/img/buffet/buffet2.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'"><span class="svc-overlay"></span><span class="svc-title">Limpeza de Área</span></a>
+    </section>
+
+    <!-- Botão Adicionar ao Evento -->
+    <div class="tw-mt-12 tw-text-center scroll-reveal" data-animation="animate-fade-in-up">
+      <button onclick="abrirPopupAdicionar()" class="tw-bg-emerald-600 tw-text-white tw-px-8 tw-py-4 tw-rounded-full tw-font-bold tw-text-lg hover:tw-bg-emerald-700 tw-transition-colors tw-shadow-lg hover:tw-shadow-xl">
+        <svg class="tw-w-6 tw-h-6 tw-inline-block tw-mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+        Adicionar ao Evento
+      </button>
+    </div>
+  </div>
+</main>
+
+<div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
+  <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden animate-fade-in-scale">
+    <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
+      <div><h3 id="mTitle" class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Título</h3><p id="mMeta" class="tw-text-sm tw-text-slate-500">RH</p></div>
+      <button id="mClose" class="tw-p-2 tw-rounded-lg hover:tw-bg-slate-100 tw-transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="tw-p-5">
+      <p id="mDesc" class="tw-text-slate-600 tw-mb-4"></p>
+      <ul id="mBullets" class="tw-space-y-2 tw-mb-6"></ul>
+      <div class="tw-relative">
+        <img id="mHero" src="" alt="" class="tw-w-full tw-h-80 tw-object-cover tw-rounded-xl">
+        <button id="mPrev" class="tw-absolute tw-left-4 tw-top-1/2 tw--translate-y-1/2 tw-p-2 tw-bg-white/80 tw-rounded-full tw-shadow-lg hover:tw-bg-white tw-transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </button>
+        <button id="mNext" class="tw-absolute tw-right-4 tw-top-1/2 tw--translate-y-1/2 tw-p-2 tw-bg-white/80 tw-rounded-full tw-shadow-lg hover:tw-bg-white tw-transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div id="mThumbs" class="tw-flex tw-gap-2 tw-mt-4 tw-overflow-x-auto"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Adicionar ao Evento -->
+<div id="popupAdicionar" class="modal tw-items-center tw-justify-center tw-px-4">
+  <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden animate-fade-in-scale">
+    <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-6 tw-border-b tw-border-slate-200">
+      <div>
+        <h3 class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Adicionar ao Evento</h3>
+        <p class="tw-text-sm tw-text-slate-500">Selecione os serviços de RH para seu evento</p>
+      </div>
+      <button onclick="fecharPopupAdicionar()" class="tw-p-2 tw-rounded-lg hover:tw-bg-slate-100 tw-transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="tw-p-6">
+      <div class="tw-grid md:tw-grid-cols-2 tw-gap-6">
+        <!-- Lista de serviços -->
+        <div>
+          <h4 class="tw-text-lg tw-font-bold tw-text-slate-900 tw-mb-4">Serviços Disponíveis</h4>
+          <div class="tw-space-y-3">
+            <!-- Garçom/Bar -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="garcom" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="garcom" class="tw-font-semibold tw-text-slate-900">Garçom/Bar</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 150/pessoa</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Serviço de salão com garçons, runners e bartenders</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-garcom">
+                <div class="tw-space-y-2">
+                  <label class="tw-text-sm tw-text-slate-600">Número de pessoas:</label>
+                  <input type="number" min="1" value="50" class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                </div>
+              </div>
+            </div>
+
+            <!-- Recepção -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="recepcao" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="recepcao" class="tw-font-semibold tw-text-slate-900">Recepção</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 800</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Credenciamento, orientação e fluxo de público</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-recepcao">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (1 pessoa) - R$ 800</option>
+                  <option value="completo">Completo (2 pessoas) - R$ 1.400</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Segurança -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="seguranca" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="seguranca" class="tw-font-semibold tw-text-slate-900">Segurança</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 1.200</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Profissionais habilitados conforme a necessidade</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-seguranca">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (1 pessoa) - R$ 1.200</option>
+                  <option value="completo">Completo (2 pessoas) - R$ 2.200</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Apoio/Operação -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="apoio" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="apoio" class="tw-font-semibold tw-text-slate-900">Apoio/Operação</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 600</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Montagem, logística e apoio técnico</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-apoio">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (4h) - R$ 600</option>
+                  <option value="completo">Completo (8h) - R$ 1.100</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Coordenação de Sala -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="coord" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="coord" class="tw-font-semibold tw-text-slate-900">Coordenação de Sala</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 1.000</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Coordenação de horários e comunicação com palco</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-coord">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (4h) - R$ 1.000</option>
+                  <option value="completo">Completo (8h) - R$ 1.800</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Limpeza de Área -->
+            <div class="tw-border tw-border-slate-200 tw-rounded-lg tw-p-4">
+              <div class="tw-flex tw-items-center tw-justify-between">
+                <div class="tw-flex tw-items-center tw-gap-3">
+                  <input type="checkbox" id="limpeza" class="tw-w-4 tw-h-4 tw-text-emerald-600 tw-rounded">
+                  <label for="limpeza" class="tw-font-semibold tw-text-slate-900">Limpeza de Área</label>
+                </div>
+                <span class="tw-text-emerald-600 tw-font-bold">R$ 400</span>
+              </div>
+              <p class="tw-text-sm tw-text-slate-600 tw-mt-2">Higienização contínua e pós-evento</p>
+              <div class="tw-mt-3 tw-hidden" id="opcoes-limpeza">
+                <select class="tw-w-full tw-text-sm tw-border tw-border-slate-300 tw-rounded-lg tw-px-3 tw-py-2">
+                  <option value="basico">Básico (4h) - R$ 400</option>
+                  <option value="completo">Completo (8h) - R$ 700</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumo -->
+        <div>
+          <h4 class="tw-text-lg tw-font-bold tw-text-slate-900 tw-mb-4">Resumo da Seleção</h4>
+          <div class="tw-bg-slate-50 tw-rounded-lg tw-p-4">
+            <div id="resumoItens" class="tw-space-y-2 tw-mb-4">
+              <p class="tw-text-slate-600 tw-text-sm">Nenhum item selecionado</p>
+            </div>
+            <div class="tw-border-t tw-border-slate-200 tw-pt-4">
+              <div class="tw-flex tw-justify-between tw-text-lg tw-font-bold">
+                <span>Total:</span>
+                <span id="totalSelecao" class="tw-text-emerald-600">R$ 0,00</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tw-mt-6 tw-space-y-3">
+            <button onclick="adicionarAoCarrinho()" class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-emerald-700 tw-transition-colors">
+              Adicionar ao Carrinho
+            </button>
+            <button onclick="fecharPopupAdicionar()" class="tw-w-full tw-bg-slate-100 tw-text-slate-700 tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-slate-200 tw-transition-colors">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- FOOTER MINIMALISTA -->
+  <footer class="footer-modern scroll-reveal" data-animation="animate-fade-in-up">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Logo e descrição -->
+        <div class="footer-brand">
+          <div class="footer-logo hover-bounce">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Chicas Eventos</span>
+          </div>
+          <p class="footer-desc">
+            Transformamos cada evento em uma experiência única e inesquecível.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>Serviços</h4>
+            <a href="buffet.html" class="hover-pulse">Buffet</a>
+            <a href="audiovisual.html" class="hover-pulse">Audiovisual</a>
+            <a href="rh.html" class="hover-pulse">RH</a>
+            <a href="cerimonial.html" class="hover-pulse">Cerimonial</a>
+          </div>
+          <div class="link-group">
+            <h4>Empresa</h4>
+            <a href="../sobre.html" class="hover-pulse">Sobre</a>
+            <a href="../portfolio.html" class="hover-pulse">Portfólio</a>
+            <a href="../briefing.html" class="hover-pulse">Contato</a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social">
+          <h4>Conecte-se</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Chicas Eventos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // DATA
+  const CARDS={
+    garcom:{title:'Garçom/Bar',desc:'Serviço de salão com garçons, runners e bartenders.',bullets:['Briefing pré-evento','Uniforme padronizado','Líder de equipe'],images:['../../assets/public/img/rh/operacional1.jpg','../../assets/public/img/buffet/coqueteis2.jpg']},
+    recepcao:{title:'Recepção',desc:'Credenciamento, orientação e fluxo de público.',bullets:['Check-in rápido','Comunicação alinhada','Postura e apresentação'],images:['../../assets/public/img/rh/operacional2.jpg']},
+    seguranca:{title:'Segurança',desc:'Profissionais habilitados conforme a necessidade.',bullets:['Controle de acesso','Rondas preventivas','Integração com produção'],images:['../../assets/public/img/rh/operacional3.jpg']},
+    apoio:{title:'Apoio/Operação',desc:'Montagem, logística e apoio técnico.',bullets:['Carregamento e montagem','Backstage e palco','Reação rápida'],images:['../../assets/public/img/rh/operacional4.jpg']},
+    coord:{title:'Coordenação de Sala',desc:'Coordenação de horários e comunicação com palco.',bullets:['Roteiro de sala','Ponto com equipe','Interface com cerimonial'],images:['../../assets/public/img/rh/operacional.jpg']},
+    limpeza:{title:'Limpeza de Área',desc:'Higienização contínua e pós-evento.',bullets:['Equipe perfil turno','Insumos incluídos (sob demanda)','Roteiro por área'],images:['../../assets/public/img/buffet/buffet2.jpg']}
+  };
+  // ---- Modal engine (reuso em todas) ----
+  const modal=document.getElementById('modal'), mTitle=document.getElementById('mTitle'),
+    mMeta=document.getElementById('mMeta'), mDesc=document.getElementById('mDesc'),
+    mBullets=document.getElementById('mBullets'), mHero=document.getElementById('mHero'),
+    mThumbs=document.getElementById('mThumbs'), mPrev=document.getElementById('mPrev'),
+    mNext=document.getElementById('mNext'), mClose=document.getElementById('mClose');
+  let gallery=[], idx=0;
+
+  function openModal(id){
+    const d=CARDS[id]; if(!d) return;
+    mTitle.textContent=d.title; mMeta.textContent='RH';
+    mDesc.textContent=d.desc||'';
+    mBullets.innerHTML=(d.bullets||[]).map(x=>`<li>${x}</li>`).join('');
+    gallery=(d.images||['../../assets/public/img/org/ale.jpg']);
+    idx=0; updateHero(); buildThumbs();
+    modal.classList.add('open'); document.body.style.overflow='hidden';
+  }
+  function updateHero(){ mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-emerald-600',i===idx);}); }
+  function buildThumbs(){ mThumbs.innerHTML=''; gallery.forEach((src,i)=>{const im=document.createElement('img'); im.src=src; im.className='tw-w-full tw-h-20 tw-object-cover tw-rounded-lg tw-cursor-pointer'; im.onclick=()=>{idx=i;updateHero();}; mThumbs.appendChild(im);}); }
+  function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  mClose.onclick=close; modal.addEventListener('click',e=>{ if(e.target===modal) close(); });
+  document.addEventListener('keydown',e=>{ if(!modal.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowRight'){idx=(idx+1)%gallery.length;updateHero();} if(e.key==='ArrowLeft'){idx=(idx-1+gallery.length)%gallery.length;updateHero();} });
+  mNext.onclick=()=>{idx=(idx+1)%gallery.length;updateHero();}; mPrev.onclick=()=>{idx=(idx-1+gallery.length)%gallery.length;updateHero();};
+
+  // bind cards
+  document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+
+  // Popup Adicionar ao Evento
+  const popupAdicionar = document.getElementById('popupAdicionar');
+  
+  function abrirPopupAdicionar() {
+    popupAdicionar.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function fecharPopupAdicionar() {
+    popupAdicionar.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  
+  // Fechar popup clicando fora
+  popupAdicionar.addEventListener('click', e => {
+    if (e.target === popupAdicionar) fecharPopupAdicionar();
+  });
+  
+  // Fechar com ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && popupAdicionar.classList.contains('open')) {
+      fecharPopupAdicionar();
+    }
+  });
+  
+  // Controlar checkboxes e mostrar opções
+  const checkboxes = document.querySelectorAll('#popupAdicionar input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const opcoes = document.getElementById(`opcoes-${this.id}`);
+      if (this.checked) {
+        opcoes.classList.remove('tw-hidden');
+      } else {
+        opcoes.classList.add('tw-hidden');
+      }
+      atualizarResumo();
+    });
+  });
+  
+  // Atualizar resumo da seleção
+  function atualizarResumo() {
+    const itensSelecionados = [];
+    let total = 0;
+    
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const opcoes = document.getElementById(`opcoes-${checkbox.id}`);
+        let preco = 0;
+        let opcaoTexto = '';
+        
+        if (checkbox.id === 'garcom') {
+          const input = opcoes.querySelector('input[type="number"]');
+          const pessoas = parseInt(input.value) || 50;
+          preco = pessoas * 150;
+          opcaoTexto = `${pessoas} pessoas`;
+        } else {
+          const select = opcoes.querySelector('select');
+          const opcaoSelecionada = select.options[select.selectedIndex];
+          preco = parseFloat(opcaoSelecionada.textContent.match(/R\$\s*([\d.,]+)/)[1].replace('.', '').replace(',', '.'));
+          opcaoTexto = opcaoSelecionada.textContent;
+        }
+        
+        itensSelecionados.push({
+          nome: checkbox.nextElementSibling.textContent,
+          opcao: opcaoTexto,
+          preco: preco
+        });
+        total += preco;
+      }
+    });
+    
+    const resumoItens = document.getElementById('resumoItens');
+    const totalSelecao = document.getElementById('totalSelecao');
+    
+    if (itensSelecionados.length === 0) {
+      resumoItens.innerHTML = '<p class="tw-text-slate-600 tw-text-sm">Nenhum item selecionado</p>';
+    } else {
+      resumoItens.innerHTML = itensSelecionados.map(item => 
+        `<div class="tw-flex tw-justify-between tw-text-sm">
+          <span>${item.nome}</span>
+          <span class="tw-font-semibold">R$ ${item.preco.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</span>
+        </div>`
+      ).join('');
+    }
+    
+    totalSelecao.textContent = `R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+  }
+  
+  // Função adicionarAoCarrinho será fornecida pelo sistema unificado
+  
+  // Atualizar resumo quando mudar seleção
+  document.querySelectorAll('#popupAdicionar select, #popupAdicionar input[type="number"]').forEach(input => {
+    input.addEventListener('change', atualizarResumo);
+  });
+</script>
+
+<!-- Botão Flutuante WhatsApp -->
+<div class="whatsapp-float" id="whatsappFloat">
+  <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Chicas Eventos." 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="whatsapp-btn"
+     aria-label="Fale conosco no WhatsApp">
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+    </svg>
+    <span class="whatsapp-tooltip">Fale conosco!</span>
+  </a>
+</div>
+
+  <!-- Sistema de Carrinho -->
+  <script src="../../assets/js/carrinho.js"></script>
+  
+  <!-- Sistema de Animações -->
+  <script src="../../assets/js/app.js"></script>
+</body>
+</html>

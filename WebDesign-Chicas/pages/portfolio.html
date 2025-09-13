@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio — Chicas Eventos</title>
+  <link rel="icon" href="../assets/public/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
+  <style>
+    /* chips */
+    .pf-chip{padding:.625rem 1.25rem;border-radius:9999px;font-weight:600;font-size:.9rem;background:#fff;color:#0f172a;border:1px solid #e2e8f0;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:.2s;display:inline-flex;align-items:center;justify-content:center}
+    .pf-chip:hover{background:#f8fafc}
+    .pf-active,.pf-primary{background:#059669;color:#fff;border-color:#059669}.pf-primary:hover{filter:brightness(.95)}
+    /* esteiras */
+    .pf-marquee-wrap{height:180px;background:#fff}
+    @media (min-width:768px){.pf-marquee-wrap{height:210px}}
+    .pf-track{display:flex;align-items:center;gap:16px;width:max-content;height:100%}
+    .pf-item{height:100%;width:300px;object-fit:cover;border-radius:16px;box-shadow:0 6px 14px rgba(0,0,0,.08);cursor:pointer}
+    @media (max-width:767px){.pf-item{width:220px;border-radius:14px}}
+    @keyframes pf-move-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+    .pf-track-rtl{animation:pf-move-right 30s linear infinite;will-change:transform}
+    .pf-slower{animation-duration:36s}
+    .pf-slowest{animation-duration:42s}
+    /* modal */
+    .pf-modal{position:fixed;inset:0;background:rgba(2,6,23,.72);backdrop-filter:saturate(120%) blur(4px);display:none;z-index:60}
+    .pf-modal.open{display:flex}
+  </style>
+</head>
+<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+
+  <!-- HEADER MINIMALISTA -->
+  <header class="header-modern animate-slide-in-top">
+    <div class="container">
+      <nav class="nav-modern">
+        <!-- Logo -->
+        <a class="logo-modern hover-bounce" href="../index.html">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Chicas Eventos</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <div class="nav-menu">
+          <a href="../index.html#servicos" class="nav-link menu-item">Serviços</a>
+          <a href="portfolio.html" class="nav-link menu-item" style="color: #0f172a; font-weight: 600;">Portfólio</a>
+          <a href="sobre.html" class="nav-link menu-item">Sobre</a>
+          <a href="briefing.html" class="nav-cta-modern btn-animate">Orçamento</a>
+        </div>
+
+        <!-- Menu Mobile -->
+        <button class="menu-toggle hover-pulse" id="menuToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <!-- Menu Mobile Overlay -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html#servicos" class="mobile-link">Serviços</a>
+        <a href="portfolio.html" class="mobile-link">Portfólio</a>
+        <a href="sobre.html" class="mobile-link">Sobre</a>
+        <a href="briefing.html" class="mobile-cta">Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tw-flex-1 tw-py-12">
+    <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
+
+      <!-- Cabeçalho -->
+      <div class="tw-flex tw-flex-col tw-items-start tw-gap-4 tw-mb-6 scroll-reveal" data-animation="animate-fade-in-up">
+        <div>
+          <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 text-reveal">Portfólio</h1>
+          <p class="tw-text-slate-600 tw-mt-2 tw-max-w-2xl animate-delay-200">
+            Clique em qualquer imagem para ver os detalhes do evento e a galeria completa.
+          </p>
+        </div>
+
+        <!-- Filtros continuam (opcional) — "Todas" mostra TODAS as fotos -->
+        <div class="tw-flex tw-flex-wrap tw-gap-3">
+          <a href="portfolio.html" class="pf-chip pf-primary btn-animate">Ver portfólio</a>
+          <button class="pf-chip pf-active btn-animate" data-filter="all">Todas</button>
+          <button class="pf-chip btn-animate" data-filter="buffet">Buffet</button>
+          <button class="pf-chip btn-animate" data-filter="aud">Audiovisual</button>
+          <button class="pf-chip btn-animate" data-filter="rh">RH</button>
+          <button class="pf-chip btn-animate" data-filter="org">Organização</button>
+        </div>
+      </div>
+
+      <!-- 6 Esteiras -->
+      <div class="tw-space-y-4 scroll-reveal" data-animation="animate-fade-in-up">
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow stagger-1" data-stagger>
+          <div id="pf-track-1" class="pf-track pf-track-rtl"></div>
+        </div>
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow stagger-2" data-stagger>
+          <div id="pf-track-2" class="pf-track pf-track-rtl pf-slower"></div>
+        </div>
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow stagger-3" data-stagger>
+          <div id="pf-track-3" class="pf-track pf-track-rtl pf-slowest"></div>
+        </div>
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow stagger-4" data-stagger>
+          <div id="pf-track-4" class="pf-track pf-track-rtl"></div>
+        </div>
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow stagger-5" data-stagger>
+          <div id="pf-track-5" class="pf-track pf-track-rtl pf-slower"></div>
+        </div>
+        <div class="pf-marquee-wrap tw-overflow-hidden tw-rounded-2xl tw-shadow stagger-6" data-stagger>
+          <div id="pf-track-6" class="pf-track pf-track-rtl pf-slowest"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="pfModal" class="pf-modal tw-items-center tw-justify-center tw-px-4">
+    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden animate-fade-in-scale">
+      <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
+        <div>
+          <h3 id="mTitle" class="tw-text-xl md:tw-text-2xl tw-font-extrabold tw-text-slate-900">Evento</h3>
+          <p id="mMeta" class="tw-text-sm tw-text-slate-500 tw-mt-1">Categoria • data</p>
+        </div>
+        <button id="mClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200 hover-pulse" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="tw-p-5 tw-grid md:tw-grid-cols-3 tw-gap-4">
+        <div class="md:tw-col-span-1">
+          <p id="mDesc" class="tw-text-slate-700 tw-leading-relaxed">Descrição do evento…</p>
+        </div>
+        <div class="md:tw-col-span-2">
+          <div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-aspect-[16/9] tw-bg-slate-100 img-zoom">
+            <img id="mHero" src="" alt="" class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover">
+            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow hover-pulse" aria-label="Anterior">‹</button>
+            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow hover-pulse" aria-label="Próxima">›</button>
+          </div>
+          <div id="mThumbs" class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-3"></div>
+        </div>
+      </div>
+      <div class="tw-p-5 tw-border-t tw-border-slate-200 tw-text-center">
+        <a href="briefing.html" class="tw-inline-block tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-font-semibold tw-rounded-full tw-px-6 tw-py-3 btn-animate">Fazer orçamento agora</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER MINIMALISTA -->
+  <footer class="footer-modern scroll-reveal" data-animation="animate-fade-in-up">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Logo e descrição -->
+        <div class="footer-brand">
+          <div class="footer-logo hover-bounce">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Chicas Eventos</span>
+          </div>
+          <p class="footer-desc">
+            Transformamos cada evento em uma experiência única e inesquecível.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>Serviços</h4>
+            <a href="servicos/buffet.html" class="hover-pulse">Buffet</a>
+            <a href="servicos/audiovisual.html" class="hover-pulse">Audiovisual</a>
+            <a href="servicos/rh.html" class="hover-pulse">RH</a>
+            <a href="servicos/cerimonial.html" class="hover-pulse">Cerimonial</a>
+          </div>
+          <div class="link-group">
+            <h4>Empresa</h4>
+            <a href="sobre.html" class="hover-pulse">Sobre</a>
+            <a href="portfolio.html" class="hover-pulse">Portfólio</a>
+            <a href="briefing.html" class="hover-pulse">Contato</a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social">
+          <h4>Conecte-se</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp" class="hover-bounce">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Chicas Eventos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sistema de Animações -->
+  <script src="../assets/js/app.js"></script>
+
+  <!-- LÓGICA -->
+  <script>
+    /** CADASTRO DE EVENTOS
+     * Mantém por evento e lista TODAS as imagens de cada evento em images[].
+     * O mesmo evento pode ter várias tags (categorias).
+     */
+    const EVENTS = [
+      {
+        id: 'aniver-luiza',
+        name: 'Aniversário da Luiza',
+        tags: ['buffet','rh'],
+        date: 'ago/2024',
+        cover: 'assets/public/img/buffet/buffet1.jpg',
+        desc: 'Festa íntima com coquetel volante, mesa de doces e equipe de garçons.',
+        images: [
+          'assets/public/img/buffet/buffet1.jpg',
+          'assets/public/img/buffet/buffet2.jpg',
+          'assets/public/img/buffet/brunch1.jpg',
+          'assets/public/img/buffet/brunch2.jpg',
+          'assets/public/img/rh/operacional1.jpg',
+          'assets/public/img/rh/operacional2.jpg'
+        ]
+      },
+      {
+        id: 'conferencia-tech',
+        name: 'Conferência Tech',
+        tags: ['aud','buffet','rh'],
+        date: 'nov/2024',
+        cover: 'assets/public/img/aud/cobertura1.jpg',
+        desc: 'Cobertura completa com foto/vídeo e coffee break para 200 pessoas.',
+        images: [
+          'assets/public/img/aud/cobertura.jpg',
+          'assets/public/img/aud/cobertura1.jpg',
+          'assets/public/img/aud/fotografo2.jpg',
+          'assets/public/img/aud/fotografo3.jpg',
+          'assets/public/img/buffet/coqueteis1.jpg',
+          'assets/public/img/buffet/coffeebreak1.jpg'
+        ]
+      },
+      {
+        id: 'casamento-ana-pedro',
+        name: 'Casamento Ana & Pedro',
+        tags: ['cerimonial','buffet','aud','rh'],
+        date: 'mar/2025',
+        cover: 'assets/public/img/org/ale.jpg',
+        desc: 'Cerimonial, buffet de jantar e equipe completa de operação.',
+        images: [
+          'assets/public/img/buffet/buffet4.jpg',
+          'assets/public/img/aud/fotografo4.jpg',
+          'assets/public/img/aud/fotografo5.jpg',
+          'assets/public/img/rh/operacional3.jpg',
+          'assets/public/img/rh/operacional4.jpg',
+          'assets/public/img/org/ale.jpg'
+        ]
+      },
+      {
+        id: 'lançamento-produto',
+        name: 'Lançamento de Produto',
+        tags: ['aud','buffet'],
+        date: 'mai/2025',
+        cover: 'assets/public/img/aud/fotografo3.jpg',
+        desc: 'Evento de marca com coquetel e conteúdo para redes sociais ao vivo.',
+        images: [
+          'assets/public/img/aud/cobertura.jpg',
+          'assets/public/img/aud/cobertura1.jpg',
+          'assets/public/img/buffet/coqueteis1.jpg',
+          'assets/public/img/buffet/buffet2.jpg',
+          'assets/public/img/aud/fotografo3.jpg'
+        ]
+      },
+      {
+        id: 'workshop-gourmet',
+        name: 'Workshop Gourmet',
+        tags: ['buffet'],
+        date: 'jul/2025',
+        cover: 'assets/public/img/buffet/brunch3.jpg',
+        desc: 'Oficina culinária com brunch e demonstrações.',
+        images: [
+          'assets/public/img/buffet/brunch1.jpg',
+          'assets/public/img/buffet/brunch2.jpg',
+          'assets/public/img/buffet/brunch3.jpg',
+          'assets/public/img/buffet/buffet3.jpg'
+        ]
+      },
+      {
+        id: 'assembleia-corporativa',
+        name: 'Assembleia Corporativa',
+        tags: ['rh','org'],
+        date: 'jun/2025',
+        cover: 'assets/public/img/rh/operacional1.jpg',
+        desc: 'Montagem de sala, apoio operacional e coordenação de tempos.',
+        images: [
+          'assets/public/img/rh/operacional1.jpg',
+          'assets/public/img/rh/operacional2.jpg',
+          'assets/public/img/rh/operacional3.jpg',
+          'assets/public/img/org/ale.jpg'
+        ]
+      },
+    ];
+
+    /* --------- NOVO: lista plana com TODAS as imagens ---------
+       Cada item tem: { src, eventId }
+       (Inclui images[] + cover; remove duplicatas automaticamente) */
+    function allImagesFor(events){
+      const seen = new Set();
+      const out = [];
+      for (const ev of events){
+        const imgs = [ev.cover, ...(ev.images || [])];
+        for (const src of imgs){
+          const key = ev.id + '|' + src;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          out.push({ src, eventId: ev.id });
+        }
+      }
+      return out;
+    }
+
+    function filteredImages(filter){
+      if (filter==='all') return allImagesFor(EVENTS);
+      const inTag = EVENTS.filter(ev => ev.tags.includes(filter));
+      return allImagesFor(inTag);
+    }
+
+    // --------- Render das esteiras usando TODAS as imagens ---------
+    const chips = Array.from(document.querySelectorAll('.pf-chip[data-filter]'));
+    const tracks = [
+      document.getElementById('pf-track-1'),
+      document.getElementById('pf-track-2'),
+      document.getElementById('pf-track-3'),
+      document.getElementById('pf-track-4'),
+      document.getElementById('pf-track-5'),
+      document.getElementById('pf-track-6'),
+    ];
+
+    function buildTrackItems(items){
+      const seq = items.concat(items); // duplica para loop infinito
+      return seq.map(it => `
+        <img src="${it.src}" alt="" class="pf-item" data-id="${it.eventId}" />
+      `).join('');
+    }
+
+    function render(filter='all'){
+      const imgs = filteredImages(filter);
+      // distribui as IMAGENS (não mais os eventos) por 6 linhas
+      const buckets = [[],[],[],[],[],[]];
+      imgs.forEach((im, i) => buckets[i % 6].push(im));
+      // se alguma linha ficar vazia, replica
+      for (let i=0;i<6;i++){
+        if (buckets[i].length===0) buckets[i] = imgs.slice(0, Math.max(1, Math.ceil(imgs.length/6)));
+      }
+
+      tracks.forEach(t => t.style.animationPlayState='paused');
+      tracks.forEach((t,i)=> t.innerHTML = buildTrackItems(buckets[i]));
+      void tracks[0].offsetWidth;
+      tracks.forEach(t => t.style.animationPlayState='running');
+
+      // clique em QUALQUER imagem → abre modal do evento correspondente
+      document.querySelectorAll('.pf-item').forEach(img=>{
+        img.addEventListener('click', ()=> openModal(img.dataset.id));
+      });
+    }
+
+    function setActive(filter){
+      chips.forEach(c => c.classList.remove('pf-active'));
+      const hit = chips.find(c => c.dataset.filter===filter);
+      hit && hit.classList.add('pf-active');
+    }
+
+    chips.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const f = btn.dataset.filter;
+        render(f); setActive(f);
+      });
+    });
+
+    // inicial: TODAS as imagens
+    render('all');
+
+    // ------ MODAL / GALERIA (igual) ------
+    const modal  = document.getElementById('pfModal');
+    const mTitle = document.getElementById('mTitle');
+    const mMeta  = document.getElementById('mMeta');
+    const mDesc  = document.getElementById('mDesc');
+    const mHero  = document.getElementById('mHero');
+    const mThumbs= document.getElementById('mThumbs');
+    const mClose = document.getElementById('mClose');
+    const mPrev  = document.getElementById('mPrev');
+    const mNext  = document.getElementById('mNext');
+
+    let gallery = []; let index = 0;
+
+    function openModal(eventId){
+      const ev = EVENTS.find(e => e.id===eventId);
+      if(!ev) return;
+      mTitle.textContent = ev.name;
+      mMeta.textContent  = `${ev.tags.join(' • ')}${ev.date? ' • ' + ev.date : ''}`;
+      mDesc.textContent  = ev.desc || '';
+      // galeria completa do evento
+      const imgs = [ev.cover, ...(ev.images || [])];
+      // dedup
+      gallery = Array.from(new Set(imgs));
+      index = 0;
+      updateHero();
+      buildThumbs();
+      modal.classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow='';
+    }
+
+    function updateHero(){
+      mHero.src = gallery[index];
+      mHero.alt = `Foto ${index+1}`;
+      Array.from(mThumbs.children).forEach((t,i)=>{
+        t.classList.toggle('tw-ring-2', i===index);
+        t.classList.toggle('tw-ring-emerald-600', i===index);
+      });
+    }
+
+    function buildThumbs(){
+      mThumbs.innerHTML = '';
+      gallery.forEach((src,i)=>{
+        const img = document.createElement('img');
+        img.src = src; img.alt = 'thumb';
+        img.className = 'tw-w-full tw-h-20 tw-object-cover tw-rounded-lg tw-cursor-pointer';
+        img.addEventListener('click', ()=>{ index=i; updateHero(); });
+        mThumbs.appendChild(img);
+      });
+      updateHero();
+    }
+
+    mClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=> { if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{
+      if(!modal.classList.contains('open')) return;
+      if(e.key==='Escape') closeModal();
+      if(e.key==='ArrowRight'){ index = (index+1)%gallery.length; updateHero(); }
+      if(e.key==='ArrowLeft'){ index = (index-1+gallery.length)%gallery.length; updateHero(); }
+    });
+    mNext.addEventListener('click', ()=>{ index = (index+1)%gallery.length; updateHero(); });
+    mPrev.addEventListener('click', ()=>{ index = (index-1+gallery.length)%gallery.length; updateHero(); });
+  </script>
+
+  <!-- Botão Flutuante WhatsApp -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Chicas Eventos." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="whatsapp-btn"
+       aria-label="Fale conosco no WhatsApp">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+      </svg>
+      <span class="whatsapp-tooltip">Fale conosco!</span>
+    </a>
+  </div>
+
+  <!-- Sistema de Animações -->
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

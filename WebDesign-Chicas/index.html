@@ -17,29 +17,56 @@
     }
   </script>
 </head>
-<body>
+<body style="padding-top: 80px !important;">
 
-  <!-- HEADER MINIMALISTA -->
-  <header class="header-modern animate-slide-in-top">
-    <div class="container">
-      <nav class="nav-modern">
+  <!-- HEADER NOVO DESIGN -->
+  <header class="header-new header-full-width" id="mainHeader" data-auth="guest" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 2147483647 !important; background: white !important; opacity: 1 !important; visibility: visible !important; display: block !important; width: 100% !important;">
+    <div class="header-container">
+      <div class="container">
+        <nav class="nav-new">
         <!-- Logo -->
-        <a class="logo-modern hover-bounce" href="index.html">
-          <div class="logo-icon"></div>
-          <span class="logo-text">Chicas Eventos</span>
+        <a class="logo-new hover-bounce" href="index.html">
+          <div class="logo-circle logo-modern-icon"></div>
+          <span class="logo-modern-text">Chicas Eventos</span>
         </a>
 
         <!-- Menu Desktop -->
-        <div class="nav-menu">
-          <a href="#servicos" class="nav-link menu-item">Serviços</a>
-          <a href="pages/portfolio.html" class="nav-link menu-item">Portfólio</a>
-          <a href="pages/sobre.html" class="nav-link menu-item">Sobre</a>
-          <a href="pages/login.html" class="nav-link menu-item">Login</a>
-          <a href="pages/briefing.html" class="nav-cta-modern btn-animate">Orçamento</a>
+        <div class="nav-menu-desktop">
+          <a href="index.html" class="nav-link-new nav-link-modern">HOME</a>
+          <a href="pages/portfolio.html" class="nav-link-new nav-link-modern">PORTFÓLIO</a>
+          <a href="pages/sobre.html" class="nav-link-new nav-link-modern">SOBRE NÓS</a>
         </div>
 
-        <!-- Menu Mobile -->
-        <button class="menu-toggle hover-pulse" id="menuToggle" aria-label="Abrir menu">
+        <!-- Menu Desktop - Direita -->
+        <div class="nav-actions-desktop">
+          <!-- Wrapper de ações com duas subáreas -->
+          <div class="header-actions">
+            <!-- Estado SEM LOGIN -->
+            <div class="guest-actions">
+              <a href="pages/cadastro.html" class="btn-signup btn-modern-cta">SIGN UP</a>
+              <a href="pages/login.html" class="btn-login btn-modern-secondary">LOGIN</a>
+            </div>
+
+            <!-- Estado COM LOGIN -->
+            <div class="user-actions">
+              <div class="user-profile" id="userProfile" tabindex="0" role="button" aria-label="Abrir menu do usuário" aria-haspopup="menu" aria-expanded="false">
+                <div class="profile-avatar" id="profileAvatar">
+                  <span class="avatar-initials" id="avatarInitials">U</span>
+                </div>
+                <span class="profile-name" id="profileName">Usuário</span>
+              </div>
+              <div class="cart-icon" id="cartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="cart-badge" id="cartBadge" aria-hidden="true">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Mobile Toggle -->
+        <button class="menu-toggle-new" id="menuToggleNew" aria-label="Abrir menu">
           <span></span>
           <span></span>
           <span></span>
@@ -47,12 +74,63 @@
       </nav>
 
       <!-- Menu Mobile Overlay -->
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="#servicos" class="mobile-link">Serviços</a>
-        <a href="pages/portfolio.html" class="mobile-link">Portfólio</a>
-        <a href="pages/sobre.html" class="mobile-link">Sobre</a>
-        <a href="pages/login.html" class="mobile-link">Login</a>
-        <a href="pages/briefing.html" class="mobile-cta">Orçamento</a>
+      <div class="mobile-menu-new" id="mobileMenuNew">
+        <!-- Navegação comum -->
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-link-new">HOME</a>
+          <a href="pages/portfolio.html" class="mobile-link-new">PORTFÓLIO</a>
+          <a href="pages/sobre.html" class="mobile-link-new">SOBRE NÓS</a>
+        </div>
+
+        <!-- Wrapper de ações mobile -->
+        <div class="mobile-header-actions">
+          <!-- Estado SEM LOGIN Mobile -->
+          <div class="mobile-guest-actions">
+            <div class="mobile-auth-buttons">
+              <a href="pages/login.html" class="mobile-btn-login">LOGIN</a>
+              <a href="pages/cadastro.html" class="mobile-btn-signup">SIGN UP</a>
+            </div>
+          </div>
+
+          <!-- Estado COM LOGIN Mobile -->
+          <div class="mobile-user-actions">
+            <div class="mobile-user-profile">
+              <div class="mobile-profile-avatar" id="mobileProfileAvatar">
+                <span class="mobile-avatar-initials" id="mobileAvatarInitials">U</span>
+              </div>
+              <div class="mobile-user-info">
+                <span class="mobile-profile-name" id="mobileProfileName">Usuário</span>
+              </div>
+            </div>
+            <div class="mobile-user-menu">
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>MEUS EVENTOS</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>CRIAR EVENTO</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item" onclick="authManager.logout()">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                <span>SAIR</span>
+              </a>
+            </div>
+            <div class="mobile-cart" id="mobileCartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z"/>
+              </svg>
+              <span class="mobile-cart-badge" id="mobileCartBadge" aria-hidden="true">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </header>
@@ -108,7 +186,7 @@
         <div class="tw-grid tw-gap-6 md:tw-grid-cols-4">
           <!-- Card base: reaproveitado 4x -->
           <!-- 1 Buffet -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200 service-card" data-stagger>
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200 service-card" data-stagger onclick="window.location.href='pages/servicos/buffet.html'">
             <!-- imagem -->
             <img src="assets/public/img/buffet/buffet.jpg" alt="Buffet corporativo"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" />
@@ -118,47 +196,43 @@
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Buffet corporativo</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Coffee breaks, coquetéis e menus sob medida.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="pages/servicos/buffet.html">Ver detalhes →</a>
+              <span class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200">Ver detalhes →</span>
             </div>
           </article>
 
           <!-- 2 Audiovisual -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300 service-card" data-stagger>
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300 service-card" data-stagger onclick="window.location.href='pages/servicos/audiovisual.html'">
             <img src="assets/public/img/aud/fotografo.jpg" alt="Captação audiovisual"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center service-card-img" />
             <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Captação audiovisual</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Foto, vídeo, cobertura social e drone.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="pages/servicos/audiovisual.html">Ver detalhes →</a>
+              <span class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200">Ver detalhes →</span>
             </div>
           </article>
 
           <!-- 3 RH -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400 service-card" data-stagger>
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400 service-card" data-stagger onclick="window.location.href='pages/servicos/rh.html'">
             <img src="assets/public/img/rh/operacional.jpg" alt="Recursos humanos"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center service-card-img" />
             <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Recursos humanos</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Recepção, apoio e controle de acesso.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="pages/servicos/rh.html">Ver detalhes →</a>
+              <span class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200">Ver detalhes →</span>
             </div>
           </article>
 
           <!-- 4 Cerimonial -->
-          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500 service-card" data-stagger>
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500 service-card" data-stagger onclick="window.location.href='pages/servicos/cerimonial.html'">
             <img src="assets/public/img/org/ale.jpg" alt="Organização & cerimonial"
                  class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover tw-object-center service-card-img" />
             <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
             <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
               <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Organização & cerimonial</h3>
               <p class="tw-text-white/85 tw-text-sm tw-mt-1">Planejamento, fornecedores e execução.</p>
-              <a class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200"
-                 href="pages/servicos/cerimonial.html">Ver detalhes →</a>
+              <span class="tw-mt-3 tw-inline-block tw-font-semibold tw-text-emerald-300 hover:tw-text-emerald-200">Ver detalhes →</span>
             </div>
           </article>
         </div>
@@ -204,9 +278,9 @@
       </div>
       
       <!-- Beleza funcional -->
-      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-purple-500 card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400" data-stagger>
-        <div class="tw-w-16 tw-h-16 tw-bg-purple-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
-          <svg class="tw-w-8 tw-h-8 tw-text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="tw-bg-white tw-rounded-2xl tw-shadow-lg tw-p-8 tw-text-center tw-border-t-4 tw-border-gray-300 card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400" data-stagger>
+        <div class="tw-w-16 tw-h-16 tw-bg-gray-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6 hover-rotate">
+          <svg class="tw-w-8 tw-h-8 tw-text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
           </svg>
         </div>
@@ -492,13 +566,538 @@
     </a>
   </div>
 
+  <!-- Sistema de Migração e Isolamento por Usuário -->
+  <script src="assets/js/user-isolation-migration.js"></script>
+  
   <!-- Sistema de Carrinho -->
   <script src="assets/js/carrinho.js"></script>
+  
+  <!-- Sistema de Dados dos Serviços -->
+  <script src="assets/js/services-data.js"></script>
+  
+  <!-- Sistema de Modais -->
+  <script src="assets/js/modals.js"></script>
   
   <!-- Sistema de Animações -->
   <script src="assets/js/app.js"></script>
   
   <!-- Sistema de Autenticação -->
   <script src="assets/js/auth.js"></script>
+  
+  <!-- Novo Sistema de Cabeçalho -->
+  <script src="assets/js/header-new.js"></script>
+  
+  <!-- Sistema de Header com Scroll -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const header = document.getElementById('mainHeader');
+      const body = document.body;
+      
+      // Função para verificar scroll e alternar estados
+      function handleScroll() {
+        const scrollY = window.scrollY;
+        const threshold = 100; // Pixels de scroll para ativar a mudança
+        
+        if (scrollY > threshold) {
+          // Estado scrolled - header transparente e alinhado
+          header.classList.add('scrolled');
+          body.classList.add('header-scrolled');
+        } else {
+          // Estado inicial - header de largura total
+          header.classList.remove('scrolled');
+          body.classList.remove('header-scrolled');
+        }
+      }
+      
+      // Adicionar listener de scroll com throttling para performance
+      let ticking = false;
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(handleScroll);
+          ticking = true;
+          setTimeout(() => { ticking = false; }, 16); // ~60fps
+        }
+      }
+      
+      window.addEventListener('scroll', requestTick);
+      
+      // Verificar estado inicial
+      handleScroll();
+    });
+  </script>
+
+  <!-- Script do Mini-Menu Portal -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userProfile = document.getElementById('userProfile');
+      let dropdown = null;
+      let overlay = null;
+      let currentIndex = -1;
+      let isOpen = false;
+      let dropdownItems = [];
+
+      // Aguardar um pouco para garantir que authManager esteja disponível
+      setTimeout(() => {
+        console.log('AuthManager disponível:', !!window.authManager);
+        if (window.authManager) {
+          console.log('Método logout disponível:', typeof window.authManager.logout);
+        }
+        
+        // Função de teste para logout (remover depois)
+        window.testLogout = function() {
+          console.log('Teste de logout iniciado...');
+          if (window.authManager && typeof window.authManager.logout === 'function') {
+            window.authManager.logout();
+          } else {
+            alert('AuthManager não disponível. Usando fallback...');
+            localStorage.removeItem('chicas_current_user');
+            window.location.reload();
+          }
+        };
+      }, 100);
+
+      // Criar dropdown via portal
+      function createDropdown() {
+        // Criar overlay
+        overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1100;
+          background: transparent;
+          pointer-events: none;
+        `;
+
+        // Criar dropdown
+        dropdown = document.createElement('div');
+        dropdown.className = 'user-profile-dropdown';
+        dropdown.setAttribute('role', 'menu');
+        dropdown.setAttribute('aria-hidden', 'true');
+        dropdown.style.cssText = `
+          position: fixed;
+          z-index: 1200;
+          background: #ffffff;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+          padding: 8px 0;
+          min-width: 260px;
+          max-width: 280px;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-8px);
+          transition: all 150ms ease-out;
+          pointer-events: none;
+        `;
+
+        // Adicionar seta
+        const arrow = document.createElement('div');
+        arrow.className = 'dropdown-arrow';
+        arrow.style.cssText = `
+          position: absolute;
+          top: -6px;
+          right: 20px;
+          width: 0;
+          height: 0;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-bottom: 6px solid #ffffff;
+        `;
+        dropdown.appendChild(arrow);
+
+        // Criar itens do menu
+        const menuItems = [
+          { action: 'meus-eventos', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', text: 'MEUS EVENTOS' },
+          { action: 'criar-evento', icon: 'M12 4v16m8-8H4', text: 'CRIAR EVENTO' },
+          { action: 'sair', icon: 'M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1', text: 'SAIR DA MINHA CONTA' }
+        ];
+
+        menuItems.forEach((item, index) => {
+          const menuItem = document.createElement('div');
+          menuItem.className = 'dropdown-item';
+          menuItem.setAttribute('role', 'menuitem');
+          menuItem.setAttribute('tabindex', '-1');
+          menuItem.setAttribute('data-action', item.action);
+          menuItem.style.cssText = `
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 150ms ease;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+          `;
+
+          menuItem.innerHTML = `
+            <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="${item.icon}"/>
+            </svg>
+            <span>${item.text}</span>
+          `;
+
+          // Event listeners para o item
+          menuItem.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            executeAction(item.action);
+          });
+
+          menuItem.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              e.stopPropagation();
+              executeAction(item.action);
+            } else if (e.key === 'Escape') {
+              e.preventDefault();
+              closeDropdown();
+              userProfile.focus();
+            } else if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              focusItem((index + 1) % menuItems.length);
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              focusItem(index <= 0 ? menuItems.length - 1 : index - 1);
+            }
+          });
+
+          menuItem.addEventListener('mouseenter', () => {
+            if (isOpen) {
+              focusItem(index);
+            }
+          });
+
+          dropdown.appendChild(menuItem);
+          dropdownItems.push(menuItem);
+        });
+
+        // Adicionar ao body
+        document.body.appendChild(overlay);
+        document.body.appendChild(dropdown);
+      }
+
+      // Função para abrir dropdown
+      function openDropdown() {
+        if (!dropdown) createDropdown();
+        
+        isOpen = true;
+        
+        // Calcular posição
+        const rect = userProfile.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const dropdownWidth = 260;
+        
+        // Posicionar dropdown
+        let left = rect.right - dropdownWidth;
+        if (left < 8) left = 8; // Margem mínima da viewport
+        if (left + dropdownWidth > viewportWidth - 8) {
+          left = viewportWidth - dropdownWidth - 8;
+        }
+        
+        dropdown.style.left = `${left}px`;
+        dropdown.style.top = `${rect.bottom + 8}px`;
+        
+        // Mostrar dropdown
+        dropdown.style.opacity = '1';
+        dropdown.style.visibility = 'visible';
+        dropdown.style.transform = 'translateY(0)';
+        dropdown.style.pointerEvents = 'auto';
+        dropdown.setAttribute('aria-hidden', 'false');
+        userProfile.setAttribute('aria-expanded', 'true');
+        
+        // Ativar overlay
+        overlay.style.pointerEvents = 'auto';
+        
+        // Focar no primeiro item
+        currentIndex = 0;
+        focusItem(0);
+        
+        // Verificar prefers-reduced-motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+          dropdown.style.transition = 'none';
+        }
+      }
+
+      // Função para fechar dropdown
+      function closeDropdown() {
+        if (!dropdown) return;
+        
+        isOpen = false;
+        
+        dropdown.style.opacity = '0';
+        dropdown.style.visibility = 'hidden';
+        dropdown.style.transform = 'translateY(-8px)';
+        dropdown.style.pointerEvents = 'none';
+        dropdown.setAttribute('aria-hidden', 'true');
+        userProfile.setAttribute('aria-expanded', 'false');
+        
+        overlay.style.pointerEvents = 'none';
+        
+        // Remover foco dos itens
+        dropdownItems.forEach(item => {
+          item.blur();
+          item.style.backgroundColor = 'transparent';
+          item.style.color = '#0f172a';
+        });
+        currentIndex = -1;
+      }
+
+      // Função para focar em um item específico
+      function focusItem(index) {
+        if (index >= 0 && index < dropdownItems.length) {
+          dropdownItems.forEach((item, i) => {
+            if (i === index) {
+              item.focus();
+              item.style.backgroundColor = 'rgba(5, 150, 105, 0.1)';
+              item.style.color = '#059669';
+            } else {
+              item.style.backgroundColor = 'transparent';
+              item.style.color = '#0f172a';
+            }
+          });
+          currentIndex = index;
+        }
+      }
+
+      // Função para executar ação do item
+      function executeAction(action) {
+        switch(action) {
+          case 'meus-eventos':
+            console.log('Navegando para meus eventos');
+            // TODO: Implementar navegação para página de eventos
+            break;
+          case 'criar-evento':
+            console.log('Navegando para criar evento');
+            // TODO: Implementar navegação para criação de evento
+            break;
+          case 'sair':
+            // Fechar dropdown primeiro
+            closeDropdown();
+            
+            // Executar logout com fallback
+            console.log('Tentando fazer logout...');
+            console.log('AuthManager:', window.authManager);
+            
+            if (window.authManager && typeof window.authManager.logout === 'function') {
+              console.log('Usando authManager.logout()');
+              window.authManager.logout();
+            } else {
+              console.log('Usando fallback manual');
+              // Fallback: logout manual
+              if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('chicas_current_user');
+                
+                // Atualizar estado do header
+                const header = document.getElementById('mainHeader');
+                if (header) {
+                  header.setAttribute('data-auth', 'guest');
+                }
+                
+                // Atualizar perfil para estado guest
+                const avatarInitials = document.getElementById('avatarInitials');
+                const mobileAvatarInitials = document.getElementById('mobileAvatarInitials');
+                const profileName = document.getElementById('profileName');
+                const mobileProfileName = document.getElementById('mobileProfileName');
+                
+                if (avatarInitials) avatarInitials.textContent = 'U';
+                if (mobileAvatarInitials) mobileAvatarInitials.textContent = 'U';
+                if (profileName) profileName.textContent = 'Usuário';
+                if (mobileProfileName) mobileProfileName.textContent = 'Usuário';
+                
+                // Recarregar página para atualizar UI
+                window.location.reload();
+              }
+            }
+            break;
+        }
+      }
+
+      // Event listeners para o botão do perfil
+      userProfile.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (isOpen) {
+          closeDropdown();
+        } else {
+          openDropdown();
+        }
+      });
+
+      userProfile.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          if (isOpen) {
+            closeDropdown();
+          } else {
+            openDropdown();
+          }
+        } else if (e.key === 'Escape') {
+          closeDropdown();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (!isOpen) {
+            openDropdown();
+          } else {
+            focusItem((currentIndex + 1) % dropdownItems.length);
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!isOpen) {
+            openDropdown();
+          } else {
+            focusItem(currentIndex <= 0 ? dropdownItems.length - 1 : currentIndex - 1);
+          }
+        }
+      });
+
+      // Event listeners para hover
+      userProfile.addEventListener('mouseenter', function() {
+        if (!isOpen) {
+          openDropdown();
+        }
+      });
+
+      userProfile.addEventListener('mouseleave', function() {
+        // Fechar após um pequeno delay para permitir hover no dropdown
+        setTimeout(() => {
+          if (isOpen && !dropdown.matches(':hover')) {
+            closeDropdown();
+          }
+        }, 100);
+      });
+
+      // Event listeners para o dropdown
+      if (dropdown) {
+        dropdown.addEventListener('mouseenter', function() {
+          // Manter aberto quando hover no dropdown
+        });
+
+        dropdown.addEventListener('mouseleave', function() {
+          closeDropdown();
+        });
+      }
+
+      // Fechar dropdown ao clicar fora
+      document.addEventListener('click', function(e) {
+        if (isOpen && !userProfile.contains(e.target) && !dropdown?.contains(e.target)) {
+          closeDropdown();
+        }
+      });
+
+      // Fechar dropdown ao pressionar Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+          closeDropdown();
+          userProfile.focus();
+        }
+      });
+
+      // Limpar ao sair da página
+      window.addEventListener('beforeunload', function() {
+        if (overlay) overlay.remove();
+        if (dropdown) dropdown.remove();
+      });
+    });
+
+    // Script do Carrinho
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartIcon = document.getElementById('cartIcon');
+      const mobileCartIcon = document.getElementById('mobileCartIcon');
+
+      // Função para abrir carrinho
+      function openCart() {
+        // Verificar se existe uma função de mini-cart
+        if (window.carrinhoManager && typeof carrinhoManager.openCart === 'function') {
+          carrinhoManager.openCart();
+        } else {
+          // Navegar para página do carrinho
+          const cartPath = getCartPath();
+          window.location.href = cartPath;
+        }
+      }
+
+      // Função para determinar o caminho do carrinho
+      function getCartPath() {
+        const currentPath = window.location.pathname;
+        
+        console.log('Caminho atual:', currentPath);
+        
+        // Se estiver na página principal (index.html)
+        if (currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath.endsWith('/WebDesign-Chicas/')) {
+          const path = 'pages/carrinho.html';
+          console.log('Redirecionando para:', path);
+          return path;
+        }
+        
+        // Se estiver em uma página de serviço (pages/servicos/)
+        if (currentPath.includes('/servicos/')) {
+          const path = '../carrinho.html';
+          console.log('Redirecionando para:', path);
+          return path;
+        }
+        
+        // Se estiver em outras páginas dentro de pages/
+        if (currentPath.includes('/pages/')) {
+          const path = 'carrinho.html';
+          console.log('Redirecionando para:', path);
+          return path;
+        }
+        
+        // Fallback para página principal
+        const path = 'pages/carrinho.html';
+        console.log('Redirecionando para (fallback):', path);
+        return path;
+      }
+
+      // Event listeners para o carrinho
+      if (cartIcon) {
+        cartIcon.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openCart();
+        });
+
+        cartIcon.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            openCart();
+          }
+        });
+      }
+
+      if (mobileCartIcon) {
+        mobileCartIcon.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openCart();
+        });
+
+        mobileCartIcon.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            openCart();
+          }
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>
+vo criar uma nova conta 

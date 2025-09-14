@@ -6,649 +6,61 @@
   <title>Buffet — Chicas Eventos</title>
   <link rel="icon" href="../../assets/public/img/favicon.png">
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/header.css">
+  <link rel="stylesheet" href="../../assets/css/modals.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={prefix:'tw-',corePlugins:{preflight:false}};</script>
-  <style>
-    .svc-card{position:relative;overflow:hidden;border-radius:20px}
-    .svc-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .svc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.0),rgba(2,6,23,.55) 66%,rgba(2,6,23,.75))}
-    .svc-title{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;font-weight:800;font-size:1.25rem;text-shadow:0 2px 8px rgba(0,0,0,.35)}
-    .svc-card:hover .svc-overlay{background:linear-gradient(180deg,rgba(2,6,23,.05),rgba(2,6,23,.65) 66%,rgba(2,6,23,.85))}
-    .modal{position:fixed;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(4px);display:none;z-index:60}
-    .modal.open{display:flex}
-
-    /* Botão Ver Pacotes */
-    .packages-btn {
-      background: linear-gradient(135deg, #059669, #1c7cc7);
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
-    }
-
-    .packages-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(5, 150, 105, 0.4);
-    }
-
-    /* Modal de Pacotes */
-    .packages-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .packages-modal.active {
-      display: flex;
-    }
-
-    .packages-modal-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .packages-modal-content {
-      position: relative;
-      background: white;
-      border-radius: 24px;
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-      animation: slideInUp 0.4s ease;
-    }
-
-    .packages-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 32px;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .packages-modal-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0;
-    }
-
-    .packages-modal-close {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: #64748b;
-      cursor: pointer;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
-
-    .packages-modal-close:hover {
-      background: #f1f5f9;
-      color: #0f172a;
-    }
-
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      padding: 32px;
-    }
-
-    .package-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      border: 1px solid #e2e8f0;
-    }
-
-    .package-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .package-image {
-      height: 300px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .package-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .package-card:hover .package-image img {
-      transform: scale(1.05);
-    }
-
-    .package-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 60%;
-    }
-
-    .package-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: white;
-      margin: 0 0 12px 0;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .package-description {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.5;
-      margin: 0 0 20px 0;
-      font-size: 0.9rem;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    .package-btn {
-      background: linear-gradient(135deg, #059669, #1c7cc7);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      width: 100%;
-      font-size: 0.95rem;
-    }
-
-    .package-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
-    }
-
-    /* Seção WhatsApp */
-    .packages-whatsapp-section {
-      padding: 24px 32px 32px;
-      border-top: 1px solid #e2e8f0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .packages-whatsapp-btn {
-      background: #25d366;
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-    }
-
-    .packages-whatsapp-btn:hover {
-      background: #20ba5a;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
-    }
-
-    .packages-whatsapp-btn svg {
-      flex-shrink: 0;
-    }
-
-    /* Modal Detalhado do Pacote */
-    .package-details-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1001;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .package-details-modal.active {
-      display: flex;
-    }
-
-    .package-details-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(6px);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .package-details-content {
-      position: relative;
-      background: white;
-      border-radius: 24px;
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-      animation: slideInUp 0.4s ease;
-    }
-
-    .package-details-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 32px;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .package-details-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0;
-    }
-
-    .package-details-close {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: #64748b;
-      cursor: pointer;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
-
-    .package-details-close:hover {
-      background: #f1f5f9;
-      color: #0f172a;
-    }
-
-    .package-details-body {
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-
-    .package-details-text {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .package-details-description {
-      color: #64748b;
-      line-height: 1.7;
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .package-details-features {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      background: #f8fafc;
-      border-radius: 12px;
-      border-left: 4px solid #059669;
-    }
-
-    .feature-item::before {
-      content: "✓";
-      color: #059669;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    .package-details-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .package-details-main-image {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .package-details-main-image img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-
-    .package-details-thumbs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .package-details-thumbs img {
-      width: 100%;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: 2px solid transparent;
-    }
-
-    .package-details-thumbs img:hover,
-    .package-details-thumbs img.active {
-      border-color: #059669;
-      transform: scale(1.05);
-    }
-
-    .package-details-footer {
-      padding: 24px 32px;
-      border-top: 1px solid #e2e8f0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .package-whatsapp-btn {
-      background: #25d366;
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1rem;
-    }
-
-    .package-whatsapp-btn:hover {
-      background: #20ba5a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-    }
-
-    .package-add-to-event-btn {
-      background: linear-gradient(135deg, #059669, #1c7cc7);
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1rem;
-      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
-    }
-
-    .package-add-to-event-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(5, 150, 105, 0.4);
-    }
-
-    /* Notificações */
-    .notificacao {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10000;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      padding: 16px 20px;
-      min-width: 300px;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .notificacao.mostrar {
-      transform: translateX(0);
-    }
-
-    .notificacao-conteudo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .notificacao-icone {
-      flex-shrink: 0;
-    }
-
-    .notificacao-success .notificacao-icone {
-      color: #059669;
-    }
-
-    .notificacao-info .notificacao-icone {
-      color: #1c7cc7;
-    }
-
-    .notificacao span {
-      font-weight: 500;
-      color: #0f172a;
-    }
-
-    /* Contador do carrinho */
-    .carrinho-contador {
-      position: relative;
-    }
-
-    .carrinho-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #64748b;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .carrinho-link:hover {
-      background: #f1f5f9;
-      color: #0f172a;
-    }
-
-    .carrinho-badge {
-      background: #059669;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 10px;
-      min-width: 18px;
-      text-align: center;
-    }
-
-    /* Animações */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Responsivo */
-    @media (max-width: 1024px) {
-      .packages-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .packages-modal-content {
-        margin: 10px;
-        max-height: 95vh;
-      }
-      
-      .packages-grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 16px;
-      }
-      
-      .packages-modal-header {
-        padding: 20px;
-      }
-      
-      .packages-modal-title {
-        font-size: 1.5rem;
-      }
-
-      .package-card {
-        margin-bottom: 0;
-      }
-
-      .package-image {
-        height: 250px;
-      }
-
-      .package-overlay {
-        padding: 20px;
-        min-height: 65%;
-      }
-
-      .package-title {
-        font-size: 1.1rem;
-      }
-
-      .package-description {
-        font-size: 0.85rem;
-        margin-bottom: 16px;
-      }
-
-      .packages-whatsapp-section {
-        padding: 20px;
-      }
-
-      .packages-whatsapp-btn {
-        width: 100%;
-        justify-content: center;
-        font-size: 1rem;
-        padding: 14px 24px;
-      }
-
-      /* Modal detalhado responsivo */
-      .package-details-content {
-        margin: 10px;
-        max-height: 95vh;
-      }
-      
-      .package-details-body {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
-      }
-      
-      .package-details-main-image img {
-        height: 200px;
-      }
-      
-      .package-details-header {
-        padding: 20px;
-      }
-      
-      .package-details-title {
-        font-size: 1.5rem;
-      }
-
-      .package-details-thumbs {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
+  <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
 </head>
-<body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
+<body style="padding-top: 80px !important;">
 
-  <!-- HEADER MINIMALISTA -->
-  <header class="header-modern animate-slide-in-top">
-    <div class="container">
-      <nav class="nav-modern">
+  <!-- HEADER NOVO DESIGN -->
+  <header class="header-new header-full-width" id="mainHeader" data-auth="guest" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 2147483647 !important; background: white !important; opacity: 1 !important; visibility: visible !important; display: block !important; width: 100% !important;">
+    <div class="header-container">
+      <div class="container">
+        <nav class="nav-new">
         <!-- Logo -->
-        <a class="logo-modern hover-bounce" href="../../index.html">
-          <div class="logo-icon"></div>
-          <span class="logo-text">Chicas Eventos</span>
+        <a class="logo-new hover-bounce" href="../../index.html">
+          <div class="logo-circle logo-modern-icon"></div>
+          <span class="logo-modern-text">Chicas Eventos</span>
         </a>
 
         <!-- Menu Desktop -->
-        <div class="nav-menu">
-          <a href="../../index.html#servicos" class="nav-link menu-item">Serviços</a>
-          <a href="../portfolio.html" class="nav-link menu-item">Portfólio</a>
-          <a href="../sobre.html" class="nav-link menu-item">Sobre</a>
-          <a href="../briefing.html" class="nav-cta-modern btn-animate">Orçamento</a>
+        <div class="nav-menu-desktop">
+          <a href="../../index.html" class="nav-link-new nav-link-modern">HOME</a>
+          <a href="../portfolio.html" class="nav-link-new nav-link-modern">PORTFÓLIO</a>
+          <a href="../sobre.html" class="nav-link-new nav-link-modern">SOBRE NÓS</a>
         </div>
 
-        <!-- Menu Mobile -->
-        <button class="menu-toggle hover-pulse" id="menuToggle" aria-label="Abrir menu">
+        <!-- Menu Desktop - Direita -->
+        <div class="nav-actions-desktop">
+          <!-- Wrapper de ações com duas subáreas -->
+          <div class="header-actions">
+            <!-- Estado SEM LOGIN -->
+            <div class="guest-actions">
+              <a href="../cadastro.html" class="btn-signup btn-modern-cta">SIGN UP</a>
+              <a href="../login.html" class="btn-login btn-modern-secondary">LOGIN</a>
+            </div>
+
+            <!-- Estado COM LOGIN -->
+            <div class="user-actions">
+              <div class="user-profile" id="userProfile" tabindex="0" role="button" aria-label="Abrir menu do usuário" aria-haspopup="menu" aria-expanded="false">
+                <div class="profile-avatar" id="profileAvatar">
+                  <span class="avatar-initials" id="avatarInitials">U</span>
+                </div>
+                <span class="profile-name" id="profileName">Usuário</span>
+              </div>
+              <div class="cart-icon" id="cartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="cart-badge" id="cartBadge" aria-hidden="true">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Mobile Toggle -->
+        <button class="menu-toggle-new" id="menuToggleNew" aria-label="Abrir menu">
           <span></span>
           <span></span>
           <span></span>
@@ -656,16 +68,68 @@
       </nav>
 
       <!-- Menu Mobile Overlay -->
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="../../index.html#servicos" class="mobile-link">Serviços</a>
-        <a href="../portfolio.html" class="mobile-link">Portfólio</a>
-        <a href="../sobre.html" class="mobile-link">Sobre</a>
-        <a href="../briefing.html" class="mobile-cta">Orçamento</a>
+      <div class="mobile-menu-new" id="mobileMenuNew">
+        <!-- Navegação comum -->
+        <div class="mobile-nav-links">
+          <a href="../../index.html" class="mobile-link-new">HOME</a>
+          <a href="../portfolio.html" class="mobile-link-new">PORTFÓLIO</a>
+          <a href="../sobre.html" class="mobile-link-new">SOBRE NÓS</a>
+        </div>
+
+        <!-- Wrapper de ações mobile -->
+        <div class="mobile-header-actions">
+          <!-- Estado SEM LOGIN Mobile -->
+          <div class="mobile-guest-actions">
+            <div class="mobile-auth-buttons">
+              <a href="../login.html" class="mobile-btn-login">LOGIN</a>
+              <a href="../cadastro.html" class="mobile-btn-signup">SIGN UP</a>
+            </div>
+          </div>
+
+          <!-- Estado COM LOGIN Mobile -->
+          <div class="mobile-user-actions">
+            <div class="mobile-user-profile">
+              <div class="mobile-profile-avatar" id="mobileProfileAvatar">
+                <span class="mobile-avatar-initials" id="mobileAvatarInitials">U</span>
+              </div>
+              <div class="mobile-user-info">
+                <span class="mobile-profile-name" id="mobileProfileName">Usuário</span>
+              </div>
+            </div>
+            <div class="mobile-user-menu">
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>MEUS EVENTOS</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>CRIAR EVENTO</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item" onclick="authManager.logout()">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                <span>SAIR</span>
+              </a>
+            </div>
+            <div class="mobile-cart" id="mobileCartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z"/>
+              </svg>
+              <span class="mobile-cart-badge" id="mobileCartBadge" aria-hidden="true">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </header>
 
-  <main class="tw-flex-1 tw-py-10">
+  <main>
     <div class="tw-container tw-mx-auto tw-max-w-6xl tw-px-4">
 
       <header class="tw-text-center tw-max-w-3xl tw-mx-auto scroll-reveal" data-animation="animate-fade-in-up">
@@ -686,480 +150,94 @@
         </div>
       </header>
 
-      <!-- Lateralizados -->
-      <section class="tw-mt-8 tw-grid md:tw-grid-cols-2 tw-gap-5 scroll-reveal" data-animation="animate-fade-in-up">
-        <a class="svc-card card-animate hover-lift stagger-1" data-stagger data-id="coqueteis">
-          <img src="../../assets/public/img/buffet/coqueteis3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'" class="img-zoom">
-          <span class="svc-overlay"></span><span class="svc-title">Coquetéis</span>
-        </a>
-        <a class="svc-card card-animate hover-lift stagger-2" data-stagger data-id="coffeebreak">
-          <img src="../../assets/public/img/buffet/Coffeebreak.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'" class="img-zoom">
-          <span class="svc-overlay"></span><span class="svc-title">Coffee Break</span>
-        </a>
-      </section>
+      <!-- Grid de Cards Padronizados -->
+      <section class="tw-mt-8 scroll-reveal" data-animation="animate-fade-in-up">
+        <div class="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+          <!-- Coquetéis -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200 service-card" data-stagger onclick="openItemModal('coqueteis')">
+            <img src="../../assets/public/img/buffet/coqueteis3.jpg" alt="Coquetéis e drinks" 
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
+                 onerror="this.src='../../assets/public/img/org/ale.jpg'" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Coquetéis</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Drinks e bebidas sob medida para seu evento</p>
+            </div>
+          </article>
 
-      <!-- Grade 2x2 -->
-      <section class="tw-mt-6 tw-grid md:tw-grid-cols-2 tw-gap-5 scroll-reveal" data-animation="animate-fade-in-up">
-        <a class="svc-card card-animate hover-lift stagger-3" data-stagger data-id="brunch">
-          <img src="../../assets/public/img/buffet/brunch3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'" class="img-zoom">
-          <span class="svc-overlay"></span><span class="svc-title">Brunch</span>
-        </a>
-        <a class="svc-card card-animate hover-lift stagger-4" data-stagger data-id="almoco">
-          <img src="../../assets/public/img/buffet/buffet4.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'" class="img-zoom">
-          <span class="svc-overlay"></span><span class="svc-title">Almoço/Jantar</span>
-        </a>
-        <a class="svc-card card-animate hover-lift stagger-5" data-stagger data-id="sobremesas">
-          <img src="../../assets/public/img/buffet/buffet3.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'" class="img-zoom">
-          <span class="svc-overlay"></span><span class="svc-title">Sobremesas & Doces</span>
-        </a>
-        <a class="svc-card card-animate hover-lift stagger-6" data-stagger data-id="bebidas">
-          <img src="../../assets/public/img/buffet/coqueteis2.jpg" onerror="this.src='../../assets/public/img/org/ale.jpg'" class="img-zoom">
-          <span class="svc-overlay"></span><span class="svc-title">Bebidas & Bar</span>
-        </a>
+          <!-- Coffee Break -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300 service-card" data-stagger onclick="openItemModal('coffee-break')">
+            <img src="../../assets/public/img/buffet/Coffeebreak.jpg" alt="Coffee break corporativo"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
+                 onerror="this.src='../../assets/public/img/org/ale.jpg'" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Coffee Break</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Pausas para café e lanches leves</p>
+            </div>
+          </article>
+
+          <!-- Brunch -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400 service-card" data-stagger onclick="openItemModal('brunch')">
+            <img src="../../assets/public/img/buffet/brunch3.jpg" alt="Brunch e café da manhã"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
+                 onerror="this.src='../../assets/public/img/org/ale.jpg'" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Brunch</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Café da manhã e brunch especializados</p>
+            </div>
+          </article>
+
+          <!-- Almoço/Jantar -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500 service-card" data-stagger onclick="openItemModal('almoco-jantar')">
+            <img src="../../assets/public/img/buffet/buffet4.jpg" alt="Almoço e jantar corporativo"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
+                 onerror="this.src='../../assets/public/img/org/ale.jpg'" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Almoço/Jantar</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Refeições completas e executivas</p>
+            </div>
+          </article>
+
+          <!-- Sobremesas & Doces -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-5 animate-fade-in-up animate-delay-600 service-card" data-stagger onclick="openItemModal('sobremesas')">
+            <img src="../../assets/public/img/buffet/buffet3.jpg" alt="Sobremesas e doces finos"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
+                 onerror="this.src='../../assets/public/img/org/ale.jpg'" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Sobremesas & Doces</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Doces finos e sobremesas artesanais</p>
+            </div>
+          </article>
+
+          <!-- Bebidas & Bar -->
+          <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-6 animate-fade-in-up animate-delay-700 service-card" data-stagger onclick="openItemModal('bebidas-bar')">
+            <img src="../../assets/public/img/buffet/coqueteis2.jpg" alt="Bar e bebidas"
+                 class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
+                 onerror="this.src='../../assets/public/img/org/ale.jpg'" />
+            <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
+            <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
+              <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Bebidas & Bar</h3>
+              <p class="tw-text-white/85 tw-text-sm tw-mt-1">Serviço completo de bar e bebidas</p>
+            </div>
+          </article>
+        </div>
       </section>
     </div>
+  
   </main>
 
-  <!-- MODAL DE PACOTES -->
-  <div id="packagesModal" class="packages-modal">
-    <div class="packages-modal-overlay" onclick="closePackagesModal()"></div>
-    <div class="packages-modal-content">
-      <div class="packages-modal-header">
-        <h2 class="packages-modal-title">Nossos Pacotes de Buffet</h2>
-        <button class="packages-modal-close" onclick="closePackagesModal()">&times;</button>
-      </div>
-      
-      <div class="packages-grid">
-        <!-- Pacote 1: Básico -->
-        <div class="package-card">
-          <div class="package-image">
-            <img src="../../assets/public/img/buffet/Coffeebreak.jpg" alt="Pacote Básico" />
-            <div class="package-overlay">
-              <h3 class="package-title">Pacote Básico</h3>
-              <p class="package-description">Ideal para eventos corporativos e reuniões. Inclui coffee break completo com bebidas quentes, frias e petiscos selecionados.</p>
-              <button class="package-btn" onclick="openPackageDetails('coffeebreak')">Saiba mais</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pacote 2: Avançado -->
-        <div class="package-card">
-          <div class="package-image">
-            <img src="../../assets/public/img/buffet/coqueteis3.jpg" alt="Pacote Avançado" />
-            <div class="package-overlay">
-              <h3 class="package-title">Pacote Avançado</h3>
-              <p class="package-description">Perfeito para eventos elegantes. Serviço de coquetel com finger foods gourmet, bar completo e equipe especializada.</p>
-              <button class="package-btn" onclick="openPackageDetails('coqueteis')">Saiba mais</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pacote 3: Premium -->
-        <div class="package-card">
-          <div class="package-image">
-            <img src="../../assets/public/img/buffet/brunch3.jpg" alt="Pacote Premium" />
-            <div class="package-overlay">
-              <h3 class="package-title">Pacote Premium</h3>
-              <p class="package-description">Experiência gastronômica completa. Brunch sofisticado com preparos especiais, ingredientes frescos e apresentação impecável.</p>
-              <button class="package-btn" onclick="openPackageDetails('brunch')">Saiba mais</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL DETALHADO DO PACOTE -->
-  <div id="packageDetailsModal" class="package-details-modal">
-    <div class="package-details-overlay" onclick="closePackageDetails()"></div>
-    <div class="package-details-content">
-      <div class="package-details-header">
-        <h2 id="packageDetailsTitle" class="package-details-title"></h2>
-        <button class="package-details-close" onclick="closePackageDetails()">&times;</button>
-      </div>
-      
-      <div class="package-details-body">
-        <div class="package-details-text">
-          <p id="packageDetailsDescription" class="package-details-description"></p>
-          <div id="packageDetailsFeatures" class="package-details-features"></div>
-        </div>
-        <div class="package-details-gallery">
-          <div class="package-details-main-image">
-            <img id="packageDetailsMainImage" src="" alt="" />
-          </div>
-          <div id="packageDetailsThumbs" class="package-details-thumbs"></div>
-        </div>
-      </div>
-      
-      <div class="package-details-footer">
-        <div class="tw-flex tw-gap-4 tw-justify-center">
-          <button class="package-add-to-event-btn" onclick="adicionarPacoteAoEvento()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="tw-mr-2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            Adicionar ao Evento
-          </button>
-          <button class="package-whatsapp-btn" onclick="contactWhatsAppPackage()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-            </svg>
-            Chamar no WhatsApp
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL -->
-  <div id="modal" class="modal tw-items-center tw-justify-center tw-px-4">
-    <div class="tw-bg-white tw-rounded-2xl tw-w-full tw-max-w-4xl tw-shadow-2xl tw-overflow-hidden animate-fade-in-scale">
-      <div class="tw-flex tw-justify-between tw-items-start tw-gap-4 tw-p-5 tw-border-b tw-border-slate-200">
-        <div>
-          <h3 id="mTitle" class="tw-text-2xl tw-font-extrabold tw-text-slate-900">Título</h3>
-          <p id="mMeta" class="tw-text-sm tw-text-slate-500">Buffet</p>
-        </div>
-        <button id="mClose" class="tw-rounded-lg tw-p-2 tw-bg-slate-100 hover:tw-bg-slate-200 hover-pulse">✕</button>
-      </div>
-      <div class="tw-p-5 tw-grid md:tw-grid-cols-3 tw-gap-4">
-        <div class="md:tw-col-span-1">
-          <p id="mDesc" class="tw-text-slate-700 tw-leading-relaxed">Descrição…</p>
-          <ul id="mBullets" class="tw-list-disc tw-pl-5 tw-mt-3 tw-text-sm tw-text-slate-700"></ul>
-        </div>
-        <div class="md:tw-col-span-2">
-          <div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-aspect-[16/9] tw-bg-slate-100 img-zoom">
-            <img id="mHero" class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover" src="">
-            <button id="mPrev" class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow hover-pulse">‹</button>
-            <button id="mNext" class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-bg-white/80 hover:tw-bg-white tw-rounded-full tw-p-2 tw-shadow hover-pulse">›</button>
-          </div>
-          <div id="mThumbs" class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-3"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER MINIMALISTA -->
-  <footer class="footer-modern scroll-reveal" data-animation="animate-fade-in-up">
-    <div class="container">
-      <div class="footer-content">
-        <!-- Logo e descrição -->
-        <div class="footer-brand">
-          <div class="footer-logo hover-bounce">
-            <div class="logo-icon"></div>
-            <span class="logo-text">Chicas Eventos</span>
-          </div>
-          <p class="footer-desc">
-            Transformamos cada evento em uma experiência única e inesquecível.
-          </p>
-        </div>
-
-        <!-- Links -->
-        <div class="footer-links">
-          <div class="link-group">
-            <h4>Serviços</h4>
-            <a href="buffet.html" class="hover-pulse">Buffet</a>
-            <a href="audiovisual.html" class="hover-pulse">Audiovisual</a>
-            <a href="rh.html" class="hover-pulse">RH</a>
-            <a href="cerimonial.html" class="hover-pulse">Cerimonial</a>
-          </div>
-          <div class="link-group">
-            <h4>Empresa</h4>
-            <a href="../sobre.html" class="hover-pulse">Sobre</a>
-            <a href="../portfolio.html" class="hover-pulse">Portfólio</a>
-            <a href="../briefing.html" class="hover-pulse">Contato</a>
-          </div>
-        </div>
-
-        <!-- Social -->
-        <div class="footer-social">
-          <h4>Conecte-se</h4>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram" class="hover-bounce">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="Facebook" class="hover-bounce">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="WhatsApp" class="hover-bounce">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2025 Chicas Eventos. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JS comum -->
-  <script>
-    // Funções do Modal de Pacotes
-    function openPackagesModal() {
-      const modal = document.getElementById('packagesModal');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePackagesModal() {
-      const modal = document.getElementById('packagesModal');
-      modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    // Dados detalhados dos pacotes
-    const packageDetailsData = {
-      'coffeebreak': {
-        title: 'Pacote Básico',
-        description: 'Ideal para eventos corporativos e reuniões. Nosso pacote básico oferece uma solução completa e econômica para coffee breaks, garantindo que sua equipe tenha energia e motivação durante todo o evento.',
-        features: [
-          'Café expresso e cappuccino',
-          'Chás variados e infusões',
-          'Sucos naturais e água',
-          'Pães, bolos e tortas',
-          'Salgados e finger foods',
-          'Opções vegetarianas e veganas',
-          'Serviço de mesa completo',
-          'Equipe treinada e uniformizada'
-        ],
-        images: [
-          '../../assets/public/img/buffet/Coffeebreak.jpg',
-          '../../assets/public/img/buffet/buffet1.jpg',
-          '../../assets/public/img/buffet/buffet3.jpg'
-        ]
-      },
-      'coqueteis': {
-        title: 'Pacote Avançado',
-        description: 'Perfeito para eventos elegantes e sofisticados. Nosso pacote avançado combina a arte da mixologia com finger foods gourmet, criando uma experiência única e memorável para seus convidados.',
-        features: [
-          'Canapés e finger foods gourmet',
-          'Bebidas alcoólicas e não alcoólicas',
-          'Bartender profissional',
-          'Passadores uniformizados',
-          'Montagem elegante e criativa',
-          'Opções regionais e internacionais',
-          'Cardápio personalizado',
-          'Decoração temática inclusa'
-        ],
-        images: [
-          '../../assets/public/img/buffet/coqueteis3.jpg',
-          '../../assets/public/img/buffet/coqueteis2.jpg',
-          '../../assets/public/img/buffet/coqueteis.jpg'
-        ]
-      },
-      'brunch': {
-        title: 'Pacote Premium',
-        description: 'A experiência gastronômica mais completa e sofisticada. Nosso pacote premium oferece um brunch de alta qualidade com preparos especiais, ingredientes frescos e apresentação impecável.',
-        features: [
-          'Ovos preparados de diversas formas',
-          'Pães artesanais e panquecas',
-          'Frutas frescas e granola',
-          'Carnes grelhadas e defumadas',
-          'Saladas e vegetais frescos',
-          'Sucos naturais e smoothies',
-          'Café especial e chás',
-          'Buffet completo e variado'
-        ],
-        images: [
-          '../../assets/public/img/buffet/brunch3.jpg',
-          '../../assets/public/img/buffet/brunch2.jpg',
-          '../../assets/public/img/buffet/brunch1.jpg'
-        ]
-      }
-    };
-
-    function openPackageDetails(packageId) {
-      const packageData = packageDetailsData[packageId];
-      if (!packageData) return;
-
-      // Fechar modal de pacotes
-      closePackagesModal();
-
-      // Preencher dados do modal de detalhes
-      document.getElementById('packageDetailsTitle').textContent = packageData.title;
-      document.getElementById('packageDetailsDescription').textContent = packageData.description;
-
-      // Preencher features
-      const featuresContainer = document.getElementById('packageDetailsFeatures');
-      featuresContainer.innerHTML = '';
-      packageData.features.forEach(feature => {
-        const featureItem = document.createElement('div');
-        featureItem.className = 'feature-item';
-        featureItem.textContent = feature;
-        featuresContainer.appendChild(featureItem);
-      });
-
-      // Preencher galeria de imagens
-      const mainImage = document.getElementById('packageDetailsMainImage');
-      const thumbsContainer = document.getElementById('packageDetailsThumbs');
-      
-      mainImage.src = packageData.images[0];
-      mainImage.alt = packageData.title;
-      
-      thumbsContainer.innerHTML = '';
-      packageData.images.forEach((src, index) => {
-        const thumb = document.createElement('img');
-        thumb.src = src;
-        thumb.alt = packageData.title;
-        thumb.className = index === 0 ? 'active' : '';
-        thumb.onclick = () => {
-          mainImage.src = src;
-          thumbsContainer.querySelectorAll('img').forEach(img => img.classList.remove('active'));
-          thumb.classList.add('active');
-        };
-        thumbsContainer.appendChild(thumb);
-      });
-
-      // Abrir modal de detalhes
-      const detailsModal = document.getElementById('packageDetailsModal');
-      detailsModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePackageDetails() {
-      const modal = document.getElementById('packageDetailsModal');
-      modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    // Função para contato via WhatsApp específico do pacote
-    function contactWhatsAppPackage() {
-      const packageTitle = document.getElementById('packageDetailsTitle').textContent;
-      const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre o ${packageTitle} da Chicas Eventos.`);
-      const whatsappUrl = `https://wa.me/5599999999999?text=${message}`;
-      window.open(whatsappUrl, '_blank');
-    }
-
-    // Função adicionarPacoteAoEvento será fornecida pelo sistema unificado
-
-    // Funções de notificação e contador serão fornecidas pelo sistema unificado
-
-    // Fechar modais com ESC
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closePackagesModal();
-        closePackageDetails();
-      }
-    });
-
-
-    // ---- DATA (BUFFET) ----
-    const CARDS = {
-      coqueteis: {
-        title:'Coquetéis',
-        desc:'Serviço volante com finger foods, mini porções e bar com bebidas clássicas e autorais.',
-        bullets:['Cardápio finger sob medida','Equipe de garçons e bar','Opções sem lactose/veg/vegana'],
-        images:[
-          '../../assets/public/img/buffet/coqueteis3.jpg',
-          '../../assets/public/img/buffet/coqueteis2.jpg',
-          '../../assets/public/img/buffet/coqueteis.jpg',
-          '../../assets/public/img/buffet/buffet2.jpg'
-        ]
-      },
-      coffeebreak: {
-        title:'Coffee Break',
-        desc:'Perfeito para reuniões e conferências. Montagem rápida, quente/frio e reposição.',
-        bullets:['Bebidas quentes e frias','Salgados e doces variados','Atendimento por turno'],
-        images:[
-          '../../assets/public/img/buffet/Coffeebreak.jpg',
-          '../../assets/public/img/buffet/buffet1.jpg',
-          '../../assets/public/img/buffet/buffet3.jpg'
-        ]
-      },
-      brunch: {
-        title:'Brunch',
-        desc:'Mix café da manhã + almoço com preparos leves e itens frescos.',
-        bullets:['Frutas, mini sanduíches, ovos','Sucos naturais e cafés','Estação doce'],
-        images:[
-          '../../assets/public/img/buffet/brunch3.jpg',
-          '../../assets/public/img/buffet/brunch2.jpg',
-          '../../assets/public/img/buffet/brunch1.jpg'
-        ]
-      },
-      almoco: {
-        title:'Almoço/Jantar',
-        desc:'Buffet quente completo com proteínas, acompanhamentos e saladas.',
-        bullets:['Montagem e operação completa','Louças e utensílios (opcional)','Cardápio personalizado'],
-        images:[
-          '../../assets/public/img/buffet/buffet4.jpg',
-          '../../assets/public/img/buffet/buffet2.jpg',
-          '../../assets/public/img/buffet/buffet3.jpg'
-        ]
-      },
-      sobremesas:{
-        title:'Sobremesas & Doces',
-        desc:'Finalização doce com mesa temática, mini tortas e verrines.',
-        bullets:['Doces finos e caseiros','Apresentação caprichada','Harmoniza com café e espumante'],
-        images:[
-          '../../assets/public/img/buffet/buffet3.jpg',
-          '../../assets/public/img/buffet/buffet1.jpg'
-        ]
-      },
-      bebidas:{
-        title:'Bebidas & Bar',
-        desc:'Bar de drinks, espumantes e não alcoólicos. Opção de bar temático.',
-        bullets:['Carta de drinks','Bar dry ou completo','Equipe de bartenders'],
-        images:[
-          '../../assets/public/img/buffet/coqueteis2.jpg',
-          '../../assets/public/img/buffet/coqueteis3.jpg'
-        ]
-      }
-    };
-
-    // ---- Modal engine (reuso em todas) ----
-    const modal=document.getElementById('modal'), mTitle=document.getElementById('mTitle'),
-      mMeta=document.getElementById('mMeta'), mDesc=document.getElementById('mDesc'),
-      mBullets=document.getElementById('mBullets'), mHero=document.getElementById('mHero'),
-      mThumbs=document.getElementById('mThumbs'), mPrev=document.getElementById('mPrev'),
-      mNext=document.getElementById('mNext'), mClose=document.getElementById('mClose');
-    let gallery=[], idx=0;
-
-    function openModal(id){
-      const d=CARDS[id]; if(!d) return;
-      mTitle.textContent=d.title; mMeta.textContent='Buffet';
-      mDesc.textContent=d.desc||'';
-      mBullets.innerHTML=(d.bullets||[]).map(x=>`<li>${x}</li>`).join('');
-      gallery=(d.images||['../../assets/public/img/org/ale.jpg']);
-      idx=0; updateHero(); buildThumbs();
-      modal.classList.add('open'); document.body.style.overflow='hidden';
-    }
-    function updateHero(){ mHero.src=gallery[idx]; Array.from(mThumbs.children).forEach((t,i)=>{t.classList.toggle('tw-ring-2',i===idx); t.classList.toggle('tw-ring-emerald-600',i===idx);}); }
-    function buildThumbs(){ mThumbs.innerHTML=''; gallery.forEach((src,i)=>{const im=document.createElement('img'); im.src=src; im.className='tw-w-full tw-h-20 tw-object-cover tw-rounded-lg tw-cursor-pointer'; im.onclick=()=>{idx=i;updateHero();}; mThumbs.appendChild(im);}); }
-    function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
-    mClose.onclick=close; modal.addEventListener('click',e=>{ if(e.target===modal) close(); });
-    document.addEventListener('keydown',e=>{ if(!modal.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowRight'){idx=(idx+1)%gallery.length;updateHero();} if(e.key==='ArrowLeft'){idx=(idx-1+gallery.length)%gallery.length;updateHero();} });
-    mNext.onclick=()=>{idx=(idx+1)%gallery.length;updateHero();}; mPrev.onclick=()=>{idx=(idx-1+gallery.length)%gallery.length;updateHero();};
-
-    // bind cards
-    document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
-
-    // Contador do carrinho será inicializado pelo sistema unificado
-  </script>
-
-  <!-- Botão Flutuante WhatsApp -->
-  <div class="whatsapp-float" id="whatsappFloat">
-    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Chicas Eventos." 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="whatsapp-btn"
-       aria-label="Fale conosco no WhatsApp">
-      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-      </svg>
-      <span class="whatsapp-tooltip">Fale conosco!</span>
-    </a>
-  </div>
-
-  <!-- Sistema de Carrinho -->
+  <!-- Scripts -->
+  <script src="../../assets/js/user-isolation-migration.js"></script>
   <script src="../../assets/js/carrinho.js"></script>
-  
-  <!-- Sistema de Animações -->
+  <script src="../../assets/js/services-data.js"></script>
+  <script src="../../assets/js/modals.js"></script>
   <script src="../../assets/js/app.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/header-include.js"></script>
+  <script src="../../assets/js/header-new.js"></script>
 </body>
 </html>

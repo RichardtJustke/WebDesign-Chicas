@@ -30,26 +30,54 @@
 </head>
 <body class="tw-min-h-screen tw-flex tw-flex-col tw-bg-[#f7faf9]">
 
-  <!-- HEADER MINIMALISTA -->
-  <header class="header-modern animate-slide-in-top">
-    <div class="container">
-      <nav class="nav-modern">
+  <!-- HEADER NOVO DESIGN -->
+  <header class="header-new header-full-width" id="mainHeader" data-auth="guest" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 2147483647 !important; background: white !important; opacity: 1 !important; visibility: visible !important; display: block !important; width: 100% !important;">
+    <div class="header-container">
+      <div class="container">
+        <nav class="nav-new">
         <!-- Logo -->
-        <a class="logo-modern hover-bounce" href="../index.html">
-          <div class="logo-icon"></div>
-          <span class="logo-text">Chicas Eventos</span>
+        <a class="logo-new hover-bounce" href="../index.html">
+          <div class="logo-circle logo-modern-icon"></div>
+          <span class="logo-modern-text">Chicas Eventos</span>
         </a>
 
         <!-- Menu Desktop -->
-        <div class="nav-menu">
-          <a href="../index.html#servicos" class="nav-link menu-item">Serviços</a>
-          <a href="portfolio.html" class="nav-link menu-item" style="color: #0f172a; font-weight: 600;">Portfólio</a>
-          <a href="sobre.html" class="nav-link menu-item">Sobre</a>
-          <a href="briefing.html" class="nav-cta-modern btn-animate">Orçamento</a>
+        <div class="nav-menu-desktop">
+          <a href="../index.html" class="nav-link-new nav-link-modern">HOME</a>
+          <a href="portfolio.html" class="nav-link-new nav-link-modern">PORTFÓLIO</a>
+          <a href="sobre.html" class="nav-link-new nav-link-modern">SOBRE NÓS</a>
         </div>
 
-        <!-- Menu Mobile -->
-        <button class="menu-toggle hover-pulse" id="menuToggle" aria-label="Abrir menu">
+        <!-- Menu Desktop - Direita -->
+        <div class="nav-actions-desktop">
+          <!-- Wrapper de ações com duas subáreas -->
+          <div class="header-actions">
+            <!-- Estado SEM LOGIN -->
+            <div class="guest-actions">
+              <a href="cadastro.html" class="btn-signup btn-modern-cta">SIGN UP</a>
+              <a href="login.html" class="btn-login btn-modern-secondary">LOGIN</a>
+            </div>
+
+            <!-- Estado COM LOGIN -->
+            <div class="user-actions">
+              <div class="user-profile" id="userProfile" tabindex="0" role="button" aria-label="Abrir menu do usuário" aria-haspopup="menu" aria-expanded="false">
+                <div class="profile-avatar" id="profileAvatar">
+                  <span class="avatar-initials" id="avatarInitials">U</span>
+                </div>
+                <span class="profile-name" id="profileName">Usuário</span>
+              </div>
+              <div class="cart-icon" id="cartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="cart-badge" id="cartBadge" aria-hidden="true">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Mobile Toggle -->
+        <button class="menu-toggle-new" id="menuToggleNew" aria-label="Abrir menu">
           <span></span>
           <span></span>
           <span></span>
@@ -57,11 +85,63 @@
       </nav>
 
       <!-- Menu Mobile Overlay -->
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="../index.html#servicos" class="mobile-link">Serviços</a>
-        <a href="portfolio.html" class="mobile-link">Portfólio</a>
-        <a href="sobre.html" class="mobile-link">Sobre</a>
-        <a href="briefing.html" class="mobile-cta">Orçamento</a>
+      <div class="mobile-menu-new" id="mobileMenuNew">
+        <!-- Navegação comum -->
+        <div class="mobile-nav-links">
+          <a href="../index.html" class="mobile-link-new">HOME</a>
+          <a href="portfolio.html" class="mobile-link-new">PORTFÓLIO</a>
+          <a href="sobre.html" class="mobile-link-new">SOBRE NÓS</a>
+        </div>
+
+        <!-- Wrapper de ações mobile -->
+        <div class="mobile-header-actions">
+          <!-- Estado SEM LOGIN Mobile -->
+          <div class="mobile-guest-actions">
+            <div class="mobile-auth-buttons">
+              <a href="login.html" class="mobile-btn-login">LOGIN</a>
+              <a href="cadastro.html" class="mobile-btn-signup">SIGN UP</a>
+            </div>
+          </div>
+
+          <!-- Estado COM LOGIN Mobile -->
+          <div class="mobile-user-actions">
+            <div class="mobile-user-profile">
+              <div class="mobile-profile-avatar" id="mobileProfileAvatar">
+                <span class="mobile-avatar-initials" id="mobileAvatarInitials">U</span>
+              </div>
+              <div class="mobile-user-info">
+                <span class="mobile-profile-name" id="mobileProfileName">Usuário</span>
+              </div>
+            </div>
+            <div class="mobile-user-menu">
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>MEUS EVENTOS</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>CRIAR EVENTO</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item" onclick="authManager.logout()">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                <span>SAIR</span>
+              </a>
+            </div>
+            <div class="mobile-cart" id="mobileCartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z"/>
+              </svg>
+              <span class="mobile-cart-badge" id="mobileCartBadge" aria-hidden="true">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </header>
@@ -468,7 +548,19 @@
     </a>
   </div>
 
+  <!-- Sistema de Migração e Isolamento por Usuário -->
+  <script src="../assets/js/user-isolation-migration.js"></script>
+  
+  <!-- Sistema de Carrinho -->
+  <script src="../assets/js/carrinho.js"></script>
+  
   <!-- Sistema de Animações -->
   <script src="../assets/js/app.js"></script>
+  
+  <!-- Sistema de Autenticação -->
+  <script src="../assets/js/auth.js"></script>
+  
+  <!-- Novo Sistema de Cabeçalho -->
+  <script src="../assets/js/header-new.js"></script>
 </body>
 </html>

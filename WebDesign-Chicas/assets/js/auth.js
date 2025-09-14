@@ -9,6 +9,9 @@ class AuthManager {
     // Verificar se há usuário logado
     this.checkCurrentUser();
     
+    // Atualizar estado do header
+    this.updateHeaderAuthState();
+    
     // Adicionar botão de logout se necessário
     this.addLogoutButton();
   }
@@ -21,24 +24,62 @@ class AuthManager {
     }
   }
 
+  /**
+   * Atualiza o atributo data-auth do header baseado no estado de autenticação
+   */
+  updateHeaderAuthState() {
+    const header = document.getElementById('mainHeader');
+    if (!header) return;
+
+    if (this.currentUser) {
+      header.setAttribute('data-auth', 'user');
+      this.updateUserProfile();
+    } else {
+      header.setAttribute('data-auth', 'guest');
+    }
+  }
+
+  /**
+   * Atualiza informações do perfil do usuário (avatar, nome, etc.)
+   */
+  updateUserProfile() {
+    if (!this.currentUser) return;
+
+    // Atualizar avatar com iniciais
+    const avatarInitials = document.getElementById('avatarInitials');
+    const mobileAvatarInitials = document.getElementById('mobileAvatarInitials');
+    const initials = this.getInitials(this.currentUser.name);
+    
+    if (avatarInitials) avatarInitials.textContent = initials;
+    if (mobileAvatarInitials) mobileAvatarInitials.textContent = initials;
+
+    // Atualizar nome do usuário
+    const profileName = document.getElementById('profileName');
+    const mobileProfileName = document.getElementById('mobileProfileName');
+    
+    if (profileName) profileName.textContent = this.currentUser.name;
+    if (mobileProfileName) mobileProfileName.textContent = this.currentUser.name;
+  }
+
+  /**
+   * Extrai iniciais do nome do usuário
+   */
+  getInitials(name) {
+    if (!name) return 'U';
+    
+    const words = name.trim().split(' ');
+    if (words.length === 1) {
+      return words[0].charAt(0).toUpperCase();
+    }
+    
+    return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
+  }
+
   updateUIForLoggedUser() {
     if (!this.currentUser) return;
 
-    // Atualizar links de login para mostrar nome do usuário
-    const loginLinks = document.querySelectorAll('a[href*="login.html"]');
-    loginLinks.forEach(link => {
-      link.innerHTML = `
-        <svg class="tw-w-4 tw-h-4 tw-mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-        </svg>
-        ${this.currentUser.name}
-      `;
-      link.href = '#';
-      link.onclick = (e) => {
-        e.preventDefault();
-        this.showUserMenu(link);
-      };
-    });
+    // Atualizar estado do header
+    this.updateHeaderAuthState();
   }
 
   showUserMenu(triggerElement) {
@@ -106,11 +147,80 @@ class AuthManager {
   logout() {
     // Confirmar logout
     if (confirm('Tem certeza que deseja sair?')) {
+      // Salvar carrinho do usuário antes do logout
+      this.salvarCarrinhoUsuarioAntesLogout();
+      
       localStorage.removeItem('chicas_current_user');
       this.currentUser = null;
       
+      // Atualizar estado do header
+      this.updateHeaderAuthState();
+      
+      // Notificar mudança de usuário para outros componentes
+      this.notificarMudancaUsuario();
+      
       // Recarregar página para atualizar UI
       window.location.reload();
+    }
+  }
+
+  /**
+   * Salva carrinho do usuário antes do logout
+   */
+  salvarCarrinhoUsuarioAntesLogout() {
+    if (this.currentUser && window.carrinhoManager) {
+      const userId = this.currentUser.email.toLowerCase().trim();
+      const userKey = `cart:${userId}`;
+      
+      // Salvar estado atual do carrinho
+      if (window.carrinhoManager.carrinho && window.carrinhoManager.carrinho.length > 0) {
+        localStorage.setItem(userKey, JSON.stringify(window.carrinhoManager.carrinho));
+        console.log(`Carrinho salvo para usuário ${userId} antes do logout`);
+      }
+    }
+  }
+
+  /**
+   * Notifica outros componentes sobre mudança de usuário
+   */
+  notificarMudancaUsuario() {
+    // Disparar evento customizado
+    const event = new CustomEvent('userChanged', {
+      detail: { 
+        previousUser: this.currentUser,
+        newUser: null 
+      }
+    });
+    window.dispatchEvent(event);
+  }
+
+  /**
+   * Login de usuário com migração de carrinho
+   */
+  login(userData) {
+    // Salvar dados do usuário
+    localStorage.setItem('chicas_current_user', JSON.stringify(userData));
+    this.currentUser = userData;
+    
+    // Atualizar estado do header
+    this.updateHeaderAuthState();
+    
+    // Migrar carrinho guest para usuário se necessário
+    this.migrarCarrinhoGuestParaUsuario();
+    
+    // Notificar mudança de usuário
+    this.notificarMudancaUsuario();
+    
+    console.log(`Usuário ${userData.email} logado com sucesso`);
+  }
+
+  /**
+   * Migra carrinho de guest para usuário logado
+   */
+  migrarCarrinhoGuestParaUsuario() {
+    if (this.currentUser && window.carrinhoManager) {
+      const userId = this.currentUser.email.toLowerCase().trim();
+      window.carrinhoManager.migrarCarrinhoGuestParaUsuario(userId);
     }
   }
 

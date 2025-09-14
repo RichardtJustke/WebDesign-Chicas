@@ -1,173 +1,327 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teste do Sistema de Carrinho — Chicas Eventos</title>
-  <link rel="icon" href="assets/public/img/favicon.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={prefix:'tw-',corePlugins:{preflight:false}};</script>
-</head>
-<body class="tw-bg-slate-50 tw-p-8">
-  <div class="tw-max-w-4xl tw-mx-auto">
-    <h1 class="tw-text-3xl tw-font-bold tw-text-slate-900 tw-mb-8">Teste do Sistema de Carrinho</h1>
-    
-    <div class="tw-grid tw-gap-6 md:tw-grid-cols-2">
-      <!-- Painel de Teste -->
-      <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6">
-        <h2 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Adicionar Itens de Teste</h2>
-        
-        <div class="tw-space-y-4">
-          <button onclick="testarAdicionarItem('audiovisual')" 
-                  class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-emerald-700">
-            Adicionar Serviço Audiovisual
-          </button>
-          
-          <button onclick="testarAdicionarItem('buffet')" 
-                  class="tw-w-full tw-bg-blue-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-blue-700">
-            Adicionar Serviço Buffet
-          </button>
-          
-          <button onclick="testarAdicionarItem('cerimonial')" 
-                  class="tw-w-full tw-bg-purple-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-purple-700">
-            Adicionar Serviço Cerimonial
-          </button>
-          
-          <button onclick="testarAdicionarItem('rh')" 
-                  class="tw-w-full tw-bg-orange-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-orange-700">
-            Adicionar Serviço RH
-          </button>
-          
-          <button onclick="limparCarrinho()" 
-                  class="tw-w-full tw-bg-red-600 tw-text-white tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-red-700">
-            Limpar Carrinho
-          </button>
-        </div>
-      </div>
-      
-      <!-- Status do Carrinho -->
-      <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6">
-        <h2 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Status do Carrinho</h2>
-        
-        <div id="statusCarrinho" class="tw-space-y-2">
-          <p class="tw-text-slate-600">Carregando...</p>
-        </div>
-        
-        <div class="tw-mt-4">
-          <a href="pages/carrinho.html" 
-             class="tw-inline-block tw-bg-emerald-600 tw-text-white tw-px-6 tw-py-3 tw-rounded-lg tw-font-semibold hover:tw-bg-emerald-700">
-            Ver Carrinho Completo
-          </a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Log de Ações -->
-    <div class="tw-mt-8 tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6">
-      <h2 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Log de Ações</h2>
-      <div id="logAcoes" class="tw-bg-slate-100 tw-rounded-lg tw-p-4 tw-h-40 tw-overflow-y-auto">
-        <p class="tw-text-slate-600">Aguardando ações...</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sistema de Carrinho -->
-  <script src="assets/js/carrinho.js"></script>
-  
-  <script>
-    // Funções de teste
-    function testarAdicionarItem(categoria) {
-      const itensTeste = {
-        audiovisual: {
-          nome: 'Fotografia Profissional',
-          opcao: 'Completo (8h) - R$ 2.000',
-          preco: 2000,
-          categoria: 'audiovisual'
-        },
-        buffet: {
-          nome: 'Coffee Break Executivo',
-          opcao: '100 pessoas - R$ 1.500',
-          preco: 1500,
-          categoria: 'buffet'
-        },
-        cerimonial: {
-          nome: 'Planejamento Completo',
-          opcao: 'Completo (2 meses) - R$ 4.000',
-          preco: 4000,
-          categoria: 'cerimonial'
-        },
-        rh: {
-          nome: 'Equipe de Garçons',
-          opcao: '50 pessoas - R$ 7.500',
-          preco: 7500,
-          categoria: 'rh'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Funcionalidade do Carrinho</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modals.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-      };
-      
-      const item = itensTeste[categoria];
-      if (item) {
-        carrinhoManager.adicionarItem(item);
-        logAcao(`Item adicionado: ${item.nome} - R$ ${item.preco.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`);
-        atualizarStatusCarrinho();
-      }
-    }
-    
-    function limparCarrinho() {
-      carrinhoManager.limparCarrinho();
-      logAcao('Carrinho limpo');
-      atualizarStatusCarrinho();
-    }
-    
-    function atualizarStatusCarrinho() {
-      const statusDiv = document.getElementById('statusCarrinho');
-      const carrinho = carrinhoManager.carrinho;
-      const totalItens = carrinhoManager.contarItens();
-      const totalValor = carrinhoManager.calcularTotal();
-      
-      if (carrinho.length === 0) {
-        statusDiv.innerHTML = '<p class="tw-text-slate-600">Carrinho vazio</p>';
-      } else {
-        let html = `
-          <p class="tw-font-semibold">Total de itens: ${totalItens}</p>
-          <p class="tw-font-semibold">Valor total: R$ ${totalValor.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
-          <div class="tw-mt-3">
-            <p class="tw-text-sm tw-text-slate-600 tw-mb-2">Itens no carrinho:</p>
-        `;
-        
-        carrinho.forEach(item => {
-          html += `
-            <div class="tw-text-sm tw-bg-slate-100 tw-p-2 tw-rounded tw-mb-1">
-              ${item.nome} - R$ ${(item.preco * item.quantidade).toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+        .test-section h2 {
+            margin-top: 0;
+            color: #1e293b;
+        }
+        .test-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .test-btn {
+            padding: 12px 16px;
+            border: 1px solid #059669;
+            border-radius: 6px;
+            background: white;
+            color: #059669;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .test-btn:hover {
+            background: #059669;
+            color: white;
+        }
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        .status.success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        .status.error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        .status.info {
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste da Funcionalidade do Carrinho</h1>
+        <p>Esta página testa a funcionalidade padronizada dos botões "Adicionar ao carrinho".</p>
+
+        <!-- Status do Sistema -->
+        <div class="test-section">
+            <h2>📊 Status do Sistema</h2>
+            <div id="systemStatus">
+                <div class="status info">Carregando status...</div>
             </div>
-          `;
+        </div>
+
+        <!-- Teste de Botões Padronizados -->
+        <div class="test-section">
+            <h2>🔘 Teste de Botões Padronizados</h2>
+            <p>Estes botões usam a classe <code>.js-add-to-cart</code> e os atributos <code>data-*</code> padronizados:</p>
+            
+            <div class="test-buttons">
+                <!-- Teste Package Buffet -->
+                <button class="js-add-to-cart test-btn" 
+                        data-item-type="package" 
+                        data-item-id="buffet-ouro" 
+                        data-variant-id="ouro" 
+                        data-qty="50"
+                        data-meta='{"serviceKey": "buffet", "title": "Buffet Ouro", "tier": "Ouro"}'>
+                    📦 Buffet Ouro (50 pessoas)
+                </button>
+
+                <!-- Teste Service Audiovisual -->
+                <button class="js-add-to-cart test-btn" 
+                        data-item-type="service" 
+                        data-item-id="fotografia" 
+                        data-variant-id="4h" 
+                        data-qty="1"
+                        data-meta='{"serviceKey": "audiovisual", "title": "Fotografia", "duration": "4h"}'>
+                    📸 Fotografia (4h)
+                </button>
+
+                <!-- Teste Service RH -->
+                <button class="js-add-to-cart test-btn" 
+                        data-item-type="service" 
+                        data-item-id="garcom-bar" 
+                        data-variant-id="6h" 
+                        data-qty="2"
+                        data-meta='{"serviceKey": "rh", "title": "Garçom/Bar", "duration": "6h"}'>
+                    👥 Garçom/Bar (6h, 2 pessoas)
+                </button>
+
+                <!-- Teste Package Cerimonial -->
+                <button class="js-add-to-cart test-btn" 
+                        data-item-type="package" 
+                        data-item-id="cerimonial-prata" 
+                        data-variant-id="prata" 
+                        data-qty="1"
+                        data-meta='{"serviceKey": "cerimonial", "title": "Cerimonial Prata", "tier": "Prata"}'>
+                    💍 Cerimonial Prata
+                </button>
+            </div>
+        </div>
+
+        <!-- Teste de Estados de Erro -->
+        <div class="test-section">
+            <h2>⚠️ Teste de Estados de Erro</h2>
+            <p>Estes botões testam cenários de erro:</p>
+            
+            <div class="test-buttons">
+                <!-- Botão sem userId (deve mostrar toast de login) -->
+                <button class="js-add-to-cart test-btn" 
+                        data-item-type="service" 
+                        data-item-id="teste-sem-user"
+                        data-variant-id="teste"
+                        data-qty="1"
+                        data-meta='{"test": "sem-user"}'>
+                    🚫 Sem Usuário (Teste)
+                </button>
+
+                <!-- Botão com dados incompletos -->
+                <button class="js-add-to-cart test-btn" 
+                        data-item-type="service" 
+                        data-item-id="" 
+                        data-variant-id="teste"
+                        data-qty="1"
+                        data-meta='{"test": "dados-incompletos"}'>
+                    ❌ Dados Incompletos
+                </button>
+            </div>
+        </div>
+
+        <!-- Teste de Modais -->
+        <div class="test-section">
+            <h2>🪟 Teste de Modais</h2>
+            <p>Teste os modais que contêm os botões "Adicionar ao carrinho":</p>
+            
+            <div class="test-buttons">
+                <button onclick="testOpenPackagesModal()" class="test-btn">
+                    📦 Abrir Modal de Pacotes
+                </button>
+                <button onclick="testOpenItemModal()" class="test-btn">
+                    🎯 Abrir Modal de Item
+                </button>
+            </div>
+        </div>
+
+        <!-- Informações do Carrinho -->
+        <div class="test-section">
+            <h2>🛒 Informações do Carrinho</h2>
+            <div id="cartInfo">
+                <div class="status info">Carregando informações do carrinho...</div>
+            </div>
+            <button onclick="updateCartInfo()" class="test-btn" style="margin-top: 10px;">
+                🔄 Atualizar Info do Carrinho
+            </button>
+        </div>
+
+        <!-- Log de Testes -->
+        <div class="test-section">
+            <h2>📝 Log de Testes</h2>
+            <div id="testLog" style="background: white; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto;">
+                <div>Log iniciado...</div>
+            </div>
+            <button onclick="clearLog()" class="test-btn" style="margin-top: 10px;">
+                🗑️ Limpar Log
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/services-data.js"></script>
+    <script src="assets/js/modals.js"></script>
+    <script src="assets/js/carrinho.js"></script>
+    
+    <script>
+        // Função para log
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.style.color = type === 'error' ? '#dc2626' : type === 'success' ? '#166534' : '#2563eb';
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('testLog').innerHTML = '<div>Log limpo...</div>';
+        }
+
+        // Função para verificar status do sistema
+        function checkSystemStatus() {
+            const status = {
+                carrinhoManager: !!window.carrinhoManager,
+                addToCart: !!window.addToCart,
+                modalManager: !!window.modalManager,
+                servicesData: !!window.SERVICES_DATA
+            };
+
+            const statusDiv = document.getElementById('systemStatus');
+            statusDiv.innerHTML = '';
+
+            Object.entries(status).forEach(([key, value]) => {
+                const div = document.createElement('div');
+                div.className = `status ${value ? 'success' : 'error'}`;
+                div.textContent = `${value ? '✅' : '❌'} ${key}: ${value ? 'Carregado' : 'Não encontrado'}`;
+                statusDiv.appendChild(div);
+            });
+
+            log(`Status do sistema verificado: ${Object.values(status).filter(Boolean).length}/${Object.keys(status).length} componentes carregados`);
+        }
+
+        // Função para atualizar informações do carrinho
+        function updateCartInfo() {
+            if (!window.carrinhoManager) {
+                document.getElementById('cartInfo').innerHTML = '<div class="status error">❌ CarrinhoManager não encontrado</div>';
+                return;
+            }
+
+            const carrinho = window.carrinhoManager.carrinho;
+            const userId = window.carrinhoManager.userId;
+            const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+
+            document.getElementById('cartInfo').innerHTML = `
+                <div class="status success">✅ Usuário: ${userId || 'Guest'}</div>
+                <div class="status info">📦 Total de itens: ${totalItens}</div>
+                <div class="status info">🛍️ Itens únicos: ${carrinho.length}</div>
+                <div style="margin-top: 10px;">
+                    <strong>Itens no carrinho:</strong>
+                    ${carrinho.length === 0 ? '<div class="status info">Carrinho vazio</div>' : 
+                      carrinho.map(item => `<div style="margin: 5px 0; padding: 5px; background: white; border-radius: 4px;">${item.nome} (${item.quantidade}x) - R$ ${item.preco}</div>`).join('')}
+                </div>
+            `;
+
+            log(`Carrinho atualizado: ${totalItens} itens, ${carrinho.length} únicos`);
+        }
+
+        // Função para testar modal de pacotes
+        function testOpenPackagesModal() {
+            log('Abrindo modal de pacotes...');
+            try {
+                // Simular dados de serviço para teste
+                window.currentServiceData = {
+                    serviceKey: 'buffet',
+                    title: 'Buffet',
+                    packages: [
+                        {
+                            id: 'buffet-bronze',
+                            title: 'Buffet Bronze',
+                            tierOrService: 'Bronze',
+                            description: 'Pacote básico de buffet',
+                            offerings: ['Cardápio básico', 'Serviço de mesa'],
+                            pricing: { 'Até 50 pessoas': 'R$ 45,00/pessoa' }
+                        }
+                    ]
+                };
+                openPackagesModal();
+                log('Modal de pacotes aberto com sucesso', 'success');
+            } catch (error) {
+                log(`Erro ao abrir modal de pacotes: ${error.message}`, 'error');
+            }
+        }
+
+        // Função para testar modal de item
+        function testOpenItemModal() {
+            log('Abrindo modal de item...');
+            try {
+                openItemModal('fotografia');
+                log('Modal de item aberto com sucesso', 'success');
+            } catch (error) {
+                log(`Erro ao abrir modal de item: ${error.message}`, 'error');
+            }
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Página de teste carregada');
+            checkSystemStatus();
+            updateCartInfo();
+
+            // Verificar se os event listeners estão funcionando
+            setTimeout(() => {
+                const addToCartButtons = document.querySelectorAll('.js-add-to-cart');
+                log(`${addToCartButtons.length} botões .js-add-to-cart encontrados`);
+                
+                addToCartButtons.forEach((btn, index) => {
+                    log(`Botão ${index + 1}: ${btn.dataset.itemType} - ${btn.dataset.itemId}`);
+                });
+            }, 1000);
         });
-        
-        html += '</div>';
-        statusDiv.innerHTML = html;
-      }
-    }
-    
-    function logAcao(acao) {
-      const logDiv = document.getElementById('logAcoes');
-      const timestamp = new Date().toLocaleTimeString();
-      const logEntry = document.createElement('div');
-      logEntry.className = 'tw-text-sm tw-mb-1';
-      logEntry.innerHTML = `<span class="tw-text-slate-500">[${timestamp}]</span> ${acao}`;
-      
-      if (logDiv.children.length === 1 && logDiv.children[0].textContent === 'Aguardando ações...') {
-        logDiv.innerHTML = '';
-      }
-      
-      logDiv.appendChild(logEntry);
-      logDiv.scrollTop = logDiv.scrollHeight;
-    }
-    
-    // Inicializar quando a página carregar
-    document.addEventListener('DOMContentLoaded', function() {
-      atualizarStatusCarrinho();
-      logAcao('Sistema de carrinho inicializado');
-    });
-  </script>
+
+        // Interceptar cliques nos botões para log
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('js-add-to-cart')) {
+                log(`Botão clicado: ${e.target.textContent.trim()}`);
+            }
+        });
+    </script>
 </body>
 </html>

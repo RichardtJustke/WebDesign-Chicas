@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Botão Carrinho</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .test-info {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .test-btn {
+            padding: 12px 20px;
+            border: 1px solid #059669;
+            border-radius: 6px;
+            background: white;
+            color: #059669;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .test-btn:hover {
+            background: #059669;
+            color: white;
+        }
+        .log {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Teste do Botão do Carrinho</h1>
+    
+    <div class="test-info">
+        <h3>📍 Localização Atual</h3>
+        <p><strong>URL:</strong> <span id="currentUrl"></span></p>
+        <p><strong>Caminho esperado do carrinho:</strong> <span id="expectedPath"></span></p>
+    </div>
+
+    <div class="test-buttons">
+        <button onclick="testCartButton()" class="test-btn">
+            🛒 Testar Botão Carrinho
+        </button>
+        <button onclick="testCartNavigation()" class="test-btn">
+            🧭 Testar Navegação
+        </button>
+        <button onclick="clearLog()" class="test-btn">
+            🗑️ Limpar Log
+        </button>
+    </div>
+
+    <div id="cartInfo" class="test-info">
+        <h3>📊 Informações do Carrinho</h3>
+        <div id="cartStatus">Carregando...</div>
+    </div>
+
+    <h3>📝 Log de Testes</h3>
+    <div id="testLog" class="log">
+        <div>Log iniciado...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/carrinho.js"></script>
+    
+    <script>
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.style.color = type === 'error' ? '#ef4444' : type === 'success' ? '#22c55e' : '#3b82f6';
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('testLog').innerHTML = '<div>Log limpo...</div>';
+        }
+
+        function updateCartInfo() {
+            const status = document.getElementById('cartStatus');
+            
+            if (!window.carrinhoManager) {
+                status.innerHTML = '<span style="color: #ef4444;">❌ CarrinhoManager não encontrado</span>';
+                return;
+            }
+
+            const carrinho = window.carrinhoManager.carrinho;
+            const userId = window.carrinhoManager.userId;
+            const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+
+            status.innerHTML = `
+                <div><strong>Usuário:</strong> ${userId || 'Guest'}</div>
+                <div><strong>Total de itens:</strong> ${totalItens}</div>
+                <div><strong>Itens únicos:</strong> ${carrinho.length}</div>
+                <div><strong>Status:</strong> <span style="color: #22c55e;">✅ Funcionando</span></div>
+            `;
+        }
+
+        function testCartButton() {
+            log('Testando botão do carrinho...');
+            
+            if (!window.carrinhoManager) {
+                log('❌ CarrinhoManager não encontrado', 'error');
+                return;
+            }
+
+            if (typeof window.carrinhoManager.openCart !== 'function') {
+                log('❌ Função openCart não encontrada', 'error');
+                return;
+            }
+
+            try {
+                log('✅ Chamando carrinhoManager.openCart()...', 'success');
+                window.carrinhoManager.openCart();
+            } catch (error) {
+                log(`❌ Erro ao abrir carrinho: ${error.message}`, 'error');
+            }
+        }
+
+        function testCartNavigation() {
+            log('Testando navegação para carrinho...');
+            
+            const currentPath = window.location.pathname;
+            let cartPath = 'pages/carrinho.html';
+            
+            if (currentPath.includes('/servicos/')) {
+                cartPath = '../carrinho.html';
+            } else if (currentPath.includes('/pages/') && !currentPath.includes('/servicos/')) {
+                cartPath = 'carrinho.html';
+            } else if (currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath.endsWith('/WebDesign-Chicas/')) {
+                cartPath = 'pages/carrinho.html';
+            }
+            
+            log(`📍 Caminho atual: ${currentPath}`);
+            log(`🎯 Redirecionando para: ${cartPath}`, 'success');
+            
+            // Simular navegação (não navegar de verdade)
+            log('ℹ️ Simulação - em produção navegaria para: ' + cartPath);
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Página de teste carregada');
+            
+            // Atualizar informações da página
+            document.getElementById('currentUrl').textContent = window.location.href;
+            
+            const currentPath = window.location.pathname;
+            let expectedPath = 'pages/carrinho.html';
+            
+            if (currentPath.includes('/servicos/')) {
+                expectedPath = '../carrinho.html';
+            } else if (currentPath.includes('/pages/') && !currentPath.includes('/servicos/')) {
+                expectedPath = 'carrinho.html';
+            } else if (currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath.endsWith('/WebDesign-Chicas/')) {
+                expectedPath = 'pages/carrinho.html';
+            }
+            
+            document.getElementById('expectedPath').textContent = expectedPath;
+            
+            // Aguardar carregamento do CarrinhoManager
+            setTimeout(() => {
+                updateCartInfo();
+                log('Sistema carregado e pronto para teste');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

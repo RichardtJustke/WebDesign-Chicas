@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teste Carrinho - Chicas Eventos</title>
+  <link rel="icon" href="../assets/public/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
+</head>
+<body style="padding-top: 80px !important;">
+
+  <main class="tw-py-16">
+    <div class="container tw-mx-auto tw-max-w-4xl tw-px-4">
+      
+      <div class="tw-text-center tw-mb-12">
+        <h1 class="tw-text-4xl tw-font-bold tw-text-slate-900 tw-mb-4">
+          Teste de Preços do Carrinho
+        </h1>
+        <p class="tw-text-slate-600 tw-text-lg">
+          Adicione itens ao carrinho para testar os preços
+        </p>
+      </div>
+
+      <!-- Botões de teste -->
+      <div class="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+        
+        <!-- Audiovisual -->
+        <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Audiovisual</h3>
+          <div class="tw-space-y-3">
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('audiovisual', 'Fotografia', 'Completo (8h)', 1)">
+              Fotografia Completo (8h) - R$ 2.500,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('audiovisual', 'Drone', 'Básico (2h)', 1)">
+              Drone Básico (2h) - R$ 1.000,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('audiovisual', 'Filmagem', 'Intermediário (4h)', 1)">
+              Filmagem Intermediário (4h) - R$ 2.000,00
+            </button>
+          </div>
+        </div>
+
+        <!-- Buffet -->
+        <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Buffet</h3>
+          <div class="tw-space-y-3">
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('buffet', 'Coquetéis', 'Premium', 50)">
+              Coquetéis Premium (50 pessoas) - R$ 3.250,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('buffet', 'Coffee Break', 'VIP', 30)">
+              Coffee Break VIP (30 pessoas) - R$ 1.350,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('buffet', 'Almoço/Jantar', 'Premium', 100)">
+              Almoço/Jantar Premium (100 pessoas) - R$ 7.500,00
+            </button>
+          </div>
+        </div>
+
+        <!-- RH -->
+        <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Recursos Humanos</h3>
+          <div class="tw-space-y-3">
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('rh', 'Garçom/Barman', 'Premium', 1)">
+              Garçom/Barman Premium - R$ 250,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('rh', 'Recepção', 'VIP', 1)">
+              Recepção VIP - R$ 180,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('rh', 'Segurança', 'Premium', 1)">
+              Segurança Premium - R$ 300,00
+            </button>
+          </div>
+        </div>
+
+        <!-- Cerimonial -->
+        <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Cerimonial</h3>
+          <div class="tw-space-y-3">
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('cerimonial', 'Planejamento', 'Premium', 1)">
+              Planejamento Premium - R$ 2.500,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('cerimonial', 'Coordenação no dia', 'Completo', 1)">
+              Coordenação no dia Completo - R$ 1.000,00
+            </button>
+            <button class="tw-w-full tw-bg-emerald-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-emerald-700 tw-transition-colors" 
+                    onclick="adicionarItemTeste('cerimonial', 'Consultoria', 'Premium', 1)">
+              Consultoria Premium - R$ 800,00
+            </button>
+          </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Ações</h3>
+          <div class="tw-space-y-3">
+            <a href="carrinho.html" class="tw-block tw-w-full tw-bg-blue-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-blue-700 tw-transition-colors tw-text-center">
+              Ver Carrinho
+            </a>
+            <button class="tw-w-full tw-bg-red-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-red-700 tw-transition-colors" 
+                    onclick="limparCarrinho()">
+              Limpar Carrinho
+            </button>
+            <button class="tw-w-full tw-bg-gray-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-gray-700 tw-transition-colors" 
+                    onclick="mostrarItensCarrinho()">
+              Mostrar Itens (Console)
+            </button>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-slate-900 tw-mb-4">Status do Carrinho</h3>
+          <div id="statusCarrinho" class="tw-text-sm tw-text-slate-600">
+            Carregando...
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../assets/js/user-isolation-migration.js"></script>
+  <script src="../assets/js/pricing-data.js"></script>
+  <script src="../assets/js/carrinho.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/auth.js"></script>
+
+  <script>
+    // Função para adicionar item de teste
+    function adicionarItemTeste(categoria, nome, opcao, quantidade) {
+      const item = {
+        id: `${categoria}-${nome.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`,
+        nome: nome,
+        categoria: categoria,
+        opcao: opcao,
+        quantidade: quantidade,
+        imagem: getImagemPadrao(categoria),
+        timestamp: Date.now()
+      };
+
+      carrinhoManager.adicionarItem(item);
+      atualizarStatusCarrinho();
+    }
+
+    // Função para obter imagem padrão
+    function getImagemPadrao(categoria) {
+      const imagensPadrao = {
+        'audiovisual': '../assets/public/img/aud/fotografo.jpg',
+        'buffet': '../assets/public/img/buffet/buffet.jpg',
+        'cerimonial': '../assets/public/img/org/ale.jpg',
+        'rh': '../assets/public/img/rh/operacional.jpg'
+      };
+      return imagensPadrao[categoria] || '../assets/public/img/org/ale.jpg';
+    }
+
+    // Função para limpar carrinho
+    function limparCarrinho() {
+      carrinhoManager.limparCarrinho();
+      atualizarStatusCarrinho();
+    }
+
+    // Função para mostrar itens no console
+    function mostrarItensCarrinho() {
+      console.log('Itens no carrinho:', carrinhoManager.carrinho);
+      console.log('Total calculado:', carrinhoManager.calcularTotal());
+    }
+
+    // Função para atualizar status do carrinho
+    function atualizarStatusCarrinho() {
+      const statusDiv = document.getElementById('statusCarrinho');
+      const totalItens = carrinhoManager.contarItens();
+      const totalPreco = carrinhoManager.calcularTotal();
+      
+      statusDiv.innerHTML = `
+        <div class="tw-mb-2">
+          <strong>Total de itens:</strong> ${totalItens}
+        </div>
+        <div class="tw-mb-2">
+          <strong>Valor total:</strong> R$ ${totalPreco.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+        </div>
+        <div class="tw-text-xs tw-text-slate-500">
+          ${carrinhoManager.carrinho.length} tipos de serviços
+        </div>
+      `;
+    }
+
+    // Inicializar quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      atualizarStatusCarrinho();
+      
+      // Atualizar status a cada mudança no carrinho
+      setInterval(atualizarStatusCarrinho, 1000);
+    });
+  </script>
+
+</body>
+</html>

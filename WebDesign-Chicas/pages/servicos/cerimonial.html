@@ -10,6 +10,398 @@
   <link rel="stylesheet" href="../../assets/css/modals.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
+  <style>
+    /* Modal de Serviço - Mesmos estilos do audiovisual */
+    .service-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .service-modal.active {
+      display: flex;
+    }
+
+    .service-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .service-modal-content {
+      position: relative;
+      background: white;
+      border-radius: 24px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      animation: slideInUp 0.4s ease;
+    }
+
+    .service-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 32px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .service-modal-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    .service-modal-close {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #64748b;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+
+    .service-modal-close:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .service-modal-body {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .service-modal-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .service-main-image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-main-image img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .service-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .service-thumbnails img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .service-thumbnails img:hover,
+    .service-thumbnails img.active {
+      border-color: #059669;
+      transform: scale(1.05);
+    }
+
+    .service-modal-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .service-description-card,
+    .service-features-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid #059669;
+    }
+
+    .service-description-card h3,
+    .service-features-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 12px 0;
+    }
+
+    .service-description-card p {
+      color: #64748b;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .service-features-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .service-features-card li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      color: #64748b;
+    }
+
+    .service-features-card li::before {
+      content: "✓";
+      color: #059669;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+
+    .service-modal-footer {
+      padding: 24px 32px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+
+    .service-add-event-btn {
+      background: #059669;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+    }
+
+    .service-add-event-btn:hover {
+      background: #047857;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+    }
+
+    .service-whatsapp-btn {
+      background: #25d366;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+    }
+
+    .service-whatsapp-btn:hover {
+      background: #20ba5a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Seletor de Pacotes nos Cards */
+    .service-package-selector {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px;
+      border-radius: 0 0 16px 16px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-package-selector {
+      transform: translateY(0);
+    }
+
+    .package-selector-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .package-dropdown {
+      width: 100%;
+      padding: 8px 12px;
+      border: 2px solid #059669;
+      border-radius: 8px;
+      background: white;
+      font-size: 0.875rem;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .package-dropdown:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    }
+
+    .package-dropdown:hover {
+      border-color: #047857;
+    }
+
+    .package-price {
+      font-size: 0.75rem;
+      color: #059669;
+      font-weight: 600;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* Seletor de Pacotes no Modal */
+    .service-package-selector-modal {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid #059669;
+    }
+
+    .service-package-selector-modal h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 12px 0;
+    }
+
+    .package-dropdown-modal {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #059669;
+      border-radius: 8px;
+      background: white;
+      font-size: 1rem;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+    }
+
+    .package-dropdown-modal:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    }
+
+    .package-dropdown-modal:hover {
+      border-color: #047857;
+    }
+
+    .package-price-modal {
+      font-size: 1.25rem;
+      color: #059669;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    @media (max-width: 768px) {
+      .service-modal-content {
+        margin: 10px;
+        max-height: 95vh;
+      }
+      
+      .service-modal-body {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+      
+      .service-main-image img {
+        height: 200px;
+      }
+      
+      .service-modal-header {
+        padding: 20px;
+      }
+      
+      .service-modal-title {
+        font-size: 1.5rem;
+      }
+
+      .service-thumbnails {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .service-modal-footer {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .service-package-selector {
+        padding: 12px;
+      }
+
+      .package-selector-title {
+        font-size: 0.8rem;
+      }
+
+      .package-dropdown {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+    }
+  </style>
 </head>
 <body style="padding-top: 80px !important;">
 
@@ -136,89 +528,104 @@
       <h1 class="tw-text-3xl md:tw-text-4xl tw-font-extrabold tw-text-slate-900 tw-mt-1 text-reveal animate-fade-in-up animate-delay-200">Cerimonial & Produção</h1>
       <p class="tw-text-slate-600 tw-mt-2 animate-fade-in-up animate-delay-300">Planejamento, cronograma, fornecedores e execução no dia. Você curte, a gente coordena.</p>
       
-      <!-- Botão Ver Pacotes -->
-      <div class="tw-mt-6 animate-delay-400">
-        <button onclick="openPackagesModal()" class="packages-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="tw-mr-2">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          Ver Pacotes
-        </button>
-      </div>
     </header>
 
     <!-- Grid de Cards Padronizados -->
     <section class="tw-mt-8 scroll-reveal" data-animation="animate-fade-in-up">
       <div class="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
         <!-- Planejamento -->
-        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200 service-card" data-stagger onclick="openItemModal('planejamento')">
+        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-1 animate-fade-in-up animate-delay-200 service-card" data-stagger>
           <img src="../../assets/public/img/org/ale.jpg" alt="Planejamento de eventos"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" />
           <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
           <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
             <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Planejamento</h3>
-            <p class="tw-text-white/85 tw-text-sm tw-mt-1">Estratégia completa para seu evento</p>
+            <button class="tw-mt-2 tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-colors tw-duration-200" onclick="openServiceModal('planejamento')">
+              Saiba Mais
+            </button>
+            <p class="tw-text-white/85 tw-text-sm tw-mt-2">Estratégia completa para seu evento</p>
           </div>
+          
         </article>
 
         <!-- Coordenação do Dia -->
-        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300 service-card" data-stagger onclick="openItemModal('coordenacao-dia')">
+        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-2 animate-fade-in-up animate-delay-300 service-card" data-stagger>
           <img src="../../assets/public/img/aud/fotografo2.jpg" alt="Coordenação no dia do evento"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
                onerror="this.src='../../assets/public/img/org/ale.jpg'" />
           <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
           <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
             <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Coordenação do Dia</h3>
-            <p class="tw-text-white/85 tw-text-sm tw-mt-1">Execução perfeita no dia do evento</p>
+            <button class="tw-mt-2 tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-colors tw-duration-200" onclick="openServiceModal('coordenacao-dia')">
+              Saiba Mais
+            </button>
+            <p class="tw-text-white/85 tw-text-sm tw-mt-2">Execução perfeita no dia do evento</p>
           </div>
+          
         </article>
 
         <!-- Gestão de Fornecedores -->
-        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400 service-card" data-stagger onclick="openItemModal('gestao-fornecedores')">
+        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-3 animate-fade-in-up animate-delay-400 service-card" data-stagger>
           <img src="../../assets/public/img/aud/fotografo5.jpg" alt="Gestão de fornecedores"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
                onerror="this.src='../../assets/public/img/org/ale.jpg'" />
           <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
           <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
             <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Gestão de Fornecedores</h3>
-            <p class="tw-text-white/85 tw-text-sm tw-mt-1">Coordenação de todos os fornecedores</p>
+            <button class="tw-mt-2 tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-colors tw-duration-200" onclick="openServiceModal('gestao-fornecedores')">
+              Saiba Mais
+            </button>
+            <p class="tw-text-white/85 tw-text-sm tw-mt-2">Coordenação de todos os fornecedores</p>
           </div>
+          
         </article>
 
         <!-- Consultoria -->
-        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500 service-card" data-stagger onclick="openItemModal('consultoria')">
+        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-4 animate-fade-in-up animate-delay-500 service-card" data-stagger>
           <img src="../../assets/public/img/buffet/brunch1.jpg" alt="Consultoria especializada"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
                onerror="this.src='../../assets/public/img/org/ale.jpg'" />
           <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
           <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
             <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Consultoria</h3>
-            <p class="tw-text-white/85 tw-text-sm tw-mt-1">Orientação especializada em eventos</p>
+            <button class="tw-mt-2 tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-colors tw-duration-200" onclick="openServiceModal('consultoria')">
+              Saiba Mais
+            </button>
+            <p class="tw-text-white/85 tw-text-sm tw-mt-2">Orientação especializada em eventos</p>
           </div>
+          
         </article>
 
         <!-- Roteiro & Timeline -->
-        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-5 animate-fade-in-up animate-delay-600 service-card" data-stagger onclick="openItemModal('roteiro-timeline')">
+        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-5 animate-fade-in-up animate-delay-600 service-card" data-stagger>
           <img src="../../assets/public/img/aud/fotografo3.jpg" alt="Roteiro e timeline de evento"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
                onerror="this.src='../../assets/public/img/org/ale.jpg'" />
           <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
           <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
             <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Roteiro & Timeline</h3>
-            <p class="tw-text-white/85 tw-text-sm tw-mt-1">Cronograma detalhado do evento</p>
+            <button class="tw-mt-2 tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-colors tw-duration-200" onclick="openServiceModal('roteiro-timeline')">
+              Saiba Mais
+            </button>
+            <p class="tw-text-white/85 tw-text-sm tw-mt-2">Cronograma detalhado do evento</p>
           </div>
+          
         </article>
 
         <!-- Pós-Evento -->
-        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-6 animate-fade-in-up animate-delay-700 service-card" data-stagger onclick="openItemModal('pos-evento')">
+        <article class="tw-relative tw-rounded-2xl tw-overflow-hidden tw-shadow hover:tw-shadow-lg tw-transition tw-h-[260px] md:tw-h-[300px] card-animate hover-lift stagger-6 animate-fade-in-up animate-delay-700 service-card" data-stagger>
           <img src="../../assets/public/img/buffet/buffet3.jpg" alt="Pós-evento e follow-up"
                class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-object-cover service-card-img" 
                onerror="this.src='../../assets/public/img/org/ale.jpg'" />
           <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-black/60 tw-via-black/30 tw-to-transparent"></div>
           <div class="tw-relative tw-z-10 tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center tw-text-center tw-text-white tw-p-6">
             <h3 class="tw-font-bold tw-text-lg md:tw-text-xl">Pós-Evento</h3>
-            <p class="tw-text-white/85 tw-text-sm tw-mt-1">Acompanhamento e follow-up</p>
+            <button class="tw-mt-2 tw-bg-emerald-600 hover:tw-bg-emerald-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-colors tw-duration-200" onclick="openServiceModal('pos-evento')">
+              Saiba Mais
+            </button>
+            <p class="tw-text-white/85 tw-text-sm tw-mt-2">Acompanhamento e follow-up</p>
           </div>
+          
         </article>
       </div>
     </section>
@@ -226,6 +633,65 @@
   </div>
 
   </main>
+
+  <!-- MODAL DE SERVIÇO -->
+  <div id="serviceModal" class="service-modal">
+    <div class="service-modal-overlay" onclick="closeServiceModal()"></div>
+    <div class="service-modal-content">
+      <div class="service-modal-header">
+        <h2 id="serviceModalTitle" class="service-modal-title"></h2>
+        <button class="service-modal-close" onclick="closeServiceModal()">&times;</button>
+      </div>
+      
+      <div class="service-modal-body">
+        <div class="service-modal-gallery">
+          <div class="service-main-image">
+            <img id="serviceMainImage" src="" alt="" />
+          </div>
+          <div id="serviceThumbnails" class="service-thumbnails"></div>
+        </div>
+        
+        <div class="service-modal-info">
+          <div class="service-description-card">
+            <h3>Descrição</h3>
+            <p id="serviceDescription"></p>
+          </div>
+          
+          <div class="service-features-card">
+            <h3>O que está incluído:</h3>
+            <ul id="serviceFeatures"></ul>
+          </div>
+          
+          <!-- Seletor de Pacotes -->
+          <div class="service-package-selector-modal">
+            <h3>Escolha o pacote:</h3>
+            <select class="package-dropdown-modal" id="packageSelectModal" onchange="updatePackagePriceModal(this.value)">
+              <option value="basico">Básico</option>
+              <option value="completo">Completo</option>
+              <option value="premium">Premium</option>
+            </select>
+            <div class="package-price-modal" id="packagePriceModal">R$ 800</div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="service-modal-footer">
+        <button class="service-add-event-btn" onclick="addToEvent()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Adicionar ao Evento
+        </button>
+        <button class="service-whatsapp-btn" onclick="contactWhatsApp()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+          </svg>
+          Falar com atendente (WhatsApp)
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="../../assets/js/user-isolation-migration.js"></script>
@@ -236,5 +702,309 @@
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/header-include.js"></script>
   <script src="../../assets/js/header-new.js"></script>
+
+  <!-- Script do Modal de Serviço -->
+  <script>
+    // Dados dos serviços de cerimonial
+    const cerimonialServices = {
+      'planejamento': {
+        title: 'Planejamento',
+        description: 'Estratégia completa para seu evento com cronograma detalhado, checklist de tarefas e acompanhamento personalizado. Transformamos sua visão em realidade.',
+        features: [
+          'Cronograma detalhado',
+          'Checklist de tarefas',
+          'Acompanhamento personalizado',
+          'Reuniões de alinhamento',
+          'Relatórios de progresso',
+          'Gestão de prazos',
+          'Suporte especializado'
+        ],
+        images: [
+          '../../assets/public/img/org/ale.jpg',
+          '../../assets/public/img/aud/fotografo2.jpg',
+          '../../assets/public/img/buffet/brunch1.jpg'
+        ]
+      },
+      'coordenacao-dia': {
+        title: 'Coordenação do Dia',
+        description: 'Execução perfeita no dia do evento com coordenação completa de fornecedores, cronograma e resolução de imprevistos em tempo real.',
+        features: [
+          'Coordenação completa',
+          'Gestão de fornecedores',
+          'Cronograma em tempo real',
+          'Resolução de imprevistos',
+          'Equipe especializada',
+          'Comunicação constante',
+          'Relatório pós-evento'
+        ],
+        images: [
+          '../../assets/public/img/aud/fotografo2.jpg',
+          '../../assets/public/img/aud/fotografo5.jpg',
+          '../../assets/public/img/buffet/buffet3.jpg'
+        ]
+      },
+      'gestao-fornecedores': {
+        title: 'Gestão de Fornecedores',
+        description: 'Coordenação completa de todos os fornecedores do seu evento, garantindo qualidade, pontualidade e excelência no serviço.',
+        features: [
+          'Seleção de fornecedores',
+          'Negociação de contratos',
+          'Coordenação de entregas',
+          'Controle de qualidade',
+          'Gestão de pagamentos',
+          'Suporte técnico',
+          'Relatório de performance'
+        ],
+        images: [
+          '../../assets/public/img/aud/fotografo5.jpg',
+          '../../assets/public/img/buffet/buffet3.jpg',
+          '../../assets/public/img/org/ale.jpg'
+        ]
+      },
+      'consultoria': {
+        title: 'Consultoria',
+        description: 'Orientação especializada em eventos com dicas profissionais, estratégias de sucesso e soluções personalizadas para cada tipo de evento.',
+        features: [
+          'Consultoria especializada',
+          'Estratégias personalizadas',
+          'Dicas profissionais',
+          'Análise de viabilidade',
+          'Otimização de custos',
+          'Suporte contínuo',
+          'Relatórios detalhados'
+        ],
+        images: [
+          '../../assets/public/img/buffet/brunch1.jpg',
+          '../../assets/public/img/aud/fotografo3.jpg',
+          '../../assets/public/img/org/ale.jpg'
+        ]
+      },
+      'roteiro-timeline': {
+        title: 'Roteiro & Timeline',
+        description: 'Cronograma detalhado do evento com sequência de atividades, tempos estimados e pontos de controle para execução perfeita.',
+        features: [
+          'Cronograma detalhado',
+          'Sequência de atividades',
+          'Tempos estimados',
+          'Pontos de controle',
+          'Checklist de execução',
+          'Backup de atividades',
+          'Ajustes em tempo real'
+        ],
+        images: [
+          '../../assets/public/img/aud/fotografo3.jpg',
+          '../../assets/public/img/buffet/buffet3.jpg',
+          '../../assets/public/img/aud/fotografo2.jpg'
+        ]
+      },
+      'pos-evento': {
+        title: 'Pós-Evento',
+        description: 'Acompanhamento e follow-up completo após o evento com relatórios detalhados, análise de resultados e sugestões para futuros eventos.',
+        features: [
+          'Relatório detalhado',
+          'Análise de resultados',
+          'Feedback dos participantes',
+          'Sugestões de melhoria',
+          'Arquivo de documentos',
+          'Follow-up com clientes',
+          'Preparação para próximos eventos'
+        ],
+        images: [
+          '../../assets/public/img/buffet/buffet3.jpg',
+          '../../assets/public/img/org/ale.jpg',
+          '../../assets/public/img/aud/fotografo5.jpg'
+        ]
+      }
+    };
+
+    // Função para abrir modal do serviço
+    function openServiceModal(serviceId) {
+      const serviceData = cerimonialServices[serviceId];
+      if (!serviceData) return;
+
+      // Armazenar o ID do serviço atual
+      currentServiceId = serviceId;
+
+      // Preencher dados do modal
+      document.getElementById('serviceModalTitle').textContent = serviceData.title;
+      document.getElementById('serviceDescription').textContent = serviceData.description;
+
+      // Preencher features
+      const featuresContainer = document.getElementById('serviceFeatures');
+      featuresContainer.innerHTML = '';
+      serviceData.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        featuresContainer.appendChild(li);
+      });
+
+      // Atualizar seletor de pacotes
+      const packageSelect = document.getElementById('packageSelectModal');
+      const packagePrice = document.getElementById('packagePriceModal');
+      
+      // Definir opções específicas para cada serviço
+      const packageOptions = {
+        'planejamento': [
+          { value: 'basico', text: 'Básico (1 mês) - R$ 800' },
+          { value: 'completo', text: 'Completo (2 meses) - R$ 1.400' },
+          { value: 'premium', text: 'Premium (3 meses) - R$ 2.000' }
+        ],
+        'coordenacao-dia': [
+          { value: 'basico', text: 'Básico (4h) - R$ 1.200' },
+          { value: 'completo', text: 'Completo (8h) - R$ 2.000' },
+          { value: 'premium', text: 'Premium (12h) - R$ 2.800' }
+        ],
+        'gestao-fornecedores': [
+          { value: 'basico', text: 'Básico (até 5 fornecedores) - R$ 600' },
+          { value: 'completo', text: 'Completo (até 10 fornecedores) - R$ 1.000' },
+          { value: 'premium', text: 'Premium (até 15 fornecedores) - R$ 1.400' }
+        ],
+        'consultoria': [
+          { value: 'basico', text: 'Básico (2h) - R$ 400' },
+          { value: 'completo', text: 'Completo (4h) - R$ 700' },
+          { value: 'premium', text: 'Premium (6h) - R$ 1.000' }
+        ],
+        'roteiro-timeline': [
+          { value: 'basico', text: 'Básico (evento simples) - R$ 300' },
+          { value: 'completo', text: 'Completo (evento médio) - R$ 500' },
+          { value: 'premium', text: 'Premium (evento complexo) - R$ 800' }
+        ],
+        'pos-evento': [
+          { value: 'basico', text: 'Básico (relatório simples) - R$ 200' },
+          { value: 'completo', text: 'Completo (relatório + análise) - R$ 400' },
+          { value: 'premium', text: 'Premium (relatório + análise + sugestões) - R$ 600' }
+        ]
+      };
+
+      // Limpar e preencher opções
+      packageSelect.innerHTML = '';
+      packageOptions[serviceId].forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        packageSelect.appendChild(optionElement);
+      });
+
+      // Definir preço inicial
+      packagePrice.textContent = packageOptions[serviceId][0].text.split(' - ')[1];
+
+      // Preencher galeria de imagens
+      const mainImage = document.getElementById('serviceMainImage');
+      const thumbsContainer = document.getElementById('serviceThumbnails');
+      
+      mainImage.src = serviceData.images[0];
+      mainImage.alt = serviceData.title;
+      
+      thumbsContainer.innerHTML = '';
+      serviceData.images.forEach((src, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.alt = serviceData.title;
+        thumb.className = index === 0 ? 'active' : '';
+        thumb.onclick = () => {
+          mainImage.src = src;
+          thumbsContainer.querySelectorAll('img').forEach(img => img.classList.remove('active'));
+          thumb.classList.add('active');
+        };
+        thumbsContainer.appendChild(thumb);
+      });
+
+      // Abrir modal
+      const modal = document.getElementById('serviceModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Função para fechar modal
+    function closeServiceModal() {
+      const modal = document.getElementById('serviceModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Variável para armazenar o serviço atual
+    let currentServiceId = '';
+
+    // Função para atualizar preço do pacote no modal
+    function updatePackagePriceModal(packageType) {
+      const priceElement = document.getElementById('packagePriceModal');
+      const packageSelect = document.getElementById('packageSelectModal');
+      
+      // Encontrar a opção selecionada
+      const selectedOption = packageSelect.options[packageSelect.selectedIndex];
+      if (selectedOption && selectedOption.textContent.includes(' - ')) {
+        const price = selectedOption.textContent.split(' - ')[1];
+        priceElement.textContent = price;
+      }
+    }
+
+    // Função para adicionar ao evento
+    function addToEvent() {
+      const serviceTitle = document.getElementById('serviceModalTitle').textContent;
+      const packageSelect = document.getElementById('packageSelectModal');
+      const selectedOption = packageSelect.options[packageSelect.selectedIndex];
+      
+      if (!selectedOption || !selectedOption.textContent.includes(' - ')) {
+        alert('Por favor, selecione um pacote válido!');
+        return;
+      }
+      
+      // Extrair informações do pacote selecionado
+      const packageText = selectedOption.textContent;
+      const packageName = packageText.split(' - ')[0];
+      const packagePrice = packageText.split(' - ')[1];
+      
+      // Criar item do carrinho
+      const cartItem = {
+        id: `cerimonial-${currentServiceId}-${selectedOption.value}-${Date.now()}`,
+        nome: serviceTitle,
+        categoria: 'cerimonial',
+        opcao: packageName,
+        preco: 0, // Preço será definido no orçamento
+        quantidade: 1,
+        imagem: document.getElementById('serviceMainImage').src,
+        timestamp: Date.now(),
+        meta: {
+          serviceId: currentServiceId,
+          packageType: selectedOption.value,
+          packagePrice: packagePrice,
+          description: document.getElementById('serviceDescription').textContent,
+          features: Array.from(document.getElementById('serviceFeatures').children).map(li => li.textContent)
+        }
+      };
+      
+      // Adicionar ao carrinho usando o sistema existente
+      if (typeof carrinhoManager !== 'undefined') {
+        carrinhoManager.adicionarItem(cartItem);
+        closeServiceModal();
+      } else {
+        // Fallback se carrinhoManager não estiver disponível
+        alert(`Serviço "${serviceTitle}" - ${packageName} adicionado ao seu evento!`);
+        closeServiceModal();
+      }
+    }
+
+    // Função para contato via WhatsApp
+    function contactWhatsApp() {
+      const serviceTitle = document.getElementById('serviceModalTitle').textContent;
+      const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre o serviço de ${serviceTitle} da Chicas Eventos.`);
+      const whatsappUrl = `https://wa.me/5599999999999?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeServiceModal();
+      }
+    });
+
+    // Fechar modal ao clicar no overlay
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('service-modal-overlay')) {
+        closeServiceModal();
+      }
+    });
+  </script>
 </body>
 </html>

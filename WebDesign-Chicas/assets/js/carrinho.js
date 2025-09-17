@@ -194,7 +194,6 @@ class CarrinhoManager {
     }
 
     this.salvarCarrinho();
-    this.mostrarNotificacao(`${item.nome} adicionado ao carrinho!`, 'success');
   }
 
   // Adiciona item ao carrinho com optimistic update
@@ -253,20 +252,32 @@ class CarrinhoManager {
 
   // Remove item do carrinho
   removerItem(itemId) {
+    const itemRemovido = this.carrinho.find(item => item.id === itemId);
     this.carrinho = this.carrinho.filter(item => item.id !== itemId);
     this.salvarCarrinho();
-    this.mostrarNotificacao('Item removido do carrinho', 'info');
+    
+    // Se estiver na página do carrinho, atualizar a renderização
+    if (window.location.pathname.includes('carrinho.html')) {
+      this.renderizarCarrinho();
+    }
   }
 
   // Atualiza quantidade de um item
   atualizarQuantidade(itemId, novaQuantidade) {
     const item = this.carrinho.find(item => item.id === itemId);
     if (item) {
+      const quantidadeAnterior = item.quantidade;
+      
       if (novaQuantidade <= 0) {
         this.removerItem(itemId);
       } else {
         item.quantidade = novaQuantidade;
         this.salvarCarrinho();
+        
+        // Se estiver na página do carrinho, atualizar a renderização
+        if (window.location.pathname.includes('carrinho.html')) {
+          this.renderizarCarrinho();
+        }
       }
     }
   }
@@ -275,14 +286,49 @@ class CarrinhoManager {
   limparCarrinho() {
     this.carrinho = [];
     this.salvarCarrinho();
-    this.mostrarNotificacao('Carrinho limpo', 'info');
+    
+    // Se estiver na página do carrinho, atualizar a renderização
+    if (window.location.pathname.includes('carrinho.html')) {
+      this.renderizarCarrinho();
+    }
   }
 
   // Calcula total do carrinho
   calcularTotal() {
     return this.carrinho.reduce((total, item) => {
-      return total + (item.preco * item.quantidade);
+      const precoItem = this.calcularPrecoItem(item);
+      return total + precoItem;
     }, 0);
+  }
+
+  // Calcula preço de um item específico
+  calcularPrecoItem(item) {
+    // Se o item já tem preço definido e não é 0, usar esse preço
+    if (item.preco && item.preco > 0) {
+      return item.preco * item.quantidade;
+    }
+
+    // Caso contrário, calcular baseado na estrutura de preços
+    if (typeof window.calcularPrecoCarrinhoItem === 'function') {
+      const precoCalculado = window.calcularPrecoCarrinhoItem(item);
+      if (precoCalculado > 0) {
+        return precoCalculado;
+      }
+    }
+
+    // Fallback: usar preço padrão baseado na categoria
+    return this.getPrecoPadrao(item.categoria) * item.quantidade;
+  }
+
+  // Obtém preço padrão por categoria
+  getPrecoPadrao(categoria) {
+    const precosPadrao = {
+      'audiovisual': 1000,
+      'buffet': 50,
+      'cerimonial': 500,
+      'rh': 150
+    };
+    return precosPadrao[categoria] || 0;
   }
 
   // Conta total de itens no carrinho
@@ -395,47 +441,6 @@ class CarrinhoManager {
     return 'pages/carrinho.html';
   }
 
-  // Mostra notificação
-  mostrarNotificacao(mensagem, tipo = 'success') {
-    // Remove notificação existente se houver
-    const notificacaoExistente = document.querySelector('.notificacao-carrinho');
-    if (notificacaoExistente) {
-      notificacaoExistente.remove();
-    }
-
-    // Cria nova notificação
-    const notificacao = document.createElement('div');
-    notificacao.className = `notificacao-carrinho notificacao-${tipo}`;
-    notificacao.innerHTML = `
-      <div class="notificacao-conteudo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="notificacao-icone">
-          ${tipo === 'success' ? 
-            '<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>' : 
-            '<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>'
-          }
-        </svg>
-        <span>${mensagem}</span>
-      </div>
-    `;
-    
-    // Adiciona ao body
-    document.body.appendChild(notificacao);
-    
-    // Mostra notificação
-    setTimeout(() => {
-      notificacao.classList.add('mostrar');
-    }, 100);
-    
-    // Remove após 3 segundos
-    setTimeout(() => {
-      notificacao.classList.remove('mostrar');
-      setTimeout(() => {
-        if (notificacao.parentNode) {
-          notificacao.parentNode.removeChild(notificacao);
-        }
-      }, 300);
-    }, 3000);
-  }
 
   // Gera ID único para itens
   gerarId() {
@@ -537,6 +542,9 @@ class CarrinhoManager {
 
   // Cria elemento de item do carrinho
   criarElementoItem(item) {
+    const precoItem = this.calcularPrecoItem(item);
+    const precoFormatado = precoItem.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+    
     const itemDiv = document.createElement('div');
     itemDiv.className = 'carrinho-item tw-border-b tw-border-slate-200 tw-pb-6 tw-mb-6 last:tw-border-b-0 last:tw-mb-0';
     itemDiv.innerHTML = `
@@ -563,7 +571,7 @@ class CarrinhoManager {
             </div>
             
             <div class="tw-text-right">
-              <div class="tw-text-2xl tw-font-bold tw-text-emerald-600">R$ ${(item.preco * item.quantidade).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
+              <div class="tw-text-2xl tw-font-bold tw-text-emerald-600">R$ ${precoFormatado}</div>
               <button class="tw-text-sm tw-text-red-600 hover:tw-text-red-700 tw-mt-1" onclick="carrinhoManager.removerItem('${item.id}')">
                 Remover item
               </button>
@@ -587,11 +595,14 @@ class CarrinhoManager {
     if (itensResumo) {
       itensResumo.innerHTML = '';
       this.carrinho.forEach(item => {
+        const precoItem = this.calcularPrecoItem(item);
+        const precoFormatado = precoItem.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+        
         const itemResumo = document.createElement('div');
         itemResumo.className = 'tw-flex tw-justify-between tw-text-sm';
         itemResumo.innerHTML = `
           <span class="tw-text-slate-600">${item.nome}</span>
-          <span class="tw-font-semibold">R$ ${(item.preco * item.quantidade).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</span>
+          <span class="tw-font-semibold">R$ ${precoFormatado}</span>
         `;
         itensResumo.appendChild(itemResumo);
       });
@@ -709,11 +720,17 @@ function createCartItem({ itemType, itemId, variantId, quantity, meta }) {
   if (itemType === 'package') {
     const packageData = serviceData?.packages?.find(pkg => pkg.id === itemId);
     if (packageData) {
+      // Calcular preço baseado na estrutura de preços
+      let precoCalculado = 0;
+      if (typeof window.calcularPrecoItem === 'function') {
+        precoCalculado = window.calcularPrecoItem(serviceKey, packageData.title, `${packageData.tierOrService} - ${variantId}`, quantity);
+      }
+      
       cartItem = {
         ...cartItem,
         nome: packageData.title,
         opcao: `${packageData.tierOrService} - ${variantId}`,
-        preco: 0, // Preço será definido no orçamento
+        preco: precoCalculado,
         imagem: getDefaultServiceImage(serviceKey),
         meta: {
           ...meta,
@@ -727,11 +744,17 @@ function createCartItem({ itemType, itemId, variantId, quantity, meta }) {
   } else if (itemType === 'service') {
     const itemData = serviceData?.items?.find(item => item.id === itemId);
     if (itemData) {
+      // Calcular preço baseado na estrutura de preços
+      let precoCalculado = 0;
+      if (typeof window.calcularPrecoItem === 'function') {
+        precoCalculado = window.calcularPrecoItem(serviceKey, itemData.title, variantId, quantity);
+      }
+      
       cartItem = {
         ...cartItem,
         nome: itemData.title,
         opcao: variantId, // Duração ou especificação
-        preco: 0, // Preço será definido no orçamento
+        preco: precoCalculado,
         imagem: itemData.images?.[0] || getDefaultServiceImage(serviceKey),
         meta: {
           ...meta,
@@ -1009,50 +1032,44 @@ function getCurrentUserId() {
   return window.carrinhoManager.userId;
 }
 
-// ====== ESTILOS PARA NOTIFICAÇÕES ======
+/**
+ * Obtém chave do serviço atual baseada na URL
+ */
+function getCurrentServiceKey() {
+  const path = window.location.pathname;
+  if (path.includes('audiovisual')) return 'audiovisual';
+  if (path.includes('buffet')) return 'buffet';
+  if (path.includes('cerimonial')) return 'cerimonial';
+  if (path.includes('rh')) return 'rh';
+  return 'outros';
+}
+
+/**
+ * Obtém dados de um serviço específico
+ */
+function getServiceData(serviceKey) {
+  if (typeof window.getServiceData === 'function') {
+    return window.getServiceData(serviceKey);
+  }
+  return null;
+}
+
+/**
+ * Obtém imagem padrão para um serviço
+ */
+function getDefaultServiceImage(serviceKey) {
+  const imagensPadrao = {
+    'audiovisual': '../assets/public/img/aud/fotografo.jpg',
+    'buffet': '../assets/public/img/buffet/buffet.jpg',
+    'cerimonial': '../assets/public/img/org/ale.jpg',
+    'rh': '../assets/public/img/rh/operacional.jpg'
+  };
+  return imagensPadrao[serviceKey] || '../assets/public/img/org/ale.jpg';
+}
+
+// ====== ESTILOS PARA CONTADOR DE CARRINHO ======
 
 const carrinhoStyles = `
-  .notificacao-carrinho {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 10000;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 16px 20px;
-    min-width: 300px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-  }
-
-  .notificacao-carrinho.mostrar {
-    transform: translateX(0);
-  }
-
-  .notificacao-conteudo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .notificacao-icone {
-    flex-shrink: 0;
-  }
-
-  .notificacao-success .notificacao-icone {
-    color: #059669;
-  }
-
-  .notificacao-info .notificacao-icone {
-    color: #1c7cc7;
-  }
-
-  .notificacao-carrinho span {
-    font-weight: 500;
-    color: #0f172a;
-  }
-
   .carrinho-contador {
     position: relative;
   }

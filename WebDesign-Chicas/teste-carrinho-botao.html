@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teste Botão Carrinho — Chicas Eventos</title>
+  <link rel="icon" href="assets/public/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
+</head>
+<body style="padding-top: 80px !important;">
+
+  <!-- HEADER NOVO DESIGN -->
+  <header class="header-new header-full-width" id="mainHeader" data-auth="guest" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 2147483647 !important; background: white !important; opacity: 1 !important; visibility: visible !important; display: block !important; width: 100% !important;">
+    <div class="header-container">
+      <div class="container">
+        <nav class="nav-new">
+        <!-- Logo -->
+        <a class="logo-new hover-bounce" href="index.html">
+          <div class="logo-circle logo-modern-icon"></div>
+          <span class="logo-modern-text">Chicas Eventos</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <div class="nav-menu-desktop">
+          <a href="index.html" class="nav-link-new nav-link-modern">HOME</a>
+          <a href="pages/portfolio.html" class="nav-link-new nav-link-modern">PORTFÓLIO</a>
+          <a href="pages/sobre.html" class="nav-link-new nav-link-modern">SOBRE NÓS</a>
+        </div>
+
+        <!-- Menu Desktop - Direita -->
+        <div class="nav-actions-desktop">
+          <!-- Wrapper de ações com duas subáreas -->
+          <div class="header-actions">
+            <!-- Estado SEM LOGIN -->
+            <div class="guest-actions">
+              <a href="pages/cadastro.html" class="btn-signup btn-modern-cta">SIGN UP</a>
+              <a href="pages/login.html" class="btn-login btn-modern-secondary">LOGIN</a>
+            </div>
+
+            <!-- Estado COM LOGIN -->
+            <div class="user-actions">
+              <div class="user-profile" id="userProfile" tabindex="0" role="button" aria-label="Abrir menu do usuário" aria-haspopup="menu" aria-expanded="false">
+                <div class="profile-avatar" id="profileAvatar">
+                  <span class="avatar-initials" id="avatarInitials">U</span>
+                </div>
+                <span class="profile-name" id="profileName">Usuário</span>
+              </div>
+              <div class="cart-icon" id="cartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                <span class="cart-badge" id="cartBadge" aria-hidden="true">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Mobile Toggle -->
+        <button class="menu-toggle-new" id="menuToggleNew" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <!-- Menu Mobile Overlay -->
+      <div class="mobile-menu-new" id="mobileMenuNew">
+        <!-- Navegação comum -->
+        <div class="mobile-nav-links">
+          <a href="index.html" class="mobile-link-new">HOME</a>
+          <a href="pages/portfolio.html" class="mobile-link-new">PORTFÓLIO</a>
+          <a href="pages/sobre.html" class="mobile-link-new">SOBRE NÓS</a>
+        </div>
+
+        <!-- Wrapper de ações mobile -->
+        <div class="mobile-header-actions">
+          <!-- Estado SEM LOGIN Mobile -->
+          <div class="mobile-guest-actions">
+            <div class="mobile-auth-buttons">
+              <a href="pages/login.html" class="mobile-btn-login">LOGIN</a>
+              <a href="pages/cadastro.html" class="mobile-btn-signup">SIGN UP</a>
+            </div>
+          </div>
+
+          <!-- Estado COM LOGIN Mobile -->
+          <div class="mobile-user-actions">
+            <div class="mobile-user-profile">
+              <div class="mobile-profile-avatar" id="mobileProfileAvatar">
+                <span class="mobile-avatar-initials" id="mobileAvatarInitials">U</span>
+              </div>
+              <div class="mobile-user-info">
+                <span class="mobile-profile-name" id="mobileProfileName">Usuário</span>
+              </div>
+            </div>
+            <div class="mobile-user-menu">
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>MEUS EVENTOS</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>CRIAR EVENTO</span>
+              </a>
+              <a href="#" class="mobile-dropdown-item" onclick="authManager.logout()">
+                <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                <span>SAIR</span>
+              </a>
+            </div>
+            <div class="mobile-cart" id="mobileCartIcon" tabindex="0" role="button" aria-label="Abrir carrinho (0 itens)" aria-controls="cart-navigation">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z"/>
+              </svg>
+              <span class="mobile-cart-badge" id="mobileCartBadge" aria-hidden="true">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="tw-container tw-mx-auto tw-max-w-4xl tw-px-4 tw-py-8">
+      <div class="tw-text-center tw-mb-8">
+        <h1 class="tw-text-3xl tw-font-bold tw-text-slate-900 tw-mb-4">Teste do Botão do Carrinho</h1>
+        <p class="tw-text-slate-600">Esta página testa se o botão do carrinho está funcionando corretamente em todas as situações.</p>
+      </div>
+
+      <div class="tw-bg-white tw-rounded-lg tw-shadow tw-p-6 tw-mb-6">
+        <h2 class="tw-text-xl tw-font-semibold tw-mb-4">Status dos Scripts</h2>
+        <div id="scriptStatus" class="tw-space-y-2">
+          <div id="carrinhoStatus" class="tw-flex tw-items-center tw-gap-2">
+            <span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-gray-300"></span>
+            <span>Carregando carrinho.js...</span>
+          </div>
+          <div id="headerStatus" class="tw-flex tw-items-center tw-gap-2">
+            <span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-gray-300"></span>
+            <span>Carregando header-new.js...</span>
+          </div>
+          <div id="integrationStatus" class="tw-flex tw-items-center tw-gap-2">
+            <span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-gray-300"></span>
+            <span>Verificando integração...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tw-bg-white tw-rounded-lg tw-shadow tw-p-6 tw-mb-6">
+        <h2 class="tw-text-xl tw-font-semibold tw-mb-4">Teste Manual</h2>
+        <div class="tw-space-y-4">
+          <p class="tw-text-slate-600">Clique no ícone do carrinho no header para testar a navegação:</p>
+          <div class="tw-flex tw-gap-4">
+            <button onclick="testCartClick()" class="tw-bg-emerald-600 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-font-medium hover:tw-bg-emerald-700">
+              Testar Clique no Carrinho
+            </button>
+            <button onclick="addTestItem()" class="tw-bg-blue-600 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-font-medium hover:tw-bg-blue-700">
+              Adicionar Item de Teste
+            </button>
+            <button onclick="checkCartCount()" class="tw-bg-purple-600 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-font-medium hover:tw-bg-purple-700">
+              Verificar Contagem
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tw-bg-white tw-rounded-lg tw-shadow tw-p-6">
+        <h2 class="tw-text-xl tw-font-semibold tw-mb-4">Log de Testes</h2>
+        <div id="testLog" class="tw-bg-gray-50 tw-p-4 tw-rounded tw-font-mono tw-text-sm tw-h-40 tw-overflow-y-auto">
+          <div class="tw-text-gray-500">Aguardando testes...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="assets/js/user-isolation-migration.js"></script>
+  <script src="assets/js/carrinho.js"></script>
+  <script src="assets/js/services-data.js"></script>
+  <script src="assets/js/modals.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/header-include.js"></script>
+  <script src="assets/js/header-new.js"></script>
+
+  <script>
+    function log(message) {
+      const logDiv = document.getElementById('testLog');
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = document.createElement('div');
+      logEntry.innerHTML = `<span class="tw-text-gray-500">[${timestamp}]</span> ${message}`;
+      logDiv.appendChild(logEntry);
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
+    function updateStatus(elementId, status, message) {
+      const element = document.getElementById(elementId);
+      const indicator = element.querySelector('span');
+      const text = element.querySelector('span:last-child');
+      
+      if (status === 'success') {
+        indicator.className = 'tw-w-3 tw-h-3 tw-rounded-full tw-bg-green-500';
+      } else if (status === 'error') {
+        indicator.className = 'tw-w-3 tw-h-3 tw-rounded-full tw-bg-red-500';
+      } else {
+        indicator.className = 'tw-w-3 tw-h-3 tw-rounded-full tw-bg-gray-300';
+      }
+      
+      text.textContent = message;
+    }
+
+    function testCartClick() {
+      log('🛒 Testando clique no carrinho...');
+      
+      if (window.headerNew && typeof window.headerNew.openCart === 'function') {
+        log('✅ headerNew.openCart encontrado, executando...');
+        window.headerNew.openCart();
+      } else {
+        log('❌ headerNew.openCart não encontrado');
+        
+        // Teste direto do elemento
+        const cartIcon = document.getElementById('cartIcon');
+        if (cartIcon) {
+          log('✅ Elemento cartIcon encontrado, simulando clique...');
+          cartIcon.click();
+        } else {
+          log('❌ Elemento cartIcon não encontrado');
+        }
+      }
+    }
+
+    function addTestItem() {
+      log('➕ Adicionando item de teste...');
+      
+      if (window.carrinhoManager && typeof window.carrinhoManager.adicionarItem === 'function') {
+        const testItem = {
+          id: 'test-item-' + Date.now(),
+          nome: 'Item de Teste',
+          categoria: 'teste',
+          opcao: 'Pacote Teste',
+          preco: 100,
+          quantidade: 1,
+          imagem: 'assets/public/img/org/ale.jpg',
+          timestamp: Date.now()
+        };
+        
+        window.carrinhoManager.adicionarItem(testItem);
+        log('✅ Item de teste adicionado ao carrinho');
+      } else {
+        log('❌ carrinhoManager não encontrado');
+      }
+    }
+
+    function checkCartCount() {
+      log('🔢 Verificando contagem do carrinho...');
+      
+      if (window.carrinhoManager && typeof window.carrinhoManager.contarItens === 'function') {
+        const count = window.carrinhoManager.contarItens();
+        log(`✅ Contagem atual: ${count} itens`);
+      } else {
+        log('❌ carrinhoManager.contarItens não encontrado');
+      }
+    }
+
+    // Verificar status dos scripts quando carregados
+    document.addEventListener('DOMContentLoaded', function() {
+      log('🚀 Página carregada, verificando scripts...');
+      
+      // Verificar carrinhoManager
+      setTimeout(() => {
+        if (window.carrinhoManager) {
+          updateStatus('carrinhoStatus', 'success', 'carrinho.js carregado com sucesso');
+          log('✅ carrinhoManager disponível');
+        } else {
+          updateStatus('carrinhoStatus', 'error', 'Erro ao carregar carrinho.js');
+          log('❌ carrinhoManager não disponível');
+        }
+      }, 100);
+
+      // Verificar headerNew
+      setTimeout(() => {
+        if (window.headerNew) {
+          updateStatus('headerStatus', 'success', 'header-new.js carregado com sucesso');
+          log('✅ headerNew disponível');
+        } else {
+          updateStatus('headerStatus', 'error', 'Erro ao carregar header-new.js');
+          log('❌ headerNew não disponível');
+        }
+      }, 200);
+
+      // Verificar integração
+      setTimeout(() => {
+        if (window.carrinhoManager && window.headerNew) {
+          updateStatus('integrationStatus', 'success', 'Integração funcionando corretamente');
+          log('✅ Integração entre scripts funcionando');
+        } else {
+          updateStatus('integrationStatus', 'error', 'Problema na integração dos scripts');
+          log('❌ Problema na integração dos scripts');
+        }
+      }, 300);
+    });
+  </script>
+</body>
+</html>

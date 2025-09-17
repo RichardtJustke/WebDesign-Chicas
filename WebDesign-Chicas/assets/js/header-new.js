@@ -255,10 +255,13 @@ class HeaderNew {
    * Abre o carrinho - navega para a página do carrinho
    */
   openCart() {
+    console.log('🛒 Abrindo carrinho...');
+    
     // Verificar se existe sistema de carrinho
     if (window.carrinhoManager && typeof window.carrinhoManager.getCarrinhoPath === 'function') {
       // Usar o sistema de carrinho existente
       const carrinhoPath = window.carrinhoManager.getCarrinhoPath();
+      console.log('✅ Usando carrinhoManager, navegando para:', carrinhoPath);
       window.location.href = carrinhoPath;
     } else {
       // Fallback para navegação direta
@@ -266,12 +269,15 @@ class HeaderNew {
       let carrinhoPath = 'pages/carrinho.html';
       
       // Ajustar path baseado na localização atual
-      if (currentPath.includes('pages/')) {
+      if (currentPath.includes('/servicos/')) {
+        carrinhoPath = '../carrinho.html';
+      } else if (currentPath.includes('/pages/') && !currentPath.includes('/servicos/')) {
         carrinhoPath = 'carrinho.html';
-      } else if (currentPath.includes('/')) {
+      } else if (currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath.endsWith('/WebDesign-Chicas/')) {
         carrinhoPath = 'pages/carrinho.html';
       }
       
+      console.log('⚠️ Usando fallback, navegando para:', carrinhoPath);
       window.location.href = carrinhoPath;
     }
   }

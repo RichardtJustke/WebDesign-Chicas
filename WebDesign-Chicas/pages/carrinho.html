@@ -150,8 +150,8 @@
         <!-- Carrinho vazio (estado inicial) -->
         <div id="carrinhoVazio" class="tw-text-center tw-py-16 tw-hidden">
           <div class="tw-w-24 tw-h-24 tw-bg-slate-100 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-6">
-            <svg class="tw-w-12 tw-h-12 tw-text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            <svg class="tw-w-12 tw-h-12 tw-text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
             </svg>
           </div>
           <h3 class="tw-text-2xl tw-font-bold tw-text-slate-900 tw-mb-4">Seu carrinho está vazio</h3>
@@ -220,6 +220,9 @@
                   <a href="../index.html#servicos" class="tw-block tw-w-full tw-text-center tw-bg-slate-100 tw-text-slate-700 tw-py-3 tw-rounded-xl tw-font-semibold hover:tw-bg-slate-200 tw-transition-colors">
                     Continuar Comprando
                   </a>
+                  <button onclick="carrinhoManager.limparCarrinho()" class="tw-w-full tw-bg-red-100 tw-text-red-700 tw-py-3 tw-rounded-xl tw-font-semibold hover:tw-bg-red-200 tw-transition-colors">
+                    Limpar Carrinho
+                  </button>
                 </div>
                 
                 <!-- Informações adicionais -->
@@ -303,10 +306,65 @@
 
   <!-- Scripts -->
   <script src="../assets/js/user-isolation-migration.js"></script>
+  <script src="../assets/js/pricing-data.js"></script>
   <script src="../assets/js/carrinho.js"></script>
   <script src="../assets/js/app.js"></script>
   <script src="../assets/js/auth.js"></script>
   <script src="../assets/js/header-include.js"></script>
   <script src="../assets/js/header-new.js"></script>
+  
+  <script>
+    // Adicionar alguns itens de teste quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM carregado, verificando carrinhoManager...');
+      console.log('window.carrinhoManager:', window.carrinhoManager);
+      
+      // Aguardar um pouco para garantir que o carrinhoManager foi inicializado
+      setTimeout(() => {
+        console.log('Após timeout - window.carrinhoManager:', window.carrinhoManager);
+        console.log('carrinhoManager.carrinho:', window.carrinhoManager?.carrinho);
+        
+        if (window.carrinhoManager && carrinhoManager.carrinho.length === 0) {
+          // Adicionar alguns itens de teste
+          const itensTeste = [
+            {
+              id: 'teste-fotografia',
+              nome: 'Fotografia',
+              categoria: 'audiovisual',
+              opcao: 'Completo (8h)',
+              quantidade: 1,
+              imagem: '../assets/public/img/aud/fotografo.jpg',
+              timestamp: Date.now()
+            },
+            {
+              id: 'teste-drone',
+              nome: 'Drone',
+              categoria: 'audiovisual',
+              opcao: 'Básico (2h)',
+              quantidade: 1,
+              imagem: '../assets/public/img/aud/fotografo3.jpg',
+              timestamp: Date.now()
+            },
+            {
+              id: 'teste-recepcao',
+              nome: 'Recepção',
+              categoria: 'rh',
+              opcao: 'Básico (1 recepcionista)',
+              quantidade: 1,
+              imagem: '../assets/public/img/rh/operacional2.jpg',
+              timestamp: Date.now()
+            }
+          ];
+          
+          itensTeste.forEach(item => {
+            carrinhoManager.adicionarItem(item);
+          });
+          
+          // Renderizar o carrinho
+          carrinhoManager.renderizarCarrinho();
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Botão Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn-login {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .log-in {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            display: inline-block;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #b95929;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste de Funcionalidade - Botão Login</h1>
+        
+        <div class="status info">
+            <strong>Instruções:</strong> Clique nos botões abaixo para testar se eles redirecionam corretamente para a página de login.
+        </div>
+
+        <div class="test-section">
+            <h2>Botão tipo 1: .btn-login</h2>
+            <p>Este é o tipo de botão usado nas páginas index.html e portifolio.html:</p>
+            <button class="btn-login">LOG IN</button>
+        </div>
+
+        <div class="test-section">
+            <h2>Botão tipo 2: .log-in</h2>
+            <p>Este é o tipo de botão usado nas outras páginas (login, dashboard, sobre, carrinho, etc.):</p>
+            <div class="log-in">Log in</div>
+        </div>
+
+        <div class="test-section">
+            <h2>Status do Teste</h2>
+            <div id="test-status" class="status info">
+                Aguardando clique nos botões...
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Páginas que devem funcionar:</h2>
+            <ul>
+                <li>✅ pages/index/index.html</li>
+                <li>✅ pages/portifolio/portifolio.html</li>
+                <li>✅ pages/login/login.html</li>
+                <li>✅ pages/dashboard/dashboard.html</li>
+                <li>✅ pages/sobre/sobre.html</li>
+                <li>✅ pages/carrinho/carrinho.html</li>
+                <li>✅ pages/criar evento/ce.html</li>
+                <li>✅ pages/editar evento/ee.html</li>
+                <li>✅ pages/serviços/ad/ad.html</li>
+                <li>✅ pages/serviços/buffet/buffet.html</li>
+                <li>✅ pages/serviços/cerimonial/cerimonial.html</li>
+                <li>✅ pages/serviços/rh/rh.html</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript Global -->
+    <script src="js/global.js"></script>
+    
+    <script>
+        // Script adicional para mostrar status do teste
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusDiv = document.getElementById('test-status');
+            const loginButtons = document.querySelectorAll('.btn-login, .log-in');
+            
+            loginButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    statusDiv.innerHTML = `<strong>✅ Teste ${index + 1} executado!</strong><br>
+                    Botão clicado: ${this.className}<br>
+                    Redirecionamento iniciado para: pages/login/login.html<br>
+                    <small>Se não redirecionou, verifique o console do navegador para erros.</small>`;
+                    statusDiv.className = 'status success';
+                });
+            });
+            
+            // Verificar se o script global foi carregado
+            setTimeout(() => {
+                if (typeof initLoginButtons === 'function') {
+                    console.log('✅ Script global carregado com sucesso!');
+                } else {
+                    console.error('❌ Erro: Script global não foi carregado corretamente');
+                    statusDiv.innerHTML = '<strong>❌ Erro:</strong> Script global não foi carregado. Verifique o caminho do arquivo.';
+                    statusDiv.className = 'status error';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+.sobre,
+.sobre * {
+    box-sizing: border-box;
+}
+
+.sobre {
+    background: #ffffff;
+    border-radius: 50px;
+    height: 4261px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    gap: 127px;
+    row-gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 1153px;
+    position: absolute;
+    left: 143px;
+    top: 3946px;
+}
+
+.despedida {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 410px;
+    position: relative;
+}
+
+.frame-41 {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.logo-vertical-original-png-1 {
+    flex-shrink: 0;
+    width: 188px;
+    height: 94px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 2/1;
+}
+
+.transformamos-cada-evento-em-uma-experi-ncia-nica-com-excel-ncia-criatividade-e-cuidado-em-cada-detalhe {
+    color: #000000;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 14px;
+    line-height: 31px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.servi-o {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 77px;
+    position: relative;
+}
+
+.servi-os {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
+.buffet-audiovisual-rh-cerimonial {
+    color: #110229;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 52px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.empresa {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 113px;
+    position: relative;
+}
+
+.empresa2 {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
+.sobre-portif-lio-contato-fa-a-seu-evento {
+    color: #110229;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 52px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.conecte {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 172px;
+    position: relative;
+}
+
+.conecte-se {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-17 {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.instagram-original,
+.linked-in-original,
+.facebook-original,
+.twitter-original {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    overflow: visible;
+}
+
+.instagram-original img,
+.linked-in-original img,
+.facebook-original img,
+.twitter-original img {
+    width: 100%;
+    height: 100%;
+}
+
+.autoral {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+._2025-justke-design {
+    color: #000000;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 296px;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    left: 76px;
+    top: 21.74px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 239px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.logo-vertical-original-png-12 {
+    flex-shrink: 0;
+    width: 197.03px;
+    height: 98.52px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 197.03/98.52;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 416px;
+    height: 52px;
+    position: relative;
+}
+
+.home {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.buffet {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sobre-n-s {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.group-6 {
+    flex-shrink: 0;
+    width: 150px;
+    height: 50px;
+    position: static;
+}
+
+.rectangle-5 {
+    background: #ffffff;
+    border-radius: 14px;
+    border-style: solid;
+    border-color: #b95929;
+    border-width: 2px;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 1148.03px;
+    top: 24.26px;
+}
+
+.log-in {
+    color: #b95929;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 16px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: absolute;
+    left: 1189.03px;
+    top: 31.26px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.rectangle-6 {
+    background: #d9d9d9;
+    width: 424px;
+    height: 405px;
+    position: absolute;
+    left: 177px;
+    top: 776px;
+}
+
+.rectangle-7 {
+    background: #d9d9d9;
+    width: 426px;
+    height: 54px;
+    position: absolute;
+    left: 175px;
+    top: 702px;
+}
+
+.rectangle-8 {
+    background: #d9d9d9;
+    width: 564px;
+    height: 442px;
+    position: absolute;
+    left: 706px;
+    top: 653px;
+}
+
+.rectangle-9 {
+    background: #d9d9d9;
+    width: 283px;
+    height: 177px;
+    position: absolute;
+    left: 705px;
+    top: 1128px;
+}
+
+.rectangle-10 {
+    background: #d9d9d9;
+    width: 260px;
+    height: 177px;
+    position: absolute;
+    left: 1010px;
+    top: 1128px;
+}
+
+.rectangle-11 {
+    background: #d9d9d9;
+    width: 488px;
+    height: 25px;
+    position: absolute;
+    left: 462px;
+    top: 244px;
+}
+
+.rectangle-17 {
+    background: #d9d9d9;
+    width: 488px;
+    height: 25px;
+    position: absolute;
+    left: 476px;
+    top: 1388px;
+}
+
+.rectangle-24 {
+    background: #d9d9d9;
+    width: 488px;
+    height: 25px;
+    position: absolute;
+    left: 476px;
+    top: 2692px;
+}
+
+.rectangle-12 {
+    background: #d9d9d9;
+    width: 926px;
+    height: 69px;
+    position: absolute;
+    left: 243px;
+    top: 301px;
+}
+
+.rectangle-18 {
+    background: #d9d9d9;
+    width: 926px;
+    height: 69px;
+    position: absolute;
+    left: 257px;
+    top: 1445px;
+}
+
+.rectangle-25 {
+    background: #d9d9d9;
+    width: 926px;
+    height: 69px;
+    position: absolute;
+    left: 257px;
+    top: 2749px;
+}
+
+.rectangle-13 {
+    background: #d9d9d9;
+    width: 488px;
+    height: 69px;
+    position: absolute;
+    left: 452px;
+    top: 402px;
+}
+
+.rectangle-19 {
+    background: #d9d9d9;
+    width: 488px;
+    height: 69px;
+    position: absolute;
+    left: 466px;
+    top: 1546px;
+}
+
+.rectangle-26 {
+    background: #d9d9d9;
+    width: 488px;
+    height: 69px;
+    position: absolute;
+    left: 466px;
+    top: 2850px;
+}
+
+.rectangle-31 {
+    background: #d9d9d9;
+    width: 1200px;
+    height: 127px;
+    position: absolute;
+    left: 119px;
+    top: 3306px;
+}
+
+.rectangle-14 {
+    background: #d9d9d9;
+    width: 350px;
+    height: 497px;
+    position: absolute;
+    left: 120px;
+    top: 1641px;
+}
+
+.rectangle-15 {
+    background: #d9d9d9;
+    width: 350px;
+    height: 497px;
+    position: absolute;
+    left: 545px;
+    top: 1641px;
+}
+
+.rectangle-16 {
+    background: #d9d9d9;
+    width: 350px;
+    height: 497px;
+    position: absolute;
+    left: 970px;
+    top: 1641px;
+}
+
+.rectangle-20 {
+    background: #d9d9d9;
+    width: 995px;
+    height: 364px;
+    position: absolute;
+    left: 225px;
+    top: 2233px;
+}
+
+.rectangle-21 {
+    background: #948686;
+    width: 759px;
+    height: 91px;
+    position: absolute;
+    left: 348px;
+    top: 2300px;
+}
+
+.rectangle-22 {
+    background: #948686;
+    width: 759px;
+    height: 53px;
+    position: absolute;
+    left: 348px;
+    top: 2404px;
+}
+
+.rectangle-23 {
+    background: #948686;
+    width: 290px;
+    height: 62px;
+    position: absolute;
+    left: 578px;
+    top: 2484px;
+}
+
+.rectangle-27 {
+    background: #d9d9d9;
+    width: 314px;
+    height: 262px;
+    position: absolute;
+    left: 122px;
+    top: 2998px;
+}
+
+.rectangle-28 {
+    background: #d9d9d9;
+    width: 314px;
+    height: 262px;
+    position: absolute;
+    left: 563px;
+    top: 2998px;
+}
+
+.rectangle-30 {
+    background: #d9d9d9;
+    width: 1200px;
+    height: 445px;
+    position: absolute;
+    left: 119px;
+    top: 3451px;
+}
+
+.rectangle-29 {
+    background: #d9d9d9;
+    width: 314px;
+    height: 262px;
+    position: absolute;
+    left: 1006px;
+    top: 2998px;
+}

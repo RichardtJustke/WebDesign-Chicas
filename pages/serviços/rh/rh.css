@@ -1,0 +1,781 @@
+.rh,
+.rh * {
+    box-sizing: border-box;
+}
+
+.rh {
+    background: #ffffff;
+    border-radius: 50px;
+    height: 1544px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    gap: 127px;
+    row-gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 1153px;
+    position: absolute;
+    left: 143px;
+    top: 1198px;
+}
+
+.despedida {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 410px;
+    position: relative;
+}
+
+.frame-41 {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.logo-vertical-original-png-1 {
+    flex-shrink: 0;
+    width: 188px;
+    height: 94px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 2/1;
+}
+
+.transformamos-cada-evento-em-uma-experi-ncia-nica-com-excel-ncia-criatividade-e-cuidado-em-cada-detalhe {
+    color: #000000;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 14px;
+    line-height: 31px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.servi-o {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 77px;
+    position: relative;
+}
+
+.servi-os {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
+.buffet-audiovisual-rh-cerimonial {
+    color: #110229;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 52px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.empresa {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 113px;
+    position: relative;
+}
+
+.empresa2 {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
+.sobre-portif-lio-contato-fa-a-seu-evento {
+    color: #110229;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 52px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.conecte {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 172px;
+    position: relative;
+}
+
+.conecte-se {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-17 {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.instagram-original {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    overflow: hidden;
+}
+
+.group {
+    width: 99.94%;
+    height: 99.98%;
+    position: absolute;
+    right: 0.06%;
+    left: 0%;
+    bottom: 0.02%;
+    top: 0%;
+    overflow: visible;
+}
+
+.linked-in-original {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    overflow: visible;
+}
+
+.facebook-original {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    overflow: visible;
+}
+
+.twitter-original {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    overflow: visible;
+}
+
+.autoral {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+._2025-justke-design {
+    color: #000000;
+    text-align: left;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 296px;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    left: 76px;
+    top: 21.74px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 239px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.logo-vertical-original-png-12 {
+    flex-shrink: 0;
+    width: 197.03px;
+    height: 98.52px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 197.03/98.52;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 416px;
+    height: 52px;
+    position: relative;
+}
+
+.home {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.buffet {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sobre-n-s {
+    color: #110229;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.group-6 {
+    flex-shrink: 0;
+    width: 150px;
+    height: 50px;
+    position: static;
+}
+
+.rectangle-5 {
+    background: #ffffff;
+    border-radius: 14px;
+    border-style: solid;
+    border-color: #b95929;
+    border-width: 2px;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 1148.03px;
+    top: 24.26px;
+}
+
+.log-in {
+    color: #b95929;
+    text-align: left;
+    font-family: 'Outfit-Regular', sans-serif;
+    font-size: 16px;
+    line-height: 36px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: absolute;
+    left: 1189.03px;
+    top: 31.26px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.rectangle-10 {
+    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+    border-radius: 34px;
+    width: 371px;
+    height: 308px;
+    position: absolute;
+    left: 120px;
+    top: 454px;
+    object-fit: cover;
+}
+
+.rectangle-13 {
+    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+    border-radius: 34px;
+    width: 371px;
+    height: 308px;
+    position: absolute;
+    left: 119px;
+    top: 794px;
+    object-fit: cover;
+}
+
+.rectangle-11 {
+    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+    border-radius: 34px;
+    width: 371px;
+    height: 308px;
+    position: absolute;
+    left: 534px;
+    top: 454px;
+    object-fit: cover;
+}
+
+.rectangle-14 {
+    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+    border-radius: 34px;
+    width: 371px;
+    height: 308px;
+    position: absolute;
+    left: 534px;
+    top: 794px;
+    object-fit: cover;
+}
+
+.rectangle-12 {
+    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+    border-radius: 34px;
+    width: 371px;
+    height: 308px;
+    position: absolute;
+    left: 949px;
+    top: 454px;
+    object-fit: cover;
+}
+
+.rectangle-15 {
+    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+    border-radius: 34px;
+    width: 371px;
+    height: 308px;
+    position: absolute;
+    left: 949px;
+    top: 800px;
+    object-fit: cover;
+}
+
+.oc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 141px;
+    position: absolute;
+    left: 235px;
+    top: 657px;
+}
+
+.gar-om {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+    height: 26px;
+}
+
+.servi-o-volante-com-finger-foods {
+    margin: -30px 0 0 0;
+    ;
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 12.536907196044922px;
+    line-height: 25.07px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 76px;
+}
+
+.frame-14 {
+    margin: -30px 0 0 0;
+    ;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ver-detalhes {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 13px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: relative;
+    width: 96px;
+    height: 26px;
+}
+
+.apoio-opera-o {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: absolute;
+    left: 202px;
+    top: 1006px;
+    width: 207px;
+    height: 26px;
+}
+
+.buffet-quente-completo {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 12.536907196044922px;
+    line-height: 25.07px;
+    font-weight: 400;
+    position: absolute;
+    left: 235px;
+    top: 1032px;
+    width: 141px;
+    height: 76px;
+}
+
+.frame-142 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    left: 257.5px;
+    top: 1056px;
+}
+
+.frame-51 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 263px;
+    position: absolute;
+    left: 596px;
+    top: 657px;
+}
+
+.recep-o {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+    height: 26px;
+}
+
+.perfeito-para-reuni-es-e-confer-ncias {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 12.536907196044922px;
+    line-height: 25.07px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 76px;
+}
+
+.frame-143 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: absolute;
+    left: 80.5px;
+    top: 50px;
+}
+
+.frame-53 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 263px;
+    position: absolute;
+    left: 596px;
+    top: 998px;
+}
+
+.coordena-o-de-sala {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+    height: 26px;
+}
+
+.finaliza-o-doce-com-mesa-tem-tica {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 12.536907196044922px;
+    line-height: 25.07px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 76px;
+}
+
+.frame-54 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 263px;
+    position: absolute;
+    left: 1014px;
+    top: 998px;
+}
+
+.limpeza-de-rea {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+    height: 26px;
+}
+
+.bar-de-drinks-e-espumantes {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 12.536907196044922px;
+    line-height: 25.07px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 76px;
+}
+
+.frame-52 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 263px;
+    position: absolute;
+    left: 1003px;
+    top: 657px;
+}
+
+.seguran-a {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    line-height: 25.07px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+    height: 26px;
+}
+
+.mix-caf-da-manh-almo-o {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 12.536907196044922px;
+    line-height: 25.07px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 76px;
+}
+
+.frame-49 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 987px;
+    position: absolute;
+    left: 213px;
+    top: 161px;
+}
+
+.group-13 {
+    flex-shrink: 0;
+    width: 987px;
+    height: 251px;
+    position: static;
+}
+
+.why-choose-us {
+    width: 987px;
+    height: 173px;
+    position: static;
+}
+
+.servi-os2 {
+    color: rgba(185, 89, 41, 0.93);
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 0px;
+    width: 516px;
+    height: 23px;
+}
+
+.equipe-operacional-rh {
+    color: var(--black, #000000);
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 56px;
+    line-height: 71.04px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 31px;
+    width: 987px;
+    height: 142px;
+}
+
+.why-choose-us2 {
+    width: 803px;
+    height: 142px;
+    position: static;
+}
+
+.gar-ons-recep-o-seguran-a-e-apoio-escala-planejada-e-briefing-antes-do-evento {
+    color: var(--black, #000000);
+    text-align: center;
+    font-family: 'Abel-Regular', sans-serif;
+    font-size: 22px;
+    line-height: 21px;
+    font-weight: 400;
+    position: absolute;
+    left: calc(50% - 396px);
+    top: 109px;
+    width: 803px;
+    height: 142px;
+}
+
+.frame-45 {
+    margin: -129px 0 0 0;
+    ;
+    background: #b95929;
+    border-radius: 9px;
+    padding: 13px 45px 13px 45px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 336px;
+    height: 47px;
+    position: relative;
+}
+
+.adiconar-ao-evento {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Outfit-SemiBold', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

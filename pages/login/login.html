@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicas Eventos - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="login-cadastro">
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+            </div>
+            <nav class="menu">
+                <a href="../index/index.html" class="nav-link">HOME</a>
+                <a href="../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
+            </nav>
+            <div class="login-btn">
+                <button class="btn-login">LOG IN</button>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Cadastro Card -->
+                <div class="auth-card signup-card">
+                    <div class="card-header">
+                        <div class="welcome-icon">
+                            <img src="source/criarconta.png" alt="Bem-vindo" />
+                        </div>
+                        <h2>Crie sua conta</h2>
+                        <p>Junte-se a nós e comece a criar eventos incríveis</p>
+                    </div>
+                    
+                    <form class="auth-form" id="cadastro-form">
+                        <div class="form-group">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group phone-ddd">
+                                <label for="ddd">DDD</label>
+                                <input type="text" id="ddd" name="ddd" placeholder="11" maxlength="2" required>
+                            </div>
+                            <div class="form-group phone-number">
+                                <label for="numero">Telefone</label>
+                                <input type="tel" id="numero" name="numero" placeholder="99999-9999" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <div class="password-input">
+                                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('senha')">
+                                    <span class="eye-icon eye-open"></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmar-senha">Confirmar senha</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirmar-senha')">
+                                    <span class="eye-icon eye-open"></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="termos" name="termos" required>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">
+                                    Eu aceito os <a href="#" class="link">termos de uso</a> e <a href="#" class="link">política de privacidade</a>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            Criar conta
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Login Card -->
+                <div class="auth-card login-card">
+                    <div class="card-header">
+                        <div class="welcome-icon">
+                            <img src="source/loginconta.png" alt="Bem-vindo de volta" />
+                        </div>
+                        <h2>Acesse sua conta</h2>
+                        <p>Entre com suas credenciais para gerenciar seus eventos</p>
+                    </div>
+                    
+                    <form class="auth-form" id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-senha">Senha</label>
+                            <div class="password-input">
+                                <input type="password" id="login-senha" name="senha" placeholder="Digite sua senha" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('login-senha')">
+                                    <span class="eye-icon eye-open"></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="lembrar" name="lembrar">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Lembrar-me</span>
+                            </label>
+                            <a href="#" class="forgot-password">Esqueci minha senha</a>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            Entrar
+                        </button>
+                    </form>
+                    
+                    <div class="security-info">
+                        <img src="source/image.png" alt="Segurança" />
+                        <span>Seus dados estão protegidos com criptografia SSL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+                    <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
+                    <p class="copyright">© 2025 . Justke Design</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li>Buffet</li>
+                            <li>Audiovisual</li>
+                            <li>RH</li>
+                            <li>Cerimonial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li>Sobre</li>
+                            <li>Portifólio</li>
+                            <li>Contato</li>
+                            <li>Faça seu evento</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Conecte-se</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon instagram">
+                            <img src="../../assets/icones/Group.svg" alt="Instagram" />
+                        </a>
+                        <a href="#" class="social-icon linkedin">
+                            <img src="../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
+                        </a>
+                        <a href="#" class="social-icon facebook">
+                            <img src="../../assets/icones/Facebook - Original.svg" alt="Facebook" />
+                        </a>
+                        <a href="#" class="social-icon twitter">
+                            <img src="../../assets/icones/Twitter - Original.svg" alt="Twitter" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- JavaScript Global -->
+<script src="../../js/global.js"></script>
+<script>
+// Função para alternar visibilidade da senha
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const eyeIcon = input.parentElement.querySelector('.eye-icon');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        eyeIcon.classList.remove('eye-open');
+        eyeIcon.classList.add('eye-closed');
+        eyeIcon.title = 'Esconder senha';
+    } else {
+        input.type = 'password';
+        eyeIcon.classList.remove('eye-closed');
+        eyeIcon.classList.add('eye-open');
+        eyeIcon.title = 'Mostrar senha';
+    }
+}
+
+// Validação do formulário de cadastro
+document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const senha = document.getElementById('senha').value;
+    const confirmarSenha = document.getElementById('confirmar-senha').value;
+    const termos = document.getElementById('termos').checked;
+    
+    if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem!');
+        return;
+    }
+    
+    if (!termos) {
+        alert('Você deve aceitar os termos de uso e política de privacidade!');
+        return;
+    }
+    
+    // Aqui você pode adicionar lógica para enviar os dados
+    alert('Cadastro realizado com sucesso!');
+});
+
+// Validação do formulário de login
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Aqui você pode adicionar lógica para autenticação
+    alert('Login realizado com sucesso!');
+});
+</script>
+</body>
+</html>

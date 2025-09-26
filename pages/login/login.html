@@ -20,7 +20,17 @@
                 <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
             </nav>
             <div class="login-btn">
-                <button class="btn-login">LOG IN</button>
+                <button class="btn-login" id="login-btn">LOG IN</button>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <button class="btn-user" id="user-btn">
+                        <span id="user-name">NOME DO USUARIO</span>
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                        <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -201,6 +211,8 @@
 
 <!-- JavaScript Global -->
 <script src="../../js/global.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/navbar.js"></script>
 <script>
 // Função para alternar visibilidade da senha
 function togglePassword(inputId) {
@@ -220,35 +232,172 @@ function togglePassword(inputId) {
     }
 }
 
-// Validação do formulário de cadastro
-document.getElementById('cadastro-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Validação em tempo real dos campos
+document.addEventListener('DOMContentLoaded', function() {
+    // Validação do campo de email no cadastro
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            validateEmailField(this);
+        });
+    }
+
+    // Validação do campo de email no login
+    const loginEmailInput = document.getElementById('login-email');
+    if (loginEmailInput) {
+        loginEmailInput.addEventListener('blur', function() {
+            validateEmailField(this);
+        });
+    }
+
+    // Validação das senhas
+    const senhaInput = document.getElementById('senha');
+    const confirmarSenhaInput = document.getElementById('confirmar-senha');
     
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmar-senha').value;
-    const termos = document.getElementById('termos').checked;
-    
-    if (senha !== confirmarSenha) {
-        alert('As senhas não coincidem!');
-        return;
+    if (senhaInput) {
+        senhaInput.addEventListener('input', function() {
+            validatePasswordField(this);
+        });
     }
     
-    if (!termos) {
-        alert('Você deve aceitar os termos de uso e política de privacidade!');
-        return;
+    if (confirmarSenhaInput) {
+        confirmarSenhaInput.addEventListener('input', function() {
+            validatePasswordConfirmation(this);
+        });
+    }
+
+    // Validação do telefone
+    const dddInput = document.getElementById('ddd');
+    const numeroInput = document.getElementById('numero');
+    
+    if (dddInput) {
+        dddInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').substring(0, 2);
+        });
     }
     
-    // Aqui você pode adicionar lógica para enviar os dados
-    alert('Cadastro realizado com sucesso!');
+    if (numeroInput) {
+        numeroInput.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length >= 5) {
+                value = value.substring(0, 9);
+                if (value.length >= 5) {
+                    value = value.substring(0, 5) + '-' + value.substring(5);
+                }
+            }
+            this.value = value;
+        });
+    }
 });
 
-// Validação do formulário de login
-document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Função para validar campo de email
+function validateEmailField(input) {
+    const email = input.value.trim();
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     
-    // Aqui você pode adicionar lógica para autenticação
-    alert('Login realizado com sucesso!');
+    const formGroup = input.closest('.form-group');
+    if (formGroup) {
+        if (email && !isValid) {
+            formGroup.classList.add('error');
+            showFieldError(formGroup, 'Digite um email válido');
+        } else {
+            formGroup.classList.remove('error');
+            clearFieldError(formGroup);
+        }
+    }
+}
+
+// Função para validar campo de senha
+function validatePasswordField(input) {
+    const senha = input.value;
+    const formGroup = input.closest('.form-group');
+    
+    if (formGroup) {
+        if (senha && senha.length < 6) {
+            formGroup.classList.add('error');
+            showFieldError(formGroup, 'A senha deve ter pelo menos 6 caracteres');
+        } else {
+            formGroup.classList.remove('error');
+            clearFieldError(formGroup);
+        }
+    }
+}
+
+// Função para validar confirmação de senha
+function validatePasswordConfirmation(input) {
+    const confirmarSenha = input.value;
+    const senha = document.getElementById('senha').value;
+    const formGroup = input.closest('.form-group');
+    
+    if (formGroup) {
+        if (confirmarSenha && senha && confirmarSenha !== senha) {
+            formGroup.classList.add('error');
+            showFieldError(formGroup, 'As senhas não coincidem');
+        } else {
+            formGroup.classList.remove('error');
+            clearFieldError(formGroup);
+        }
+    }
+}
+
+// Função para mostrar erro no campo
+function showFieldError(formGroup, message) {
+    let errorElement = formGroup.querySelector('.error-message');
+    
+    if (!errorElement) {
+        errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.style.cssText = `
+            color: #dc2626;
+            font-size: 12px;
+            margin-top: 5px;
+            font-weight: 500;
+        `;
+        formGroup.appendChild(errorElement);
+    }
+    
+    errorElement.textContent = message;
+}
+
+// Função para limpar erro do campo
+function clearFieldError(formGroup) {
+    const errorElement = formGroup.querySelector('.error-message');
+    if (errorElement) {
+        errorElement.remove();
+    }
+}
+
+// Informações de usuários de teste
+document.addEventListener('DOMContentLoaded', function() {
+    // Adicionar informações de teste se não estivermos em produção
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        addTestUserInfo();
+    }
 });
+
+function addTestUserInfo() {
+    const loginCard = document.querySelector('.login-card');
+    if (loginCard) {
+        const testInfo = document.createElement('div');
+        testInfo.className = 'test-info';
+        testInfo.style.cssText = `
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        `;
+        
+        testInfo.innerHTML = `
+            <strong>🔧 Usuários de Teste:</strong><br>
+            <strong>Cliente:</strong> joao@teste.com / 123456<br>
+            <strong>Admin:</strong> maria@teste.com / 123456
+        `;
+        
+        loginCard.insertBefore(testInfo, loginCard.querySelector('.auth-form'));
+    }
+}
 </script>
 </body>
 </html>

@@ -34,6 +34,9 @@ function initGlobalFeatures() {
     
     // Botões de login
     initLoginButtons();
+    
+    // Verificar páginas protegidas
+    checkProtectedPages();
 }
 
 // Inicializar botões de login
@@ -701,6 +704,16 @@ async function apiRequest(url, options = {}) {
     }
 }
 
+// Verificar páginas protegidas
+function checkProtectedPages() {
+    // Aguardar um pouco para garantir que o sistema de auth foi carregado
+    setTimeout(() => {
+        if (window.authSystem) {
+            window.authSystem.protectRoutes();
+        }
+    }, 100);
+}
+
 // Exportar funções para uso global
 window.ChicasEventos = {
     showNotification,
@@ -712,7 +725,8 @@ window.ChicasEventos = {
     apiRequest,
     saveUserPreference,
     debounce,
-    throttle
+    throttle,
+    checkProtectedPages
 };
 
 // Service Worker para cache (se disponível)

@@ -20,19 +20,27 @@
                     <a href="pages/sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
                 </nav>
                 <div class="login-btn">
-                    <button class="btn-login">LOG IN</button>
+                    <button class="btn-login" id="login-btn">LOG IN</button>
+                    <div class="user-menu" id="user-menu" style="display: none;">
+                        <button class="btn-user" id="user-btn">
+                            <span id="user-name">NOME DO USUARIO</span>
+                        </button>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="pages/dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                            <a href="pages/carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                            <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-container">
+            <div class="hero-rectangle">
                 <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Seu evento corporativo,<br>impecável do início ao fim</h1>
-                        <p>Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.</p>
-                    </div>
+                    <h1>Seu evento corporativo,<br>impecável do início ao fim</h1>
+                    <p>Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.</p>
                 </div>
                 <div class="hero-image">
                     <img src="pages/index/selective-focus-point-catering-buffet-food 2.png" alt="Evento corporativo" />
@@ -222,5 +230,7 @@
     
     <!-- JavaScript Global -->
     <script src="js/global.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/navbar.js"></script>
 </body>
 </html>

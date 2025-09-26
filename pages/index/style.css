@@ -76,6 +76,100 @@ body {
     transition: all 0.3s ease;
 }
 
+/* User Menu - Navbar para usuário logado */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-user {
+    background: white;
+    color: #b95929;
+    border: 2px solid #b95929;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 200px;
+    text-align: center;
+}
+
+.btn-user:hover {
+    background: #b95929;
+    color: white;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: #f5f5f5;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 15px 0;
+    margin-top: 10px;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Seta do dropdown centralizada */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #f5f5f5;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 20px;
+    color: #b95929;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #b95929;
+    color: white;
+}
+
+.dropdown-item:last-child {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 5px;
+    padding-top: 17px;
+}
+
 .btn-login:hover {
     background: #b95929;
     color: white;
@@ -92,74 +186,44 @@ body {
     width: 100%;
 }
 
-.frame-43,
-.frame-43 * {
-    box-sizing: border-box;
-}
-
-.frame-43 {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: relative;
+.hero-rectangle {
     width: 100%;
     max-width: 1200px;
-}
-
-.frame-42 {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
-    height: 634px;
-    position: relative;
-    border-radius: 45px;
-    overflow: hidden;
-}
-
-.group-17 {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-}
-
-.rectangle-2 {
+    height: 600px;
     background: #b95929;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 45px;
+    border-radius: 30px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 60px;
+    position: relative;
+    overflow: hidden;
 }
 
-.selective-focus-point-catering-buffet-food-2 {
+.hero-content {
+    max-width: 50%;
+    z-index: 2;
+    padding-right: 40px;
+}
+
+.hero-image {
     width: 50%;
     height: 100%;
-    object-fit: cover;
     position: absolute;
     right: 0;
     top: 0;
-    border-radius: 45px;
+    z-index: 1;
 }
 
-.content {
-    width: 50%;
-    height: auto;
-    position: relative;
-    z-index: 2;
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
 }
 
-.seu-evento-corporativo-impec-vel-do-in-cio-ao-fim {
+.hero-content h1 {
     color: #ffffff;
     text-align: left;
     font-family: 'Outfit', sans-serif;
@@ -168,10 +232,9 @@ body {
     line-height: 1.1;
     margin-bottom: 30px;
     position: relative;
-    max-width: 500px;
 }
 
-.cuidamos-de-buffet-audiovisual-equipe-e-organiza-o-para-que-voc-impressione-seus-convidados-sem-se-preocupar-com-nada {
+.hero-content p {
     color: #ffffff;
     text-align: left;
     font-family: 'Outfit', sans-serif;
@@ -179,7 +242,6 @@ body {
     line-height: 1.4;
     font-weight: 400;
     position: relative;
-    max-width: 500px;
 }
 
 /* Services Section */
@@ -523,38 +585,23 @@ body {
 
 /* Responsividade */
 @media screen and (max-width: 1024px) {
-    .frame-42 {
-        height: 500px;
-        flex-direction: column;
+    .hero-rectangle {
+        height: 550px;
+        margin: 0 20px;
+        border-radius: 25px;
+        padding: 0 40px;
     }
     
-    .group-17 {
-        flex-direction: column;
-        height: 500px;
+    .hero-image img {
+        border-radius: 25px;
     }
     
-    .rectangle-2 {
-        width: 100%;
-        height: 50%;
-        padding: 40px;
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .selective-focus-point-catering-buffet-food-2 {
-        width: 100%;
-        height: 50%;
-    }
-    
-    .seu-evento-corporativo-impec-vel-do-in-cio-ao-fim {
+    .hero-content h1 {
         font-size: 40px;
-        text-align: center;
-        margin-bottom: 20px;
     }
     
-    .cuidamos-de-buffet-audiovisual-equipe-e-organiza-o-para-que-voc-impressione-seus-convidados-sem-se-preocupar-com-nada {
+    .hero-content p {
         font-size: 18px;
-        text-align: center;
     }
     
     .services-grid {
@@ -589,26 +636,42 @@ body {
         padding: 40px 0;
     }
     
-    .frame-42 {
-        height: 400px;
-        border-radius: 30px;
+    .hero-rectangle {
+        height: 500px;
+        margin: 0 15px;
+        border-radius: 20px;
+        padding: 0 30px;
+        flex-direction: column;
     }
     
-    .group-17 {
-        height: 400px;
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-right: 0;
     }
     
-    .rectangle-2 {
-        padding: 30px 20px;
+    .hero-image {
+        width: 100%;
+        height: 50%;
+        position: relative;
+        right: auto;
+        top: auto;
     }
     
-    .seu-evento-corporativo-impec-vel-do-in-cio-ao-fim {
+    .hero-image img {
+        border-radius: 20px;
+    }
+    
+    .hero-content h1 {
         font-size: 32px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        text-align: center;
     }
     
-    .cuidamos-de-buffet-audiovisual-equipe-e-organiza-o-para-que-voc-impressione-seus-convidados-sem-se-preocupar-com-nada {
+    .hero-content p {
         font-size: 16px;
+        text-align: center;
     }
     
     .services,
@@ -656,25 +719,23 @@ body {
         padding: 0 15px;
     }
     
-    .frame-42 {
-        height: 350px;
-        border-radius: 25px;
+    .hero-rectangle {
+        height: 450px;
+        margin: 0 10px;
+        border-radius: 15px;
+        padding: 0 20px;
     }
     
-    .group-17 {
-        height: 350px;
+    .hero-image img {
+        border-radius: 15px;
     }
     
-    .rectangle-2 {
-        padding: 20px 15px;
-    }
-    
-    .seu-evento-corporativo-impec-vel-do-in-cio-ao-fim {
+    .hero-content h1 {
         font-size: 28px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
     
-    .cuidamos-de-buffet-audiovisual-equipe-e-organiza-o-para-que-voc-impressione-seus-convidados-sem-se-preocupar-com-nada {
+    .hero-content p {
         font-size: 14px;
     }
     

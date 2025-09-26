@@ -4,75 +4,468 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chicas Eventos - Dashboard</title>
+    <link rel="stylesheet" href="../../pages/index/style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
 <div class="dashboard">
-    <div class="footer">
-        <div class="despedida">
-            <div class="frame-41">
-                <img class="logo-vertical-original-png-1" src="logo-vertical-original-png-10.png" />
-                <div class="transformamos-cada-evento-em-uma-experi-ncia-nica-com-excel-ncia-criatividade-e-cuidado-em-cada-detalhe"> Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe. </div>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../pages/index/source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
             </div>
-        </div>
-        <div class="servi-o">
-            <div class="servi-os"> Serviços </div>
-            <div class="buffet-audiovisual-rh-cerimonial"> Buffet<br />Audiovisual<br />RH<br />Cerimonial </div>
-        </div>
-        <div class="empresa">
-            <div class="empresa2"> Empresa </div>
-            <div class="sobre-portif-lio-contato-fa-a-seu-evento"> Sobre<br />Portifólio<br />Contato<br />Faça seu evento </div>
-        </div>
-        <div class="conecte">
-            <div class="conecte-se"> Conecte-se </div>
-            <div class="frame-17">
-                <div class="instagram-original">
-                    <img src="../../assets/icones/Group.svg" alt="Instagram" />
-                </div>
-                <div class="linked-in-original">
-                    <img src="../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
-                </div>
-                <div class="facebook-original">
-                    <img src="../../assets/icones/Facebook - Original.svg" alt="Facebook" />
-                </div>
-                <div class="twitter-original">
-                    <img src="../../assets/icones/Twitter - Original.svg" alt="Twitter" />
+            <nav class="menu">
+                <a href="../../index.html" class="nav-link">HOME</a>
+                <a href="../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
+            </nav>
+            <div class="login-btn">
+                <button class="btn-login" id="login-btn">LOG IN</button>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <button class="btn-user" id="user-btn">
+                        <span id="user-name">NOME DO USUARIO</span>
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                        <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="autoral">
-            <div class="_2025-justke-design"> © 2025 . Justke Design </div>
-        </div>
-    </div>
-    <div class="nav-bar">
-        <div class="header">
-            <img class="logo-vertical-original-png-12" src="logo-vertical-original-png-11.png" />
-            <div class="menu">
-                <div class="home"> Home </div>
-                <div class="buffet"> portifólio </div>
-                <div class="sobre-n-s"> sobre nós </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="dashboard-content">
+        <section class="events-section">
+            <div class="events-header">
+                <div class="events-title-area">
+                    <h1 class="meus-eventos"> Meus eventos </h1>
+                    <p class="crie-edite-e-veja-seus-eventos"> Crie edite e veja seus eventos </p>
+                </div>
+                <button class="btn-create-event" id="createEventBtn">
+                    <span class="crie-um-evento"> Crie um evento </span>
+                </button>
+            </div>
+        </section>
+        
+        <!-- Área que aparece quando não há eventos -->
+        <section class="no-events-section" id="noEventsSection" style="display: none;">
+            <div class="no-events-message">
+                <div class="no-events-icon">📅</div>
+                <h3>Você ainda não tem eventos criados</h3>
+                <p>Clique no botão acima para criar seu primeiro evento e começar a organizar suas celebrações!</p>
+            </div>
+        </section>
+        
+        <!-- Grid de eventos - aparece quando há eventos -->
+        <section class="events-grid" id="eventsGrid" style="display: none;">
+            <!-- Os eventos serão inseridos dinamicamente aqui -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+                    <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
+                    <p class="copyright">© 2025 . Justke Design</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li>Buffet</li>
+                            <li>Audiovisual</li>
+                            <li>RH</li>
+                            <li>Cerimonial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li>Sobre</li>
+                            <li>Portifólio</li>
+                            <li>Contato</li>
+                            <li>Faça seu evento</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Conecte-se</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon instagram">
+                            <img src="../../assets/icones/Group.svg" alt="Instagram" />
+                        </a>
+                        <a href="#" class="social-icon linkedin">
+                            <img src="../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
+                        </a>
+                        <a href="#" class="social-icon facebook">
+                            <img src="../../assets/icones/Facebook - Original.svg" alt="Facebook" />
+                        </a>
+                        <a href="#" class="social-icon twitter">
+                            <img src="../../assets/icones/Twitter - Original.svg" alt="Twitter" />
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="group-6">
-            <div class="rectangle-5">
-            </div>
-            <div class="log-in"> Log in </div>
-        </div>
-    </div><img class="rectangle-11" src="rectangle-110.png" /><img class="rectangle-12" src="rectangle-120.png" /><img class="rectangle-14" src="rectangle-140.png" />
-    <div class="meus-eventos"> Meus eventos </div>
-    <div class="crie-edite-e-veja-seus-eventos"> Crie edite e veja seus eventos </div>
-    <div class="frame-45">
-        <div class="crie-um-evento"> Crie um evento </div>
-    </div>
-    <div class="frame-52">
-        <div class="edite-seu-evento"> Edite seu evento </div>
-    </div>
-    <div class="frame-53">
-        <div class="edite-seu-evento"> Edite seu evento </div>
-    </div>
+    </footer>
 </div>
 
 <!-- JavaScript Global -->
 <script src="../../js/global.js"></script>
-</body>
-</html>
+<script src="../../js/auth.js"></script>
+<script src="../../js/navbar.js"></script>
+<script>
+// Sistema de Gerenciamento de Eventos
+class EventManager {
+    constructor() {
+        this.events = this.loadEvents();
+        this.currentUser = null;
+    }
+
+    // Carregar eventos do localStorage
+    loadEvents() {
+        const events = localStorage.getItem('userEvents');
+        return events ? JSON.parse(events) : [];
+    }
+
+    // Salvar eventos no localStorage
+    saveEvents() {
+        localStorage.setItem('userEvents', JSON.stringify(this.events));
+    }
+
+    // Adicionar novo evento
+    addEvent(eventData) {
+        const newEvent = {
+            id: Date.now().toString(),
+            userId: this.currentUser.email,
+            title: eventData.title,
+            date: eventData.date,
+            description: eventData.description,
+            location: eventData.location,
+            guests: eventData.guests || 0,
+            services: eventData.services || [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+        
+        this.events.push(newEvent);
+        this.saveEvents();
+        return newEvent;
+    }
+
+    // Obter eventos do usuário atual
+    getUserEvents() {
+        if (!this.currentUser) return [];
+        return this.events.filter(event => event.userId === this.currentUser.email);
+    }
+
+    // Atualizar evento
+    updateEvent(eventId, eventData) {
+        const eventIndex = this.events.findIndex(event => event.id === eventId);
+        if (eventIndex !== -1) {
+            this.events[eventIndex] = {
+                ...this.events[eventIndex],
+                ...eventData,
+                updatedAt: new Date().toISOString()
+            };
+            this.saveEvents();
+            return this.events[eventIndex];
+        }
+        return null;
+    }
+
+    // Deletar evento
+    deleteEvent(eventId) {
+        this.events = this.events.filter(event => event.id !== eventId);
+        this.saveEvents();
+    }
+
+    // Obter evento por ID
+    getEventById(eventId) {
+        return this.events.find(event => event.id === eventId);
+    }
+}
+
+// Instância global do gerenciador de eventos
+const eventManager = new EventManager();
+
+// Dashboard específico - mostrar informações do usuário logado
+document.addEventListener('DOMContentLoaded', function() {
+    // Aguardar o sistema de autenticação carregar
+    setTimeout(() => {
+        if (window.authSystem && window.authSystem.isUserLoggedIn()) {
+            const user = window.authSystem.getCurrentUser();
+            eventManager.currentUser = user;
+            updateDashboardForUser(user);
+        } else {
+            // Se não estiver logado, redirecionar para login
+            window.location.href = '../login/login.html';
+        }
+    }, 200);
+});
+
+function updateDashboardForUser(user) {
+    // Atualizar título da página
+    document.title = `Chicas Eventos - Dashboard - ${user.nome}`;
+    
+    // Adicionar informações do usuário no cabeçalho
+    const navContainer = document.querySelector('.nav-container');
+    if (navContainer) {
+        const userInfo = document.createElement('div');
+        userInfo.className = 'user-info';
+        userInfo.style.cssText = `
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            color: #333;
+        `;
+        
+        userInfo.innerHTML = `
+            <div style="text-align: right;">
+                <div style="font-weight: 600;">Olá, ${user.nome}</div>
+                <div style="font-size: 12px; color: #666;">${user.email}</div>
+            </div>
+            <button class="logout-btn" style="
+                background: #dc2626;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: 600;
+            ">Sair</button>
+        `;
+        
+        navContainer.appendChild(userInfo);
+    }
+    
+    // Atualizar botão de login para logout
+    const loginBtn = document.querySelector('.btn-login');
+    if (loginBtn) {
+        loginBtn.textContent = 'LOGOUT';
+        loginBtn.style.background = '#dc2626';
+        loginBtn.style.borderColor = '#dc2626';
+        loginBtn.onclick = () => window.authSystem.logout();
+    }
+    
+    // Configurar botão de criar evento
+    const createEventBtn = document.querySelector('#createEventBtn');
+    if (createEventBtn) {
+        createEventBtn.addEventListener('click', () => {
+            showCreateEventModal();
+        });
+    }
+    
+    // Mostrar mensagem de boas-vindas
+    const welcomeMsg = document.querySelector('.crie-edite-e-veja-seus-eventos');
+    if (welcomeMsg) {
+        welcomeMsg.textContent = `Bem-vindo(a), ${user.nome}! Crie, edite e veja seus eventos`;
+    }
+    
+    // Carregar e exibir eventos do usuário
+    loadUserEvents();
+    
+    console.log('Dashboard atualizado para usuário:', user.nome);
+}
+
+function loadUserEvents() {
+    const userEvents = eventManager.getUserEvents();
+    const noEventsSection = document.getElementById('noEventsSection');
+    const eventsGrid = document.getElementById('eventsGrid');
+    
+    if (userEvents.length === 0) {
+        // Não há eventos - mostrar seção de "sem eventos"
+        noEventsSection.style.display = 'flex';
+        eventsGrid.style.display = 'none';
+    } else {
+        // Há eventos - mostrar grid de eventos
+        noEventsSection.style.display = 'none';
+        eventsGrid.style.display = 'grid';
+        renderEvents(userEvents);
+    }
+}
+
+function renderEvents(events) {
+    const eventsGrid = document.getElementById('eventsGrid');
+    eventsGrid.innerHTML = '';
+    
+    events.forEach(event => {
+        const eventCard = createEventCard(event);
+        eventsGrid.appendChild(eventCard);
+    });
+}
+
+function createEventCard(event) {
+    const card = document.createElement('div');
+    card.className = 'event-card';
+    
+    const eventDate = new Date(event.date).toLocaleDateString('pt-BR');
+    
+    card.innerHTML = `
+        <div class="event-image"></div>
+        <div class="event-info">
+            <h3 class="event-title">${event.title}</h3>
+            <p class="event-date">📅 ${eventDate}</p>
+            <p class="event-description">${event.description || 'Sem descrição'}</p>
+            <button class="btn-edit-event" onclick="editEvent('${event.id}')">
+                Editar Evento
+            </button>
+        </div>
+    `;
+    
+    return card;
+}
+
+function showCreateEventModal() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+    `;
+    
+    modal.innerHTML = `
+        <div style="
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        ">
+            <h2 style="margin-bottom: 20px; color: #333;">Criar Novo Evento</h2>
+            <form id="createEventForm">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Nome do Evento:</label>
+                    <input type="text" name="title" required style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-size: 16px;
+                    ">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Data:</label>
+                    <input type="date" name="date" required style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-size: 16px;
+                    ">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Local:</label>
+                    <input type="text" name="location" style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-size: 16px;
+                    ">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Número de Convidados:</label>
+                    <input type="number" name="guests" min="1" style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-size: 16px;
+                    ">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Descrição:</label>
+                    <textarea name="description" rows="3" style="
+                        width: 100%;
+                        padding: 10px;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        font-size: 16px;
+                        resize: vertical;
+                    "></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button type="button" onclick="closeModal()" style="
+                        padding: 10px 20px;
+                        border: 2px solid #ddd;
+                        background: white;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    ">Cancelar</button>
+                    <button type="submit" style="
+                        padding: 10px 20px;
+                        background: #b95929;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 600;
+                    ">Criar Evento</button>
+                </div>
+            </form>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Configurar formulário
+    const form = document.getElementById('createEventForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const eventData = {
+            title: formData.get('title'),
+            date: formData.get('date'),
+            location: formData.get('location'),
+            guests: parseInt(formData.get('guests')) || 0,
+            description: formData.get('description')
+        };
+        
+        eventManager.addEvent(eventData);
+        closeModal();
+        loadUserEvents(); // Recarregar eventos
+    });
+}
+
+function editEvent(eventId) {
+    const event = eventManager.getEventById(eventId);
+    if (!event) return;
+    
+    // Por enquanto, redirecionar para página de edição
+    // Você pode implementar um modal similar ao de criação aqui
+    window.location.href = `../editar evento/ee.html?id=${eventId}`;
+}
+
+function closeModal() {
+    const modal = document.querySelector('div[style*="position: fixed"]');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+// Tornar funções globais para uso nos botões
+window.editEvent = editEvent;
+window.closeModal = closeModal;
+</script>

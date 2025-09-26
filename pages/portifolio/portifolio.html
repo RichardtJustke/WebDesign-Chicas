@@ -15,13 +15,23 @@
                     <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
                 </div>
                 <nav class="menu">
-                    <a href="../../index.html" class="nav-link">HOME</a>
+                    <a href="../index/index.html" class="nav-link">HOME</a>
                     <a href="portifolio.html" class="nav-link">PORTIFÓLIO</a>
                     <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
                 </nav>
-                <div class="login-btn">
-                    <button class="btn-login">LOG IN</button>
+            <div class="login-btn">
+                <button class="btn-login" id="login-btn">LOG IN</button>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <button class="btn-user" id="user-btn">
+                        <span id="user-name">NOME DO USUARIO</span>
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                        <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                    </div>
                 </div>
+            </div>
             </div>
         </header>
 
@@ -153,5 +163,7 @@
     
     <!-- JavaScript Global -->
     <script src="../../js/global.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/navbar.js"></script>
 </body>
 </html>

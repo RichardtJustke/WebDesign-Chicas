@@ -541,6 +541,66 @@ body {
     color: white;
 }
 
+/* Estados de validação dos formulários */
+.form-group.error input {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-group.success input {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.form-group.error label {
+    color: #dc2626;
+}
+
+.form-group.success label {
+    color: #059669;
+}
+
+/* Animações para estados de loading */
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary:disabled:hover {
+    transform: none !important;
+    box-shadow: 0 8px 20px rgba(185, 89, 41, 0.3) !important;
+}
+
+/* Estilos para informações de teste */
+.test-info {
+    background: #e3f2fd !important;
+    border: 1px solid #2196f3 !important;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #1565c0;
+}
+
+.test-info strong {
+    color: #0d47a1;
+}
+
+/* Indicador de usuário logado */
+.user-logged-in .btn-login,
+.user-logged-in .log-in {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+.user-logged-in .btn-login:hover,
+.user-logged-in .log-in:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+}
+
 /* Responsividade */
 @media screen and (max-width: 1024px) {
     .auth-container {

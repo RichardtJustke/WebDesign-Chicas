@@ -233,128 +233,67 @@
     position: relative;
 }
 
-.nav-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    position: relative;
-}
-
+/* Header */
 .header {
-    display: flex;
-    flex-direction: row;
-    gap: 60px;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    position: relative;
+    background: #fff;
+    padding: 30px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.logo-vertical-original-png-12 {
-    flex-shrink: 0;
-    width: 197.03px;
-    height: 98.52px;
-    position: relative;
-    object-fit: cover;
-    aspect-ratio: 197.03/98.52;
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
 }
 
 .menu {
     display: flex;
-    flex-direction: row;
     gap: 60px;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    width: 416px;
-    height: 52px;
-    position: relative;
-}
-
-.home {
-    color: #110229;
-    text-align: left;
-    font-family: 'Outfit-Regular', sans-serif;
-    font-size: 22px;
-    line-height: 36px;
-    letter-spacing: 0.2em;
-    font-weight: 400;
-    text-transform: uppercase;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.buffet2 {
-    color: #110229;
-    text-align: left;
-    font-family: 'Outfit-Regular', sans-serif;
-    font-size: 22px;
-    line-height: 36px;
-    letter-spacing: 0.2em;
-    font-weight: 400;
-    text-transform: uppercase;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.sobre-n-s {
-    color: #110229;
-    text-align: left;
-    font-family: 'Outfit-Regular', sans-serif;
-    font-size: 22px;
-    line-height: 36px;
-    letter-spacing: 0.2em;
-    font-weight: 400;
-    text-transform: uppercase;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.group-6 {
-    flex-shrink: 0;
-    width: 150px;
-    height: 50px;
-    position: static;
-}
-
-.rectangle-5 {
-    background: #ffffff;
-    border-radius: 14px;
-    border-style: solid;
-    border-color: #b95929;
-    border-width: 2px;
-    width: 150px;
-    height: 50px;
-    position: relative;
-}
-
-.log-in {
-    color: #b95929;
-    text-align: center;
-    font-family: 'Outfit-Regular', sans-serif;
-    font-size: 16px;
-    line-height: 36px;
-    letter-spacing: 0.2em;
-    font-weight: 400;
-    text-transform: uppercase;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform: translateX(-50%);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #b95929;
+}
+
+.btn-login {
+    background: transparent;
+    color: #b95929;
+    border: 2px solid #b95929;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: #b95929;
+    color: white;
 }
 
 .services-grid {
@@ -554,22 +493,15 @@
         border-radius: 20px;
     }
     
-    .nav-bar {
-        padding: 15px 20px;
+    .nav-container {
         flex-direction: column;
         gap: 20px;
-    }
-    
-    .header {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
     }
     
     .menu {
-        flex-direction: column;
+        position: static;
+        transform: none;
         gap: 20px;
-        width: 100%;
     }
     
     .services-grid {

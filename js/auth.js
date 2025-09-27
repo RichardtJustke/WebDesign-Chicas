@@ -16,6 +16,9 @@ class AuthSystem {
         // Configurar listeners para formulários
         this.setupFormListeners();
         
+        // Configurar botão de login
+        this.setupLoginButton();
+        
         // Verificar autenticação em páginas protegidas
         this.protectRoutes();
         
@@ -292,7 +295,7 @@ class AuthSystem {
         // Redirecionar para página inicial
         const currentPath = window.location.pathname;
         if (currentPath.includes('dashboard') || currentPath.includes('pages/')) {
-            window.location.href = '../index/index.html';
+            window.location.href = '../../index.html';
         } else {
             window.location.href = 'index.html';
         }
@@ -306,7 +309,12 @@ class AuthSystem {
         sessionStorage.removeItem('chicasEventos_returnUrl');
         
         // Sempre redirecionar para dashboard após login
-        window.location.href = '../dashboard/dashboard.html';
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('pages/login/')) {
+            window.location.href = '../dashboard/dashboard.html';
+        } else {
+            window.location.href = 'pages/dashboard/dashboard.html';
+        }
     }
 
     // Proteger rotas que requerem autenticação
@@ -342,16 +350,26 @@ class AuthSystem {
 
     // Atualizar UI para usuário logado
     updateUIForLoggedInUser() {
-        // Atualizar botões de login para logout
-        const loginButtons = document.querySelectorAll('.btn-login, .log-in');
-        loginButtons.forEach(button => {
-            button.textContent = 'LOGOUT';
-            button.classList.add('logout-btn');
-            button.onclick = () => this.logout();
-        });
+        // Esconder botão de login
+        const loginBtn = document.getElementById('login-btn');
+        if (loginBtn) {
+            loginBtn.style.display = 'none';
+        }
 
-        // Atualizar navbar para usuário logado
-        this.updateNavbarForLoggedUser();
+        // Mostrar menu do usuário
+        const userMenu = document.getElementById('user-menu');
+        if (userMenu) {
+            userMenu.style.display = 'block';
+        }
+
+        // Atualizar nome do usuário
+        const userNameElement = document.getElementById('user-name');
+        if (userNameElement && this.currentUser) {
+            userNameElement.textContent = this.currentUser.nome.toUpperCase();
+        }
+
+        // Configurar dropdown do usuário
+        this.setupUserDropdown();
 
         // Mostrar informações do usuário se houver elementos para isso
         const userInfoElements = document.querySelectorAll('.user-info');
@@ -378,21 +396,21 @@ class AuthSystem {
 
     // Configurar dropdown do usuário
     setupUserDropdown() {
-        const userMenuBtn = document.getElementById('user-menu-btn');
-        const dropdownMenu = document.getElementById('user-dropdown-menu');
-        const logoutBtn = document.querySelector('.logout-btn');
+        const userBtn = document.getElementById('user-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const logoutBtn = document.getElementById('logout-btn');
 
-        if (userMenuBtn && dropdownMenu) {
+        if (userBtn && dropdownMenu) {
             // Toggle do dropdown
-            userMenuBtn.addEventListener('click', (e) => {
+            userBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                dropdownMenu.classList.toggle('active');
+                dropdownMenu.classList.toggle('show');
             });
 
             // Fechar dropdown ao clicar fora
             document.addEventListener('click', (e) => {
-                if (!userMenuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.remove('active');
+                if (!userBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
                 }
             });
 
@@ -408,18 +426,24 @@ class AuthSystem {
 
     // Atualizar UI para usuário deslogado
     updateUIForLoggedOutUser() {
-        // Restaurar botões de login
-        const loginButtons = document.querySelectorAll('.btn-login, .log-in');
-        loginButtons.forEach(button => {
-            button.textContent = 'LOG IN';
-            button.classList.remove('logout-btn');
-            button.onclick = null;
-        });
+        // Mostrar botão de login
+        const loginBtn = document.getElementById('login-btn');
+        if (loginBtn) {
+            loginBtn.style.display = 'block';
+            loginBtn.textContent = 'LOG IN';
+            loginBtn.onclick = () => this.redirectToLogin();
+        }
+
+        // Esconder menu do usuário
+        const userMenu = document.getElementById('user-menu');
+        if (userMenu) {
+            userMenu.style.display = 'none';
+        }
 
         // Fechar dropdown se estiver aberto
-        const dropdownMenu = document.getElementById('user-dropdown-menu');
+        const dropdownMenu = document.getElementById('dropdown-menu');
         if (dropdownMenu) {
-            dropdownMenu.classList.remove('active');
+            dropdownMenu.classList.remove('show');
         }
 
         // Esconder informações do usuário
@@ -488,6 +512,35 @@ class AuthSystem {
     // Verificar se usuário é admin
     isAdmin() {
         return this.currentUser && this.currentUser.tipo === 'admin';
+    }
+
+    // Redirecionar para página de login
+    redirectToLogin() {
+        // Salvar URL atual para retorno após login
+        sessionStorage.setItem('chicasEventos_returnUrl', window.location.href);
+        
+        // Determinar caminho para login baseado na localização atual
+        const currentPath = window.location.pathname;
+        let loginPath;
+        
+        if (currentPath.includes('pages/')) {
+            loginPath = '../login/login.html';
+        } else {
+            loginPath = 'pages/login/login.html';
+        }
+        
+        // Redirecionar
+        if (window.location.pathname !== loginPath) {
+            window.location.href = loginPath;
+        }
+    }
+
+    // Configurar botão de login
+    setupLoginButton() {
+        const loginBtn = document.getElementById('login-btn');
+        if (loginBtn && !this.isLoggedIn) {
+            loginBtn.onclick = () => this.redirectToLogin();
+        }
     }
 }
 

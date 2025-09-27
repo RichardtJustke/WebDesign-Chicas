@@ -16,6 +16,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 /* Header */
@@ -30,10 +31,11 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .logo img {
@@ -186,19 +188,26 @@ body {
     width: 100%;
 }
 
+.hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 .hero-rectangle {
     width: 100%;
-    max-width: 1200px;
     height: 600px;
     background: #b95929;
     border-radius: 30px;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 60px;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .hero-content {
@@ -529,7 +538,7 @@ body {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--background-color);
 }
 
 .footer-column ul {
@@ -539,20 +548,20 @@ body {
 
 .footer-column li {
     margin-bottom: 10px;
-    color: #666;
+    color: var(--background-color);
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .footer-column li:hover {
-    color: #b95929;
+    color: var(--accent-color);
 }
 
 .footer-social h4 {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--background-color);
 }
 
 .social-icons {
@@ -565,10 +574,11 @@ body {
     height: 40px;
     border-radius: 50%;
     background: transparent;
+    border: 2px solid var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
+    color: var(--background-color);
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -579,15 +589,15 @@ body {
 }
 
 .social-icon:hover {
-    background: #b95929;
-    color: white;
+    background: var(--accent-color);
+    color: var(--background-color);
 }
 
 /* Responsividade */
 @media screen and (max-width: 1024px) {
     .hero-rectangle {
         height: 550px;
-        margin: 0 20px;
+        margin: 0;
         border-radius: 25px;
         padding: 0 40px;
     }
@@ -638,7 +648,7 @@ body {
     
     .hero-rectangle {
         height: 500px;
-        margin: 0 15px;
+        margin: 0;
         border-radius: 20px;
         padding: 0 30px;
         flex-direction: column;
@@ -721,7 +731,7 @@ body {
     
     .hero-rectangle {
         height: 450px;
-        margin: 0 10px;
+        margin: 0;
         border-radius: 15px;
         padding: 0 20px;
     }

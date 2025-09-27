@@ -249,6 +249,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo img {
@@ -257,10 +258,8 @@
 
 .menu {
     display: flex;
-    gap: 60px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 40px;
+    align-items: center;
 }
 
 .nav-link {
@@ -294,6 +293,68 @@
 .btn-login:hover {
     background: #b95929;
     color: white;
+}
+
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.btn-user {
+    background: transparent;
+    color: #b95929;
+    border: 2px solid #b95929;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-user:hover {
+    background: #b95929;
+    color: white;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 200px;
+    z-index: 1001;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f8f8;
+    color: #b95929;
 }
 
 .services-grid {
@@ -496,12 +557,27 @@
     .nav-container {
         flex-direction: column;
         gap: 20px;
+        padding: 0 20px;
     }
     
     .menu {
-        position: static;
-        transform: none;
         gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    .btn-login, .btn-user {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .logo img {
+        height: 50px;
     }
     
     .services-grid {
@@ -537,8 +613,31 @@
 }
 
 @media (max-width: 480px) {
-    .nav-bar {
-        padding: 10px 15px;
+    .header {
+        padding: 20px 0;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        gap: 15px;
+    }
+    
+    .menu {
+        gap: 15px;
+    }
+    
+    .nav-link {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .btn-login, .btn-user {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .logo img {
+        height: 40px;
     }
     
     .services-grid {
@@ -559,11 +658,6 @@
     
     .footer {
         padding: 20px 15px;
-    }
-    
-    .logo-vertical-original-png-12 {
-        width: 150px;
-        height: 75px;
     }
     
     .logo-vertical-original-png-1 {

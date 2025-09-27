@@ -13,7 +13,7 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="../../pages/index/source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+                <img src="../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
             </div>
             <nav class="menu">
                 <a href="../../index.html" class="nav-link">HOME</a>
@@ -38,31 +38,33 @@
 
     <!-- Conteúdo Principal -->
     <main class="dashboard-content">
-        <section class="events-section">
-            <div class="events-header">
-                <div class="events-title-area">
-                    <h1 class="meus-eventos"> Meus eventos </h1>
-                    <p class="crie-edite-e-veja-seus-eventos"> Crie edite e veja seus eventos </p>
+        <div class="container">
+            <section class="events-section">
+                <div class="events-header">
+                    <div class="events-title-area">
+                        <h1 class="meus-eventos"> Meus eventos </h1>
+                        <p class="crie-edite-e-veja-seus-eventos"> Crie edite e veja seus eventos </p>
+                    </div>
+                    <button class="btn-create-event" id="createEventBtn">
+                        <span class="crie-um-evento"> Crie um evento </span>
+                    </button>
                 </div>
-                <button class="btn-create-event" id="createEventBtn">
-                    <span class="crie-um-evento"> Crie um evento </span>
-                </button>
-            </div>
-        </section>
-        
-        <!-- Área que aparece quando não há eventos -->
-        <section class="no-events-section" id="noEventsSection" style="display: none;">
-            <div class="no-events-message">
-                <div class="no-events-icon">📅</div>
-                <h3>Você ainda não tem eventos criados</h3>
-                <p>Clique no botão acima para criar seu primeiro evento e começar a organizar suas celebrações!</p>
-            </div>
-        </section>
-        
-        <!-- Grid de eventos - aparece quando há eventos -->
-        <section class="events-grid" id="eventsGrid" style="display: none;">
-            <!-- Os eventos serão inseridos dinamicamente aqui -->
-        </section>
+            </section>
+            
+            <!-- Área que aparece quando não há eventos -->
+            <section class="no-events-section" id="noEventsSection" style="display: none;">
+                <div class="no-events-message">
+                    <div class="no-events-icon">📅</div>
+                    <h3>Você ainda não tem eventos criados</h3>
+                    <p>Clique no botão acima para criar seu primeiro evento e começar a organizar suas celebrações!</p>
+                </div>
+            </section>
+            
+            <!-- Grid de eventos - aparece quando há eventos -->
+            <section class="events-grid" id="eventsGrid" style="display: none;">
+                <!-- Os eventos serão inseridos dinamicamente aqui -->
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -210,45 +212,35 @@ document.addEventListener('DOMContentLoaded', function() {
             // Se não estiver logado, redirecionar para login
             window.location.href = '../login/login.html';
         }
-    }, 200);
+    }, 500);
+    
+    // Configurar botão de login para usuários não logados
+    const loginBtn = document.getElementById('login-btn');
+    if (loginBtn) {
+        // Remover event listeners existentes
+        const newLoginBtn = loginBtn.cloneNode(true);
+        loginBtn.parentNode.replaceChild(newLoginBtn, loginBtn);
+        
+        // Adicionar novo event listener
+        newLoginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Verificar se o usuário está logado
+            if (window.authSystem && window.authSystem.isUserLoggedIn()) {
+                // Se logado, fazer logout
+                window.authSystem.logout();
+            } else {
+                // Se não logado, redirecionar para login
+                window.location.href = '../login/login.html';
+            }
+        });
+    }
 });
 
 function updateDashboardForUser(user) {
     // Atualizar título da página
     document.title = `Chicas Eventos - Dashboard - ${user.nome}`;
     
-    // Adicionar informações do usuário no cabeçalho
-    const navContainer = document.querySelector('.nav-container');
-    if (navContainer) {
-        const userInfo = document.createElement('div');
-        userInfo.className = 'user-info';
-        userInfo.style.cssText = `
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 14px;
-            color: #333;
-        `;
-        
-        userInfo.innerHTML = `
-            <div style="text-align: right;">
-                <div style="font-weight: 600;">Olá, ${user.nome}</div>
-                <div style="font-size: 12px; color: #666;">${user.email}</div>
-            </div>
-            <button class="logout-btn" style="
-                background: #dc2626;
-                color: white;
-                border: none;
-                padding: 8px 16px;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 12px;
-                font-weight: 600;
-            ">Sair</button>
-        `;
-        
-        navContainer.appendChild(userInfo);
-    }
+    // Informações do usuário removidas conforme solicitado
     
     // Atualizar botão de login para logout
     const loginBtn = document.querySelector('.btn-login');
@@ -256,7 +248,10 @@ function updateDashboardForUser(user) {
         loginBtn.textContent = 'LOGOUT';
         loginBtn.style.background = '#dc2626';
         loginBtn.style.borderColor = '#dc2626';
-        loginBtn.onclick = () => window.authSystem.logout();
+        // Remover event listeners existentes e adicionar o novo
+        loginBtn.replaceWith(loginBtn.cloneNode(true));
+        const newLoginBtn = document.querySelector('.btn-login');
+        newLoginBtn.onclick = () => window.authSystem.logout();
     }
     
     // Configurar botão de criar evento

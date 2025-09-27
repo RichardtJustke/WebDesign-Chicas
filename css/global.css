@@ -8,11 +8,21 @@
 }
 
 :root {
-    --primary-color: #b95929;
-    --secondary-color: #104032;
-    --text-color: #110229;
-    --background-color: #ffffff;
-    --accent-color: #d9d9d9;
+    /* Paleta de cores Chicas Eventos */
+    --primary-color: #8e1b00;        /* Vermelho/bege principal */
+    --secondary-color: #0f4d3a;      /* Verde escuro */
+    --accent-color: #c97e2b;         /* Amarelo */
+    --text-color: #1e1e1e;           /* Preto para textos */
+    --background-color: #fff0c0;     /* Branco creme */
+    --light-bg: #f8f9fa;            /* Cinza muito claro para fundos */
+    --border-color: #c97e2b;        /* Amarelo para bordas */
+    --hover-color: #7a1700;         /* Vermelho mais escuro para hover */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    --blue-color: #0f2d49;          /* Azul */
+    --green-color: #0f4d3a;         /* Verde */
+    --yellow-color: #c97e2b;        /* Amarelo */
+    
+    /* Fontes */
     --font-primary: 'Outfit', sans-serif;
     --font-secondary: 'Abel', sans-serif;
 }

@@ -12,26 +12,26 @@
         <header class="header">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+                    <img src="source/../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
                 </div>
                 <nav class="menu">
-                    <a href="../index/index.html" class="nav-link">HOME</a>
-                    <a href="portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                    <a href="../../index.html" class="nav-link">HOME</a>
+                    <a href="portifolio.html" class="nav-link active">PORTIFÓLIO</a>
                     <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
                 </nav>
-            <div class="login-btn">
-                <button class="btn-login" id="login-btn">LOG IN</button>
-                <div class="user-menu" id="user-menu" style="display: none;">
-                    <button class="btn-user" id="user-btn">
-                        <span id="user-name">NOME DO USUARIO</span>
-                    </button>
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                        <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
-                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                <div class="login-btn">
+                    <button class="btn-login" id="login-btn">LOG IN</button>
+                    <div class="user-menu" id="user-menu" style="display: none;">
+                        <button class="btn-user" id="user-btn">
+                            <span id="user-name">NOME DO USUARIO</span>
+                        </button>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                            <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                            <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </header>
 
@@ -42,8 +42,7 @@
                 <p>Um recorte dos nossos últimos trabalhos. Veja por categoria ou acesse o portfólio completo.</p>
                 
                 <div class="portfolio-filters">
-                    <button class="filter-btn active">Ver portifólio</button>
-                    <button class="filter-btn">Todas</button>
+                    <button class="filter-btn active">Todas</button>
                     <button class="filter-btn">Buffet</button>
                     <button class="filter-btn">Audiovisual</button>
                     <button class="filter-btn">RH</button>
@@ -53,55 +52,71 @@
                 <div class="portfolio-grid">
                     <div class="portfolio-item" data-category="Buffet">
                         <img src="rectangle-43890.png" alt="Portfolio 1" />
+                        <div class="category-overlay">Buffet</div>
                     </div>
                     <div class="portfolio-item" data-category="Audiovisual">
                         <img src="rectangle-43910.png" alt="Portfolio 2" />
+                        <div class="category-overlay">Audiovisual</div>
                     </div>
                     <div class="portfolio-item" data-category="RH">
                         <img src="rectangle-43920.png" alt="Portfolio 3" />
+                        <div class="category-overlay">RH</div>
                     </div>
                     <div class="portfolio-item" data-category="Organização">
                         <img src="group1.png" alt="Portfolio 4" />
+                        <div class="category-overlay">Organização</div>
                     </div>
                     <div class="portfolio-item" data-category="Buffet">
                         <img src="rectangle-43940.png" alt="Portfolio 5" />
+                        <div class="category-overlay">Buffet</div>
                     </div>
                     <div class="portfolio-item" data-category="Audiovisual">
                         <img src="rectangle-43950.png" alt="Portfolio 6" />
+                        <div class="category-overlay">Audiovisual</div>
                     </div>
                     <div class="portfolio-item" data-category="RH">
                         <img src="rectangle-43921.png" alt="Portfolio 7" />
+                        <div class="category-overlay">RH</div>
                     </div>
                     <div class="portfolio-item" data-category="Organização">
                         <img src="rectangle-43941.png" alt="Portfolio 8" />
+                        <div class="category-overlay">Organização</div>
                     </div>
                     <div class="portfolio-item" data-category="Buffet">
                         <img src="rectangle-43942.png" alt="Portfolio 9" />
+                        <div class="category-overlay">Buffet</div>
                     </div>
                     <div class="portfolio-item" data-category="Audiovisual">
                         <img src="group2.png" alt="Portfolio 10" />
+                        <div class="category-overlay">Audiovisual</div>
                     </div>
                     <div class="portfolio-item" data-category="RH">
                         <img src="rectangle-43951.png" alt="Portfolio 11" />
+                        <div class="category-overlay">RH</div>
                     </div>
                     <div class="portfolio-item" data-category="Organização">
                         <img src="group3.png" alt="Portfolio 12" />
+                        <div class="category-overlay">Organização</div>
                     </div>
                     
                     <!-- Retângulos para preencher espaços roxos -->
                     <div class="portfolio-item" data-category="Buffet">
                         <img src="source/white-plate-with-refreshing-watermelon-feta-cheese-salad-topped-with-fresh-mint-leaves.jpg" alt="Portfolio 13" />
+                        <div class="category-overlay">Buffet</div>
                     </div>
                     <div class="portfolio-item" data-category="RH">
                         <img src="source/strawbery-with-cheese.jpg" alt="Portfolio 14" />
+                        <div class="category-overlay">RH</div>
                     </div>
                     <div class="portfolio-item" data-category="Audiovisual">
                         <img src="source/crystal-glass-mojito-drink-garnished-with-lime-slices.jpg" alt="Portfolio 15" />
+                        <div class="category-overlay">Audiovisual</div>
                     </div>
                     
                     <!-- Retângulo para preencher espaço vazio -->
                     <div class="portfolio-item" data-category="Buffet">
                         <img src="source/sliced-fruits-are-layered-stand.jpg" alt="Portfolio 16" />
+                        <div class="category-overlay">Buffet</div>
                     </div>
                 </div>
             </div>
@@ -112,7 +127,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-brand">
-                        <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+                        <img src="source/../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERDE.png" alt="Chicas Eventos" />
                         <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
                         <p class="copyright">© 2025 . Justke Design</p>
                     </div>
@@ -165,5 +180,6 @@
     <script src="../../js/global.js"></script>
     <script src="../../js/auth.js"></script>
     <script src="../../js/navbar.js"></script>
+    <script src="../../js/pages/portfolio.js"></script>
 </body>
 </html>

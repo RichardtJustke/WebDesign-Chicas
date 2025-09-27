@@ -470,6 +470,8 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .filter-btn.active,
@@ -483,6 +485,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    transition: opacity 0.3s ease;
 }
 
 .portfolio-grid img {
@@ -490,7 +493,7 @@ body {
     height: 250px;
     object-fit: cover;
     border-radius: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .portfolio-grid img:hover {

@@ -1,0 +1,29 @@
+# Configurações do Mercado Pago
+# Para sandbox (teste), use as credenciais de teste
+# Para produção, substitua pelas credenciais reais
+
+# AMBIENTE: sandbox ou production
+MP_ENVIRONMENT=sandbox
+
+# Credenciais do Mercado Pago
+# Sandbox (teste) - substitua pelos seus tokens de teste
+MP_ACCESS_TOKEN=TEST-1234567890-abcdefghijklmnopqrstuvwxyz-1234567890
+MP_PUBLIC_KEY=TEST-12345678-1234-1234-1234-123456789012
+
+# Produção (quando estiver pronto para vender)
+# MP_ACCESS_TOKEN=APP-1234567890-abcdefghijklmnopqrstuvwxyz-1234567890
+# MP_PUBLIC_KEY=APP-12345678-1234-1234-1234-123456789012
+
+# URLs de retorno (ajuste conforme seu domínio)
+MP_SUCCESS_URL=https://seudominio.com/checkout/success.html
+MP_FAILURE_URL=https://seudominio.com/checkout/failure.html
+MP_PENDING_URL=https://seudominio.com/checkout/pending.html
+
+# Webhook URL (onde o Mercado Pago enviará as notificações)
+MP_WEBHOOK_URL=https://seudominio.com/checkout/webhook.php
+
+# Configurações do produto (ajuste conforme necessário)
+PRODUCT_NAME=Produto Exemplo
+PRODUCT_DESCRIPTION=Descrição do produto
+PRODUCT_PRICE=29.90
+PRODUCT_CURRENCY=BRL

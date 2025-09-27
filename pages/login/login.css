@@ -44,6 +44,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo img {
@@ -72,6 +73,12 @@ body {
     color: var(--primary-color);
 }
 
+.login-btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
 .btn-login {
     background: transparent;
     color: #b95929;
@@ -88,6 +95,84 @@ body {
 
 .btn-login:hover {
     background: #b95929;
+    color: white;
+}
+
+/* User Menu Styles */
+.user-menu {
+    position: relative;
+    display: none;
+}
+
+.btn-user {
+    background: transparent;
+    color: #b95929;
+    border: 2px solid #b95929;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-user:hover {
+    background: #b95929;
+    color: white;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 2px solid #b95929;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1001;
+    display: none;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 15px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #b95929;
+    color: white;
+}
+
+.dropdown-item:last-child {
+    color: #dc2626;
+}
+
+.dropdown-item:last-child:hover {
+    background: #dc2626;
     color: white;
 }
 
@@ -620,6 +705,10 @@ body {
     .main-content {
         padding: 60px 0;
     }
+    
+    .dropdown-menu {
+        min-width: 180px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -633,6 +722,12 @@ body {
         position: static;
         transform: none;
         gap: 20px;
+        order: 2;
+    }
+    
+    .login-btn {
+        order: 3;
+        align-self: center;
     }
     
     .main-content {
@@ -668,6 +763,17 @@ body {
     .footer-links {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+    
+    .dropdown-menu {
+        right: -50px;
+        min-width: 160px;
+    }
+    
+    .btn-user {
+        font-size: 12px;
+        padding: 10px 20px;
+        min-width: 120px;
     }
 }
 

@@ -160,7 +160,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="source/../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                    <img src="../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" loading="lazy" />
                     <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
                     <p class="copyright">© 2025 . Justke Design</p>
                 </div>
@@ -169,20 +169,20 @@
                     <div class="footer-column">
                         <h4>Serviços</h4>
                         <ul>
-                            <li>Buffet</li>
-                            <li>Audiovisual</li>
-                            <li>RH</li>
-                            <li>Cerimonial</li>
+                            <li><a href="../serviços/buffet/buffet.html">Buffet</a></li>
+                            <li><a href="../serviços/ad/ad.html">Audiovisual</a></li>
+                            <li><a href="../serviços/rh/rh.html">RH</a></li>
+                            <li><a href="../serviços/cerimonial/cerimonial.html">Cerimonial</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h4>Empresa</h4>
                         <ul>
-                            <li>Sobre</li>
-                            <li>Portifólio</li>
-                            <li>Contato</li>
-                            <li>Faça seu evento</li>
+                            <li><a href="../sobre/sobre.html">Sobre</a></li>
+                            <li><a href="../portifolio/portifolio.html">Portifólio</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                            <li><a href="../criar evento/ce.html">Faça seu evento</a></li>
                         </ul>
                     </div>
                 </div>
@@ -213,6 +213,84 @@
 <script src="../../js/global.js"></script>
 <script src="../../js/auth.js"></script>
 <script src="../../js/navbar.js"></script>
+<script>
+// Sistema simples de dropdown para a página de login
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Página de login carregada - configurando dropdown');
+    
+    // Verificar se o usuário já está logado
+    const sessionData = localStorage.getItem('chicasEventos_session');
+    if (sessionData) {
+        try {
+            const session = JSON.parse(sessionData);
+            const now = new Date().getTime();
+            const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
+            
+            if (now - session.timestamp < sessionTimeout && session.user) {
+                console.log('Usuário já logado, redirecionando para dashboard...');
+                window.location.href = '../dashboard/dashboard.html';
+                return;
+            } else {
+                // Sessão expirada
+                localStorage.removeItem('chicasEventos_session');
+                console.log('Sessão expirada - removida');
+            }
+        } catch (error) {
+            console.error('Erro ao verificar sessão:', error);
+            localStorage.removeItem('chicasEventos_session');
+        }
+    }
+    
+    // Configurar event listeners do dropdown
+    const userBtn = document.getElementById('user-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const dropdown = document.getElementById('dropdown-menu');
+    const userMenu = document.getElementById('user-menu');
+    
+    // Toggle do dropdown
+    if (userBtn) {
+        userBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+                console.log('Dropdown toggle executado');
+            }
+        });
+    }
+    
+    // Logout
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Limpar sessão
+            localStorage.removeItem('chicasEventos_session');
+            
+            // Recarregar página
+            location.reload();
+            
+            console.log('Logout executado');
+        });
+    }
+    
+    // Fechar dropdown ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (userMenu && dropdown && !userMenu.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+    
+    // Botão de login (já estamos na página de login)
+    const loginBtn = document.getElementById('login-btn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+            console.log('Usuário já está na página de login');
+        });
+    }
+});
+</script>
 <script>
 // Função para alternar visibilidade da senha
 function togglePassword(inputId) {

@@ -1,0 +1,266 @@
+/* Browser Specific Styles - Chicas Eventos */
+/* Estilos específicos para Opera e Zen Browser */
+
+/* ===== OPERA BROWSER ===== */
+.opera-browser {
+    /* Opera tem algumas peculiaridades com flexbox */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.opera-browser .nav-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.opera-browser .menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: 60px;
+}
+
+.opera-browser .service-card,
+.opera-browser .portfolio-item {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* ===== ZEN BROWSER ===== */
+.zen-browser {
+    /* Zen Browser é baseado no Chromium mas tem algumas diferenças */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.zen-browser .nav-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.zen-browser .menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: 60px;
+}
+
+.zen-browser .service-card,
+.zen-browser .portfolio-item {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* ===== SERVIDOR ESPECÍFICO - PYTHON (8000) ===== */
+.python-server {
+    /* Estilos específicos para servidor Python */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.python-server .nav-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* ===== SERVIDOR ESPECÍFICO - LIVE SERVER (5500) ===== */
+.live-server {
+    /* Estilos específicos para Live Server */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.live-server .nav-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* ===== NORMALIZAÇÃO UNIVERSAL ===== */
+/* Aplicar a todos os navegadores para garantir consistência */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Normalização de imagens */
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Normalização de botões */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Normalização de links */
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Normalização de inputs */
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+/* ===== FALLBACKS ESPECÍFICOS ===== */
+/* Fallbacks para navegadores sem suporte a recursos modernos */
+.no-flexbox .nav-container {
+    display: table !important;
+    width: 100% !important;
+}
+
+.no-flexbox .nav-container > * {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.no-flexbox .menu {
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+.no-flexbox .menu a {
+    display: inline-block !important;
+    margin: 0 10px !important;
+}
+
+.no-grid .services-grid {
+    display: block !important;
+}
+
+.no-grid .service-card {
+    display: inline-block !important;
+    width: 48% !important;
+    margin: 1% !important;
+    vertical-align: top !important;
+}
+
+.no-grid .portfolio-gallery {
+    display: block !important;
+}
+
+.no-grid .portfolio-item {
+    display: inline-block !important;
+    width: 30% !important;
+    margin: 1% !important;
+    vertical-align: top !important;
+}
+
+/* ===== MEDIA QUERIES ESPECÍFICAS ===== */
+@media screen and (max-width: 768px) {
+    .opera-browser .nav-container,
+    .zen-browser .nav-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .opera-browser .menu,
+    .zen-browser .menu {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .opera-browser .service-card,
+    .opera-browser .portfolio-item,
+    .zen-browser .service-card,
+    .zen-browser .portfolio-item {
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+}

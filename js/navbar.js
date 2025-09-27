@@ -9,54 +9,102 @@ class NavbarSystem {
     }
 
     init() {
+        console.log('NavbarSystem inicializando...');
         this.setupEventListeners();
-        this.checkLoginStatus();
-        this.updateNavbarState();
+        
+        // Aguardar um pouco para garantir que o auth.js foi carregado
+        setTimeout(() => {
+            console.log('Verificando status de login...');
+            this.checkLoginStatus();
+            this.updateNavbarState();
+            
+            // Verificar novamente após mais tempo para garantir sincronização
+            setTimeout(() => {
+                console.log('Verificação final do status de login...');
+                this.checkLoginStatus();
+                this.updateNavbarState();
+            }, 500);
+        }, 100);
     }
 
     setupEventListeners() {
+        console.log('Configurando event listeners do navbar...');
+        
+        // Remover event listeners existentes para evitar duplicação
+        this.removeExistingListeners();
+        
         // Botão de login
         const loginBtn = document.getElementById('login-btn');
         if (loginBtn) {
             loginBtn.addEventListener('click', () => this.handleLoginClick());
+            console.log('Event listener do login configurado');
         }
 
         // Botão do usuário (dropdown toggle)
         const userBtn = document.getElementById('user-btn');
         if (userBtn) {
             userBtn.addEventListener('click', (e) => this.toggleDropdown(e));
+            console.log('Event listener do dropdown configurado');
+        } else {
+            console.warn('Botão do usuário não encontrado');
         }
 
         // Botão de logout
         const logoutBtn = document.getElementById('logout-btn');
         if (logoutBtn) {
             logoutBtn.addEventListener('click', (e) => this.handleLogout(e));
+            console.log('Event listener do logout configurado');
         }
 
         // Fechar dropdown ao clicar fora
         document.addEventListener('click', (e) => this.closeDropdownOnOutsideClick(e));
+        
+        console.log('Event listeners configurados com sucesso');
+    }
+
+    removeExistingListeners() {
+        // Remover listeners existentes para evitar duplicação
+        const loginBtn = document.getElementById('login-btn');
+        const userBtn = document.getElementById('user-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        
+        if (loginBtn) {
+            loginBtn.replaceWith(loginBtn.cloneNode(true));
+        }
+        if (userBtn) {
+            userBtn.replaceWith(userBtn.cloneNode(true));
+        }
+        if (logoutBtn) {
+            logoutBtn.replaceWith(logoutBtn.cloneNode(true));
+        }
     }
 
     checkLoginStatus() {
         // Verificar se há sessão ativa
         const sessionData = localStorage.getItem('chicasEventos_session');
+        
         if (sessionData) {
             try {
                 const session = JSON.parse(sessionData);
                 const now = new Date().getTime();
                 const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
 
-                if (now - session.timestamp < sessionTimeout) {
+                if (now - session.timestamp < sessionTimeout && session.user) {
                     this.currentUser = session.user;
                     this.isLoggedIn = true;
-                    console.log('Usuário logado detectado:', this.currentUser.nome);
+                    console.log('Usuário logado detectado pelo navbar:', this.currentUser.nome);
                 } else {
+                    console.log('Sessão expirada ou inválida, fazendo logout');
                     this.logout();
                 }
             } catch (error) {
-                console.error('Erro ao verificar sessão:', error);
+                console.error('Erro ao verificar sessão no navbar:', error);
                 this.logout();
             }
+        } else {
+            // Não há sessão
+            this.isLoggedIn = false;
+            this.currentUser = null;
         }
     }
 
@@ -86,7 +134,15 @@ class NavbarSystem {
         if (userName && this.currentUser) {
             const displayName = this.getDisplayName(this.currentUser.nome);
             userName.textContent = displayName.toUpperCase();
+            console.log('Nome do usuário atualizado no navbar:', displayName);
+        } else if (userName && !this.currentUser) {
+            console.warn('Tentativa de mostrar navbar logado sem usuário atual');
         }
+        
+        // Reconfigurar event listeners após mostrar o menu do usuário
+        setTimeout(() => {
+            this.setupEventListeners();
+        }, 100);
     }
 
     // Mostrar navbar para usuário não logado
@@ -124,10 +180,32 @@ class NavbarSystem {
     }
 
     toggleDropdown(e) {
+        e.preventDefault();
         e.stopPropagation();
+        
         const dropdown = document.getElementById('dropdown-menu');
-        if (dropdown) {
-            dropdown.classList.toggle('show');
+        const userBtn = document.getElementById('user-btn');
+        
+        if (dropdown && userBtn) {
+            const isOpen = dropdown.classList.contains('show');
+            
+            // Fechar todos os outros dropdowns primeiro
+            document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                if (menu !== dropdown) {
+                    menu.classList.remove('show');
+                }
+            });
+            
+            // Toggle do dropdown atual
+            if (isOpen) {
+                dropdown.classList.remove('show');
+                console.log('Dropdown fechado');
+            } else {
+                dropdown.classList.add('show');
+                console.log('Dropdown aberto');
+            }
+        } else {
+            console.warn('Elementos do dropdown não encontrados:', { dropdown, userBtn });
         }
     }
 
@@ -159,8 +237,21 @@ class NavbarSystem {
         // Remover sessão
         localStorage.removeItem('chicasEventos_session');
         
-        // Atualizar navbar
-        this.updateNavbarState();
+        // Chamar logout do sistema de autenticação se disponível
+        if (window.authSystem && window.authSystem.logout) {
+            window.authSystem.logout();
+        } else {
+            // Fallback: atualizar navbar e redirecionar
+            this.updateNavbarState();
+            
+            // Redirecionar para página inicial
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('dashboard') || currentPath.includes('pages/')) {
+                window.location.href = '../../index.html';
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
         
         console.log('Usuário deslogado');
     }
@@ -211,6 +302,12 @@ class NavbarSystem {
 // Inicializar sistema quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     window.navbarSystem = new NavbarSystem();
+    
+    // Verificação adicional após um tempo para garantir que tudo foi carregado
+    setTimeout(() => {
+        window.navbarSystem.checkLoginStatus();
+        window.navbarSystem.updateNavbarState();
+    }, 1000);
     
     // Escutar mudanças no localStorage para atualizar navbar em tempo real
     window.addEventListener('storage', (e) => {

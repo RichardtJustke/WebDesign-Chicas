@@ -38,14 +38,26 @@ class AuthSystem {
                     this.currentUser = session.user;
                     this.isLoggedIn = true;
                     this.updateUIForLoggedInUser();
-                    console.log('Usuário logado:', this.currentUser.nome);
+                    console.log('Sessão válida encontrada - Usuário logado:', this.currentUser.nome);
+                    
+                    // Notificar o navbar system sobre o login
+                    if (window.navbarSystem) {
+                        window.navbarSystem.login(this.currentUser);
+                    }
                 } else {
                     // Sessão expirada
+                    console.log('Sessão expirada, fazendo logout...');
                     this.logout();
                 }
             } catch (error) {
                 console.error('Erro ao verificar sessão:', error);
                 this.logout();
+            }
+        } else {
+            console.log('Nenhuma sessão encontrada');
+            // Notificar navbar system que não há usuário logado
+            if (window.navbarSystem) {
+                window.navbarSystem.logout();
             }
         }
     }
@@ -278,6 +290,16 @@ class AuthSystem {
         // Atualizar UI
         this.updateUIForLoggedInUser();
         
+        // Notificar o navbar system sobre o login
+        if (window.navbarSystem) {
+            window.navbarSystem.login(user);
+        }
+        
+        // Disparar evento customizado para outros sistemas
+        window.dispatchEvent(new CustomEvent('userLoggedIn', {
+            detail: { user: user }
+        }));
+        
         console.log('Usuário logado:', user.nome);
     }
 
@@ -291,6 +313,14 @@ class AuthSystem {
         
         // Atualizar UI
         this.updateUIForLoggedOutUser();
+        
+        // Notificar o navbar system sobre o logout
+        if (window.navbarSystem) {
+            window.navbarSystem.logout();
+        }
+        
+        // Disparar evento customizado para outros sistemas
+        window.dispatchEvent(new CustomEvent('userLoggedOut'));
         
         // Redirecionar para página inicial
         const currentPath = window.location.pathname;
@@ -327,6 +357,8 @@ class AuthSystem {
         );
         
         if (isProtectedRoute && !this.isLoggedIn) {
+            console.log('Página protegida detectada, redirecionando para login...');
+            
             // Salvar URL atual para redirecionamento após login
             sessionStorage.setItem('chicasEventos_returnUrl', window.location.href);
             
@@ -344,6 +376,7 @@ class AuthSystem {
                 loginPath = 'pages/login/login.html';
             }
             
+            console.log('Redirecionando para:', loginPath);
             window.location.href = loginPath;
         }
     }
@@ -380,6 +413,14 @@ class AuthSystem {
 
         // Adicionar classe ao body para estilos condicionais
         document.body.classList.add('user-logged-in');
+
+        // Notificar o navbar system sobre o login
+        if (window.navbarSystem) {
+            window.navbarSystem.login(this.currentUser);
+        }
+        
+        // Disparar evento customizado
+        window.dispatchEvent(new CustomEvent('userLoggedIn', { detail: { user: this.currentUser } }));
     }
 
     // Atualizar navbar para usuário logado
@@ -394,33 +435,17 @@ class AuthSystem {
         this.setupUserDropdown();
     }
 
-    // Configurar dropdown do usuário
+    // Configurar dropdown do usuário (delegado para navbar.js)
     setupUserDropdown() {
-        const userBtn = document.getElementById('user-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
+        // O controle do dropdown é feito pelo navbar.js para evitar conflitos
+        // Apenas configuramos o logout aqui se necessário
         const logoutBtn = document.getElementById('logout-btn');
-
-        if (userBtn && dropdownMenu) {
-            // Toggle do dropdown
-            userBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                dropdownMenu.classList.toggle('show');
+        
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.logout();
             });
-
-            // Fechar dropdown ao clicar fora
-            document.addEventListener('click', (e) => {
-                if (!userBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.remove('show');
-                }
-            });
-
-            // Configurar logout
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.logout();
-                });
-            }
         }
     }
 
@@ -454,6 +479,14 @@ class AuthSystem {
 
         // Remover classe do body
         document.body.classList.remove('user-logged-in');
+
+        // Notificar o navbar system sobre o logout
+        if (window.navbarSystem) {
+            window.navbarSystem.logout();
+        }
+        
+        // Disparar evento customizado
+        window.dispatchEvent(new CustomEvent('userLoggedOut'));
     }
 
     // Validação de email
@@ -547,6 +580,51 @@ class AuthSystem {
 // Inicializar sistema de autenticação quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     window.authSystem = new AuthSystem();
+    
+    // Adicionar funções de debug para desenvolvimento
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        window.debugAuth = {
+            // Simular login para teste
+            simulateLogin: (userName = 'João Silva') => {
+                const mockUser = {
+                    id: 1,
+                    nome: userName,
+                    email: 'joao@teste.com',
+                    telefone: '(11) 99999-9999',
+                    tipo: 'cliente'
+                };
+                window.authSystem.login(mockUser, false);
+                console.log('Login simulado para:', userName);
+            },
+            
+            // Fazer logout
+            logout: () => {
+                window.authSystem.logout();
+                console.log('Logout realizado');
+            },
+            
+            // Verificar status atual
+            checkStatus: () => {
+                console.log('Status atual:', {
+                    isLoggedIn: window.authSystem.isLoggedIn,
+                    currentUser: window.authSystem.currentUser,
+                    session: localStorage.getItem('chicasEventos_session')
+                });
+            },
+            
+            // Limpar sessão
+            clearSession: () => {
+                localStorage.removeItem('chicasEventos_session');
+                console.log('Sessão limpa');
+            }
+        };
+        
+        console.log('🔧 Debug do sistema de autenticação disponível:');
+        console.log('- debugAuth.simulateLogin("Nome do Usuário") - Simular login');
+        console.log('- debugAuth.logout() - Fazer logout');
+        console.log('- debugAuth.checkStatus() - Verificar status');
+        console.log('- debugAuth.clearSession() - Limpar sessão');
+    }
 });
 
 // Exportar para uso global

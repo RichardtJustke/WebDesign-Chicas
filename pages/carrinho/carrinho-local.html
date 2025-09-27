@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho - Chicas Eventos</title>
+    <title>Carrinho - Chicas Eventos (Modo Local)</title>
     <link rel="stylesheet" href="../../css/optimized.css?v=6">
     <style>
         .carrinho-page {
@@ -37,6 +37,16 @@
             color: #7f8c8d;
             text-align: center;
             font-size: 1.1rem;
+        }
+        
+        .modo-local {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
         
         .carrinho-content {
@@ -398,7 +408,7 @@
                         </button>
                         <div class="dropdown-menu" id="dropdown-menu">
                             <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                            <a href="carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                            <a href="carrinho-local.html" class="dropdown-item">VER CARRINHO</a>
                             <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
                         </div>
                     </div>
@@ -410,6 +420,9 @@
             <div class="carrinho-header">
                 <h1 class="carrinho-title">🛒 Seu Carrinho</h1>
                 <p class="carrinho-subtitle">Revise seus itens e finalize sua compra</p>
+                <div class="modo-local">
+                    🧪 MODO TESTE LOCAL - Funciona sem servidor PHP
+                </div>
             </div>
 
             <div class="carrinho-content">
@@ -436,7 +449,7 @@
                         <span id="total">R$ 0,00</span>
                     </div>
                     <button id="btn-checkout" class="btn-checkout" disabled>
-                        💳 Finalizar Pagamento
+                        🧪 Testar Checkout (Local)
                     </button>
                 </div>
             </div>
@@ -446,14 +459,14 @@
         <div id="checkoutModal" class="checkout-modal">
             <div class="checkout-modal-content">
                 <div class="checkout-modal-header">
-                    <h2 class="checkout-modal-title">Finalizar Pagamento</h2>
+                    <h2 class="checkout-modal-title">Teste de Checkout</h2>
                     <span class="checkout-close">&times;</span>
                 </div>
                 <div class="checkout-modal-body">
                     <div id="checkoutContent">
                         <div class="loading">
                             <div class="spinner"></div>
-                            <p>Preparando checkout...</p>
+                            <p>Preparando teste...</p>
                         </div>
                     </div>
                 </div>
@@ -461,6 +474,6 @@
         </div>
     </div>
 
-    <script src="carrinho.js"></script>
+    <script src="carrinho-local.js"></script>
 </body>
 </html>

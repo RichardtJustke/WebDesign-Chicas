@@ -72,7 +72,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="source/Logo Vertical OriginalPNG.png" alt="Chicas Eventos" />
+                    <img src="../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" loading="lazy" />
                     <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
                     <p class="copyright">© 2025 . Justke Design</p>
                 </div>
@@ -81,20 +81,20 @@
                     <div class="footer-column">
                         <h4>Serviços</h4>
                         <ul>
-                            <li>Buffet</li>
-                            <li>Audiovisual</li>
-                            <li>RH</li>
-                            <li>Cerimonial</li>
+                            <li><a href="../serviços/buffet/buffet.html">Buffet</a></li>
+                            <li><a href="../serviços/ad/ad.html">Audiovisual</a></li>
+                            <li><a href="../serviços/rh/rh.html">RH</a></li>
+                            <li><a href="../serviços/cerimonial/cerimonial.html">Cerimonial</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h4>Empresa</h4>
                         <ul>
-                            <li>Sobre</li>
-                            <li>Portifólio</li>
-                            <li>Contato</li>
-                            <li>Faça seu evento</li>
+                            <li><a href="../sobre/sobre.html">Sobre</a></li>
+                            <li><a href="../portifolio/portifolio.html">Portifólio</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                            <li><a href="../criar evento/ce.html">Faça seu evento</a></li>
                         </ul>
                     </div>
                 </div>
@@ -214,26 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 500);
     
-    // Configurar botão de login para usuários não logados
-    const loginBtn = document.getElementById('login-btn');
-    if (loginBtn) {
-        // Remover event listeners existentes
-        const newLoginBtn = loginBtn.cloneNode(true);
-        loginBtn.parentNode.replaceChild(newLoginBtn, loginBtn);
-        
-        // Adicionar novo event listener
-        newLoginBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Verificar se o usuário está logado
-            if (window.authSystem && window.authSystem.isUserLoggedIn()) {
-                // Se logado, fazer logout
-                window.authSystem.logout();
-            } else {
-                // Se não logado, redirecionar para login
-                window.location.href = '../login/login.html';
-            }
-        });
-    }
+    // Não configurar botão de login aqui - deixar para o navbar.js
+    // O navbar.js já gerencia todos os event listeners do dropdown
 });
 
 function updateDashboardForUser(user) {
@@ -242,17 +224,8 @@ function updateDashboardForUser(user) {
     
     // Informações do usuário removidas conforme solicitado
     
-    // Atualizar botão de login para logout
-    const loginBtn = document.querySelector('.btn-login');
-    if (loginBtn) {
-        loginBtn.textContent = 'LOGOUT';
-        loginBtn.style.background = '#dc2626';
-        loginBtn.style.borderColor = '#dc2626';
-        // Remover event listeners existentes e adicionar o novo
-        loginBtn.replaceWith(loginBtn.cloneNode(true));
-        const newLoginBtn = document.querySelector('.btn-login');
-        newLoginBtn.onclick = () => window.authSystem.logout();
-    }
+    // O navbar.js já gerencia a exibição do menu do usuário
+    // Não precisamos modificar o botão de login aqui
     
     // Configurar botão de criar evento
     const createEventBtn = document.querySelector('#createEventBtn');

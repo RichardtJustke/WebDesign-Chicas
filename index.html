@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chicas Eventos - Seu evento corporativo impecável do início ao fim. Buffet, audiovisual, RH e organização.">
+    <meta name="keywords" content="eventos corporativos, buffet, audiovisual, recursos humanos, organização de eventos">
+    <meta name="author" content="Chicas Eventos">
+    
+    <!-- Performance Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Compatibilidade com navegadores antigos -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    
+    <!-- Meta tags específicas para compatibilidade -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#8e1b00">
+    <meta name="msapplication-navbutton-color" content="#8e1b00">
+    <meta name="apple-mobile-web-app-title" content="Chicas Eventos">
+    
+    <!-- Compatibilidade com IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    
+    <!-- Prevenção de cache em desenvolvimento -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/optimized.css" as="style">
+    <link rel="preload" href="js/optimized.js" as="script">
+    <link rel="preload" href="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" as="image">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
     <title>Chicas Eventos - Home</title>
-    <link rel="stylesheet" href="pages/index/style.css">
+    <link rel="stylesheet" href="css/browser-normalize.css?v=1">
+    <link rel="stylesheet" href="css/browser-specific.css?v=1">
+    <link rel="stylesheet" href="css/optimized.css?v=9">
 </head>
 <body>
     <div class="home-page">
@@ -12,7 +55,7 @@
         <header class="header">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                    <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" loading="eager" />
                 </div>
                 <nav class="menu">
                     <a href="index.html" class="nav-link">HOME</a>
@@ -37,203 +80,386 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="container">
-                <div class="hero-rectangle">
-                    <div class="hero-content">
-                        <h1>Seu evento corporativo,<br>impecável do início ao fim</h1>
-                        <p>Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.</p>
-                    </div>
-                    <div class="hero-image">
-                        <img src="pages/index/selective-focus-point-catering-buffet-food 2.png" alt="Evento corporativo" />
-                    </div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Seu evento corporativo, impecável do início ao fim</h1>
+                    <p>Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Evento corporativo" />
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
+        <main>
+        <!-- Seção de Serviços -->
         <section class="services">
             <div class="container">
-                <h2>Nossos serviços</h2>
-                <p>Na Chicas, cada detalhe é pensado para transformar o seu evento em uma experiência inesquecível. Nossa equipe combina excelência, criatividade e organização para garantir que tudo saia exatamente como você sonhou — e até melhor.</p>
-                
+                <div class="services-header">
+                    <h2>Nossos serviços</h2>
+                    <p>Na Chicas, cada detalhe é pensado para transformar o seu evento em uma experiência inesquecível. Nossa equipe combina excelência, criatividade e organização para garantir que tudo saia exatamente como você sonhou — e até melhor.</p>
+                </div>
+                        
                 <div class="services-grid">
+                    <!-- Buffet Corporativo -->
                     <div class="service-card buffet-card">
+                        <div class="service-overlay"></div>
                         <div class="service-content">
-                            <h3>Buffet<br>corporativo</h3>
-                            <p>Coffee breaks, coquetéis e menus sob medida</p>
-                            <a href="pages/serviços/buffet/buffet.html" class="btn-service">Ver detalhes</a>
+                            <h3>Buffet corporativo</h3>
+                            <p>Cuidamos de buffet, coquetéis e eventos em geral.</p>
+                            <a href="pages/serviços/buffet/buffet.html" class="service-link">Ver detalhes</a>
                         </div>
                     </div>
                     
+                    <!-- Captação Audiovisual -->
                     <div class="service-card audiovisual-card">
+                        <div class="service-overlay"></div>
                         <div class="service-content">
-                            <h3>Captação<br>audiovisual</h3>
-                            <p>Foto, vídeo, cobertura social e drone</p>
-                            <a href="pages/serviços/ad/ad.html" class="btn-service">Ver detalhes</a>
+                            <h3>Captação audiovisual</h3>
+                            <p>Fotos, vídeos, cobertura e transmissão ao vivo.</p>
+                            <a href="pages/serviços/ad/ad.html" class="service-link">Ver detalhes</a>
                         </div>
                     </div>
                     
+                    <!-- Recursos Humanos -->
                     <div class="service-card rh-card">
+                        <div class="service-overlay"></div>
                         <div class="service-content">
-                            <h3>Recursos<br>humanos</h3>
-                            <p>Recepção, apoio e controle de acesso</p>
-                            <a href="pages/serviços/rh/rh.html" class="btn-service">Ver detalhes</a>
+                            <h3>Recursos humanos</h3>
+                            <p>Recepcionistas, seguranças e controle de acesso.</p>
+                            <a href="pages/serviços/rh/rh.html" class="service-link">Ver detalhes</a>
                         </div>
                     </div>
                     
+                    <!-- Organização Cerimonial -->
                     <div class="service-card ceremonial-card">
+                        <div class="service-overlay"></div>
                         <div class="service-content">
-                            <h3>Organização<br>cerimonial</h3>
-                            <p>Planejamento, fornecedores e execução</p>
-                            <a href="pages/serviços/cerimonial/cerimonial.html" class="btn-service">Ver detalhes</a>
+                            <h3>Organização cerimonial</h3>
+                            <p>Planejamento, coordenação e execução de eventos.</p>
+                            <a href="pages/serviços/cerimonial/cerimonial.html" class="service-link">Ver detalhes</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- Why Choose Us Section -->
-        <section class="why-choose-us">
-            <div class="container">
-                <h2>Por que escolher a Chicas Eventos?</h2>
-                <p>Transformamos cada detalhe em uma experiência única. Conheça os diferenciais que fazem da Chicas a escolha certa para o seu evento.</p>
-                
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="pages/index/source/integraçaõ.png" alt="Integração" />
+                <!-- Seção Nossos Diferenciais -->
+                <section class="differentials">
+                    <div class="container">
+                        <div class="differentials-header">
+                            <span class="differentials-subtitle">NOSSOS DIFERENCIAIS</span>
+                            <h2>Por que escolher a Chicas Eventos?</h2>
+                            <p>Transformamos cada detalhe em uma experiência única. Conheça os diferenciais que fazem da Chicas a escolha certa para o seu evento.</p>
                         </div>
-                        <h3>Integração<br>completa</h3>
-                        <p>Tudo em um só lugar: buffet, audiovisual, RH e cerimonial com gestão unificada.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="pages/index/source/raio.png" alt="Agilidade" />
+                        
+                        <div class="differentials-grid">
+                            <div class="differential-card">
+                                <div class="differential-icon">📦</div>
+                                <h3>Integração completa</h3>
+                                <p>Tudo em um só lugar: buffet, audiovisual, RH e cerimonial com gestão unificada.</p>
+                            </div>
+                            
+                            <div class="differential-card">
+                                <div class="differential-icon">⚡</div>
+                                <h3>Agilidade garantida</h3>
+                                <p>Equipe treinada e cronograma ágil para montar e executar sem atrasos.</p>
+                            </div>
+                            
+                            <div class="differential-card">
+                                <div class="differential-icon">❤️</div>
+                                <h3>Beleza funcional</h3>
+                                <p>Soluções que unem estética impecável e praticidade no dia do evento.</p>
+                            </div>
+                            
+                            <div class="differential-card">
+                                <div class="differential-icon">✅</div>
+                                <h3>Rede confiável</h3>
+                                <p>Fornecedores homologados que asseguram qualidade em cada etapa.</p>
+                            </div>
+                            
+                            <div class="differential-card">
+                                <div class="differential-icon">📍</div>
+                                <h3>Identidade regional</h3>
+                                <p>Valorizamos a cultura amazônica, trazida em foco único e autêntico.</p>
+                            </div>
+                            
+                            <div class="differential-card">
+                                <div class="differential-icon">🏢</div>
+                                <h3>Acompanhamento total</h3>
+                                <p>Estaremos ao seu lado do pré ao pós-evento, sem deixar nada escapar.</p>
+                            </div>
                         </div>
-                        <h3>Agilidade<br>garantida</h3>
-                        <p>Equipe treinada e cronograma ágil para montar e executar sem atrasos.</p>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="pages/index/source/coração.png" alt="Beleza" />
-                        </div>
-                        <h3>Beleza<br>funcional</h3>
-                        <p>Soluções que unem estética impecável e praticidade no dia do evento.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="pages/index/source/check.png" alt="Rede" />
-                        </div>
-                        <h3>Rede<br>confiável</h3>
-                        <p>Fornecedores homologados que asseguram qualidade em cada etapa.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="pages/index/source/regional.png" alt="Regional" />
-                        </div>
-                        <h3>Identidade<br>regional</h3>
-                        <p>Valorizamos a cultura amazônica, trazendo um toque único e autêntico.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <img src="pages/index/source/calendar.png" alt="Acompanhamento" />
-                        </div>
-                        <h3>Acompanhamento<br>total</h3>
-                        <p>Estamos ao seu lado do pré até o pós-evento, sem deixar nada escapar.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- Portfolio Section -->
-        <section class="portfolio">
-            <div class="container">
-                <h2>Portifólio</h2>
-                <p>Um recorte dos nossos últimos trabalhos. Veja por categoria ou acesse o portfólio completo.</p>
-                
-                <div class="portfolio-filters">
-                    <button class="filter-btn active">Ver portifólio</button>
-                    <button class="filter-btn">Todas</button>
-                    <button class="filter-btn">Buffet</button>
-                    <button class="filter-btn">Audiovisual</button>
-                    <button class="filter-btn">RH</button>
-                    <button class="filter-btn">Organização</button>
-                </div>
-                
-                <div class="portfolio-grid">
-                    <img src="pages/index/Rectangle 20.png" alt="Portfolio 1" />
-                    <img src="pages/index/Rectangle 21.png" alt="Portfolio 2" />
-                    <img src="pages/index/Rectangle 22.png" alt="Portfolio 3" />
-                    <img src="pages/index/Rectangle 23.png" alt="Portfolio 4" />
-                    <img src="pages/index/Rectangle 24.png" alt="Portfolio 5" />
-                    <img src="pages/index/Rectangle 26.png" alt="Portfolio 6" />
-                </div>
-            </div>
-        </section>
+                <!-- Seção Portfólio -->
+                <section class="portfolio">
+                    <div class="container">
+                        <div class="portfolio-header">
+                            <h2>Nosso Portfólio</h2>
+                            <p>Conheça alguns dos nossos trabalhos mais recentes. Cada projeto é único e reflete nosso compromisso com a excelência.</p>
+                        </div>
+                        
+                        <div class="portfolio-filters">
+                            <button class="filter-btn active" data-filter="all">Todos</button>
+                            <button class="filter-btn" data-filter="buffet">Buffet</button>
+                            <button class="filter-btn" data-filter="audiovisual">Audiovisual</button>
+                            <button class="filter-btn" data-filter="rh">RH</button>
+                            <button class="filter-btn" data-filter="organizacao">Organização</button>
+                        </div>
+                        
+                        <div class="portfolio-gallery">
+                            <div class="portfolio-item" data-category="buffet">
+                                <div class="portfolio-image">
+                                    <img src="pages/portifolio/source/white-plate-with-refreshing-watermelon-feta-cheese-salad-topped-with-fresh-mint-leaves.jpg" alt="Buffet Premium" />
+                                    <div class="portfolio-overlay">
+                                        <h3>Buffet Premium</h3>
+                                        <p>Buffet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="buffet">
+                                <div class="portfolio-image">
+                                    <img src="pages/portifolio/source/crystal-glass-mojito-drink-garnished-with-lime-slices.jpg" alt="Bebidas Premium" />
+                                    <div class="portfolio-overlay">
+                                        <h3>Bebidas Premium</h3>
+                                        <p>Buffet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="rh">
+                                <div class="portfolio-image">
+                                    <img src="pages/portifolio/source/pexels-kathrinepnw-25016129.jpg" alt="Recursos Humanos" />
+                                    <div class="portfolio-overlay">
+                                        <h3>Recursos Humanos</h3>
+                                        <p>RH</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="organizacao">
+                                <div class="portfolio-image">
+                                    <img src="pages/portifolio/source/sliced-fruits-are-layered-stand.jpg" alt="Organização de Eventos" />
+                                    <div class="portfolio-overlay">
+                                        <h3>Organização</h3>
+                                        <p>Organização</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="buffet">
+                                <div class="portfolio-image">
+                                    <img src="pages/portifolio/source/set-pastry-products-buffet-stand.jpg" alt="Buffet Casual" />
+                                    <div class="portfolio-overlay">
+                                        <h3>Buffet Casual</h3>
+                                        <p>Buffet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="audiovisual">
+                                <div class="portfolio-image">
+                                    <img src="pages/portifolio/source/blend-cocktails-glasses-with-orange-fruit.jpg" alt="Equipamentos Audiovisuais" />
+                                    <div class="portfolio-overlay">
+                                        <h3>Som e Imagem</h3>
+                                        <p>Audiovisual</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-cta">
+                            <a href="pages/portifolio/portifolio.html" class="btn-portfolio">Ver Portfólio Completo</a>
+                        </div>
+                    </div>
+                </section>
+        </main>
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="container">
+            <div class="footer-wrapper">
                 <div class="footer-content">
-                    <div class="footer-brand">
-                        <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERDE.png" alt="Chicas Eventos" />
-                        <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
-                        <p class="copyright">© 2025 . Justke Design</p>
+                    <div class="footer-left">
+                        <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" class="footer-logo" />
+                        <p>Transformamos cada evento em uma experiência única.</p>
                     </div>
                     
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Serviços</h4>
-                            <ul>
-                                <li>Buffet</li>
-                                <li>Audiovisual</li>
-                                <li>RH</li>
-                                <li>Cerimonial</li>
-                            </ul>
+                    <div class="footer-right">
+                        <div class="footer-columns">
+                            <div class="footer-col">
+                                <h6>Serviços</h6>
+                                <a href="pages/serviços/buffet/buffet.html">Buffet</a>
+                                <a href="pages/serviços/ad/ad.html">Audiovisual</a>
+                                <a href="pages/serviços/rh/rh.html">RH</a>
+                                <a href="pages/serviços/cerimonial/cerimonial.html">Cerimonial</a>
+                            </div>
+                            
+                            <div class="footer-col">
+                                <h6>Empresa</h6>
+                                <a href="pages/sobre/sobre.html">Sobre</a>
+                                <a href="pages/portifolio/portifolio.html">Portfólio</a>
+                                <a href="pages/criar evento/ce.html">Criar Evento</a>
+                            </div>
+                            
+                            <div class="footer-col">
+                                <h6>Contato</h6>
+                                <a href="#contato">Contato</a>
+                                <a href="#faq">FAQ</a>
+                                <a href="#politica">Política</a>
+                            </div>
                         </div>
                         
-                        <div class="footer-column">
-                            <h4>Empresa</h4>
-                            <ul>
-                                <li>Sobre</li>
-                                <li>Portifólio</li>
-                                <li>Contato</li>
-                                <li>Faça seu evento</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-social">
-                        <h4>Conecte-se</h4>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon instagram">
+                        <div class="footer-social">
+                            <a href="#" class="social-btn">
                                 <img src="assets/icones/Group.svg" alt="Instagram" />
                             </a>
-                            <a href="#" class="social-icon linkedin">
+                            <a href="#" class="social-btn">
                                 <img src="assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
                             </a>
-                            <a href="#" class="social-icon facebook">
+                            <a href="#" class="social-btn">
                                 <img src="assets/icones/Facebook - Original.svg" alt="Facebook" />
                             </a>
-                            <a href="#" class="social-icon twitter">
+                            <a href="#" class="social-btn">
                                 <img src="assets/icones/Twitter - Original.svg" alt="Twitter" />
                             </a>
                         </div>
                     </div>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© 2025 Chicas Eventos. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
     </div>
     
     <!-- JavaScript Global -->
+    <script src="js/browser-compatibility.js"></script>
     <script src="js/global.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/pages/index.js"></script>
+    <script>
+    // Sistema simples de dropdown para o index
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Index carregado - configurando dropdown');
+        
+        // Verificar se há sessão ativa
+        const sessionData = localStorage.getItem('chicasEventos_session');
+        if (sessionData) {
+            try {
+                const session = JSON.parse(sessionData);
+                const now = new Date().getTime();
+                const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
+                
+                if (now - session.timestamp < sessionTimeout && session.user) {
+                    // Usuário logado - mostrar menu do usuário
+                    const loginBtn = document.getElementById('login-btn');
+                    const userMenu = document.getElementById('user-menu');
+                    const userName = document.getElementById('user-name');
+                    
+                    if (loginBtn) loginBtn.style.display = 'none';
+                    if (userMenu) userMenu.style.display = 'block';
+                    if (userName) userName.textContent = session.user.nome.toUpperCase();
+                    
+                    console.log('Usuário logado detectado:', session.user.nome);
+                } else {
+                    // Sessão expirada
+                    localStorage.removeItem('chicasEventos_session');
+                    console.log('Sessão expirada - removida');
+                }
+            } catch (error) {
+                console.error('Erro ao verificar sessão:', error);
+                localStorage.removeItem('chicasEventos_session');
+            }
+        }
+        
+        // Configurar event listeners do dropdown
+        const userBtn = document.getElementById('user-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const dropdown = document.getElementById('dropdown-menu');
+        
+        // Toggle do dropdown
+        if (userBtn) {
+            userBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (dropdown) {
+                    dropdown.classList.toggle('show');
+                    console.log('Dropdown toggle executado');
+                }
+            });
+        }
+        
+        // Logout
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Limpar sessão
+                localStorage.removeItem('chicasEventos_session');
+                
+                // Atualizar UI
+                const loginBtn = document.getElementById('login-btn');
+                const userMenu = document.getElementById('user-menu');
+                
+                if (loginBtn) loginBtn.style.display = 'block';
+                if (userMenu) userMenu.style.display = 'none';
+                if (dropdown) dropdown.classList.remove('show');
+                
+                console.log('Logout executado');
+            });
+        }
+        
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(e) {
+            const userMenu = document.getElementById('user-menu');
+            
+            if (userMenu && dropdown && !userMenu.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        
+        // Botão de login
+        const loginBtn = document.getElementById('login-btn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'pages/login/login.html';
+            });
+        }
+        
+        // Filtros do portfólio
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remover classe active de todos os botões
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Adicionar classe active ao botão clicado
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, 100);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    });
+    </script>
 </body>
 </html>

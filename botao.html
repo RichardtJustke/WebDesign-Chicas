@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Mercado Pago</title>
+    <style>
+        /* Estilos para o botão e modal */
+        .checkout-button {
+            background: linear-gradient(135deg, #009ee3, #00a650);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 158, 227, 0.3);
+        }
+        
+        .checkout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 158, 227, 0.4);
+        }
+        
+        .checkout-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 0;
+            border: none;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #009ee3, #00a650);
+            color: white;
+            padding: 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #009ee3;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #c62828;
+        }
+        
+        .success {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2e7d32;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão para abrir o checkout -->
+    <button id="checkoutBtn" class="checkout-button">
+        💳 Pagar com Mercado Pago
+    </button>
+    
+    <!-- Modal do checkout -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Finalizar Pagamento</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="checkoutContent">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Preparando checkout...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configurações do produto (AJUSTE AQUI CONFORME NECESSÁRIO)
+        const productConfig = {
+            name: 'Produto Exemplo',
+            description: 'Descrição do produto',
+            price: 29.90,
+            currency: 'BRL',
+            quantity: 1
+        };
+        
+        // Elementos do DOM
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const checkoutContent = document.getElementById('checkoutContent');
+        const closeBtn = document.querySelector('.close');
+        
+        // Função para mostrar erro
+        function showError(message) {
+            checkoutContent.innerHTML = `
+                <div class="error">
+                    <strong>Erro:</strong> ${message}
+                </div>
+                <button onclick="closeModal()" class="checkout-button" style="width: 100%;">
+                    Fechar
+                </button>
+            `;
+        }
+        
+        // Função para fechar modal
+        function closeModal() {
+            checkoutModal.style.display = 'none';
+        }
+        
+        // Função para abrir checkout do Mercado Pago
+        function openMercadoPagoCheckout(preferenceId, checkoutUrl) {
+            // Remove o loading
+            checkoutContent.innerHTML = `
+                <div class="success">
+                    <strong>Redirecionando para o Mercado Pago...</strong>
+                    <p>Você será redirecionado para finalizar o pagamento.</p>
+                </div>
+            `;
+            
+            // Redireciona para o checkout do Mercado Pago
+            setTimeout(() => {
+                window.open(checkoutUrl, '_blank');
+                closeModal();
+            }, 1500);
+        }
+        
+        // Função para criar preferência e abrir checkout
+        async function createCheckout() {
+            try {
+                // Desabilita o botão
+                checkoutBtn.disabled = true;
+                checkoutBtn.textContent = 'Processando...';
+                
+                // Mostra o modal
+                checkoutModal.style.display = 'block';
+                
+                // Faz a requisição para criar a preferência
+                const response = await fetch('endpoint.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        product_name: productConfig.name,
+                        product_description: productConfig.description,
+                        product_price: productConfig.price,
+                        product_currency: productConfig.currency,
+                        quantity: productConfig.quantity
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Usa a URL de sandbox se disponível, senão usa a normal
+                    const checkoutUrl = data.sandbox_init_point || data.checkout_url;
+                    openMercadoPagoCheckout(data.preference_id, checkoutUrl);
+                } else {
+                    showError(data.error || 'Erro ao criar checkout');
+                }
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                showError('Erro de conexão. Verifique sua internet e tente novamente.');
+            } finally {
+                // Reabilita o botão
+                checkoutBtn.disabled = false;
+                checkoutBtn.textContent = '💳 Pagar com Mercado Pago';
+            }
+        }
+        
+        // Event listeners
+        checkoutBtn.addEventListener('click', createCheckout);
+        
+        closeBtn.addEventListener('click', closeModal);
+        
+        // Fecha modal ao clicar fora dele
+        window.addEventListener('click', function(event) {
+            if (event.target === checkoutModal) {
+                closeModal();
+            }
+        });
+        
+        // Fecha modal com ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

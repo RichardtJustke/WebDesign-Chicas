@@ -4,11 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Página de Portfólio carregada');
     
     // Inicializar funcionalidades do portfólio
-    initPortfolioFilters();
-    initPortfolioGrid();
-    initPortfolioModal();
-    initLoadMore();
-    loadPortfolioData();
+    initBentoFilters();
+    initBentoGrid();
+    initBentoModal();
+    loadBentoData();
 });
 
 // Dados do portfólio (normalmente viriam de uma API)
@@ -134,8 +133,8 @@ let currentPage = 1;
 const itemsPerPage = 6;
 let filteredData = [...portfolioData];
 
-// Inicializar filtros do portfólio
-function initPortfolioFilters() {
+// Inicializar filtros do portfólio Bento
+function initBentoFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     
     filterButtons.forEach(button => {
@@ -149,38 +148,37 @@ function initPortfolioFilters() {
             // Obter categoria do filtro
             const category = this.textContent.trim().toLowerCase();
             currentFilter = category;
-            currentPage = 1;
             
             // Filtrar e exibir itens
-            filterPortfolioItems(category);
+            filterBentoItems(category);
         });
     });
 }
 
-// Filtrar itens do portfólio
-function filterPortfolioItems(category) {
-    const portfolioGrid = document.querySelector('.portfolio-grid');
-    const items = portfolioGrid.querySelectorAll('.portfolio-item');
+// Filtrar itens do portfólio Bento
+function filterBentoItems(category) {
+    const bentoItems = document.querySelectorAll('.bento-item');
     
     // Animação de saída
-    items.forEach(item => {
-        item.classList.add('hidden');
+    bentoItems.forEach(item => {
+        item.style.opacity = '0.3';
+        item.style.transform = 'scale(0.95)';
     });
     
     setTimeout(() => {
-        // Filtrar dados
-        if (category === 'todas') {
-            filteredData = [...portfolioData];
-        } else {
-            filteredData = portfolioData.filter(item => item.category === category);
-        }
-        
-        // Renderizar itens filtrados
-        renderPortfolioItems();
-        
-        // Atualizar botão "Carregar Mais"
-        updateLoadMoreButton();
-    }, 300);
+        // Mostrar/ocultar itens baseado na categoria
+        bentoItems.forEach(item => {
+            const itemCategory = item.dataset.category.toLowerCase();
+            
+            if (category === 'todas' || itemCategory === category) {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }, 200);
 }
 
 // Renderizar itens do portfólio
@@ -271,29 +269,39 @@ function showEmptyState() {
     `;
 }
 
-// Inicializar grid do portfólio
-function initPortfolioGrid() {
-    // Adicionar efeitos de hover
+// Inicializar grid do portfólio Bento
+function initBentoGrid() {
+    // Adicionar efeitos de hover para itens Bento
     document.addEventListener('mouseenter', function(e) {
-        if (e.target.closest('.portfolio-item')) {
-            const item = e.target.closest('.portfolio-item');
-            item.style.transform = 'translateY(-10px)';
+        if (e.target.closest('.bento-item')) {
+            const item = e.target.closest('.bento-item');
+            item.style.transform = 'translateY(-8px)';
         }
     }, true);
     
     document.addEventListener('mouseleave', function(e) {
-        if (e.target.closest('.portfolio-item')) {
-            const item = e.target.closest('.portfolio-item');
+        if (e.target.closest('.bento-item')) {
+            const item = e.target.closest('.bento-item');
             item.style.transform = 'translateY(0)';
         }
     }, true);
+    
+    // Adicionar click handlers para itens Bento
+    const bentoItems = document.querySelectorAll('.bento-item');
+    bentoItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const category = this.dataset.category;
+            const title = this.querySelector('h3').textContent;
+            openBentoModal(category, title);
+        });
+    });
 }
 
-// Inicializar modal do portfólio
-function initPortfolioModal() {
+// Inicializar modal do portfólio Bento
+function initBentoModal() {
     // Criar modal se não existir
-    if (!document.querySelector('.portfolio-modal')) {
-        createPortfolioModal();
+    if (!document.querySelector('.bento-modal')) {
+        createBentoModal();
     }
 }
 
@@ -597,11 +605,144 @@ function shareProject(projectId) {
     }
 }
 
+// Criar modal Bento
+function createBentoModal() {
+    const modal = document.createElement('div');
+    modal.className = 'bento-modal';
+    modal.id = 'bentoModal';
+    
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="bentoModalTitle"></h2>
+                <button class="modal-close" aria-label="Fechar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="bentoModalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <p id="bentoModalDescription"></p>
+                    <div class="modal-category">
+                        <span id="bentoModalCategory"></span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-primary" id="contactForBento">
+                        <i class="icon-phone"></i>
+                        Solicitar Orçamento
+                    </button>
+                    <button class="btn-secondary" id="shareBento">
+                        <i class="icon-share"></i>
+                        Compartilhar
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Event listeners do modal
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal || e.target.classList.contains('modal-close')) {
+            closeBentoModal();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeBentoModal();
+        }
+    });
+}
+
+// Abrir modal Bento
+function openBentoModal(category, title) {
+    const modal = document.querySelector('.bento-modal');
+    const modalTitle = document.getElementById('bentoModalTitle');
+    const modalImage = document.getElementById('bentoModalImage');
+    const modalDescription = document.getElementById('bentoModalDescription');
+    const modalCategory = document.getElementById('bentoModalCategory');
+    
+    // Preencher dados do modal
+    modalTitle.textContent = title;
+    modalCategory.textContent = category;
+    
+    // Buscar dados baseado na categoria e título
+    const project = portfolioData.find(item => 
+        item.category === category.toLowerCase() && 
+        item.title.toLowerCase().includes(title.toLowerCase())
+    );
+    
+    if (project) {
+        modalImage.src = project.image;
+        modalImage.alt = project.title;
+        modalDescription.textContent = project.description;
+    } else {
+        // Dados padrão baseado na categoria
+        const defaultData = getDefaultBentoData(category, title);
+        modalImage.src = defaultData.image;
+        modalImage.alt = title;
+        modalDescription.textContent = defaultData.description;
+    }
+    
+    // Mostrar modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Fechar modal Bento
+function closeBentoModal() {
+    const modal = document.querySelector('.bento-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Obter dados padrão para modal Bento
+function getDefaultBentoData(category, title) {
+    const defaultData = {
+        'Buffet': {
+            image: 'source/white-plate-with-refreshing-watermelon-feta-cheese-salad-topped-with-fresh-mint-leaves.jpg',
+            description: 'Serviços de buffet premium com culinária sofisticada para eventos especiais.'
+        },
+        'Audiovisual': {
+            image: 'source/crystal-glass-mojito-drink-garnished-with-lime-slices.jpg',
+            description: 'Soluções audiovisuais completas com equipamentos de última geração.'
+        },
+        'RH': {
+            image: 'source/strawbery-with-cheese.jpg',
+            description: 'Gestão de recursos humanos especializada para eventos corporativos.'
+        },
+        'Organização': {
+            image: 'source/sliced-fruits-are-layered-stand.jpg',
+            description: 'Planejamento e organização completa de eventos com atenção aos detalhes.'
+        }
+    };
+    
+    return defaultData[category] || {
+        image: 'source/Logo Vertical OriginalPNG.png',
+        description: 'Serviços especializados para eventos corporativos e sociais.'
+    };
+}
+
+// Carregar dados Bento
+function loadBentoData() {
+    console.log('Dados Bento carregados');
+    // Os dados já estão no HTML, apenas inicializar animações
+    const bentoItems = document.querySelectorAll('.bento-item');
+    bentoItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+    });
+}
+
 // Exportar funções para uso global
 window.PortfolioPage = {
     searchPortfolio,
     sortPortfolio,
     shareProject,
-    openPortfolioModal,
-    closePortfolioModal
+    openBentoModal,
+    closeBentoModal,
+    filterBentoItems
 };

@@ -1,0 +1,224 @@
+/* Browser Normalize - Chicas Eventos */
+/* Normalização específica para compatibilidade entre navegadores */
+
+/* Normalização para Internet Explorer */
+.ie-fallback {
+    display: block !important;
+}
+
+.ie-fallback .nav-container {
+    display: table !important;
+    width: 100% !important;
+}
+
+.ie-fallback .nav-container > * {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.ie-fallback .menu {
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+.ie-fallback .menu a {
+    display: inline-block !important;
+    margin: 0 10px !important;
+}
+
+/* Normalização para Safari antigo */
+.safari-fallback {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.safari-fallback .service-card,
+.safari-fallback .portfolio-item {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Normalização para Firefox antigo */
+.firefox-fallback {
+    -moz-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Normalização para Chrome antigo */
+.chrome-fallback {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Fallbacks específicos para servidor local */
+.local-server .debug-info {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 9998;
+    font-family: monospace;
+}
+
+.local-server body::before {
+    content: "MODO DESENVOLVIMENTO";
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    z-index: 9999;
+    border-radius: 0 0 0 5px;
+    font-family: monospace;
+}
+
+/* Fallbacks específicos para produção */
+.production-server {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.production-server * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Normalização de fontes entre navegadores */
+.font-normalize {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Normalização de imagens */
+.img-normalize {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Normalização de botões */
+.btn-normalize {
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Normalização de inputs */
+.input-normalize {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+/* Normalização de scroll */
+.scroll-normalize {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Normalização de animações */
+.animation-normalize {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Fallbacks para recursos não suportados */
+.no-flexbox .nav-container {
+    display: table !important;
+    width: 100% !important;
+}
+
+.no-flexbox .nav-container > * {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.no-grid .services-grid {
+    display: block !important;
+}
+
+.no-grid .service-card {
+    display: inline-block !important;
+    width: 48% !important;
+    margin: 1% !important;
+    vertical-align: top !important;
+}
+
+.no-custom-properties {
+    /* Estilos específicos para navegadores sem suporte a CSS custom properties */
+    color: #1e1e1e;
+    background-color: #ffffff;
+}
+
+.no-custom-properties .primary-color {
+    color: #8e1b00 !important;
+}
+
+.no-custom-properties .secondary-color {
+    color: #0f4d3a !important;
+}
+
+.no-custom-properties .accent-color {
+    color: #c97e2b !important;
+}
+
+.no-custom-properties .text-color {
+    color: #1e1e1e !important;
+}
+
+.no-custom-properties .background-color {
+    background-color: #ffffff !important;
+}
+
+.no-custom-properties .light-bg {
+    background-color: #f8f9fa !important;
+}
+
+/* Media queries para diferentes resoluções */
+@media screen and (max-width: 768px) {
+    .mobile-normalize .nav-container {
+        display: block !important;
+    }
+    
+    .mobile-normalize .menu {
+        display: block !important;
+        text-align: center !important;
+    }
+    
+    .mobile-normalize .menu a {
+        display: block !important;
+        margin: 10px 0 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mobile-small-normalize .service-card,
+    .mobile-small-normalize .portfolio-item {
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+}

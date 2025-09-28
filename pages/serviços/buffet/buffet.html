@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-services.css">
     <link rel="stylesheet" href="buffet.css">
     <style>
         /* CSS simples para alternância de botões */
@@ -144,7 +145,7 @@
         <div class="group-13">
             <div class="why-choose-us">
                 <div class="servi-os2"> serviços </div>
-                <div class="buffet3"> Buffet </div>
+                <div class="buffet3"> Buffet Corporativo </div>
             </div>
             <div class="why-choose-us2">
                 <div class="card-pios-sob-medida-para-cada-ocasi-o-coquet-is-coffee-break-brunch-e-refei-es-completas-clique-nos-cart-es-para-ver-os-detalhes"> Cardápios sob medida para cada ocasião: coquetéis, coffee break, brunch e refeições completas. Clique nos cartões para ver os detalhes. </div>
@@ -161,7 +162,7 @@
             <div class="service-content">
                 <h3>Coquetéis</h3>
                 <p>Serviço volante com finger foods</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="coquetéis">Ver detalhes</button>
             </div>
         </div>
         
@@ -169,7 +170,7 @@
             <div class="service-content">
                 <h3>Coffee Break</h3>
                 <p>Perfeito para reuniões e conferências</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="coffee-break">Ver detalhes</button>
             </div>
         </div>
         
@@ -177,7 +178,7 @@
             <div class="service-content">
                 <h3>Brunch</h3>
                 <p>Mix café da manhã + almoço</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="brunch">Ver detalhes</button>
             </div>
         </div>
         
@@ -185,7 +186,7 @@
             <div class="service-content">
                 <h3>Almoço/Jantar</h3>
                 <p>Buffet quente completo</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="almoço-jantar">Ver detalhes</button>
             </div>
         </div>
         
@@ -193,7 +194,7 @@
             <div class="service-content">
                 <h3>Sobremesas & Doces</h3>
                 <p>Finalização doce com mesa temática</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="sobremesas">Ver detalhes</button>
             </div>
         </div>
         
@@ -201,7 +202,241 @@
             <div class="service-content">
                 <h3>Bebidas & Bar</h3>
                 <p>Bar de drinks e espumantes</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="bebidas">Ver detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-ups dos Serviços -->
+    <!-- Pop-up Coquetéis -->
+    <div class="popup-overlay" id="popup-coquetéis">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Coquetéis</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Coquetéis" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Elegante serviço volante com finger foods sofisticados, perfeito para eventos corporativos e celebrações especiais.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Canapés variados</li>
+                            <li>Petiscos gourmet</li>
+                            <li>Bebidas não alcoólicas</li>
+                            <li>Equipe de garçons</li>
+                            <li>Decoração da mesa</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Coffee Break -->
+    <div class="popup-overlay" id="popup-coffee-break">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Coffee Break</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Coffee Break" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Perfeito para reuniões e conferências. Montagem rápida, quente/frio e reposição.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Café expresso e americano</li>
+                            <li>Chás variados</li>
+                            <li>Croissants e pães</li>
+                            <li>Biscoitos e bolos</li>
+                            <li>Água e sucos</li>
+                            <li>Equipamentos de café</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/buffet/engin-akyurt-eqMHmoe550Y-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/buffet/engin-akyurt-gaLpc1k6AXo-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/buffet/jill-sauve-stHOZOzZOEQ-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/buffet/mudassir-zaheer-RbUI-Hc9Hy0-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Brunch -->
+    <div class="popup-overlay" id="popup-brunch">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Brunch</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/buffet/saile-ilyas-SiwrpBnxDww-unsplash.jpg" alt="Brunch" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Mix perfeito entre café da manhã e almoço, ideal para eventos matinais e celebrações especiais.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Ovos e omeletes</li>
+                            <li>Pães e torradas</li>
+                            <li>Frutas frescas</li>
+                            <li>Saladas variadas</li>
+                            <li>Sucos naturais</li>
+                            <li>Café e chás</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/buffet/tim-pack-_sH9ifV2yjY-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Almoço/Jantar -->
+    <div class="popup-overlay" id="popup-almoço-jantar">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Almoço/Jantar</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Almoço/Jantar" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Buffet quente completo com pratos principais, acompanhamentos e sobremesas para eventos formais.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Pratos principais variados</li>
+                            <li>Arroz e feijão</li>
+                            <li>Saladas frescas</li>
+                            <li>Vegetais grelhados</li>
+                            <li>Sobremesas</li>
+                            <li>Bebidas</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/buffet/engin-akyurt-eqMHmoe550Y-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/buffet/engin-akyurt-gaLpc1k6AXo-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Sobremesas -->
+    <div class="popup-overlay" id="popup-sobremesas">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Sobremesas & Doces</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/buffet/jill-sauve-stHOZOzZOEQ-unsplash.jpg" alt="Sobremesas" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Finalização doce com mesa temática decorada, perfeita para encerrar qualquer evento com chave de ouro.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Tortas variadas</li>
+                            <li>Doces tradicionais</li>
+                            <li>Petit fours</li>
+                            <li>Frutas cristalizadas</li>
+                            <li>Decoração temática</li>
+                            <li>Utensílios especiais</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/buffet/mudassir-zaheer-RbUI-Hc9Hy0-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/buffet/saile-ilyas-SiwrpBnxDww-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/buffet/tim-pack-_sH9ifV2yjY-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Bebidas -->
+    <div class="popup-overlay" id="popup-bebidas">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Bebidas & Bar</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg" alt="Bebidas" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Bar completo com drinks especiais, espumantes e bebidas não alcoólicas para todos os gostos.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Drinks especiais</li>
+                            <li>Espumantes e champanhes</li>
+                            <li>Vinhos selecionados</li>
+                            <li>Bebidas não alcoólicas</li>
+                            <li>Bartender profissional</li>
+                            <li>Equipamentos de bar</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Galeria 4" />
             </div>
         </div>
     </div>
@@ -401,6 +636,118 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Sistema simples configurado no BUFFET');
 });
+
+// Sistema de Pop-ups Otimizado
+(function() {
+    'use strict';
+    
+    // Cache de elementos para melhor performance
+    let elements = null;
+    let isInitialized = false;
+    
+    function initPopups() {
+        if (isInitialized) return;
+        
+        // Cache de elementos
+        elements = {
+            verDetalhesBtns: document.querySelectorAll('.ver-detalhes'),
+            popups: document.querySelectorAll('.popup-overlay'),
+            closeBtns: document.querySelectorAll('.close-btn'),
+            contactBtns: document.querySelectorAll('.contact-btn'),
+            galleryImages: document.querySelectorAll('.popup-gallery img')
+        };
+        
+        // Função otimizada para abrir pop-up
+        function openPopup(serviceName) {
+            const popup = document.getElementById(`popup-${serviceName}`);
+            if (popup) {
+                // Usar requestAnimationFrame para melhor performance
+                requestAnimationFrame(() => {
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+        }
+        
+        // Função otimizada para fechar pop-up
+        function closePopup(serviceName) {
+            const popup = document.getElementById(`popup-${serviceName}`);
+            if (popup) {
+                requestAnimationFrame(() => {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        }
+        
+        // Função para fechar todos os pop-ups
+        function closeAllPopups() {
+            elements.popups.forEach(popup => {
+                popup.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Event delegation para melhor performance
+        document.addEventListener('click', function(e) {
+            const target = e.target;
+            
+            // Botão "Ver detalhes"
+            if (target.classList.contains('ver-detalhes')) {
+                e.preventDefault();
+                const serviceName = target.getAttribute('data-service');
+                if (serviceName) {
+                    openPopup(serviceName);
+                }
+                return;
+            }
+            
+            // Botão de fechar
+            if (target.classList.contains('close-btn')) {
+                e.preventDefault();
+                const popup = target.closest('.popup-overlay');
+                if (popup) {
+                    const serviceName = popup.id.replace('popup-', '');
+                    closePopup(serviceName);
+                }
+                return;
+            }
+            
+            // Clicar no overlay
+            if (target.classList.contains('popup-overlay')) {
+                const serviceName = target.id.replace('popup-', '');
+                closePopup(serviceName);
+                return;
+            }
+            
+            // Botão de contato
+            if (target.classList.contains('contact-btn')) {
+                e.preventDefault();
+                const whatsappNumber = '5511999999999';
+                const message = 'Olá! Gostaria de saber mais sobre os serviços de buffet da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                return;
+            }
+        });
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllPopups();
+            }
+        });
+        
+        isInitialized = true;
+    }
+    
+    // Inicializar quando DOM estiver pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPopups);
+    } else {
+        initPopups();
+    }
+})();
 </script>
 </body>
 </html>

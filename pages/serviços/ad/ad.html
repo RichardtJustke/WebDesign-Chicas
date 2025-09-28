@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-services.css">
     <link rel="stylesheet" href="ad.css">
     <style>
         /* CSS simples para alternância de botões */
@@ -161,7 +162,7 @@
             <div class="service-content">
                 <h3>Fotografia</h3>
                 <p>Captura de momentos únicos e especiais</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="fotografia">Ver detalhes</button>
             </div>
         </div>
         
@@ -169,7 +170,7 @@
             <div class="service-content">
                 <h3>Social Media</h3>
                 <p>Conteúdo para redes sociais e marketing</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="social-media">Ver detalhes</button>
             </div>
         </div>
         
@@ -177,7 +178,7 @@
             <div class="service-content">
                 <h3>Filmagem</h3>
                 <p>Vídeos profissionais e cobertura completa</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="filmagem">Ver detalhes</button>
             </div>
         </div>
         
@@ -185,7 +186,7 @@
             <div class="service-content">
                 <h3>Cobertura ao Vivo</h3>
                 <p>Transmissão em tempo real do evento</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="cobertura-vivo">Ver detalhes</button>
             </div>
         </div>
         
@@ -193,7 +194,7 @@
             <div class="service-content">
                 <h3>Pacotes 360°</h3>
                 <p>Experiência imersiva completa</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="pacotes-360">Ver detalhes</button>
             </div>
         </div>
         
@@ -201,7 +202,236 @@
             <div class="service-content">
                 <h3>Drone</h3>
                 <p>Imagens aéreas e perspectivas únicas</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="drone">Ver detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-ups dos Serviços -->
+    <!-- Pop-up Fotografia -->
+    <div class="popup-overlay" id="popup-fotografia">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Fotografia</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/ad/aarom-ore-iUCMLjQXD4o-unsplash.jpg" alt="Fotografia Profissional" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Captura de momentos únicos e especiais com equipamentos profissionais de última geração. Nossa equipe especializada garante imagens de alta qualidade que preservam as memórias mais importantes do seu evento.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Fotógrafo profissional especializado</li>
+                            <li>Equipamentos de alta resolução</li>
+                            <li>Edição e tratamento das imagens</li>
+                            <li>Entrega em formato digital</li>
+                            <li>Backup das fotos por 1 ano</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/ad/aarom-ore-iUCMLjQXD4o-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/ad/aarom-ore-xixE8fHqUk0-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/ad/asso-myron-rCElGEIgbjs-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/ad/diana-macesanu-3ciHxbx9H0U-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Social Media -->
+    <div class="popup-overlay" id="popup-social-media">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Social Media</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/ad/diana-macesanu-fvPfMJL2wKw-unsplash.jpg" alt="Social Media" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Conteúdo estratégico para redes sociais com linguagem de marca personalizada. Criamos posts, stories e reels que engajam e conectam com seu público-alvo, maximizando o alcance do seu evento.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Planejamento de conteúdo estratégico</li>
+                            <li>Criação de posts para Instagram e Facebook</li>
+                            <li>Stories e reels dinâmicos</li>
+                            <li>Hashtags otimizadas</li>
+                            <li>Relatório de engajamento</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/ad/diana-macesanu-fvPfMJL2wKw-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/ad/dose-media-DiTiYQx0mh4-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/ad/marissa-lewis-47bVgRJ3bFI-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/ad/melyna-valle-dgeFqem7_zE-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Filmagem -->
+    <div class="popup-overlay" id="popup-filmagem">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Filmagem</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/ad/noemi-macavei-katocz-zrk7WirlxgM-unsplash.jpg" alt="Filmagem Profissional" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Vídeos profissionais com cobertura completa do evento. Utilizamos equipamentos de última geração para capturar cada momento especial, criando memórias em movimento que durarão para sempre.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Câmeras profissionais 4K</li>
+                            <li>Equipe de filmagem especializada</li>
+                            <li>Edição e pós-produção</li>
+                            <li>Música e trilha sonora</li>
+                            <li>Entrega em múltiplos formatos</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/ad/noemi-macavei-katocz-zrk7WirlxgM-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/ad/nubelson-fernandes-ZdOsQiwp0Ss-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/ad/riccardo-sanmartini-x6ngZORRMk8-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/ad/theregisti-4xZt9YHznts-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Cobertura ao Vivo -->
+    <div class="popup-overlay" id="popup-cobertura-vivo">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Cobertura ao Vivo</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/ad/aarom-ore-iUCMLjQXD4o-unsplash.jpg" alt="Cobertura ao Vivo" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Transmissão em tempo real do seu evento para familiares e amigos que não podem estar presentes. Tecnologia de ponta garante qualidade HD e estabilidade na transmissão.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Transmissão ao vivo em HD</li>
+                            <li>Múltiplas câmeras simultâneas</li>
+                            <li>Link privado para convidados</li>
+                            <li>Gravação da transmissão</li>
+                            <li>Suporte técnico durante o evento</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/ad/aarom-ore-iUCMLjQXD4o-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/ad/aarom-ore-xixE8fHqUk0-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/ad/asso-myron-rCElGEIgbjs-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/ad/diana-macesanu-3ciHxbx9H0U-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Pacotes 360° -->
+    <div class="popup-overlay" id="popup-pacotes-360">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Pacotes 360°</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/ad/diana-macesanu-fvPfMJL2wKw-unsplash.jpg" alt="Pacotes 360°" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Experiência imersiva completa com tecnologia 360° que permite aos convidados reviverem cada momento do evento de forma única e interativa, criando memórias inesquecíveis.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Fotografia 360° profissional</li>
+                            <li>Vídeos imersivos</li>
+                            <li>Tour virtual do evento</li>
+                            <li>Acesso via realidade virtual</li>
+                            <li>Plataforma online exclusiva</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/ad/diana-macesanu-fvPfMJL2wKw-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/ad/dose-media-DiTiYQx0mh4-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/ad/marissa-lewis-47bVgRJ3bFI-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/ad/melyna-valle-dgeFqem7_zE-unsplash.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Drone -->
+    <div class="popup-overlay" id="popup-drone">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Drone</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/ad/nubelson-fernandes-ZdOsQiwp0Ss-unsplash.jpg" alt="Drone" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Imagens aéreas espetaculares e perspectivas únicas que mostram seu evento de uma forma completamente nova. Nossos pilotos certificados garantem segurança e qualidade excepcional.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Drone profissional com câmera 4K</li>
+                            <li>Piloto certificado ANAC</li>
+                            <li>Imagens aéreas em alta resolução</li>
+                            <li>Edição e estabilização</li>
+                            <li>Licença para uso comercial</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/ad/nubelson-fernandes-ZdOsQiwp0Ss-unsplash.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/ad/riccardo-sanmartini-x6ngZORRMk8-unsplash.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/ad/theregisti-4xZt9YHznts-unsplash.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/ad/aarom-ore-iUCMLjQXD4o-unsplash.jpg" alt="Galeria 4" />
             </div>
         </div>
     </div>
@@ -401,6 +631,118 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Sistema simples configurado no AUDIOVISUAL');
 });
+
+// Sistema de Pop-ups Otimizado
+(function() {
+    'use strict';
+    
+    // Cache de elementos para melhor performance
+    let elements = null;
+    let isInitialized = false;
+    
+    function initPopups() {
+        if (isInitialized) return;
+        
+        // Cache de elementos
+        elements = {
+            verDetalhesBtns: document.querySelectorAll('.ver-detalhes'),
+            popups: document.querySelectorAll('.popup-overlay'),
+            closeBtns: document.querySelectorAll('.close-btn'),
+            contactBtns: document.querySelectorAll('.contact-btn'),
+            galleryImages: document.querySelectorAll('.popup-gallery img')
+        };
+        
+        // Função otimizada para abrir pop-up
+        function openPopup(serviceName) {
+            const popup = document.getElementById(`popup-${serviceName}`);
+            if (popup) {
+                // Usar requestAnimationFrame para melhor performance
+                requestAnimationFrame(() => {
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+        }
+        
+        // Função otimizada para fechar pop-up
+        function closePopup(serviceName) {
+            const popup = document.getElementById(`popup-${serviceName}`);
+            if (popup) {
+                requestAnimationFrame(() => {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        }
+        
+        // Função para fechar todos os pop-ups
+        function closeAllPopups() {
+            elements.popups.forEach(popup => {
+                popup.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Event delegation para melhor performance
+        document.addEventListener('click', function(e) {
+            const target = e.target;
+            
+            // Botão "Ver detalhes"
+            if (target.classList.contains('ver-detalhes')) {
+                e.preventDefault();
+                const serviceName = target.getAttribute('data-service');
+                if (serviceName) {
+                    openPopup(serviceName);
+                }
+                return;
+            }
+            
+            // Botão de fechar
+            if (target.classList.contains('close-btn')) {
+                e.preventDefault();
+                const popup = target.closest('.popup-overlay');
+                if (popup) {
+                    const serviceName = popup.id.replace('popup-', '');
+                    closePopup(serviceName);
+                }
+                return;
+            }
+            
+            // Clicar no overlay
+            if (target.classList.contains('popup-overlay')) {
+                const serviceName = target.id.replace('popup-', '');
+                closePopup(serviceName);
+                return;
+            }
+            
+            // Botão de contato
+            if (target.classList.contains('contact-btn')) {
+                e.preventDefault();
+                const whatsappNumber = '5511999999999';
+                const message = 'Olá! Gostaria de saber mais sobre os serviços de audiovisual da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                return;
+            }
+        });
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllPopups();
+            }
+        });
+        
+        isInitialized = true;
+    }
+    
+    // Inicializar quando DOM estiver pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPopups);
+    } else {
+        initPopups();
+    }
+})();
 </script>
 </body>
 </html>

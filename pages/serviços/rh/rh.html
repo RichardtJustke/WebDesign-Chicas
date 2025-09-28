@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-services.css">
     <link rel="stylesheet" href="rh.css">
     <style>
         /* CSS simples para alternância de botões */
@@ -161,7 +162,7 @@
             <div class="service-content">
                 <h3>Garçom</h3>
                 <p>Atendimento profissional e especializado</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="garçom">Ver detalhes</button>
             </div>
         </div>
         
@@ -169,7 +170,7 @@
             <div class="service-content">
                 <h3>Apoio/Operação</h3>
                 <p>Suporte técnico e operacional completo</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="apoio">Ver detalhes</button>
             </div>
         </div>
         
@@ -177,7 +178,7 @@
             <div class="service-content">
                 <h3>Recepção</h3>
                 <p>Atendimento e boas-vindas aos convidados</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="recepção">Ver detalhes</button>
             </div>
         </div>
         
@@ -185,7 +186,7 @@
             <div class="service-content">
                 <h3>Coordenação de Sala</h3>
                 <p>Organização e controle do ambiente</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="coordenação">Ver detalhes</button>
             </div>
         </div>
         
@@ -193,7 +194,7 @@
             <div class="service-content">
                 <h3>Limpeza de Área</h3>
                 <p>Manutenção e higienização do espaço</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="limpeza">Ver detalhes</button>
             </div>
         </div>
         
@@ -201,7 +202,242 @@
             <div class="service-content">
                 <h3>Segurança</h3>
                 <p>Proteção e controle de acesso</p>
-                <button class="ver-detalhes">Ver detalhes</button>
+                <button class="ver-detalhes" data-service="segurança">Ver detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-ups dos Serviços -->
+    <!-- Pop-up Garçom -->
+    <div class="popup-overlay" id="popup-garçom">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Garçom</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/rh/03b33433413bd2eba9bd4fd2e5f8cfe6cef9196f.jpg" alt="Garçom" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Atendimento profissional e especializado com garçons treinados para garantir o melhor serviço durante seu evento. Nossa equipe é experiente e dedicada.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Garçons profissionais treinados</li>
+                            <li>Atendimento personalizado</li>
+                            <li>Serviço de bebidas e comidas</li>
+                            <li>Limpeza e organização contínua</li>
+                            <li>Uniforme padrão da empresa</li>
+                            <li>Supervisão durante todo o evento</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/rh/1d27da51b0e1e60ca86cfd6321c2eb02b2aba15d.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/rh/29c472dacb656a1f88ff27ee0f6482b48c7a36c4.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/rh/69ca9e12e51d99864c85c16a255b4473db2fcc5a.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/rh/6e61ae360002dcf72aa3fcf0f1efe767736444b0.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Apoio/Operação -->
+    <div class="popup-overlay" id="popup-apoio">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Apoio/Operação</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/rh/1d27da51b0e1e60ca86cfd6321c2eb02b2aba15d.jpg" alt="Apoio/Operação" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Suporte técnico e operacional completo para garantir que todos os aspectos do seu evento funcionem perfeitamente. Nossa equipe está preparada para qualquer situação.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Suporte técnico especializado</li>
+                            <li>Montagem e desmontagem</li>
+                            <li>Controle de equipamentos</li>
+                            <li>Resolução de problemas técnicos</li>
+                            <li>Coordenação operacional</li>
+                            <li>Backup de equipamentos</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/rh/29c472dacb656a1f88ff27ee0f6482b48c7a36c4.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/rh/69ca9e12e51d99864c85c16a255b4473db2fcc5a.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/rh/6e61ae360002dcf72aa3fcf0f1efe767736444b0.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/rh/d22f8a9eb149e69f5512644149bf98a8f7a90861.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Recepção -->
+    <div class="popup-overlay" id="popup-recepção">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Recepção</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/rh/29c472dacb656a1f88ff27ee0f6482b48c7a36c4.jpg" alt="Recepção" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Atendimento e boas-vindas aos convidados com recepcionistas treinadas para criar uma primeira impressão memorável e acolhedora para todos os participantes.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Recepcionistas profissionais</li>
+                            <li>Boas-vindas personalizadas</li>
+                            <li>Orientação aos convidados</li>
+                            <li>Controle de acesso</li>
+                            <li>Informações sobre o evento</li>
+                            <li>Atendimento bilíngue (se necessário)</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/rh/69ca9e12e51d99864c85c16a255b4473db2fcc5a.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/rh/6e61ae360002dcf72aa3fcf0f1efe767736444b0.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/rh/d22f8a9eb149e69f5512644149bf98a8f7a90861.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/rh/03b33433413bd2eba9bd4fd2e5f8cfe6cef9196f.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Coordenação de Sala -->
+    <div class="popup-overlay" id="popup-coordenação">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Coordenação de Sala</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/rh/69ca9e12e51d99864c85c16a255b4473db2fcc5a.jpg" alt="Coordenação de Sala" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Organização e controle do ambiente para garantir que o espaço esteja sempre organizado e funcional durante todo o evento. Coordenamos todos os aspectos da sala.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Organização do layout da sala</li>
+                            <li>Controle de temperatura e iluminação</li>
+                            <li>Gerenciamento de equipamentos</li>
+                            <li>Coordenação de movimentação</li>
+                            <li>Manutenção da ordem</li>
+                            <li>Comunicação com a equipe</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/rh/6e61ae360002dcf72aa3fcf0f1efe767736444b0.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/rh/d22f8a9eb149e69f5512644149bf98a8f7a90861.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/rh/03b33433413bd2eba9bd4fd2e5f8cfe6cef9196f.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/rh/1d27da51b0e1e60ca86cfd6321c2eb02b2aba15d.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Limpeza de Área -->
+    <div class="popup-overlay" id="popup-limpeza">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Limpeza de Área</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/rh/6e61ae360002dcf72aa3fcf0f1efe767736444b0.jpg" alt="Limpeza de Área" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Manutenção e higienização do espaço para garantir um ambiente sempre limpo e organizado durante todo o evento. Nossa equipe mantém os mais altos padrões de limpeza.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Limpeza contínua durante o evento</li>
+                            <li>Higienização de mesas e cadeiras</li>
+                            <li>Coleta de lixo e reciclagem</li>
+                            <li>Limpeza de banheiros</li>
+                            <li>Manutenção da área externa</li>
+                            <li>Limpeza pós-evento</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/rh/d22f8a9eb149e69f5512644149bf98a8f7a90861.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/rh/03b33433413bd2eba9bd4fd2e5f8cfe6cef9196f.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/rh/1d27da51b0e1e60ca86cfd6321c2eb02b2aba15d.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/rh/29c472dacb656a1f88ff27ee0f6482b48c7a36c4.jpg" alt="Galeria 4" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Segurança -->
+    <div class="popup-overlay" id="popup-segurança">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Segurança</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="../../../assets/img g/rh/d22f8a9eb149e69f5512644149bf98a8f7a90861.jpg" alt="Segurança" loading="lazy" />
+                </div>
+                <div class="popup-info">
+                    <div class="info-panel">
+                        <h3>Descrição</h3>
+                        <p>Proteção e controle de acesso para garantir a segurança de todos os participantes e bens durante o evento. Nossa equipe de segurança é treinada e experiente.</p>
+                    </div>
+                    <div class="info-panel">
+                        <h3>O que está incluso:</h3>
+                        <ul>
+                            <li>Segurança profissional 24h</li>
+                            <li>Controle de acesso ao evento</li>
+                            <li>Monitoramento de câmeras</li>
+                            <li>Proteção de equipamentos</li>
+                            <li>Segurança dos convidados</li>
+                            <li>Plano de emergência</li>
+                        </ul>
+                    </div>
+                    <button class="contact-btn">Falar com o atendente</button>
+                </div>
+            </div>
+            <div class="popup-gallery">
+                <img src="../../../assets/img g/rh/03b33433413bd2eba9bd4fd2e5f8cfe6cef9196f.jpg" alt="Galeria 1" />
+                <img src="../../../assets/img g/rh/1d27da51b0e1e60ca86cfd6321c2eb02b2aba15d.jpg" alt="Galeria 2" />
+                <img src="../../../assets/img g/rh/29c472dacb656a1f88ff27ee0f6482b48c7a36c4.jpg" alt="Galeria 3" />
+                <img src="../../../assets/img g/rh/69ca9e12e51d99864c85c16a255b4473db2fcc5a.jpg" alt="Galeria 4" />
             </div>
         </div>
     </div>
@@ -401,6 +637,118 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Sistema simples configurado no RH');
 });
+
+// Sistema de Pop-ups Otimizado
+(function() {
+    'use strict';
+    
+    // Cache de elementos para melhor performance
+    let elements = null;
+    let isInitialized = false;
+    
+    function initPopups() {
+        if (isInitialized) return;
+        
+        // Cache de elementos
+        elements = {
+            verDetalhesBtns: document.querySelectorAll('.ver-detalhes'),
+            popups: document.querySelectorAll('.popup-overlay'),
+            closeBtns: document.querySelectorAll('.close-btn'),
+            contactBtns: document.querySelectorAll('.contact-btn'),
+            galleryImages: document.querySelectorAll('.popup-gallery img')
+        };
+        
+        // Função otimizada para abrir pop-up
+        function openPopup(serviceName) {
+            const popup = document.getElementById(`popup-${serviceName}`);
+            if (popup) {
+                // Usar requestAnimationFrame para melhor performance
+                requestAnimationFrame(() => {
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+        }
+        
+        // Função otimizada para fechar pop-up
+        function closePopup(serviceName) {
+            const popup = document.getElementById(`popup-${serviceName}`);
+            if (popup) {
+                requestAnimationFrame(() => {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        }
+        
+        // Função para fechar todos os pop-ups
+        function closeAllPopups() {
+            elements.popups.forEach(popup => {
+                popup.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Event delegation para melhor performance
+        document.addEventListener('click', function(e) {
+            const target = e.target;
+            
+            // Botão "Ver detalhes"
+            if (target.classList.contains('ver-detalhes')) {
+                e.preventDefault();
+                const serviceName = target.getAttribute('data-service');
+                if (serviceName) {
+                    openPopup(serviceName);
+                }
+                return;
+            }
+            
+            // Botão de fechar
+            if (target.classList.contains('close-btn')) {
+                e.preventDefault();
+                const popup = target.closest('.popup-overlay');
+                if (popup) {
+                    const serviceName = popup.id.replace('popup-', '');
+                    closePopup(serviceName);
+                }
+                return;
+            }
+            
+            // Clicar no overlay
+            if (target.classList.contains('popup-overlay')) {
+                const serviceName = target.id.replace('popup-', '');
+                closePopup(serviceName);
+                return;
+            }
+            
+            // Botão de contato
+            if (target.classList.contains('contact-btn')) {
+                e.preventDefault();
+                const whatsappNumber = '5511999999999';
+                const message = 'Olá! Gostaria de saber mais sobre os serviços de RH da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                return;
+            }
+        });
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllPopups();
+            }
+        });
+        
+        isInitialized = true;
+    }
+    
+    // Inicializar quando DOM estiver pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPopups);
+    } else {
+        initPopups();
+    }
+})();
 </script>
 </body>
 </html>

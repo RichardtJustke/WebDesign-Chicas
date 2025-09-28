@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
     <link rel="stylesheet" href="ad.css">
+    <link rel="stylesheet" href="../../../css/add-to-event-popup.css">
     <style>
         /* CSS simples para alternância de botões */
         .login-btn {
@@ -104,6 +105,22 @@
         #login-btn, #user-btn {
             transition: all 0.3s ease;
         }
+        
+        /* Estilos para o botão Adicionar ao Evento */
+        .add-to-event-btn {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .add-to-event-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(185, 89, 41, 0.3);
+        }
+        
+        .add-to-event-btn:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -152,7 +169,7 @@
             </div>
         </div>
         <div class="frame-45">
-            <div class="adiconar-ao-evento"> Adiconar ao Evento </div>
+            <div class="adiconar-ao-evento add-to-event-btn"> Adicionar ao Evento </div>
         </div>
     </div>
     
@@ -162,7 +179,7 @@
             <div class="service-content">
                 <h3>Fotografia</h3>
                 <p>Captura de momentos únicos e especiais</p>
-                <button class="ver-detalhes" data-service="fotografia">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="fotografia">Ver detalhes</a>
             </div>
         </div>
         
@@ -170,7 +187,7 @@
             <div class="service-content">
                 <h3>Social Media</h3>
                 <p>Conteúdo para redes sociais e marketing</p>
-                <button class="ver-detalhes" data-service="social-media">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="social-media">Ver detalhes</a>
             </div>
         </div>
         
@@ -178,7 +195,7 @@
             <div class="service-content">
                 <h3>Filmagem</h3>
                 <p>Vídeos profissionais e cobertura completa</p>
-                <button class="ver-detalhes" data-service="filmagem">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="filmagem">Ver detalhes</a>
             </div>
         </div>
         
@@ -186,7 +203,7 @@
             <div class="service-content">
                 <h3>Cobertura ao Vivo</h3>
                 <p>Transmissão em tempo real do evento</p>
-                <button class="ver-detalhes" data-service="cobertura-vivo">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="cobertura-vivo">Ver detalhes</a>
             </div>
         </div>
         
@@ -194,7 +211,7 @@
             <div class="service-content">
                 <h3>Pacotes 360°</h3>
                 <p>Experiência imersiva completa</p>
-                <button class="ver-detalhes" data-service="pacotes-360">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="pacotes-360">Ver detalhes</a>
             </div>
         </div>
         
@@ -202,7 +219,7 @@
             <div class="service-content">
                 <h3>Drone</h3>
                 <p>Imagens aéreas e perspectivas únicas</p>
-                <button class="ver-detalhes" data-service="drone">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="drone">Ver detalhes</a>
             </div>
         </div>
     </div>
@@ -494,6 +511,7 @@
 <script src="../../../js/global.js"></script>
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
+<script src="../../../js/add-to-event-popup.js"></script>
 
 <script>
 // Sistema simples de alternância de botões

@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
     <link rel="stylesheet" href="cerimonial.css">
+    <link rel="stylesheet" href="../../../css/add-to-event-popup.css">
     <style>
         /* CSS simples para alternância de botões */
         .login-btn {
@@ -104,6 +105,22 @@
         #login-btn, #user-btn {
             transition: all 0.3s ease;
         }
+        
+        /* Estilos para o botão Adicionar ao Evento */
+        .add-to-event-btn {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .add-to-event-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(185, 89, 41, 0.3);
+        }
+        
+        .add-to-event-btn:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -152,7 +169,7 @@
             </div>
         </div>
         <div class="frame-45">
-            <div class="adiconar-ao-evento"> Adiconar ao Evento </div>
+            <div class="adiconar-ao-evento add-to-event-btn"> Adicionar ao Evento </div>
         </div>
     </div>
     
@@ -162,7 +179,7 @@
             <div class="service-content">
                 <h3>Planejamento</h3>
                 <p>Estruturação completa do evento</p>
-                <button class="ver-detalhes" data-service="planejamento">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="planejamento">Ver detalhes</a>
             </div>
         </div>
         
@@ -170,7 +187,7 @@
             <div class="service-content">
                 <h3>Consultoria</h3>
                 <p>Orientação especializada e personalizada</p>
-                <button class="ver-detalhes" data-service="consultoria">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="consultoria">Ver detalhes</a>
             </div>
         </div>
         
@@ -178,7 +195,7 @@
             <div class="service-content">
                 <h3>Coordenação do Dia</h3>
                 <p>Execução e supervisão no dia do evento</p>
-                <button class="ver-detalhes" data-service="coordenação">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="coordenação">Ver detalhes</a>
             </div>
         </div>
         
@@ -186,7 +203,7 @@
             <div class="service-content">
                 <h3>Roteiro & Timeline</h3>
                 <p>Cronograma detalhado e organização temporal</p>
-                <button class="ver-detalhes" data-service="roteiro">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="roteiro">Ver detalhes</a>
             </div>
         </div>
         
@@ -194,7 +211,7 @@
             <div class="service-content">
                 <h3>Pós-Evento</h3>
                 <p>Finalização e acompanhamento pós-evento</p>
-                <button class="ver-detalhes" data-service="pós-evento">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="pós-evento">Ver detalhes</a>
             </div>
         </div>
         
@@ -202,7 +219,7 @@
             <div class="service-content">
                 <h3>Gestão de Fornecedores</h3>
                 <p>Coordenação e supervisão de todos os fornecedores</p>
-                <button class="ver-detalhes" data-service="fornecedores">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="fornecedores">Ver detalhes</a>
             </div>
         </div>
     </div>
@@ -500,6 +517,7 @@
 <script src="../../../js/global.js"></script>
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
+<script src="../../../js/add-to-event-popup.js"></script>
 
 <script>
 // Sistema simples de alternância de botões

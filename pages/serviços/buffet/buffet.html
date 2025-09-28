@@ -151,7 +151,7 @@
                 <div class="card-pios-sob-medida-para-cada-ocasi-o-coquet-is-coffee-break-brunch-e-refei-es-completas-clique-nos-cart-es-para-ver-os-detalhes"> Cardápios sob medida para cada ocasião: coquetéis, coffee break, brunch e refeições completas. Clique nos cartões para ver os detalhes. </div>
             </div>
         </div>
-        <div class="frame-45">
+        <div class="frame-45" id="ver-pacotes-btn">
             <div class="ver-pacotes"> Ver pacotes </div>
         </div>
     </div>
@@ -162,7 +162,7 @@
             <div class="service-content">
                 <h3>Coquetéis</h3>
                 <p>Serviço volante com finger foods</p>
-                <button class="ver-detalhes" data-service="coquetéis">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="coquetéis">Ver detalhes</a>
             </div>
         </div>
         
@@ -170,7 +170,7 @@
             <div class="service-content">
                 <h3>Coffee Break</h3>
                 <p>Perfeito para reuniões e conferências</p>
-                <button class="ver-detalhes" data-service="coffee-break">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="coffee-break">Ver detalhes</a>
             </div>
         </div>
         
@@ -178,7 +178,7 @@
             <div class="service-content">
                 <h3>Brunch</h3>
                 <p>Mix café da manhã + almoço</p>
-                <button class="ver-detalhes" data-service="brunch">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="brunch">Ver detalhes</a>
             </div>
         </div>
         
@@ -186,7 +186,7 @@
             <div class="service-content">
                 <h3>Almoço/Jantar</h3>
                 <p>Buffet quente completo</p>
-                <button class="ver-detalhes" data-service="almoço-jantar">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="almoço-jantar">Ver detalhes</a>
             </div>
         </div>
         
@@ -194,7 +194,7 @@
             <div class="service-content">
                 <h3>Sobremesas & Doces</h3>
                 <p>Finalização doce com mesa temática</p>
-                <button class="ver-detalhes" data-service="sobremesas">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="sobremesas">Ver detalhes</a>
             </div>
         </div>
         
@@ -202,7 +202,100 @@
             <div class="service-content">
                 <h3>Bebidas & Bar</h3>
                 <p>Bar de drinks e espumantes</p>
-                <button class="ver-detalhes" data-service="bebidas">Ver detalhes</button>
+                <a href="#" class="ver-detalhes" data-service="bebidas">Ver detalhes</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up de Pacotes -->
+    <div class="packages-popup-overlay" id="packages-popup">
+        <div class="packages-popup-content">
+            <div class="packages-popup-header">
+                <h2>Nossos pacotes</h2>
+                <button class="packages-close-btn">&times;</button>
+            </div>
+            <div class="packages-popup-body">
+                <div class="packages-description">
+                    <p>Cardápios sob medida para cada ocasião: coquetéis, coffee break, brunch e refeições completas. Clique nos cartões para ver os detalhes.</p>
+                </div>
+                <div class="packages-grid">
+                    <div class="package-card" data-package="bronze">
+                        <div class="package-image">
+                            <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Pacote Bronze" />
+                        </div>
+                        <div class="package-info">
+                            <h3>Pacote bronze</h3>
+                            <p>Bar de drinks e espumantes</p>
+                            <div class="package-price">A partir de R$ 89/pessoa</div>
+                            <button class="ver-detalhes-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card" data-package="prata">
+                        <div class="package-image">
+                            <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Pacote Prata" />
+                        </div>
+                        <div class="package-info">
+                            <h3>Pacote prata</h3>
+                            <p>Bar de drinks e espumantes</p>
+                            <div class="package-price">A partir de R$ 149/pessoa</div>
+                            <button class="ver-detalhes-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card" data-package="ouro">
+                        <div class="package-image">
+                            <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Pacote Ouro" />
+                        </div>
+                        <div class="package-info">
+                            <h3>Pacote ouro</h3>
+                            <p>Bar de drinks e espumantes</p>
+                            <div class="package-price">A partir de R$ 229/pessoa</div>
+                            <button class="ver-detalhes-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pop-up de Detalhes do Pacote -->
+    <div class="package-detail-popup-overlay" id="package-detail-popup">
+        <div class="package-detail-popup-content">
+            <div class="package-detail-popup-header">
+                <h2 id="package-detail-title">Pacote bronze</h2>
+                <button class="package-detail-close-btn">&times;</button>
+            </div>
+            <div class="package-detail-popup-body">
+                <div class="package-detail-left">
+                    <div class="package-detail-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                    </div>
+                    <div class="package-detail-items">
+                        <h3>O que está incluso:</h3>
+                        <ul id="package-detail-list">
+                            <li>Bar de drinks completo</li>
+                            <li>Espumantes e champanhes</li>
+                            <li>Finger foods variados</li>
+                            <li>Bartender profissional</li>
+                            <li>Equipamentos de bar</li>
+                            <li>Decoração básica</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="package-detail-right">
+                    <div class="package-detail-main-image">
+                        <img id="package-detail-main-img" src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Pacote Bronze" />
+                    </div>
+                    <div class="package-detail-gallery">
+                        <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Galeria 1" />
+                        <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Galeria 2" />
+                        <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Galeria 3" />
+                    </div>
+                </div>
+            </div>
+            <div class="package-detail-footer">
+                <button class="adicionar-evento-btn">Adicionar ao evento</button>
             </div>
         </div>
     </div>
@@ -749,5 +842,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })();
 </script>
+<script src="buffet.js"></script>
 </body>
 </html>

@@ -7,7 +7,94 @@
     <link rel="icon" type="image/png" href="../../assets/img g/logo/icone.png">
     <link rel="shortcut icon" type="image/png" href="../../assets/img g/logo/icone.png">
     <link rel="apple-touch-icon" href="../../assets/img g/logo/icone.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
+    <style>
+        /* CSS simples para alternância de botões - MESMO DO INDEX */
+        .login-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #login-btn, #user-btn {
+            transition: all 0.3s ease;
+        }
+        
+        #user-btn {
+            background: transparent;
+            color: #b95929;
+            border: 2px solid #b95929;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        #user-btn:hover {
+            background: #b95929;
+            color: white;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 200px;
+            z-index: 1000;
+            display: none;
+            margin-top: 5px;
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f8f9fa;
+            transition: background 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .dropdown-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item.logout {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .dropdown-item.logout:hover {
+            background: #f8d7da;
+        }
+    </style>
 </head>
 <body>
 <div class="login-cadastro">
@@ -15,7 +102,9 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="source/../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                <a href="../../index.html">
+                    <img src="../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                </a>
             </div>
             <nav class="menu">
                 <a href="../../index.html" class="nav-link">HOME</a>
@@ -23,16 +112,19 @@
                 <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
             </nav>
             <div class="login-btn">
+                <!-- Botão de login (quando não logado) -->
                 <button class="btn-login" id="login-btn">LOG IN</button>
-                <div class="user-menu" id="user-menu" style="display: none;">
-                    <button class="btn-user" id="user-btn">
-                        <span id="user-name">NOME DO USUARIO</span>
-                    </button>
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                        <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
-                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
-                    </div>
+                
+                <!-- Botão do usuário (quando logado) -->
+                <button class="btn-user" id="user-btn" style="display: none;">
+                    <span id="user-name">NOME DO USUARIO</span>
+                </button>
+                
+                <!-- Dropdown do usuário -->
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                    <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                    <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
                 </div>
             </div>
         </div>
@@ -163,7 +255,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="source/../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                    <a href="../../index.html">
+                        <img src="../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                    </a>
                     <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
                     <p class="copyright">© 2025 . Justke Design</p>
                 </div>
@@ -172,20 +266,20 @@
                     <div class="footer-column">
                         <h4>Serviços</h4>
                         <ul>
-                            <li>Buffet</li>
-                            <li>Audiovisual</li>
-                            <li>RH</li>
-                            <li>Cerimonial</li>
+                            <li><a href="../serviços/buffet/buffet.html">Buffet</a></li>
+                            <li><a href="../serviços/ad/ad.html">Audiovisual</a></li>
+                            <li><a href="../serviços/rh/rh.html">RH</a></li>
+                            <li><a href="../serviços/cerimonial/cerimonial.html">Cerimonial</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h4>Empresa</h4>
                         <ul>
-                            <li>Sobre</li>
-                            <li>Portifólio</li>
-                            <li>Contato</li>
-                            <li>Faça seu evento</li>
+                            <li><a href="../sobre/sobre.html">Sobre</a></li>
+                            <li><a href="../portifolio/portifolio.html">Portifólio</a></li>
+                            <li><a href="../../index.html#contato">Contato</a></li>
+                            <li><a href="../criar evento/ce.html">Faça seu evento</a></li>
                         </ul>
                     </div>
                 </div>
@@ -214,7 +308,7 @@
 
 <!-- JavaScript Global -->
 <script src="../../js/global.js"></script>
-<script src="../../js/auth.js"></script>
+<script src="../../js/auth-simple.js"></script>
 <script src="../../js/navbar.js"></script>
 <script>
 // Função para alternar visibilidade da senha
@@ -376,6 +470,90 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         addTestUserInfo();
     }
+    
+    // Adicionar funcionalidade de loading ao botão de login
+    const loginBtn = document.getElementById('login-btn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+            // Adicionar estado de loading
+            this.classList.add('loading');
+            this.textContent = 'CARREGANDO...';
+            
+            // Simular carregamento (remover em produção)
+            setTimeout(() => {
+                this.classList.remove('loading');
+                this.textContent = 'LOG IN';
+            }, 2000);
+        });
+    }
+    
+    // CONFIGURAÇÃO DIRETA DO DROPDOWN
+    console.log('🔧 Configurando dropdown diretamente...');
+    
+    setTimeout(() => {
+        const userBtn = document.getElementById('user-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const logoutBtn = document.getElementById('logout-btn');
+        
+        console.log('Elementos encontrados:', { userBtn, dropdownMenu, logoutBtn });
+        
+        if (userBtn && dropdownMenu) {
+            console.log('✅ Configurando dropdown...');
+            
+            userBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('🖱️ Botão clicado!');
+                
+                const isOpen = dropdownMenu.classList.contains('show');
+                console.log('Menu estava aberto:', isOpen);
+                
+                if (isOpen) {
+                    dropdownMenu.classList.remove('show');
+                    userBtn.classList.remove('active');
+                    console.log('❌ Menu fechado');
+                } else {
+                    dropdownMenu.classList.add('show');
+                    userBtn.classList.add('active');
+                    console.log('✅ Menu aberto');
+                }
+            });
+            
+            // Fechar ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!userBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                    userBtn.classList.remove('active');
+                    console.log('🚪 Menu fechado por clique fora');
+                }
+            });
+            
+            // Fechar com Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdownMenu.classList.remove('show');
+                    userBtn.classList.remove('active');
+                    console.log('⌨️ Menu fechado com Escape');
+                }
+            });
+            
+            // Logout
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🚪 Logout clicado');
+                    if (confirm('Tem certeza que deseja sair da sua conta?')) {
+                        localStorage.removeItem('chicasEventos_session');
+                        window.location.href = 'login.html';
+                    }
+                });
+            }
+            
+            console.log('🎉 Dropdown configurado com sucesso!');
+        } else {
+            console.error('❌ Elementos não encontrados!');
+        }
+    }, 1000);
 });
 
 function addTestUserInfo() {
@@ -394,13 +572,141 @@ function addTestUserInfo() {
         
         testInfo.innerHTML = `
             <strong>🔧 Usuários de Teste:</strong><br>
-            <strong>Cliente:</strong> joao@teste.com / 123456<br>
-            <strong>Admin:</strong> maria@teste.com / 123456
+            <strong>Cliente 1:</strong> joao@teste.com / 123456<br>
+            <strong>Admin:</strong> maria@teste.com / 123456<br>
+            <strong>Cliente 2:</strong> ana@teste.com / 123456
         `;
         
         loginCard.insertBefore(testInfo, loginCard.querySelector('.auth-form'));
     }
-}
+    }
+
+</script>
+
+<script>
+// SISTEMA REFEITO DO ZERO - Alternância de botões
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Sistema REFEITO DO ZERO ativado no LOGIN');
+    
+    const loginBtn = document.getElementById('login-btn');
+    const userBtn = document.getElementById('user-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const logoutBtn = document.getElementById('logout-btn');
+    
+    // Verificar se usuário está logado
+    function checkUserStatus() {
+        console.log('🔍 Verificando status do usuário...');
+        const sessionData = localStorage.getItem('chicasEventos_session');
+        
+        if (sessionData) {
+            try {
+                const session = JSON.parse(sessionData);
+                const now = new Date().getTime();
+                const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
+                
+                if (now - session.timestamp < sessionTimeout) {
+                    console.log('✅ Usuário logado:', session.user?.nome);
+                    showUserButton(session.user);
+                    return true;
+                } else {
+                    console.log('⏰ Sessão expirada');
+                    localStorage.removeItem('chicasEventos_session');
+                    showLoginButton();
+                    return false;
+                }
+            } catch (error) {
+                console.error('❌ Erro ao verificar sessão:', error);
+                showLoginButton();
+                return false;
+            }
+        } else {
+            console.log('❌ Nenhuma sessão encontrada');
+            showLoginButton();
+            return false;
+        }
+    }
+    
+    // Mostrar botão de login
+    function showLoginButton() {
+        console.log('🔄 Mostrando botão LOGIN');
+        loginBtn.style.display = 'block';
+        userBtn.style.display = 'none';
+        loginBtn.classList.remove('hidden');
+        userBtn.classList.add('hidden');
+    }
+    
+    // Mostrar botão do usuário
+    function showUserButton(user) {
+        console.log('🔄 Mostrando botão USUÁRIO');
+        loginBtn.style.display = 'none';
+        userBtn.style.display = 'block';
+        loginBtn.classList.add('hidden');
+        userBtn.classList.remove('hidden');
+        
+        if (user && user.nome) {
+            document.getElementById('user-name').textContent = user.nome.toUpperCase();
+        }
+    }
+    
+    // Configurar dropdown
+    if (userBtn && dropdownMenu) {
+        userBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🖱️ Clique no botão do usuário');
+            
+            const isOpen = dropdownMenu.classList.contains('show');
+            
+            if (isOpen) {
+                dropdownMenu.classList.remove('show');
+                userBtn.classList.remove('active');
+                console.log('❌ Dropdown fechado');
+            } else {
+                dropdownMenu.classList.add('show');
+                userBtn.classList.add('active');
+                console.log('✅ Dropdown aberto');
+            }
+        });
+    }
+    
+    // Fechar dropdown ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (userBtn && dropdownMenu && 
+            !userBtn.contains(e.target) && 
+            !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+            userBtn.classList.remove('active');
+            console.log('🚪 Dropdown fechado por clique fora');
+        }
+    });
+    
+    // Configurar logout
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('🚪 Tentativa de logout');
+            
+            if (confirm('Tem certeza que deseja sair da sua conta?')) {
+                localStorage.removeItem('chicasEventos_session');
+                showLoginButton();
+                console.log('✅ Logout realizado com sucesso');
+            }
+        });
+    }
+    
+    // Verificar status inicial
+    checkUserStatus();
+    
+    // Verificar mudanças na sessão
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'chicasEventos_session') {
+            console.log('🔄 Sessão alterada, verificando status...');
+            checkUserStatus();
+        }
+    });
+    
+    console.log('✅ Sistema REFEITO DO ZERO configurado no LOGIN');
+});
 </script>
 </body>
 </html>

@@ -246,10 +246,14 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     position: relative;
+}
+
+.logo {
+    justify-self: start;
 }
 
 .logo img {
@@ -260,11 +264,14 @@
     display: flex;
     gap: 40px;
     align-items: center;
+    justify-content: center;
+    justify-self: center;
 }
 
 .nav-link {
     text-decoration: none;
     color: #333;
+    font-family: 'Outfit', sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-transform: uppercase;
@@ -274,6 +281,10 @@
 
 .nav-link:hover {
     color: #b95929;
+}
+
+.login-btn {
+    justify-self: end;
 }
 
 .btn-login {
@@ -297,7 +308,7 @@
 
 .user-menu {
     position: relative;
-    display: flex;
+    display: flex !important;
     align-items: center;
 }
 
@@ -329,12 +340,14 @@
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     min-width: 200px;
-    z-index: 1001;
+    z-index: 999999 !important;
     display: none;
+    pointer-events: none;
 }
 
 .dropdown-menu.show {
-    display: block;
+    display: block !important;
+    pointer-events: auto !important;
 }
 
 .dropdown-item {
@@ -359,7 +372,7 @@
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding: 60px 40px;
     max-width: 1200px;
@@ -367,13 +380,39 @@
 }
 
 .service-card {
-    background: linear-gradient(to left, #d9d9d9, #d9d9d9);
     border-radius: 34px;
     width: 100%;
     height: 308px;
-    object-fit: cover;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Imagens de fundo específicas para cada card */
+.coquetéis-card {
+    background-image: url('../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg');
+}
+
+.coffee-break-card {
+    background-image: url('../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg');
+}
+
+.brunch-card {
+    background-image: url('../../../assets/img g/buffet/engin-akyurt-gaLpc1k6AXo-unsplash.jpg');
+}
+
+.almoço-jantar-card {
+    background-image: url('../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg');
+}
+
+.sobremesas-card {
+    background-image: url('../../../assets/img g/buffet/jill-sauve-stHOZOzZOEQ-unsplash.jpg');
+}
+
+.bebidas-card {
+    background-image: url('../../../assets/img g/buffet/engin-akyurt-eqMHmoe550Y-unsplash.jpg');
 }
 
 .service-card::before {
@@ -420,20 +459,17 @@
     background: transparent;
     color: #ffffff;
     padding: 8px 16px;
-    border: 2px solid rgba(255, 255, 255, 0.8);
+    border: none;
     border-radius: 20px;
     font-family: 'Outfit-SemiBold', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    text-decoration: none;
-    display: inline-block;
+    cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .service-content .ver-detalhes:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 1);
     transform: translateY(-2px);
 }
 
@@ -597,7 +633,7 @@
     }
     
     .services-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         padding: 30px 20px;
         gap: 20px;
     }
@@ -657,6 +693,7 @@
     }
     
     .services-grid {
+        grid-template-columns: 1fr;
         padding: 20px 15px;
     }
     

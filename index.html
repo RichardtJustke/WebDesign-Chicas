@@ -8,6 +8,99 @@
     <link rel="shortcut icon" type="image/png" href="assets/img g/logo/icone.png">
     <link rel="apple-touch-icon" href="assets/img g/logo/icone.png">
     <link rel="stylesheet" href="pages/index/style.css">
+    <style>
+        /* CSS simples para alternância de botões */
+        .login-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #login-btn, #user-btn {
+            transition: all 0.3s ease;
+        }
+        
+        #user-btn {
+            background: transparent;
+            color: #b95929;
+            border: 2px solid #b95929;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        #user-btn:hover {
+            background: #b95929;
+            color: white;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 200px;
+            z-index: 1000;
+            display: none;
+            margin-top: 5px;
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f8f9fa;
+            transition: background 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .dropdown-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item.logout {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .dropdown-item.logout:hover {
+            background: #f8d7da;
+        }
+        
+        /* Garantir que apenas um botão seja exibido */
+        .hidden {
+            display: none !important;
+        }
+        
+        #login-btn, #user-btn {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 <body>
     <div class="home-page">
@@ -23,16 +116,19 @@
                     <a href="pages/sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
                 </nav>
                 <div class="login-btn">
+                    <!-- Botão de login (quando não logado) -->
                     <button class="btn-login" id="login-btn">LOG IN</button>
-                    <div class="user-menu" id="user-menu" style="display: none;">
-                        <button class="btn-user" id="user-btn">
-                            <span id="user-name">NOME DO USUARIO</span>
-                        </button>
-                        <div class="dropdown-menu" id="dropdown-menu">
-                            <a href="pages/dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                            <a href="pages/carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
-                            <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
-                        </div>
+                    
+                    <!-- Botão do usuário (quando logado) -->
+                    <button class="btn-user" id="user-btn" style="display: none;">
+                        <span id="user-name">NOME DO USUARIO</span>
+                    </button>
+                    
+                    <!-- Dropdown do usuário -->
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="pages/dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                        <a href="pages/carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
                     </div>
                 </div>
             </div>
@@ -235,8 +331,146 @@
     
     <!-- JavaScript Global -->
     <script src="js/global.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="js/auth-new.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/pages/index.js"></script>
+    
+    <script>
+    // Sistema simples de alternância de botões
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Sistema simples ativado no INDEX');
+        
+        const loginBtn = document.getElementById('login-btn');
+        const userBtn = document.getElementById('user-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const logoutBtn = document.getElementById('logout-btn');
+        
+        // Verificar se usuário está logado
+        function checkUserStatus() {
+            const sessionData = localStorage.getItem('chicasEventos_session');
+            
+            if (sessionData) {
+                try {
+                    const session = JSON.parse(sessionData);
+                    const now = new Date().getTime();
+                    const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
+                    
+                    if (now - session.timestamp < sessionTimeout) {
+                        // Usuário logado
+                        showUserButton(session.user);
+                        return true;
+                    } else {
+                        // Sessão expirada
+                        localStorage.removeItem('chicasEventos_session');
+                        showLoginButton();
+                        return false;
+                    }
+                } catch (error) {
+                    console.error('Erro ao verificar sessão:', error);
+                    showLoginButton();
+                    return false;
+                }
+            } else {
+                // Nenhuma sessão
+                showLoginButton();
+                return false;
+            }
+        }
+        
+        // Mostrar botão de login
+        function showLoginButton() {
+            if (loginBtn) {
+                loginBtn.style.display = 'block';
+                loginBtn.classList.remove('hidden');
+            }
+            if (userBtn) {
+                userBtn.style.display = 'none';
+                userBtn.classList.add('hidden');
+            }
+            console.log('✅ Botão LOGIN mostrado');
+        }
+        
+        // Mostrar botão do usuário
+        function showUserButton(user) {
+            if (loginBtn) {
+                loginBtn.style.display = 'none';
+                loginBtn.classList.add('hidden');
+            }
+            if (userBtn) {
+                userBtn.style.display = 'block';
+                userBtn.classList.remove('hidden');
+                
+                // Aplicar nome do usuário
+                if (user && user.nome) {
+                    const userNameElement = document.getElementById('user-name');
+                    if (userNameElement) {
+                        userNameElement.textContent = user.nome.toUpperCase();
+                    }
+                }
+            }
+            
+            console.log('✅ Botão USUÁRIO mostrado:', user?.nome);
+        }
+        
+        // Configurar dropdown
+        if (userBtn && dropdownMenu) {
+            userBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = dropdownMenu.classList.contains('show');
+                
+                if (isOpen) {
+                    dropdownMenu.classList.remove('show');
+                    userBtn.classList.remove('active');
+                    console.log('❌ Dropdown fechado');
+                } else {
+                    dropdownMenu.classList.add('show');
+                    userBtn.classList.add('active');
+                    console.log('✅ Dropdown aberto');
+                }
+            });
+        }
+        
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (userBtn && dropdownMenu && 
+                !userBtn.contains(e.target) && 
+                !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+                userBtn.classList.remove('active');
+            }
+        });
+        
+        // Configurar logout
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (confirm('Tem certeza que deseja sair da sua conta?')) {
+                    // Remover sessão
+                    localStorage.removeItem('chicasEventos_session');
+                    
+                    // Mostrar botão de login
+                    showLoginButton();
+                    
+                    console.log('✅ Logout realizado');
+                }
+            });
+        }
+        
+        // Verificar status inicial
+        checkUserStatus();
+        
+        // Verificar mudanças na sessão
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'chicasEventos_session') {
+                checkUserStatus();
+            }
+        });
+        
+        console.log('✅ Sistema simples configurado no INDEX');
+    });
+    </script>
 </body>
 </html>

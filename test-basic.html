@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Básico - Funcionando</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .navbar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b95929;
+        }
+        
+        /* CONTAINER SIMPLES */
+        .user-area {
+            position: relative;
+            width: 200px;
+            height: 60px;
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* BOTÃO DE LOGIN */
+        .login-btn {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .login-btn:hover {
+            background: #a04a22;
+        }
+        
+        /* BOTÃO DO USUÁRIO */
+        .user-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .user-btn:hover {
+            background: #218838;
+        }
+        
+        /* CONTROLES */
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        .status {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+        
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">CHICAS EVENTOS</div>
+        
+        <div class="nav-links">
+            <a href="#" style="text-decoration: none; color: #333; margin: 0 15px;">HOME</a>
+            <a href="#" style="text-decoration: none; color: #333; margin: 0 15px;">PORTIFÓLIO</a>
+            <a href="#" style="text-decoration: none; color: #333; margin: 0 15px;">SOBRE NÓS</a>
+        </div>
+        
+        <!-- ÁREA DOS BOTÕES -->
+        <div class="user-area" id="user-area">
+            <button class="login-btn" id="login-btn">LOG IN</button>
+            <button class="user-btn" id="user-btn" style="display: none;">USUÁRIO</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <h1>🎯 Teste Básico - Funcionando</h1>
+        <p>Este é um teste básico que demonstra a alternância simples:</p>
+        
+        <div class="status">
+            <h3>📊 Status Atual</h3>
+            <div id="status">Verificando...</div>
+        </div>
+
+        <h3>🎮 Controles</h3>
+        <button class="btn btn-success" onclick="showLogin()">Mostrar LOGIN</button>
+        <button class="btn btn-danger" onclick="showUser()">Mostrar USUÁRIO</button>
+        <button class="btn" onclick="toggle()">Alternar</button>
+        <button class="btn" onclick="clearLog()">Limpar Log</button>
+
+        <div class="log" id="log"></div>
+    </div>
+
+    <script>
+        let logContainer = document.getElementById('log');
+        let statusDiv = document.getElementById('status');
+        let loginBtn = document.getElementById('login-btn');
+        let userBtn = document.getElementById('user-btn');
+
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            logContainer.textContent += `[${timestamp}] ${message}\n`;
+            logContainer.scrollTop = logContainer.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLog() {
+            logContainer.textContent = '';
+            log('🧹 Log limpo');
+        }
+
+        function updateStatus() {
+            const isLoginVisible = loginBtn.style.display !== 'none';
+            const isUserVisible = userBtn.style.display !== 'none';
+            
+            if (isLoginVisible) {
+                statusDiv.innerHTML = `
+                    <div><strong>Estado:</strong> 🚪 Usuário Deslogado</div>
+                    <div><strong>Botão Ativo:</strong> LOG IN</div>
+                    <div><strong>Posição:</strong> Centralizada</div>
+                `;
+            } else if (isUserVisible) {
+                statusDiv.innerHTML = `
+                    <div><strong>Estado:</strong> ✅ Usuário Logado</div>
+                    <div><strong>Botão Ativo:</strong> ${userBtn.textContent}</div>
+                    <div><strong>Posição:</strong> Centralizada</div>
+                `;
+            }
+        }
+
+        function showLogin() {
+            log('🔄 Mostrando botão LOGIN...');
+            
+            // Esconder botão do usuário
+            userBtn.style.display = 'none';
+            log('✅ Botão do usuário escondido');
+            
+            // Mostrar botão de login
+            loginBtn.style.display = 'block';
+            log('✅ Botão de login mostrado');
+            
+            updateStatus();
+            log('✅ Botão LOGIN ativado');
+        }
+
+        function showUser() {
+            log('🔄 Mostrando botão USUÁRIO...');
+            
+            // Esconder botão de login
+            loginBtn.style.display = 'none';
+            log('✅ Botão de login escondido');
+            
+            // Mostrar botão do usuário
+            userBtn.style.display = 'block';
+            userBtn.textContent = 'JOÃO SILVA';
+            log('✅ Botão do usuário mostrado: JOÃO SILVA');
+            
+            updateStatus();
+            log('✅ Botão USUÁRIO ativado');
+        }
+
+        function toggle() {
+            log('🔄 Alternando botões...');
+            
+            const isLoginVisible = loginBtn.style.display !== 'none';
+            
+            if (isLoginVisible) {
+                showUser();
+            } else {
+                showLogin();
+            }
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Página carregada');
+            updateStatus();
+            log('✅ Sistema básico ativado');
+            log('🎯 Clique nos botões para testar a alternância');
+        });
+    </script>
+</body>
+</html>

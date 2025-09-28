@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Simples - Botões Alternados</title>
+    <link rel="stylesheet" href="css/simple-user-button.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .navbar {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b95929;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .btn {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn:hover { background: #a04a22; }
+        .btn-success { background: #28a745; }
+        .btn-success:hover { background: #218838; }
+        .btn-danger { background: #dc3545; }
+        .btn-danger:hover { background: #c82333; }
+        
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        
+        .status {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #b95929;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar com botões alternados -->
+    <div class="navbar">
+        <div class="logo">CHICAS EVENTOS</div>
+        
+        <div class="nav-links">
+            <a href="#">HOME</a>
+            <a href="#">PORTIFÓLIO</a>
+            <a href="#">SOBRE NÓS</a>
+        </div>
+        
+        <!-- Container dos botões alternados -->
+        <div class="user-button-container">
+            <!-- Botão de login (quando não logado) -->
+            <button id="login-btn" class="btn">LOG IN</button>
+            
+            <!-- Botão do usuário (quando logado) -->
+            <button id="user-btn" class="btn">USUÁRIO</button>
+            
+            <!-- Dropdown do usuário -->
+            <div class="user-dropdown" id="user-dropdown">
+                <a href="#" class="user-dropdown-item">MEUS EVENTOS</a>
+                <a href="#" class="user-dropdown-item">VER CARRINHO</a>
+                <a href="#" class="user-dropdown-item logout" id="logout-btn">SAIR DA CONTA</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h1>🎯 Teste Simples - Botões Alternados</h1>
+        <p>Este teste demonstra exatamente o que você pediu:</p>
+        <ul>
+            <li><strong>Botão LOGIN</strong> → aparece quando usuário NÃO está logado</li>
+            <li><strong>Botão com NOME DO USUÁRIO</strong> → aparece quando usuário ESTÁ logado</li>
+            <li><strong>Mesma posição centralizada</strong> para ambos</li>
+        </ul>
+        
+        <div class="status">
+            <h3>📊 Status Atual</h3>
+            <div id="current-status">Verificando...</div>
+        </div>
+
+        <div class="test-container">
+            <h3>🎮 Controles de Teste</h3>
+            <button class="btn btn-success" onclick="simulateLogin()">Simular Login</button>
+            <button class="btn btn-danger" onclick="testLogout()">Testar Logout</button>
+            <button class="btn" onclick="toggleButtons()">Alternar Botões</button>
+            <button class="btn" onclick="clearLog()">Limpar Log</button>
+        </div>
+
+        <div class="test-container">
+            <h3>📝 Log de Eventos</h3>
+            <div id="log" class="log"></div>
+        </div>
+    </div>
+
+    <!-- Incluir scripts necessários -->
+    <script src="js/auth.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/global.js"></script>
+
+    <script>
+        let logContainer = document.getElementById('log');
+        let currentStatus = document.getElementById('current-status');
+        let loginBtn = document.getElementById('login-btn');
+        let userBtn = document.getElementById('user-btn');
+        let userContainer = document.querySelector('.user-button-container');
+
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            logContainer.textContent += `[${timestamp}] ${message}\n`;
+            logContainer.scrollTop = logContainer.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLog() {
+            logContainer.textContent = '';
+            log('🧹 Log limpo');
+        }
+
+        function updateStatus() {
+            const isLoggedIn = userBtn.classList.contains('visible');
+            const isLoggedOut = !loginBtn.classList.contains('hidden');
+            
+            if (isLoggedIn) {
+                currentStatus.innerHTML = `
+                    <div><strong>Estado:</strong> ✅ Usuário Logado</div>
+                    <div><strong>Botão Ativo:</strong> ${userBtn.textContent}</div>
+                    <div><strong>Posição:</strong> Centralizada</div>
+                `;
+            } else if (isLoggedOut) {
+                currentStatus.innerHTML = `
+                    <div><strong>Estado:</strong> 🚪 Usuário Deslogado</div>
+                    <div><strong>Botão Ativo:</strong> ${loginBtn.textContent}</div>
+                    <div><strong>Posição:</strong> Centralizada</div>
+                `;
+            } else {
+                currentStatus.innerHTML = `
+                    <div><strong>Estado:</strong> ❓ Indefinido</div>
+                    <div><strong>Verificando...</strong></div>
+                `;
+            }
+        }
+
+        function simulateLogin() {
+            log('🔄 Simulando login...');
+            
+            const mockUser = {
+                id: 'test_' + Date.now(),
+                nome: 'JOÃO SILVA',
+                email: 'joao@teste.com',
+                tipo: 'cliente'
+            };
+            
+            // Aplicar lógica de alternância
+            loginBtn.classList.add('hidden');
+            userBtn.style.display = 'block';
+            userBtn.classList.remove('hidden');
+            userBtn.classList.add('visible');
+            userBtn.textContent = mockUser.nome.toUpperCase();
+            
+            // Atualizar container
+            userContainer.classList.remove('logged-out');
+            userContainer.classList.add('logged-in');
+            
+            updateStatus();
+            log('✅ Login simulado - botão do usuário ativado na mesma posição');
+        }
+
+        function testLogout() {
+            log('🚪 Testando logout...');
+            
+            // Aplicar lógica de alternância
+            userBtn.classList.remove('visible');
+            userBtn.classList.add('hidden');
+            loginBtn.classList.remove('hidden');
+            loginBtn.textContent = 'LOG IN';
+            
+            // Atualizar container
+            userContainer.classList.remove('logged-in');
+            userContainer.classList.add('logged-out');
+            
+            // Fechar dropdown
+            const dropdown = document.getElementById('user-dropdown');
+            if (dropdown) {
+                dropdown.classList.remove('show');
+            }
+            
+            updateStatus();
+            log('✅ Logout simulado - botão de login ativado na mesma posição');
+        }
+
+        function toggleButtons() {
+            log('🔄 Alternando botões...');
+            
+            const isCurrentlyLoggedIn = userBtn.classList.contains('visible');
+            
+            if (isCurrentlyLoggedIn) {
+                testLogout();
+            } else {
+                simulateLogin();
+            }
+        }
+
+        // Configurar dropdown
+        function setupDropdown() {
+            const userBtn = document.getElementById('user-btn');
+            const dropdown = document.getElementById('user-dropdown');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            if (userBtn && dropdown) {
+                userBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                    log('🔄 Dropdown alternado');
+                });
+            }
+            
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    log('🚪 Logout clicado no dropdown');
+                    testLogout();
+                });
+            }
+            
+            // Fechar dropdown ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!userBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+
+        // Verificar status inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Página de teste simples carregada');
+            updateStatus();
+            setupDropdown();
+            
+            // Atualizar status a cada segundo
+            setInterval(updateStatus, 1000);
+            
+            log('✅ Sistema de botões alternados ativado');
+        });
+    </script>
+</body>
+</html>

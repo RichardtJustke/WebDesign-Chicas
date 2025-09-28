@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix Navbar - Funcionando</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        
+        .navbar {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b95929;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* ÁREA DO USUÁRIO */
+        .user-section {
+            position: relative;
+            width: 150px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* BOTÃO DE LOGIN */
+        #login-btn {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        #login-btn:hover {
+            background: #a04a22;
+        }
+        
+        /* BOTÃO DO USUÁRIO */
+        #user-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        #user-btn:hover {
+            background: #218838;
+        }
+        
+        /* CONTROLES */
+        .test-area {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        .status {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">CHICAS EVENTOS</div>
+        
+        <div class="nav-links">
+            <a href="#">HOME</a>
+            <a href="#">PORTIFÓLIO</a>
+            <a href="#">SOBRE NÓS</a>
+        </div>
+        
+        <!-- SEÇÃO DO USUÁRIO -->
+        <div class="user-section">
+            <button id="login-btn">LOG IN</button>
+            <button id="user-btn" style="display: none;">USUÁRIO</button>
+        </div>
+    </div>
+
+    <!-- ÁREA DE TESTE -->
+    <div class="test-area">
+        <h1>🎯 Fix Navbar - Funcionando</h1>
+        <p>Esta versão funciona de forma simples:</p>
+        
+        <div class="status">
+            <h3>Status Atual</h3>
+            <div id="status">Verificando...</div>
+        </div>
+
+        <h3>Controles</h3>
+        <button class="btn btn-success" onclick="fazerLogin()">Fazer Login</button>
+        <button class="btn btn-danger" onclick="fazerLogout()">Fazer Logout</button>
+        <button class="btn" onclick="alternar()">Alternar</button>
+    </div>
+
+    <script>
+        // Elementos
+        const loginBtn = document.getElementById('login-btn');
+        const userBtn = document.getElementById('user-btn');
+        const statusDiv = document.getElementById('status');
+
+        // Função para atualizar status
+        function atualizarStatus() {
+            const loginVisivel = loginBtn.style.display !== 'none';
+            const userVisivel = userBtn.style.display !== 'none';
+            
+            if (loginVisivel) {
+                statusDiv.innerHTML = 'Estado: DESLOGADO - Botão LOGIN visível';
+            } else if (userVisivel) {
+                statusDiv.innerHTML = 'Estado: LOGADO - Botão USUÁRIO visível';
+            }
+        }
+
+        // Função para fazer login
+        function fazerLogin() {
+            console.log('Fazendo login...');
+            
+            // Esconder botão de login
+            loginBtn.style.display = 'none';
+            
+            // Mostrar botão do usuário
+            userBtn.style.display = 'block';
+            userBtn.textContent = 'JOÃO SILVA';
+            
+            atualizarStatus();
+            console.log('Login realizado');
+        }
+
+        // Função para fazer logout
+        function fazerLogout() {
+            console.log('Fazendo logout...');
+            
+            // Esconder botão do usuário
+            userBtn.style.display = 'none';
+            
+            // Mostrar botão de login
+            loginBtn.style.display = 'block';
+            
+            atualizarStatus();
+            console.log('Logout realizado');
+        }
+
+        // Função para alternar
+        function alternar() {
+            const loginVisivel = loginBtn.style.display !== 'none';
+            
+            if (loginVisivel) {
+                fazerLogin();
+            } else {
+                fazerLogout();
+            }
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página carregada');
+            atualizarStatus();
+            console.log('Sistema ativado');
+        });
+    </script>
+</body>
+</html>

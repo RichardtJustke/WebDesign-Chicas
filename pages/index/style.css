@@ -81,11 +81,11 @@ body {
 /* User Menu - Navbar para usuário logado */
 .user-menu {
     position: relative;
-    display: inline-block;
+    display: inline-block !important;
 }
 
 .btn-user {
-    background: white;
+    background: transparent;
     color: #b95929;
     border: 2px solid #b95929;
     padding: 12px 30px;
@@ -121,7 +121,8 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 999999 !important;
+    pointer-events: none;
 }
 
 /* Seta do dropdown centralizada */
@@ -139,9 +140,11 @@ body {
 }
 
 .dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+    pointer-events: auto !important;
+    display: block !important;
 }
 
 .dropdown-item {

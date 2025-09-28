@@ -1,5 +1,8 @@
 /* CSS Global - Chicas Eventos */
 
+/* Importação das fontes */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap');
+
 /* Reset e configurações básicas */
 * {
     box-sizing: border-box;
@@ -88,7 +91,7 @@ body {
 .menu a {
     color: var(--text-color);
     text-align: left;
-    font-family: var(--font-primary);
+    font-family: 'Outfit', sans-serif;
     font-size: 22px;
     line-height: 36px;
     letter-spacing: 0.2em;

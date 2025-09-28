@@ -5,6 +5,7 @@ class NavbarSystem {
     constructor() {
         this.isLoggedIn = false;
         this.currentUser = null;
+        this.isLoggingOut = false;
         this.init();
     }
 
@@ -47,9 +48,12 @@ class NavbarSystem {
                 const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
 
                 if (now - session.timestamp < sessionTimeout) {
-                    this.currentUser = session.user;
-                    this.isLoggedIn = true;
-                    console.log('Usuário logado detectado:', this.currentUser.nome);
+                    // Só atualizar se não estivermos em processo de logout
+                    if (!this.isLoggingOut) {
+                        this.currentUser = session.user;
+                        this.isLoggedIn = true;
+                        console.log('Usuário logado detectado:', this.currentUser.nome);
+                    }
                 } else {
                     this.logout();
                 }
@@ -57,55 +61,110 @@ class NavbarSystem {
                 console.error('Erro ao verificar sessão:', error);
                 this.logout();
             }
+        } else {
+            // Se não há sessão, garantir que estamos deslogados
+            this.currentUser = null;
+            this.isLoggedIn = false;
+            this.isLoggingOut = false;
+        }
+    }
+
+    // Verificar se o novo sistema está disponível
+    checkNewAuthSystem() {
+        if (window.newAuthSystem) {
+            this.currentUser = window.newAuthSystem.getCurrentUser();
+            this.isLoggedIn = window.newAuthSystem.isUserLoggedIn();
+            console.log('🔄 Sincronizado com novo sistema de autenticação');
         }
     }
 
     // Atualizar estado do navbar baseado no status de login
     updateNavbarState() {
+        console.log('🔄 NavbarSystem: Atualizando estado do navbar...');
+        console.log('📊 Status:', { isLoggedIn: this.isLoggedIn, currentUser: this.currentUser });
+        
         if (this.isLoggedIn && this.currentUser) {
+            console.log('👤 Mostrando navbar para usuário logado');
             this.showLoggedInNavbar();
         } else {
+            console.log('🚪 Mostrando navbar para usuário deslogado');
             this.showLoggedOutNavbar();
         }
     }
 
     // Mostrar navbar para usuário logado
     showLoggedInNavbar() {
+        console.log('👤 NavbarSystem: Mostrando botão do usuário');
+        
         const loginBtn = document.getElementById('login-btn');
-        const userMenu = document.getElementById('user-menu');
-        const userName = document.getElementById('user-name');
+        const userBtn = document.getElementById('user-btn');
+        const userContainer = document.querySelector('.user-button-container');
 
+        // ESCONDER botão de login
         if (loginBtn) {
-            loginBtn.style.display = 'none';
+            loginBtn.classList.add('hidden');
+            console.log('✅ Botão de login escondido');
         }
         
-        if (userMenu) {
-            userMenu.style.display = 'block';
+        // MOSTRAR botão do usuário
+        if (userBtn) {
+            userBtn.style.display = 'block';
+            userBtn.classList.remove('hidden');
+            userBtn.classList.add('visible');
+            
+            // Atualizar texto do botão com nome do usuário
+            if (this.currentUser) {
+                const displayName = this.getDisplayName(this.currentUser.nome);
+                userBtn.textContent = displayName.toUpperCase();
+                console.log('✅ Botão do usuário atualizado:', this.currentUser.nome);
+            }
         }
         
-        if (userName && this.currentUser) {
-            const displayName = this.getDisplayName(this.currentUser.nome);
-            userName.textContent = displayName.toUpperCase();
+        // Atualizar classe do container
+        if (userContainer) {
+            userContainer.classList.remove('logged-out');
+            userContainer.classList.add('logged-in');
         }
+        
+        console.log('✅ Botão do usuário ativado na mesma posição');
     }
 
     // Mostrar navbar para usuário não logado
     showLoggedOutNavbar() {
+        console.log('🚪 NavbarSystem: Mostrando botão de login');
+        
         const loginBtn = document.getElementById('login-btn');
-        const userMenu = document.getElementById('user-menu');
-        const dropdown = document.getElementById('dropdown-menu');
+        const userBtn = document.getElementById('user-btn');
+        const userContainer = document.querySelector('.user-button-container');
+        const dropdown = document.getElementById('user-dropdown');
 
+        // MOSTRAR botão de login
         if (loginBtn) {
             loginBtn.style.display = 'block';
+            loginBtn.classList.remove('hidden');
+            console.log('✅ Botão de login mostrado');
         }
         
-        if (userMenu) {
-            userMenu.style.display = 'none';
+        // ESCONDER botão do usuário
+        if (userBtn) {
+            userBtn.classList.remove('visible');
+            userBtn.classList.add('hidden');
+            console.log('✅ Botão do usuário escondido');
         }
         
+        // Fechar dropdown se estiver aberto
         if (dropdown) {
             dropdown.classList.remove('show');
+            console.log('✅ Dropdown fechado');
         }
+        
+        // Atualizar classe do container
+        if (userContainer) {
+            userContainer.classList.remove('logged-in');
+            userContainer.classList.add('logged-out');
+        }
+        
+        console.log('✅ Botão de login ativado na mesma posição');
     }
 
     handleLoginClick() {
@@ -126,8 +185,14 @@ class NavbarSystem {
     toggleDropdown(e) {
         e.stopPropagation();
         const dropdown = document.getElementById('dropdown-menu');
+        console.log('🖱️ Toggle dropdown clicado!', dropdown);
         if (dropdown) {
+            const isOpen = dropdown.classList.contains('show');
+            console.log('📊 Menu estava aberto:', isOpen);
             dropdown.classList.toggle('show');
+            console.log('🔄 Menu agora está:', dropdown.classList.contains('show') ? 'ABERTO' : 'FECHADO');
+        } else {
+            console.error('❌ Dropdown não encontrado!');
         }
     }
 
@@ -136,13 +201,47 @@ class NavbarSystem {
         const dropdown = document.getElementById('dropdown-menu');
         
         if (userMenu && dropdown && !userMenu.contains(e.target)) {
+            console.log('🚪 Fechando dropdown por clique fora');
             dropdown.classList.remove('show');
         }
     }
 
     handleLogout(e) {
         e.preventDefault();
-        this.logout();
+        
+        // Confirmar logout
+        if (confirm('Tem certeza que deseja sair da sua conta?')) {
+            // Chamar logout do AuthSystem se disponível
+            if (window.authSystem) {
+                window.authSystem.logout();
+            } else {
+                // Fallback: fazer logout local
+                this.logout();
+                localStorage.removeItem('chicasEventos_session');
+                
+                // Redirecionar para página inicial
+                const currentPath = window.location.pathname;
+                let redirectUrl = 'index.html';
+                
+                // Determinar o caminho correto baseado na localização atual
+                if (currentPath.includes('pages/dashboard/') || currentPath.includes('pages/login/') || 
+                    currentPath.includes('pages/sobre/') || currentPath.includes('pages/portifolio/')) {
+                    redirectUrl = '../../index.html';
+                } else if (currentPath.includes('pages/serviços/')) {
+                    redirectUrl = '../../../index.html';
+                } else if (currentPath.includes('pages/carrinho/') || currentPath.includes('pages/criar evento/') || 
+                           currentPath.includes('pages/editar evento/')) {
+                    redirectUrl = '../../index.html';
+                } else if (currentPath.includes('pages/')) {
+                    redirectUrl = '../index.html';
+                }
+                
+                // Aguardar um pouco antes de redirecionar
+                setTimeout(() => {
+                    window.location.href = redirectUrl;
+                }, 100);
+            }
+        }
     }
 
     login(user) {
@@ -153,16 +252,20 @@ class NavbarSystem {
     }
 
     logout() {
+        console.log('🚪 NavbarSystem: Iniciando logout...');
+        this.isLoggingOut = true;
         this.isLoggedIn = false;
         this.currentUser = null;
         
-        // Remover sessão
-        localStorage.removeItem('chicasEventos_session');
-        
-        // Atualizar navbar
+        // Atualizar navbar IMEDIATAMENTE
         this.updateNavbarState();
+        console.log('🎨 NavbarSystem: UI atualizada para logout');
         
-        console.log('Usuário deslogado');
+        // Resetar flag após um tempo
+        setTimeout(() => {
+            this.isLoggingOut = false;
+            console.log('🔄 NavbarSystem: Flag de logout resetada');
+        }, 1000);
     }
 
     // Método para obter nome de exibição (apenas primeiro nome se muito longo)
@@ -212,10 +315,17 @@ class NavbarSystem {
 document.addEventListener('DOMContentLoaded', () => {
     window.navbarSystem = new NavbarSystem();
     
+    // Verificar novo sistema de autenticação
+    setTimeout(() => {
+        window.navbarSystem.checkNewAuthSystem();
+        window.navbarSystem.updateNavbarState();
+    }, 1000);
+    
     // Escutar mudanças no localStorage para atualizar navbar em tempo real
     window.addEventListener('storage', (e) => {
         if (e.key === 'chicasEventos_session') {
             window.navbarSystem.checkLoginStatus();
+            window.navbarSystem.checkNewAuthSystem();
             window.navbarSystem.updateNavbarState();
         }
     });
@@ -228,6 +338,53 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('userLoggedOut', () => {
         window.navbarSystem.logout();
     });
+    
+    // Forçar configuração do dropdown após 3 segundos (fallback)
+    setTimeout(() => {
+        console.log('🔧 FALLBACK: Forçando configuração do dropdown...');
+        const userBtn = document.getElementById('user-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        
+        if (userBtn && dropdownMenu) {
+            console.log('✅ Elementos encontrados no fallback, configurando...');
+            
+            // Remover listeners existentes
+            const newUserBtn = userBtn.cloneNode(true);
+            userBtn.parentNode.replaceChild(newUserBtn, userBtn);
+            
+            newUserBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('🖱️ FALLBACK: Botão clicado!');
+                
+                const isOpen = dropdownMenu.classList.contains('show');
+                console.log('Menu estava aberto:', isOpen);
+                
+                if (isOpen) {
+                    dropdownMenu.classList.remove('show');
+                    newUserBtn.classList.remove('active');
+                    console.log('❌ FALLBACK: Menu fechado');
+                } else {
+                    dropdownMenu.classList.add('show');
+                    newUserBtn.classList.add('active');
+                    console.log('✅ FALLBACK: Menu aberto');
+                }
+            });
+            
+            // Fechar ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!newUserBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                    newUserBtn.classList.remove('active');
+                    console.log('🚪 FALLBACK: Menu fechado por clique fora');
+                }
+            });
+            
+            console.log('🎉 FALLBACK: Dropdown configurado com sucesso!');
+        } else {
+            console.error('❌ FALLBACK: Elementos não encontrados!');
+        }
+    }, 3000);
 });
 
 // Exportar para uso global

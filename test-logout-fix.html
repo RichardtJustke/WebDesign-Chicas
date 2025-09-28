@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Logout - Chicas Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #b95929;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.info { background: #d1ecf1; color: #0c5460; }
+        .btn {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover { background: #a04a22; }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn-secondary:hover { background: #545b62; }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .user-info {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 Teste de Logout - Chicas Eventos</h1>
+        <p>Este arquivo testa o sistema de logout corrigido.</p>
+        
+        <div class="test-section">
+            <h3>📊 Status Atual</h3>
+            <div id="status" class="status info">Verificando...</div>
+            <div id="user-info" class="user-info" style="display: none;">
+                <strong>Usuário Logado:</strong> <span id="user-name"></span><br>
+                <strong>Email:</strong> <span id="user-email"></span><br>
+                <strong>Tipo:</strong> <span id="user-type"></span>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎮 Controles de Teste</h3>
+            <button class="btn" onclick="simulateLogin()">Simular Login</button>
+            <button class="btn" onclick="testLogout()">Testar Logout</button>
+            <button class="btn btn-secondary" onclick="clearLog()">Limpar Log</button>
+            <button class="btn btn-secondary" onclick="checkSession()">Verificar Sessão</button>
+        </div>
+
+        <div class="test-section">
+            <h3>📝 Log de Eventos</h3>
+            <div id="log" class="log"></div>
+        </div>
+    </div>
+
+    <!-- Incluir scripts necessários -->
+    <script src="js/auth.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/global.js"></script>
+
+    <script>
+        let logContainer = document.getElementById('log');
+        let statusDiv = document.getElementById('status');
+        let userInfoDiv = document.getElementById('user-info');
+
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            logContainer.textContent += `[${timestamp}] ${message}\n`;
+            logContainer.scrollTop = logContainer.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLog() {
+            logContainer.textContent = '';
+            log('🧹 Log limpo');
+        }
+
+        function updateStatus(message, type = 'info') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+        }
+
+        function updateUserInfo(user) {
+            if (user) {
+                document.getElementById('user-name').textContent = user.nome;
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-type').textContent = user.tipo;
+                userInfoDiv.style.display = 'block';
+            } else {
+                userInfoDiv.style.display = 'none';
+            }
+        }
+
+        function checkSession() {
+            log('🔍 Verificando sessão...');
+            const sessionData = localStorage.getItem('chicasEventos_session');
+            
+            if (sessionData) {
+                try {
+                    const session = JSON.parse(sessionData);
+                    const now = new Date().getTime();
+                    const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
+                    
+                    if (now - session.timestamp < sessionTimeout) {
+                        updateStatus('✅ Sessão válida encontrada', 'success');
+                        updateUserInfo(session.user);
+                        log(`✅ Sessão válida: ${session.user.nome}`);
+                        return session.user;
+                    } else {
+                        updateStatus('⏰ Sessão expirada', 'error');
+                        localStorage.removeItem('chicasEventos_session');
+                        updateUserInfo(null);
+                        log('⏰ Sessão expirada');
+                        return null;
+                    }
+                } catch (error) {
+                    updateStatus('❌ Erro na sessão', 'error');
+                    localStorage.removeItem('chicasEventos_session');
+                    updateUserInfo(null);
+                    log(`❌ Erro ao verificar sessão: ${error.message}`);
+                    return null;
+                }
+            } else {
+                updateStatus('ℹ️ Nenhuma sessão encontrada', 'info');
+                updateUserInfo(null);
+                log('ℹ️ Nenhuma sessão encontrada');
+                return null;
+            }
+        }
+
+        function simulateLogin() {
+            log('🔄 Simulando login...');
+            
+            const mockUser = {
+                id: 'test_' + Date.now(),
+                nome: 'JOÃO SILVA',
+                email: 'joao.silva@teste.com',
+                tipo: 'cliente'
+            };
+            
+            // Criar sessão
+            const sessionData = {
+                user: mockUser,
+                timestamp: new Date().getTime()
+            };
+            
+            localStorage.setItem('chicasEventos_session', JSON.stringify(sessionData));
+            
+            // Atualizar sistemas
+            if (window.authSystem) {
+                window.authSystem.currentUser = mockUser;
+                window.authSystem.isLoggedIn = true;
+                window.authSystem.updateUIForLoggedInUser();
+            }
+            
+            if (window.navbarSystem) {
+                window.navbarSystem.login(mockUser);
+            }
+            
+            updateStatus('✅ Login simulado com sucesso', 'success');
+            updateUserInfo(mockUser);
+            log(`✅ Login simulado: ${mockUser.nome}`);
+        }
+
+        function testLogout() {
+            log('🚪 Testando logout...');
+            
+            // Verificar se há AuthSystem disponível
+            if (window.authSystem) {
+                log('✅ AuthSystem disponível, usando logout completo');
+                window.authSystem.logout();
+            } else {
+                log('⚠️ AuthSystem não disponível, usando logout local');
+                
+                // Logout local
+                localStorage.removeItem('chicasEventos_session');
+                
+                if (window.navbarSystem) {
+                    window.navbarSystem.logout();
+                }
+                
+                updateStatus('✅ Logout local realizado', 'success');
+                updateUserInfo(null);
+                
+                // Simular redirecionamento
+                setTimeout(() => {
+                    log('🔄 Simulando redirecionamento...');
+                    updateStatus('🔄 Redirecionando...', 'info');
+                }, 100);
+            }
+        }
+
+        // Escutar eventos de logout
+        window.addEventListener('userLoggedOut', function(e) {
+            log('📡 Evento userLoggedOut recebido');
+            updateStatus('✅ Logout realizado via evento', 'success');
+            updateUserInfo(null);
+        });
+
+        // Verificar status inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Página de teste carregada');
+            checkSession();
+            
+            // Verificar se os sistemas estão carregados
+            setTimeout(() => {
+                if (window.authSystem) {
+                    log('✅ AuthSystem carregado');
+                } else {
+                    log('❌ AuthSystem não encontrado');
+                }
+                
+                if (window.navbarSystem) {
+                    log('✅ NavbarSystem carregado');
+                } else {
+                    log('❌ NavbarSystem não encontrado');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

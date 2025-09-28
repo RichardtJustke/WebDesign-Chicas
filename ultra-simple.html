@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ultra Simples</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .navbar { background: white; padding: 20px; border: 1px solid #ccc; display: flex; justify-content: space-between; }
+        .user-area { width: 200px; height: 50px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; }
+        .btn { padding: 10px 20px; border: none; cursor: pointer; }
+        .login { background: red; color: white; }
+        .user { background: green; color: white; }
+        .controls { margin: 20px 0; }
+        .btn-control { background: blue; color: white; padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>CHICAS EVENTOS</div>
+        <div class="user-area">
+            <button class="btn login" id="login">LOGIN</button>
+            <button class="btn user" id="user" style="display:none;">USUARIO</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <h2>Teste Ultra Simples</h2>
+        <button class="btn-control" onclick="mostrarLogin()">Mostrar LOGIN</button>
+        <button class="btn-control" onclick="mostrarUsuario()">Mostrar USUARIO</button>
+        <button class="btn-control" onclick="alternar()">Alternar</button>
+        <div id="status">Status: Verificando...</div>
+    </div>
+
+    <script>
+        function mostrarLogin() {
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('user').style.display = 'none';
+            document.getElementById('status').innerHTML = 'Status: LOGIN visível';
+            console.log('LOGIN mostrado');
+        }
+
+        function mostrarUsuario() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('user').style.display = 'block';
+            document.getElementById('status').innerHTML = 'Status: USUARIO visível';
+            console.log('USUARIO mostrado');
+        }
+
+        function alternar() {
+            const login = document.getElementById('login');
+            const user = document.getElementById('user');
+            
+            if (login.style.display !== 'none') {
+                mostrarUsuario();
+            } else {
+                mostrarLogin();
+            }
+        }
+
+        console.log('Página carregada');
+    </script>
+</body>
+</html>

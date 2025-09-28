@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Dashboard Menu</title>
+    <link rel="stylesheet" href="pages/dashboard/dashboard.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        
+        .dashboard {
+            background: #ffffff;
+            border-radius: 50px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .test-info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px;
+        }
+        
+        .debug-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 20px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+            </div>
+            <nav class="menu">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="pages/portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                <a href="pages/sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
+            </nav>
+            <div class="login-btn">
+                <button class="btn-login" id="login-btn">LOG IN</button>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <button class="btn-user" id="user-btn">
+                        <span id="user-name">NOME DO USUARIO</span>
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="pages/dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
+                        <a href="pages/carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
+                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="dashboard-content">
+        <div class="container">
+            <div class="test-info">
+                <h3>🔧 Teste do Menu Dashboard</h3>
+                <p><strong>Status:</strong> <span id="status">Carregando...</span></p>
+                <p><strong>Usuário:</strong> <span id="user-status">Não logado</span></p>
+                <button onclick="simulateLogin()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Simular Login</button>
+                <button onclick="simulateLogout()" style="background: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Simular Logout</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div class="debug-log" id="debug-log">
+    <strong>Debug Log:</strong><br>
+</div>
+
+<!-- JavaScript Global -->
+<script src="js/global.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/navbar.js"></script>
+
+<script>
+// Debug logging
+function log(message) {
+    const debugLog = document.getElementById('debug-log');
+    const timestamp = new Date().toLocaleTimeString();
+    debugLog.innerHTML += `[${timestamp}] ${message}<br>`;
+    debugLog.scrollTop = debugLog.scrollHeight;
+    console.log(message);
+}
+
+// Simular login
+function simulateLogin() {
+    log('🔄 Simulando login...');
+    
+    const mockUser = {
+        id: 1,
+        nome: 'João Silva',
+        email: 'joao@teste.com',
+        tipo: 'cliente'
+    };
+    
+    // Simular sessão
+    const sessionData = {
+        user: mockUser,
+        timestamp: new Date().getTime()
+    };
+    localStorage.setItem('chicasEventos_session', JSON.stringify(sessionData));
+    
+    // Atualizar UI
+    updateUIForLoggedInUser(mockUser);
+    log('✅ Login simulado com sucesso!');
+}
+
+// Simular logout
+function simulateLogout() {
+    log('🔄 Simulando logout...');
+    localStorage.removeItem('chicasEventos_session');
+    updateUIForLoggedOutUser();
+    log('✅ Logout simulado com sucesso!');
+}
+
+// Atualizar UI para usuário logado
+function updateUIForLoggedInUser(user) {
+    const loginBtn = document.getElementById('login-btn');
+    const userMenu = document.getElementById('user-menu');
+    const userName = document.getElementById('user-name');
+    const status = document.getElementById('status');
+    const userStatus = document.getElementById('user-status');
+    
+    if (loginBtn) loginBtn.style.display = 'none';
+    if (userMenu) userMenu.style.display = 'block';
+    if (userName) userName.textContent = user.nome.toUpperCase();
+    if (status) status.textContent = 'Logado';
+    if (userStatus) userStatus.textContent = user.nome;
+    
+    log('✅ UI atualizada para usuário logado');
+    
+    // Configurar dropdown após mostrar o menu
+    setTimeout(() => {
+        setupDropdown();
+    }, 100);
+}
+
+// Atualizar UI para usuário deslogado
+function updateUIForLoggedOutUser() {
+    const loginBtn = document.getElementById('login-btn');
+    const userMenu = document.getElementById('user-menu');
+    const dropdown = document.getElementById('dropdown-menu');
+    const status = document.getElementById('status');
+    const userStatus = document.getElementById('user-status');
+    
+    if (loginBtn) loginBtn.style.display = 'block';
+    if (userMenu) userMenu.style.display = 'none';
+    if (dropdown) dropdown.classList.remove('show');
+    if (status) status.textContent = 'Não logado';
+    if (userStatus) userStatus.textContent = 'Não logado';
+    
+    log('✅ UI atualizada para usuário deslogado');
+}
+
+// Configurar dropdown
+function setupDropdown() {
+    const userBtn = document.getElementById('user-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const logoutBtn = document.getElementById('logout-btn');
+    
+    log('🔧 Configurando dropdown...');
+    log('Elementos encontrados: userBtn=' + !!userBtn + ', dropdown=' + !!dropdownMenu + ', logout=' + !!logoutBtn);
+    
+    if (userBtn && dropdownMenu) {
+        // Remover listeners existentes
+        const newUserBtn = userBtn.cloneNode(true);
+        userBtn.parentNode.replaceChild(newUserBtn, userBtn);
+        
+        // Toggle dropdown
+        newUserBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            log('🖱️ Botão clicado!');
+            
+            const isOpen = dropdownMenu.classList.contains('show');
+            log('Menu estava aberto: ' + isOpen);
+            
+            if (isOpen) {
+                dropdownMenu.classList.remove('show');
+                newUserBtn.classList.remove('active');
+                log('❌ Menu fechado');
+            } else {
+                dropdownMenu.classList.add('show');
+                newUserBtn.classList.add('active');
+                log('✅ Menu aberto');
+            }
+        });
+        
+        // Fechar ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!newUserBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+                newUserBtn.classList.remove('active');
+                log('🚪 Menu fechado por clique fora');
+            }
+        });
+        
+        // Fechar com Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                dropdownMenu.classList.remove('show');
+                newUserBtn.classList.remove('active');
+                log('⌨️ Menu fechado com Escape');
+            }
+        });
+        
+        // Logout
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                log('🚪 Logout clicado');
+                if (confirm('Tem certeza que deseja sair da sua conta?')) {
+                    simulateLogout();
+                }
+            });
+        }
+        
+        log('🎉 Dropdown configurado com sucesso!');
+    } else {
+        log('❌ Elementos do dropdown não encontrados!');
+    }
+}
+
+// Verificar status inicial
+document.addEventListener('DOMContentLoaded', function() {
+    log('🚀 Página carregada');
+    
+    // Verificar se há sessão
+    const sessionData = localStorage.getItem('chicasEventos_session');
+    if (sessionData) {
+        try {
+            const session = JSON.parse(sessionData);
+            const now = new Date().getTime();
+            const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
+            
+            if (now - session.timestamp < sessionTimeout) {
+                updateUIForLoggedInUser(session.user);
+                log('✅ Sessão válida encontrada');
+            } else {
+                log('⏰ Sessão expirada');
+                localStorage.removeItem('chicasEventos_session');
+                updateUIForLoggedOutUser();
+            }
+        } catch (error) {
+            log('❌ Erro ao verificar sessão: ' + error.message);
+            updateUIForLoggedOutUser();
+        }
+    } else {
+        log('ℹ️ Nenhuma sessão encontrada');
+        updateUIForLoggedOutUser();
+    }
+});
+</script>
+</body>
+</html>

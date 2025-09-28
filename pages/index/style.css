@@ -509,8 +509,8 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 2fr 2fr 1fr;
+    gap: 70px;
     align-items: start;
 }
 

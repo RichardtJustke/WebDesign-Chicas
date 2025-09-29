@@ -112,9 +112,7 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <a href="../../../index.html">
-                    <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
-                </a>
+                <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
             </div>
             <nav class="menu">
                 <a href="../../../index.html" class="nav-link">HOME</a>
@@ -123,7 +121,7 @@
             </nav>
             <div class="login-btn">
                 <!-- Botão de login (quando não logado) -->
-                <a id="login-link" class="btn-login" href="../../login/login.html">LOG IN</a>
+                <button class="btn-login" id="login-btn">LOG IN</button>
                 
                 <!-- Botão do usuário (quando logado) -->
                 <button class="btn-user" id="user-btn" style="display: none;">
@@ -133,7 +131,6 @@
                 <!-- Dropdown do usuário -->
                 <div class="dropdown-menu" id="dropdown-menu">
                     <a href="../../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                    <a href="../../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
                     <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
                 </div>
             </div>
@@ -901,6 +898,5 @@ function openLoginPage() {
 </script>
 <script src="buffet.js"></script>
 <script src="buffet-optimization.js"></script>
-<script src="../../../js/cart-redirect.js"></script>
 </body>
 </html>

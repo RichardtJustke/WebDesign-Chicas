@@ -615,54 +615,55 @@ class AddToEventPopup {
         this.closePopup();
         this.selectedServices = [];
 
-        // Redirecionar para o carrinho
-        this.redirectToCart();
+        // Mostrar feedback de sucesso
+        this.showSuccessMessage();
     }
 
-    redirectToCart() {
-        // Usar caminho absoluto baseado na estrutura do projeto
-        const currentPath = window.location.pathname;
-        let cartPath = '';
+    showSuccessMessage() {
+        // Criar elemento de feedback
+        const feedback = document.createElement('div');
+        feedback.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            z-index: 10000;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease-out;
+        `;
         
-        // Detectar se estamos em um servidor local ou produção
-        const isLocalServer = window.location.protocol === 'file:' || 
-                             window.location.hostname === 'localhost' || 
-                             window.location.hostname === '127.0.0.1';
+        feedback.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span>✅</span>
+                <span>Serviços adicionados com sucesso!</span>
+            </div>
+        `;
         
-        if (isLocalServer) {
-            // Para servidor local, usar caminho relativo
-            if (currentPath.includes('/pages/serviços/')) {
-                cartPath = '../../carrinho/carrinho.html';
-            } else if (currentPath.includes('/pages/')) {
-                cartPath = '../carrinho/carrinho.html';
-            } else if (currentPath.includes('index.html') || currentPath.endsWith('/') || currentPath === '') {
-                cartPath = 'pages/carrinho/carrinho.html';
-            } else {
-                cartPath = 'pages/carrinho/carrinho.html';
+        // Adicionar animação CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
             }
-        } else {
-            // Para produção, usar caminho absoluto
-            cartPath = '/pages/carrinho/carrinho.html';
-        }
+        `;
+        document.head.appendChild(style);
         
-        console.log('Redirecionando para:', cartPath);
-        console.log('Caminho atual:', currentPath);
-        console.log('É servidor local:', isLocalServer);
+        document.body.appendChild(feedback);
         
-        // Mostrar mensagem de sucesso e redirecionar
-        alert('Serviços adicionados ao carrinho com sucesso! Redirecionando...');
-        
-        // Pequeno delay para o usuário ver a mensagem
+        // Remover feedback após 3 segundos
         setTimeout(() => {
-            try {
-                // Usar window.location.assign para evitar problemas de autenticação
-                window.location.assign(cartPath);
-            } catch (error) {
-                console.error('Erro ao redirecionar:', error);
-                // Fallback: tentar caminho alternativo
-                window.location.assign('../../carrinho/carrinho.html');
+            if (feedback.parentNode) {
+                feedback.parentNode.removeChild(feedback);
             }
-        }, 1000);
+            if (style.parentNode) {
+                style.parentNode.removeChild(style);
+            }
+        }, 3000);
     }
 }
 

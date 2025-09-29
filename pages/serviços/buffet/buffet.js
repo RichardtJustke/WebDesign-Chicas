@@ -291,10 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Mostrar feedback visual
             showAddToCartFeedback(packageData.title);
             
-            // Redirecionar para o carrinho após um delay
-            setTimeout(() => {
-                redirectToCart();
-            }, 2000); // 2 segundos para o usuário ver o feedback
+            // Mostrar mensagem de sucesso sem redirecionamento
+            showSuccessMessage();
         } else {
             // Fallback se localStorage não estiver disponível
             alert(`${packageData.title} adicionado ao evento!`);
@@ -303,44 +301,52 @@ document.addEventListener('DOMContentLoaded', function() {
         closePackageDetailPopup();
     }
 
-    // Função para redirecionar para o carrinho
-    function redirectToCart() {
-        // Usar caminho absoluto baseado na estrutura do projeto
-        const currentPath = window.location.pathname;
-        let cartPath = '';
+    // Função para mostrar mensagem de sucesso
+    function showSuccessMessage() {
+        // Criar elemento de feedback
+        const feedback = document.createElement('div');
+        feedback.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            z-index: 10000;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease-out;
+        `;
         
-        // Detectar se estamos em um servidor local ou produção
-        const isLocalServer = window.location.protocol === 'file:' || 
-                             window.location.hostname === 'localhost' || 
-                             window.location.hostname === '127.0.0.1';
+        feedback.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span>✅</span>
+                <span>Pacote adicionado com sucesso!</span>
+            </div>
+        `;
         
-        if (isLocalServer) {
-            // Para servidor local, usar caminho relativo
-            if (currentPath.includes('/pages/serviços/')) {
-                cartPath = '../../carrinho/carrinho.html';
-            } else if (currentPath.includes('/pages/')) {
-                cartPath = '../carrinho/carrinho.html';
-            } else {
-                cartPath = 'pages/carrinho/carrinho.html';
+        // Adicionar animação CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
             }
-        } else {
-            // Para produção, usar caminho absoluto
-            cartPath = '/pages/carrinho/carrinho.html';
-        }
+        `;
+        document.head.appendChild(style);
         
-        console.log('Redirecionando para:', cartPath);
-        console.log('Caminho atual:', currentPath);
-        console.log('É servidor local:', isLocalServer);
+        document.body.appendChild(feedback);
         
-        // Redirecionar para o carrinho
-        try {
-            // Usar window.location.assign para evitar problemas de autenticação
-            window.location.assign(cartPath);
-        } catch (error) {
-            console.error('Erro ao redirecionar:', error);
-            // Fallback: tentar caminho alternativo
-            window.location.assign('../../carrinho/carrinho.html');
-        }
+        // Remover feedback após 3 segundos
+        setTimeout(() => {
+            if (feedback.parentNode) {
+                feedback.parentNode.removeChild(feedback);
+            }
+            if (style.parentNode) {
+                style.parentNode.removeChild(style);
+            }
+        }, 3000);
     }
 
     // Função para mostrar feedback visual

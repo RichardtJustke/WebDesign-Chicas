@@ -340,14 +340,6 @@
     position: relative;
 }
 
-/* Header */
-.header {
-    background: #fff;
-    padding: 30px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
 
 .nav-container {
     max-width: 1200px;

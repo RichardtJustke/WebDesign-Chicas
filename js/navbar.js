@@ -1,5 +1,10 @@
 // Navbar System - Chicas Eventos
 // Sistema funcional para navbar dinâmico com detecção automática de login
+// 
+// CORREÇÃO: Sistema de login simplificado para evitar erro "Cannot GET"
+// - Todos os elementos de login redirecionam para /WebDesign-Chicas/pages/login/login.html
+// - Suporte para múltiplos seletores: #login-btn, #login-link, [data-action="login"]
+// - Caminho absoluto fixo evita problemas de navegação
 
 class NavbarSystem {
     constructor() {
@@ -16,10 +21,26 @@ class NavbarSystem {
     }
 
     setupEventListeners() {
-        // Botão de login
-        const loginBtn = document.getElementById('login-btn');
-        if (loginBtn) {
-            loginBtn.addEventListener('click', () => this.handleLoginClick());
+        // Botões de login - suporte para múltiplos seletores
+        const loginSelectors = ['#login-btn', '#login-link', '[data-action="login"]'];
+        let loginElement = null;
+        
+        console.log('🔧 NavbarSystem: Configurando event listeners...');
+        
+        // Procurar por qualquer elemento de login
+        for (const selector of loginSelectors) {
+            loginElement = document.querySelector(selector);
+            if (loginElement) {
+                console.log(`✅ NavbarSystem: Elemento de login encontrado: ${selector}`);
+                break;
+            }
+        }
+        
+        if (loginElement) {
+            loginElement.addEventListener('click', (e) => this.handleLoginClick(e));
+            console.log('✅ NavbarSystem: Event listener do login configurado');
+        } else {
+            console.error('❌ NavbarSystem: Nenhum elemento de login encontrado!');
         }
 
         // Botão do usuário (dropdown toggle)
@@ -167,19 +188,20 @@ class NavbarSystem {
         console.log('✅ Botão de login ativado na mesma posição');
     }
 
-    handleLoginClick() {
-        // Redirecionar para página de login
-        const currentPath = window.location.pathname;
-        let relativePath = 'pages/login/login.html';
+    handleLoginClick(e) {
+        console.log('🖱️ NavbarSystem: handleLoginClick chamado!');
         
-        // Ajustar caminho baseado na profundidade da página atual
-        if (currentPath.includes('/pages/')) {
-            relativePath = '../login/login.html';
-        } else if (currentPath.includes('/index/')) {
-            relativePath = '../login/login.html';
+        // Se for um link, permitir navegação normal (caminho relativo já definido no href)
+        if (e.target.tagName === 'A' && e.target.href) {
+            console.log('🔗 NavbarSystem: Link de login clicado, permitindo navegação normal');
+            return; // Permitir que o link funcione normalmente
         }
         
-        window.location.href = relativePath;
+        // Para botões, usar redirecionamento absoluto completo
+        // CORREÇÃO: Caminho absoluto completo incluindo nome da pasta do projeto
+        // Isso evita o erro "Cannot GET" que ocorria com caminhos relativos
+        console.log('🔄 NavbarSystem: Redirecionando para página de login com caminho absoluto completo');
+        window.location.href = '/WebDesign-Chicas/pages/login/login.html';
     }
 
     toggleDropdown(e) {
@@ -310,6 +332,33 @@ class NavbarSystem {
         this.logout();
     }
 }
+
+// Sistema de login simplificado - CORREÇÃO PARA EVITAR ERRO "Cannot GET"
+(function () {
+    function goToLogin(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        console.log('🔄 Sistema simplificado: Redirecionando para login');
+        window.location.href = "/WebDesign-Chicas/pages/login/login.html";
+    }
+
+    function wire() {
+        console.log('🔧 Sistema simplificado: Configurando elementos de login');
+        ["#login-btn", "#login-link", "[data-action='login']"].forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                if (el.tagName.toLowerCase() === "a") {
+                    el.setAttribute("href", "/WebDesign-Chicas/pages/login/login.html");
+                }
+                el.onclick = goToLogin;
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", wire);
+    } else {
+        wire();
+    }
+})();
 
 // Inicializar sistema quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {

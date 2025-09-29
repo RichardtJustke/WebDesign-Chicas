@@ -611,9 +611,58 @@ class AddToEventPopup {
         existingCart.push(cartData);
         localStorage.setItem('chicasEventos_cart', JSON.stringify(existingCart));
 
-        alert('Serviços adicionados ao carrinho com sucesso!');
+        // Fechar popup
         this.closePopup();
         this.selectedServices = [];
+
+        // Redirecionar para o carrinho
+        this.redirectToCart();
+    }
+
+    redirectToCart() {
+        // Usar caminho absoluto baseado na estrutura do projeto
+        const currentPath = window.location.pathname;
+        let cartPath = '';
+        
+        // Detectar se estamos em um servidor local ou produção
+        const isLocalServer = window.location.protocol === 'file:' || 
+                             window.location.hostname === 'localhost' || 
+                             window.location.hostname === '127.0.0.1';
+        
+        if (isLocalServer) {
+            // Para servidor local, usar caminho relativo
+            if (currentPath.includes('/pages/serviços/')) {
+                cartPath = '../../carrinho/carrinho.html';
+            } else if (currentPath.includes('/pages/')) {
+                cartPath = '../carrinho/carrinho.html';
+            } else if (currentPath.includes('index.html') || currentPath.endsWith('/') || currentPath === '') {
+                cartPath = 'pages/carrinho/carrinho.html';
+            } else {
+                cartPath = 'pages/carrinho/carrinho.html';
+            }
+        } else {
+            // Para produção, usar caminho absoluto
+            cartPath = '/pages/carrinho/carrinho.html';
+        }
+        
+        console.log('Redirecionando para:', cartPath);
+        console.log('Caminho atual:', currentPath);
+        console.log('É servidor local:', isLocalServer);
+        
+        // Mostrar mensagem de sucesso e redirecionar
+        alert('Serviços adicionados ao carrinho com sucesso! Redirecionando...');
+        
+        // Pequeno delay para o usuário ver a mensagem
+        setTimeout(() => {
+            try {
+                // Usar window.location.assign para evitar problemas de autenticação
+                window.location.assign(cartPath);
+            } catch (error) {
+                console.error('Erro ao redirecionar:', error);
+                // Fallback: tentar caminho alternativo
+                window.location.assign('../../carrinho/carrinho.html');
+            }
+        }, 1000);
     }
 }
 

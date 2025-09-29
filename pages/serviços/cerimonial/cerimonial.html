@@ -140,7 +140,7 @@
             </nav>
             <div class="login-btn">
                 <!-- Botão de login (quando não logado) -->
-                <button class="btn-login" id="login-btn">LOG IN</button>
+                <a id="login-link" class="btn-login" href="../../login/login.html">LOG IN</a>
                 
                 <!-- Botão do usuário (quando logado) -->
                 <button class="btn-user" id="user-btn" style="display: none;">
@@ -518,6 +518,7 @@
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
 <script src="../../../js/add-to-event-popup.js"></script>
+<script src="../../../js/cart-redirect.js"></script>
 
 <script>
 // Sistema simples de alternância de botões
@@ -646,6 +647,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Verificar status inicial
     checkUserStatus();
     
+    // Event listener do botão de login é gerenciado pelo navbar.js
+    // Não adicionar event listener aqui para evitar conflitos
+    
     // Verificar mudanças na sessão
     window.addEventListener('storage', function(e) {
         if (e.key === 'chicasEventos_session') {
@@ -655,6 +659,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Sistema simples configurado no CERIMONIAL');
 });
+
+// REFATORAÇÃO: Função openLoginPage() removida
+// Agora o sistema usa links diretos com caminhos absolutos
+// O navbar.js gerencia todos os cliques de login automaticamente
+
 
 // Sistema de Pop-ups Otimizado
 (function() {

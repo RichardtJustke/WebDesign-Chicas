@@ -118,12 +118,12 @@
             </div>
             <nav class="menu">
                 <a href="../../../index.html" class="nav-link">HOME</a>
-                <a href="../../../pages/portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
-                <a href="../../../pages/sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
+                <a href="../../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                <a href="../../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
             </nav>
             <div class="login-btn">
                 <!-- Botão de login (quando não logado) -->
-                <button class="btn-login" id="login-btn">LOG IN</button>
+                <a id="login-link" class="btn-login" href="../../login/login.html">LOG IN</a>
                 
                 <!-- Botão do usuário (quando logado) -->
                 <button class="btn-user" id="user-btn" style="display: none;">
@@ -310,7 +310,7 @@
             </div>
             <div class="popup-body">
                 <div class="popup-image">
-                    <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Coquetéis" loading="lazy" />
+                    <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Coquetéis" loading="lazy" decoding="async" />
                 </div>
                 <div class="popup-info">
                     <div class="info-panel">
@@ -331,10 +331,10 @@
                 </div>
             </div>
             <div class="popup-gallery">
-                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Galeria 1" />
-                <img src="../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg" alt="Galeria 2" />
-                <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Galeria 3" />
-                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Galeria 4" />
+                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Galeria 1" loading="lazy" decoding="async" />
+                <img src="../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg" alt="Galeria 2" loading="lazy" decoding="async" />
+                <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Galeria 3" loading="lazy" decoding="async" />
+                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Galeria 4" loading="lazy" decoding="async" />
             </div>
         </div>
     </div>
@@ -348,7 +348,7 @@
             </div>
             <div class="popup-body">
                 <div class="popup-image">
-                    <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Coffee Break" loading="lazy" />
+                    <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Coffee Break" loading="lazy" decoding="async" />
                 </div>
                 <div class="popup-info">
                     <div class="info-panel">
@@ -717,6 +717,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Event listener do botão de login é gerenciado pelo navbar.js
+    // Não adicionar event listener aqui para evitar conflitos
+    
     // Verificar status inicial
     checkUserStatus();
     
@@ -729,6 +732,60 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Sistema simples configurado no BUFFET');
 });
+
+// Função para abrir página de login
+function openLoginPage() {
+    console.log('🔄 Tentando abrir página de login...');
+    
+    // Caminhos corretos para sair da pasta serviços
+    const paths = [
+        '../../login/login.html',  // Sair de serviços/buffet para pages/login
+        '../../../pages/login/login.html',  // Caminho completo
+        '/pages/login/login.html'  // Caminho absoluto
+    ];
+    
+    // Tentar cada caminho
+    for (let i = 0; i < paths.length; i++) {
+        const path = paths[i];
+        console.log(`📍 Tentativa ${i + 1}: ${path}`);
+        
+        try {
+            // Primeira tentativa: window.open
+            const newWindow = window.open(path, '_blank');
+            if (newWindow && !newWindow.closed) {
+                console.log(`✅ Página de login aberta com window.open: ${path}`);
+                return;
+            }
+        } catch (error) {
+            console.log(`❌ window.open falhou para ${path}:`, error);
+        }
+        
+        try {
+            // Segunda tentativa: criar link e clicar
+            const link = document.createElement('a');
+            link.href = path;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            console.log(`✅ Página de login aberta com link dinâmico: ${path}`);
+            return;
+        } catch (error) {
+            console.log(`❌ Link dinâmico falhou para ${path}:`, error);
+        }
+    }
+    
+    // Última tentativa: redirecionamento
+    try {
+        window.location.href = '../../login/login.html';
+        console.log('✅ Redirecionando para página de login');
+    } catch (error) {
+        console.log('❌ Todas as tentativas falharam:', error);
+        alert('Erro ao abrir página de login. Tente navegar manualmente.');
+    }
+}
+
 
 // Sistema de Pop-ups Otimizado
 (function() {
@@ -843,5 +900,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 <script src="buffet.js"></script>
+<script src="buffet-optimization.js"></script>
+<script src="../../../js/cart-redirect.js"></script>
 </body>
 </html>

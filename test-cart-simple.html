@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Simples - Carrinho Sem Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #b95929;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            display: block;
+            width: 100%;
+        }
+        .test-button:hover {
+            background: #a04a1f;
+        }
+        .info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🛒 Teste Simples - Carrinho Sem Login</h1>
+        
+        <div class="info">
+            <h3>Este teste simula o comportamento do carrinho sem necessidade de login:</h3>
+            <ul>
+                <li>✅ Não requer autenticação</li>
+                <li>✅ Redirecionamento direto</li>
+                <li>✅ Feedback visual</li>
+                <li>✅ Funciona offline</li>
+            </ul>
+        </div>
+
+        <h3>Teste de Redirecionamento:</h3>
+        <button class="test-button" onclick="testDirectRedirect()">
+            🛒 Ir Direto para o Carrinho
+        </button>
+        
+        <button class="test-button" onclick="testWithFeedback()">
+            📦 Adicionar Item + Ir para Carrinho
+        </button>
+
+        <div id="results" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        function testDirectRedirect() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div style="color: blue;">🔄 Redirecionando diretamente para o carrinho...</div>';
+            
+            // Simular o redirecionamento direto
+            setTimeout(() => {
+                window.location.href = 'pages/carrinho/carrinho.html';
+            }, 1000);
+        }
+
+        function testWithFeedback() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div style="color: green;">✅ Item adicionado ao carrinho! Redirecionando...</div>';
+            
+            // Simular feedback e redirecionamento
+            setTimeout(() => {
+                window.location.href = 'pages/carrinho/carrinho.html';
+            }, 2000);
+        }
+
+        // Mostrar informações do ambiente
+        console.log('URL atual:', window.location.href);
+        console.log('Protocolo:', window.location.protocol);
+        console.log('Hostname:', window.location.hostname);
+    </script>
+</body>
+</html>

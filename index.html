@@ -460,6 +460,26 @@
             });
         }
         
+        // Configurar evento de clique no botão de login
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('🖱️ Botão de login clicado!');
+                
+                // Redirecionar para página de login
+                const currentPath = window.location.pathname;
+                let loginPath = 'pages/login/login.html';
+                
+                // Ajustar caminho baseado na localização atual
+                if (currentPath.includes('/pages/')) {
+                    loginPath = '../login/login.html';
+                }
+                
+                console.log('🔄 Redirecionando para:', loginPath);
+                window.location.href = loginPath;
+            });
+        }
+        
         // Verificar status inicial
         checkUserStatus();
         

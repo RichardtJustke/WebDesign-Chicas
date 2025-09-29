@@ -140,7 +140,7 @@
             </nav>
             <div class="login-btn">
                 <!-- Botão de login (quando não logado) -->
-                <button class="btn-login" id="login-btn">LOG IN</button>
+                <a id="login-link" class="btn-login" href="../../login/login.html">LOG IN</a>
                 
                 <!-- Botão do usuário (quando logado) -->
                 <button class="btn-user" id="user-btn" style="display: none;">
@@ -512,6 +512,7 @@
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
 <script src="../../../js/add-to-event-popup.js"></script>
+<script src="../../../js/cart-redirect.js"></script>
 
 <script>
 // Sistema simples de alternância de botões
@@ -640,6 +641,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Verificar status inicial
     checkUserStatus();
     
+    // Event listener do botão de login é gerenciado pelo navbar.js
+    // Não adicionar event listener aqui para evitar conflitos
+    
     // Verificar mudanças na sessão
     window.addEventListener('storage', function(e) {
         if (e.key === 'chicasEventos_session') {
@@ -649,6 +653,60 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Sistema simples configurado no AUDIOVISUAL');
 });
+
+// Função para abrir página de login
+function openLoginPage() {
+    console.log('🔄 Tentando abrir página de login...');
+    
+    // Caminhos corretos para sair da pasta serviços
+    const paths = [
+        '../../login/login.html',  // Sair de serviços/ad para pages/login
+        '../../../pages/login/login.html',  // Caminho completo
+        '/pages/login/login.html'  // Caminho absoluto
+    ];
+    
+    // Tentar cada caminho
+    for (let i = 0; i < paths.length; i++) {
+        const path = paths[i];
+        console.log(`📍 Tentativa ${i + 1}: ${path}`);
+        
+        try {
+            // Primeira tentativa: window.open
+            const newWindow = window.open(path, '_blank');
+            if (newWindow && !newWindow.closed) {
+                console.log(`✅ Página de login aberta com window.open: ${path}`);
+                return;
+            }
+        } catch (error) {
+            console.log(`❌ window.open falhou para ${path}:`, error);
+        }
+        
+        try {
+            // Segunda tentativa: criar link e clicar
+            const link = document.createElement('a');
+            link.href = path;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            console.log(`✅ Página de login aberta com link dinâmico: ${path}`);
+            return;
+        } catch (error) {
+            console.log(`❌ Link dinâmico falhou para ${path}:`, error);
+        }
+    }
+    
+    // Última tentativa: redirecionamento
+    try {
+        window.location.href = '../../login/login.html';
+        console.log('✅ Redirecionando para página de login');
+    } catch (error) {
+        console.log('❌ Todas as tentativas falharam:', error);
+        alert('Erro ao abrir página de login. Tente navegar manualmente.');
+    }
+}
+
 
 // Sistema de Pop-ups Otimizado
 (function() {

@@ -1,5 +1,27 @@
-// JavaScript para página de buffet - Pop-ups de pacotes
+// JavaScript para página de buffet - Pop-ups de pacotes OTIMIZADO
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Cache de elementos DOM para melhor performance
+    const domCache = {
+        verPacotesBtn: null,
+        packagesPopup: null,
+        packagesCloseBtn: null,
+        packageDetailPopup: null,
+        packageDetailCloseBtn: null,
+        verDetalhesBtns: null,
+        adicionarEventoBtn: null
+    };
+    
+    // Inicializar cache de elementos
+    function initDOMCache() {
+        domCache.verPacotesBtn = document.getElementById('ver-pacotes-btn');
+        domCache.packagesPopup = document.getElementById('packages-popup');
+        domCache.packagesCloseBtn = document.querySelector('.packages-close-btn');
+        domCache.packageDetailPopup = document.getElementById('package-detail-popup');
+        domCache.packageDetailCloseBtn = document.querySelector('.package-detail-close-btn');
+        domCache.verDetalhesBtns = document.querySelectorAll('.ver-detalhes-btn');
+        domCache.adicionarEventoBtn = document.querySelector('.adicionar-evento-btn');
+    }
     
     // Dados dos pacotes
     const packagesData = {
@@ -66,71 +88,124 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Elementos do DOM
-    const verPacotesBtn = document.getElementById('ver-pacotes-btn');
-    const packagesPopup = document.getElementById('packages-popup');
-    const packagesCloseBtn = document.querySelector('.packages-close-btn');
-    const packageDetailPopup = document.getElementById('package-detail-popup');
-    const packageDetailCloseBtn = document.querySelector('.package-detail-close-btn');
-    const verDetalhesBtns = document.querySelectorAll('.ver-detalhes-btn');
-    const adicionarEventoBtn = document.querySelector('.adicionar-evento-btn');
+    // Inicializar cache
+    initDOMCache();
 
-    // Função para abrir pop-up de pacotes
+    // Função otimizada para abrir pop-up de pacotes
     function openPackagesPopup() {
-        packagesPopup.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (domCache.packagesPopup) {
+            // Usar requestAnimationFrame para melhor performance
+            requestAnimationFrame(() => {
+                domCache.packagesPopup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
     }
 
-    // Função para fechar pop-up de pacotes
+    // Função otimizada para fechar pop-up de pacotes
     function closePackagesPopup() {
-        packagesPopup.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        if (domCache.packagesPopup) {
+            requestAnimationFrame(() => {
+                domCache.packagesPopup.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
     }
 
-    // Função para abrir pop-up de detalhes do pacote
+    // Função otimizada para abrir pop-up de detalhes do pacote
     function openPackageDetailPopup(packageType) {
         const packageData = packagesData[packageType];
+        if (!packageData) return;
+        
+        // Usar DocumentFragment para melhor performance
+        const fragment = document.createDocumentFragment();
         
         // Atualizar conteúdo do pop-up de detalhes
-        document.getElementById('package-detail-title').textContent = packageData.title;
-        document.querySelector('.package-detail-description p').textContent = packageData.description;
-        
-        // Atualizar lista de itens
+        const titleEl = document.getElementById('package-detail-title');
+        const descEl = document.querySelector('.package-detail-description p');
+        const mainImgEl = document.getElementById('package-detail-main-img');
         const itemsList = document.getElementById('package-detail-list');
-        itemsList.innerHTML = '';
-        packageData.items.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = item;
-            itemsList.appendChild(li);
-        });
-        
-        // Atualizar imagem principal
-        document.getElementById('package-detail-main-img').src = packageData.mainImage;
-        document.getElementById('package-detail-main-img').alt = packageData.title;
-        
-        // Atualizar galeria
         const gallery = document.querySelector('.package-detail-gallery');
-        gallery.innerHTML = '';
-        packageData.gallery.forEach(imageSrc => {
-            const img = document.createElement('img');
-            img.src = imageSrc;
-            img.alt = 'Galeria';
-            img.addEventListener('click', function() {
-                document.getElementById('package-detail-main-img').src = imageSrc;
+        
+        if (titleEl) titleEl.textContent = packageData.title;
+        if (descEl) descEl.textContent = packageData.description;
+        
+        // Atualizar lista de itens de forma otimizada
+        if (itemsList) {
+            itemsList.innerHTML = '';
+            packageData.items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                fragment.appendChild(li);
             });
-            gallery.appendChild(img);
-        });
+            itemsList.appendChild(fragment);
+        }
+        
+        // Lazy loading para imagem principal
+        if (mainImgEl) {
+            mainImgEl.style.opacity = '0.5';
+            const img = new Image();
+            img.onload = () => {
+                mainImgEl.src = packageData.mainImage;
+                mainImgEl.alt = packageData.title;
+                mainImgEl.style.opacity = '1';
+            };
+            img.src = packageData.mainImage;
+        }
+        
+        // Atualizar galeria com lazy loading
+        if (gallery) {
+            gallery.innerHTML = '';
+            const galleryFragment = document.createDocumentFragment();
+            
+            packageData.gallery.forEach((imageSrc, index) => {
+                const img = document.createElement('img');
+                img.style.opacity = '0.5';
+                img.alt = 'Galeria';
+                img.loading = 'lazy';
+                img.addEventListener('click', function() {
+                    if (mainImgEl) {
+                        mainImgEl.style.opacity = '0.5';
+                        const newImg = new Image();
+                        newImg.onload = () => {
+                            mainImgEl.src = imageSrc;
+                            mainImgEl.style.opacity = '1';
+                        };
+                        newImg.src = imageSrc;
+                    }
+                });
+                
+                // Lazy load das imagens da galeria
+                const galleryImg = new Image();
+                galleryImg.onload = () => {
+                    img.src = imageSrc;
+                    img.style.opacity = '1';
+                };
+                galleryImg.src = imageSrc;
+                
+                galleryFragment.appendChild(img);
+            });
+            gallery.appendChild(galleryFragment);
+        }
         
         // Fechar pop-up de pacotes e abrir pop-up de detalhes
         closePackagesPopup();
-        packageDetailPopup.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (domCache.packageDetailPopup) {
+            requestAnimationFrame(() => {
+                domCache.packageDetailPopup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
     }
 
-    // Função para fechar pop-up de detalhes do pacote
+    // Função otimizada para fechar pop-up de detalhes do pacote
     function closePackageDetailPopup() {
-        packageDetailPopup.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        if (domCache.packageDetailPopup) {
+            requestAnimationFrame(() => {
+                domCache.packageDetailPopup.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
     }
 
     // Função para voltar ao pop-up de pacotes
@@ -139,27 +214,39 @@ document.addEventListener('DOMContentLoaded', function() {
         openPackagesPopup();
     }
 
-    // Event listeners
-    verPacotesBtn.addEventListener('click', openPackagesPopup);
-    packagesCloseBtn.addEventListener('click', closePackagesPopup);
-    packageDetailCloseBtn.addEventListener('click', closePackageDetailPopup);
+    // Event listeners otimizados
+    if (domCache.verPacotesBtn) {
+        domCache.verPacotesBtn.addEventListener('click', openPackagesPopup);
+    }
+    
+    if (domCache.packagesCloseBtn) {
+        domCache.packagesCloseBtn.addEventListener('click', closePackagesPopup);
+    }
+    
+    if (domCache.packageDetailCloseBtn) {
+        domCache.packageDetailCloseBtn.addEventListener('click', closePackageDetailPopup);
+    }
 
-    // Event listeners para botões "Ver detalhes"
-    verDetalhesBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const packageCard = this.closest('.package-card');
-            const packageType = packageCard.getAttribute('data-package');
-            openPackageDetailPopup(packageType);
+    // Event listeners para botões "Ver detalhes" com event delegation
+    if (domCache.packagesPopup) {
+        domCache.packagesPopup.addEventListener('click', function(e) {
+            if (e.target.classList.contains('ver-detalhes-btn')) {
+                const packageCard = e.target.closest('.package-card');
+                const packageType = packageCard.getAttribute('data-package');
+                openPackageDetailPopup(packageType);
+            }
         });
-    });
+    }
 
     // Event listener para botão "Adicionar ao evento"
-    adicionarEventoBtn.addEventListener('click', function() {
-        const currentPackage = getCurrentPackage();
-        if (currentPackage) {
-            addPackageToCart(currentPackage);
-        }
-    });
+    if (domCache.adicionarEventoBtn) {
+        domCache.adicionarEventoBtn.addEventListener('click', function() {
+            const currentPackage = getCurrentPackage();
+            if (currentPackage) {
+                addPackageToCart(currentPackage);
+            }
+        });
+    }
 
     // Função para obter o pacote atual
     function getCurrentPackage() {
@@ -203,12 +290,57 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Mostrar feedback visual
             showAddToCartFeedback(packageData.title);
+            
+            // Redirecionar para o carrinho após um delay
+            setTimeout(() => {
+                redirectToCart();
+            }, 2000); // 2 segundos para o usuário ver o feedback
         } else {
             // Fallback se localStorage não estiver disponível
             alert(`${packageData.title} adicionado ao evento!`);
         }
         
         closePackageDetailPopup();
+    }
+
+    // Função para redirecionar para o carrinho
+    function redirectToCart() {
+        // Usar caminho absoluto baseado na estrutura do projeto
+        const currentPath = window.location.pathname;
+        let cartPath = '';
+        
+        // Detectar se estamos em um servidor local ou produção
+        const isLocalServer = window.location.protocol === 'file:' || 
+                             window.location.hostname === 'localhost' || 
+                             window.location.hostname === '127.0.0.1';
+        
+        if (isLocalServer) {
+            // Para servidor local, usar caminho relativo
+            if (currentPath.includes('/pages/serviços/')) {
+                cartPath = '../../carrinho/carrinho.html';
+            } else if (currentPath.includes('/pages/')) {
+                cartPath = '../carrinho/carrinho.html';
+            } else {
+                cartPath = 'pages/carrinho/carrinho.html';
+            }
+        } else {
+            // Para produção, usar caminho absoluto
+            cartPath = '/pages/carrinho/carrinho.html';
+        }
+        
+        console.log('Redirecionando para:', cartPath);
+        console.log('Caminho atual:', currentPath);
+        console.log('É servidor local:', isLocalServer);
+        
+        // Redirecionar para o carrinho
+        try {
+            // Usar window.location.assign para evitar problemas de autenticação
+            window.location.assign(cartPath);
+        } catch (error) {
+            console.error('Erro ao redirecionar:', error);
+            // Fallback: tentar caminho alternativo
+            window.location.assign('../../carrinho/carrinho.html');
+        }
     }
 
     // Função para mostrar feedback visual
@@ -287,25 +419,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    // Fechar pop-ups ao clicar no overlay
-    packagesPopup.addEventListener('click', function(e) {
-        if (e.target === packagesPopup) {
-            closePackagesPopup();
-        }
-    });
+    // Fechar pop-ups ao clicar no overlay (otimizado)
+    if (domCache.packagesPopup) {
+        domCache.packagesPopup.addEventListener('click', function(e) {
+            if (e.target === domCache.packagesPopup) {
+                closePackagesPopup();
+            }
+        });
+    }
 
-    packageDetailPopup.addEventListener('click', function(e) {
-        if (e.target === packageDetailPopup) {
-            closePackageDetailPopup();
-        }
-    });
+    if (domCache.packageDetailPopup) {
+        domCache.packageDetailPopup.addEventListener('click', function(e) {
+            if (e.target === domCache.packageDetailPopup) {
+                closePackageDetailPopup();
+            }
+        });
+    }
 
-    // Fechar pop-ups com tecla ESC
+    // Fechar pop-ups com tecla ESC (otimizado)
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            if (packageDetailPopup.classList.contains('active')) {
+            if (domCache.packageDetailPopup && domCache.packageDetailPopup.classList.contains('active')) {
                 closePackageDetailPopup();
-            } else if (packagesPopup.classList.contains('active')) {
+            } else if (domCache.packagesPopup && domCache.packagesPopup.classList.contains('active')) {
                 closePackagesPopup();
             }
         }

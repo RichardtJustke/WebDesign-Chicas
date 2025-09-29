@@ -349,6 +349,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Configurar evento de clique no botão de login
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('🖱️ Botão de login clicado no DASHBOARD!');
+            
+            // Redirecionar para página de login
+            const currentPath = window.location.pathname;
+            let loginPath = '../login/login.html';
+            
+            console.log('🔄 Redirecionando para:', loginPath);
+            window.location.href = loginPath;
+        });
+    }
+    
     console.log('✅ Sistema REFEITO DO ZERO configurado no DASHBOARD');
 });
 </script>

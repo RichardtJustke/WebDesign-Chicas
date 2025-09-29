@@ -436,6 +436,21 @@
         // Verificar status inicial
         checkUserStatus();
         
+        // Configurar evento de clique no botão de login
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('🖱️ Botão de login clicado no SOBRE NÓS!');
+                
+                // Redirecionar para página de login
+                const currentPath = window.location.pathname;
+                let loginPath = '../login/login.html';
+                
+                console.log('🔄 Redirecionando para:', loginPath);
+                window.location.href = loginPath;
+            });
+        }
+        
         // Verificar mudanças na sessão
         window.addEventListener('storage', function(e) {
             if (e.key === 'chicasEventos_session') {

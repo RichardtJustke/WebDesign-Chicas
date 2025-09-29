@@ -388,6 +388,15 @@ class EventManager {
 
     // Adicionar novo evento
     addEvent(eventData) {
+        console.log('🔍 DEBUG: Adicionando evento...', eventData);
+        console.log('🔍 DEBUG: Usuário atual:', this.currentUser);
+        
+        if (!this.currentUser) {
+            console.error('❌ ERRO: Usuário não está logado!');
+            alert('Erro: Usuário não está logado. Faça login novamente.');
+            return null;
+        }
+        
         const newEvent = {
             id: Date.now().toString(),
             userId: this.currentUser.email,
@@ -401,8 +410,12 @@ class EventManager {
             updatedAt: new Date().toISOString()
         };
         
+        console.log('🔍 DEBUG: Novo evento criado:', newEvent);
+        
         this.events.push(newEvent);
         this.saveEvents();
+        
+        console.log('🔍 DEBUG: Eventos salvos:', this.events);
         return newEvent;
     }
 
@@ -537,15 +550,22 @@ function updateDashboardForUser(user) {
 }
 
 function loadUserEvents() {
+    console.log('🔍 DEBUG: Carregando eventos do usuário...');
+    console.log('🔍 DEBUG: Usuário atual no eventManager:', eventManager.currentUser);
+    
     const userEvents = eventManager.getUserEvents();
+    console.log('🔍 DEBUG: Eventos encontrados:', userEvents);
+    
     const noEventsSection = document.getElementById('noEventsSection');
     const eventsGrid = document.getElementById('eventsGrid');
     
     if (userEvents.length === 0) {
+        console.log('🔍 DEBUG: Nenhum evento encontrado, mostrando seção vazia');
         // Não há eventos - mostrar seção de "sem eventos"
         noEventsSection.style.display = 'flex';
         eventsGrid.style.display = 'none';
     } else {
+        console.log('🔍 DEBUG: Eventos encontrados, mostrando grid');
         // Há eventos - mostrar grid de eventos
         noEventsSection.style.display = 'none';
         eventsGrid.style.display = 'grid';
@@ -603,11 +623,12 @@ function showCreateEventModal() {
         <div style="
             background: white;
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 25px;
             width: 90%;
             max-width: 500px;
             max-height: 80vh;
             overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         ">
             <h2 style="margin-bottom: 20px; color: #333;">Criar Novo Evento</h2>
             <form id="createEventForm">
@@ -617,7 +638,7 @@ function showCreateEventModal() {
                         width: 100%;
                         padding: 10px;
                         border: 2px solid #ddd;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         font-size: 16px;
                     ">
                 </div>
@@ -627,7 +648,7 @@ function showCreateEventModal() {
                         width: 100%;
                         padding: 10px;
                         border: 2px solid #ddd;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         font-size: 16px;
                     ">
                 </div>
@@ -637,7 +658,7 @@ function showCreateEventModal() {
                         width: 100%;
                         padding: 10px;
                         border: 2px solid #ddd;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         font-size: 16px;
                     ">
                 </div>
@@ -647,7 +668,7 @@ function showCreateEventModal() {
                         width: 100%;
                         padding: 10px;
                         border: 2px solid #ddd;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         font-size: 16px;
                     ">
                 </div>
@@ -657,7 +678,7 @@ function showCreateEventModal() {
                         width: 100%;
                         padding: 10px;
                         border: 2px solid #ddd;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         font-size: 16px;
                         resize: vertical;
                     "></textarea>
@@ -667,7 +688,7 @@ function showCreateEventModal() {
                         padding: 10px 20px;
                         border: 2px solid #ddd;
                         background: white;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         cursor: pointer;
                     ">Cancelar</button>
                     <button type="submit" style="
@@ -675,10 +696,10 @@ function showCreateEventModal() {
                         background: #b95929;
                         color: white;
                         border: none;
-                        border-radius: 8px;
+                        border-radius: 12px;
                         cursor: pointer;
                         font-weight: 600;
-                    ">Criar Evento</button>
+                    ">Concluir</button>
                 </div>
             </form>
         </div>
@@ -700,9 +721,29 @@ function showCreateEventModal() {
             description: formData.get('description')
         };
         
-        eventManager.addEvent(eventData);
+        // Verificar se o usuário está logado
+        if (!eventManager.currentUser) {
+            console.error('❌ ERRO: Usuário não está logado no eventManager');
+            alert('Erro: Usuário não está logado. Faça login novamente.');
+            return;
+        }
+        
+        // Criar o evento
+        const newEvent = eventManager.addEvent(eventData);
+        
+        if (!newEvent) {
+            console.error('❌ ERRO: Falha ao criar evento');
+            return;
+        }
+        
+        // Fechar modal
         closeModal();
-        loadUserEvents(); // Recarregar eventos
+        
+        // Mostrar mensagem de sucesso
+        showSuccessMessage(`Evento "${eventData.title}" criado com sucesso!`);
+        
+        // Recarregar eventos no dashboard
+        loadUserEvents();
     });
 }
 
@@ -720,6 +761,46 @@ function closeModal() {
     if (modal) {
         modal.remove();
     }
+}
+
+function showSuccessMessage(message) {
+    // Criar elemento de notificação
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #28a745;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10001;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        max-width: 300px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Animar entrada
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remover após 3 segundos
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
 }
 
 // Tornar funções globais para uso nos botões

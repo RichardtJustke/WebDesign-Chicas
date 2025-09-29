@@ -88,6 +88,123 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Dados dinâmicos dos serviços de buffet
+    const buffetServicesData = {
+        'coquetéis': {
+            title: 'Coquetéis',
+            description: 'Elegante serviço volante com finger foods sofisticados, perfeito para eventos corporativos e celebrações especiais.',
+            items: [
+                'Canapés variados',
+                'Petiscos gourmet',
+                'Bebidas não alcoólicas',
+                'Equipe de garçons',
+                'Decoração da mesa'
+            ],
+            mainImage: '../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg',
+            gallery: [
+                '../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg',
+                '../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg',
+                '../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg',
+                '../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg'
+            ]
+        },
+        'coffee-break': {
+            title: 'Coffee Break',
+            description: 'Perfeito para reuniões e conferências. Montagem rápida, quente/frio e reposição.',
+            items: [
+                'Café expresso e americano',
+                'Chás variados',
+                'Croissants e pães',
+                'Biscoitos e bolos',
+                'Água e sucos',
+                'Equipamentos de café'
+            ],
+            mainImage: '../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg',
+            gallery: [
+                '../../../assets/img g/buffet/engin-akyurt-eqMHmoe550Y-unsplash.jpg',
+                '../../../assets/img g/buffet/engin-akyurt-gaLpc1k6AXo-unsplash.jpg',
+                '../../../assets/img g/buffet/jill-sauve-stHOZOzZOEQ-unsplash.jpg',
+                '../../../assets/img g/buffet/mudassir-zaheer-RbUI-Hc9Hy0-unsplash.jpg'
+            ]
+        },
+        'brunch': {
+            title: 'Brunch',
+            description: 'Mix perfeito entre café da manhã e almoço, ideal para eventos matinais e celebrações especiais.',
+            items: [
+                'Ovos e omeletes',
+                'Pães e torradas',
+                'Frutas frescas',
+                'Saladas variadas',
+                'Sucos naturais',
+                'Café e chás'
+            ],
+            mainImage: '../../../assets/img g/buffet/saile-ilyas-SiwrpBnxDww-unsplash.jpg',
+            gallery: [
+                '../../../assets/img g/buffet/tim-pack-_sH9ifV2yjY-unsplash.jpg',
+                '../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg',
+                '../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg',
+                '../../../assets/img g/buffet/city-church-christchurch-ynF4v8W7MIw-unsplash.jpg'
+            ]
+        },
+        'almoço-jantar': {
+            title: 'Almoço/Jantar',
+            description: 'Buffet quente completo com pratos principais, acompanhamentos e sobremesas para eventos formais.',
+            items: [
+                'Pratos principais variados',
+                'Arroz e feijão',
+                'Saladas frescas',
+                'Vegetais grelhados',
+                'Sobremesas',
+                'Bebidas'
+            ],
+            mainImage: '../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg',
+            gallery: [
+                '../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg',
+                '../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg',
+                '../../../assets/img g/buffet/engin-akyurt-eqMHmoe550Y-unsplash.jpg',
+                '../../../assets/img g/buffet/engin-akyurt-gaLpc1k6AXo-unsplash.jpg'
+            ]
+        },
+        'sobremesas': {
+            title: 'Sobremesas & Doces',
+            description: 'Finalização doce com mesa temática decorada, perfeita para encerrar qualquer evento com chave de ouro.',
+            items: [
+                'Tortas variadas',
+                'Doces tradicionais',
+                'Petit fours',
+                'Frutas cristalizadas',
+                'Decoração temática',
+                'Utensílios especiais'
+            ],
+            mainImage: '../../../assets/img g/buffet/jill-sauve-stHOZOzZOEQ-unsplash.jpg',
+            gallery: [
+                '../../../assets/img g/buffet/mudassir-zaheer-RbUI-Hc9Hy0-unsplash.jpg',
+                '../../../assets/img g/buffet/saile-ilyas-SiwrpBnxDww-unsplash.jpg',
+                '../../../assets/img g/buffet/tim-pack-_sH9ifV2yjY-unsplash.jpg',
+                '../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg'
+            ]
+        },
+        'bebidas': {
+            title: 'Bebidas & Bar',
+            description: 'Serviço completo de bebidas com bartender profissional, ideal para qualquer tipo de evento.',
+            items: [
+                'Bebidas alcoólicas variadas',
+                'Bebidas não alcoólicas',
+                'Bartender profissional',
+                'Equipamentos de bar',
+                'Decoração do bar',
+                'Garçom especializado'
+            ],
+            mainImage: '../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg',
+            gallery: [
+                '../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg',
+                '../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg',
+                '../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg',
+                '../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg'
+            ]
+        }
+    };
+
     // Inicializar cache
     initDOMCache();
 
@@ -204,6 +321,155 @@ document.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(() => {
                 domCache.packageDetailPopup.classList.remove('active');
                 document.body.style.overflow = 'auto';
+            });
+        }
+    }
+
+    // Função para abrir pop-up dinâmico de serviços de buffet
+    function openBuffetServicePopup(serviceType) {
+        const serviceData = buffetServicesData[serviceType];
+        if (!serviceData) return;
+
+        // Criar pop-up dinâmico se não existir
+        let dynamicPopup = document.getElementById('dynamic-buffet-popup');
+        if (!dynamicPopup) {
+            dynamicPopup = createDynamicBuffetPopup();
+        }
+
+        // Atualizar conteúdo do pop-up
+        updateDynamicPopupContent(serviceData, dynamicPopup);
+
+        // Mostrar pop-up
+        requestAnimationFrame(() => {
+            dynamicPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Função para fechar pop-up dinâmico de serviços de buffet
+    function closeBuffetServicePopup() {
+        const dynamicPopup = document.getElementById('dynamic-buffet-popup');
+        if (dynamicPopup) {
+            requestAnimationFrame(() => {
+                dynamicPopup.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+    }
+
+    // Função para criar pop-up dinâmico
+    function createDynamicBuffetPopup() {
+        const popup = document.createElement('div');
+        popup.id = 'dynamic-buffet-popup';
+        popup.className = 'popup-overlay';
+        popup.innerHTML = `
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h2 id="dynamic-popup-title"></h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="popup-body">
+                    <div class="popup-left">
+                        <div class="popup-image">
+                            <img id="dynamic-popup-main-img" alt="" loading="lazy" decoding="async" />
+                        </div>
+                        <div class="popup-gallery" id="dynamic-popup-gallery"></div>
+                    </div>
+                    <div class="popup-right">
+                        <div class="info-panel">
+                            <h3>Descrição</h3>
+                            <p id="dynamic-popup-description"></p>
+                        </div>
+                        <div class="info-panel">
+                            <h3>O que está incluso:</h3>
+                            <ul id="dynamic-popup-items"></ul>
+                        </div>
+                        <button class="contact-btn">Falar com o atendente</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Adicionar event listeners
+        const closeBtn = popup.querySelector('.close-btn');
+        closeBtn.addEventListener('click', closeBuffetServicePopup);
+
+        // Fechar ao clicar no overlay
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closeBuffetServicePopup();
+            }
+        });
+
+        // Adicionar ao DOM
+        document.body.appendChild(popup);
+        return popup;
+    }
+
+    // Função para atualizar conteúdo do pop-up dinâmico
+    function updateDynamicPopupContent(serviceData, popup) {
+        // Atualizar título
+        const titleEl = popup.querySelector('#dynamic-popup-title');
+        if (titleEl) titleEl.textContent = serviceData.title;
+
+        // Atualizar descrição
+        const descEl = popup.querySelector('#dynamic-popup-description');
+        if (descEl) descEl.textContent = serviceData.description;
+
+        // Atualizar imagem principal
+        const mainImgEl = popup.querySelector('#dynamic-popup-main-img');
+        if (mainImgEl) {
+            mainImgEl.style.opacity = '0.5';
+            const img = new Image();
+            img.onload = () => {
+                mainImgEl.src = serviceData.mainImage;
+                mainImgEl.alt = serviceData.title;
+                mainImgEl.style.opacity = '1';
+            };
+            img.src = serviceData.mainImage;
+        }
+
+        // Atualizar lista de itens
+        const itemsList = popup.querySelector('#dynamic-popup-items');
+        if (itemsList) {
+            itemsList.innerHTML = '';
+            serviceData.items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                itemsList.appendChild(li);
+            });
+        }
+
+        // Atualizar galeria
+        const gallery = popup.querySelector('#dynamic-popup-gallery');
+        if (gallery) {
+            gallery.innerHTML = '';
+            serviceData.gallery.forEach((imageSrc, index) => {
+                const img = document.createElement('img');
+                img.style.opacity = '0.5';
+                img.alt = 'Galeria';
+                img.loading = 'lazy';
+                img.addEventListener('click', function() {
+                    if (mainImgEl) {
+                        mainImgEl.style.opacity = '0.5';
+                        const newImg = new Image();
+                        newImg.onload = () => {
+                            mainImgEl.src = imageSrc;
+                            mainImgEl.style.opacity = '1';
+                        };
+                        newImg.src = imageSrc;
+                    }
+                });
+                
+                // Lazy load das imagens da galeria
+                const galleryImg = new Image();
+                galleryImg.onload = () => {
+                    img.src = imageSrc;
+                    img.style.opacity = '1';
+                };
+                galleryImg.src = imageSrc;
+                
+                gallery.appendChild(img);
             });
         }
     }
@@ -442,10 +708,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Event listeners para botões de serviços de buffet
+    document.addEventListener('click', function(e) {
+        // Verificar se é um botão de serviço de buffet
+        if (e.target.classList.contains('service-btn') || e.target.closest('.service-btn')) {
+            const button = e.target.classList.contains('service-btn') ? e.target : e.target.closest('.service-btn');
+            const serviceType = button.getAttribute('data-service');
+            if (serviceType && buffetServicesData[serviceType]) {
+                openBuffetServicePopup(serviceType);
+            }
+        }
+    });
+
     // Fechar pop-ups com tecla ESC (otimizado)
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            if (domCache.packageDetailPopup && domCache.packageDetailPopup.classList.contains('active')) {
+            const dynamicPopup = document.getElementById('dynamic-buffet-popup');
+            if (dynamicPopup && dynamicPopup.classList.contains('active')) {
+                closeBuffetServicePopup();
+            } else if (domCache.packageDetailPopup && domCache.packageDetailPopup.classList.contains('active')) {
                 closePackageDetailPopup();
             } else if (domCache.packagesPopup && domCache.packagesPopup.classList.contains('active')) {
                 closePackagesPopup();
@@ -509,6 +790,234 @@ document.addEventListener('DOMContentLoaded', function() {
         
         .package-card:hover {
             transform: translateY(-8px) scale(1.02);
+        }
+
+        /* Estilos específicos para o popup dinâmico de buffet */
+        #dynamic-buffet-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        #dynamic-buffet-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #dynamic-buffet-popup .popup-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            width: 1000px;
+            overflow: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        #dynamic-buffet-popup.active .popup-content {
+            transform: scale(1);
+        }
+
+        #dynamic-buffet-popup .popup-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            background: #fafafa;
+            position: relative;
+        }
+
+        #dynamic-buffet-popup .popup-header h2 {
+            margin: 0;
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Outfit-SemiBold', sans-serif;
+        }
+
+        #dynamic-buffet-popup .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #dynamic-buffet-popup .close-btn:hover {
+            background: #f0f0f0;
+            color: #b95929;
+        }
+
+        #dynamic-buffet-popup .popup-body {
+            display: flex;
+            padding: 0;
+            min-height: 500px;
+        }
+
+        #dynamic-buffet-popup .popup-left {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #dynamic-buffet-popup .popup-right {
+            flex: 1;
+            padding: 30px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #dynamic-buffet-popup .popup-image {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        #dynamic-buffet-popup .popup-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        #dynamic-buffet-popup .popup-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 5px 0;
+        }
+
+        #dynamic-buffet-popup .popup-gallery img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+
+        #dynamic-buffet-popup .popup-gallery img:hover {
+            transform: scale(1.05);
+            border-color: #b95929;
+        }
+
+        #dynamic-buffet-popup .info-panel {
+            margin-bottom: 25px;
+        }
+
+        #dynamic-buffet-popup .info-panel h3 {
+            color: #b95929;
+            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Outfit-SemiBold', sans-serif;
+        }
+
+        #dynamic-buffet-popup .info-panel p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        #dynamic-buffet-popup .info-panel ul {
+            margin: 10px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #dynamic-buffet-popup .info-panel li {
+            color: #666;
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        #dynamic-buffet-popup .info-panel li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        #dynamic-buffet-popup .contact-btn {
+            background: #b95929;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #dynamic-buffet-popup .contact-btn:hover {
+            background: #a04a1f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(185, 89, 41, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #dynamic-buffet-popup .popup-content {
+                width: 95%;
+                max-height: 95%;
+            }
+
+            #dynamic-buffet-popup .popup-body {
+                flex-direction: column;
+            }
+
+            #dynamic-buffet-popup .popup-left,
+            #dynamic-buffet-popup .popup-right {
+                padding: 20px;
+            }
+
+            #dynamic-buffet-popup .popup-image img {
+                height: 250px;
+            }
+
+            #dynamic-buffet-popup .popup-gallery {
+                justify-content: center;
+            }
         }
     `;
     document.head.appendChild(style);

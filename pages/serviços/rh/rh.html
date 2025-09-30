@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
+    <link rel="stylesheet" href="../service-cards.css">
     <link rel="stylesheet" href="rh.css">
     <link rel="stylesheet" href="../../../css/add-to-event-popup.css">
     <style>
@@ -170,53 +171,71 @@
         </div>
     </div>
     
-    <!-- Grid de Serviços -->
-    <div class="services-grid">
-        <div class="service-card garçom-card">
-            <div class="service-content">
-                <h3>Garçom</h3>
-                <p>Atendimento profissional e especializado</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+    <!-- Seção de Cards de Serviços -->
+    <div class="service-cards-container">
+        <div class="service-card" data-service="garcons">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/rh/adem-ay-Tk9m_HP4rgQ-unsplash.jpg" alt="Garçons" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Garçons</h3>
+                    <p class="service-card-subtitle">Atendimento profissional e eficiente</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card apoio-card">
-            <div class="service-content">
-                <h3>Apoio/Operação</h3>
-                <p>Suporte técnico e operacional completo</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="recepcao">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/rh/anima-visual-XChQZf4q5-s-unsplash.jpg" alt="Recepção" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Recepção</h3>
+                    <p class="service-card-subtitle">Boas-vindas e orientação aos convidados</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card recepção-card">
-            <div class="service-content">
-                <h3>Recepção</h3>
-                <p>Atendimento e boas-vindas aos convidados</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="seguranca">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/rh/austin-distel-tLZhFRLj6nY-unsplash.jpg" alt="Segurança" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Segurança</h3>
+                    <p class="service-card-subtitle">Proteção e controle de acesso</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card coordenação-card">
-            <div class="service-content">
-                <h3>Coordenação de Sala</h3>
-                <p>Organização e controle do ambiente</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="apoio">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/rh/berke-citak-0cpyFsSUiSc-unsplash.jpg" alt="Apoio Operacional" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Apoio Operacional</h3>
+                    <p class="service-card-subtitle">Suporte logístico completo</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card limpeza-card">
-            <div class="service-content">
-                <h3>Limpeza de Área</h3>
-                <p>Manutenção e higienização do espaço</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="coordenacao">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/rh/collin-8FxJi5wuwKc-unsplash.jpg" alt="Coordenação" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Coordenação</h3>
+                    <p class="service-card-subtitle">Gestão e supervisão da equipe</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card segurança-card">
-            <div class="service-content">
-                <h3>Segurança</h3>
-                <p>Proteção e controle de acesso</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="briefing">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/rh/jessie-mccall-guXX_Wm-wnY-unsplash.jpg" alt="Briefing" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Briefing</h3>
+                    <p class="service-card-subtitle">Orientação prévia da equipe</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
     </div>
@@ -282,6 +301,7 @@
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
 <script src="../../../js/add-to-event-popup.js"></script>
+<script src="../service-cards.js"></script>
 
 <script>
 // Sistema simples de alternância de botões

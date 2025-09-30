@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         domCache.packagesCloseBtn = document.querySelector('.packages-close-btn');
         domCache.packageDetailPopup = document.getElementById('package-detail-popup');
         domCache.packageDetailCloseBtn = document.querySelector('.package-detail-close-btn');
-        domCache.verDetalhesBtns = document.querySelectorAll('.ver-detalhes-btn');
         domCache.adicionarEventoBtn = document.querySelector('.adicionar-evento-btn');
     }
     

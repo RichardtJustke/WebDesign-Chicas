@@ -451,15 +451,6 @@
     justify-content: center;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 80px 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-    animation: fadeInUp 0.8s ease-out;
-}
 
 @keyframes fadeInUp {
     from {
@@ -472,102 +463,9 @@
     }
 }
 
-.service-card {
-    border-radius: 34px;
-    width: 100%;
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(185, 89, 41, 0.1);
-}
-
-.service-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(185, 89, 41, 0.2);
-    border-color: rgba(185, 89, 41, 0.3);
-}
-
-/* Imagens de fundo específicas para cada card */
-.garçom-card {
-    background-image: url('../../../assets/img g/rh/austin-distel-tLZhFRLj6nY-unsplash.jpg');
-}
-
-.apoio-card {
-    background-image: url('../../../assets/img g/rh/berke-citak-0cpyFsSUiSc-unsplash.jpg');
-}
-
-.recepção-card {
-    background-image: url('../../../assets/img g/rh/jessie-mccall-guXX_Wm-wnY-unsplash.jpg');
-}
-
-.coordenação-card {
-    background-image: url('../../../assets/img g/rh/kyle-loftus-_jg3dKZs6sg-unsplash.jpg');
-}
-
-.limpeza-card {
-    background-image: url('../../../assets/img g/rh/negley-stockman-3e_i3-KLhe4-unsplash.jpg');
-}
-
-.segurança-card {
-    background-image: url('../../../assets/img g/rh/nik-ZmY7AG1l0Eo-unsplash.jpg');
-}
 
 
-.service-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: white;
-    padding: 30px;
-    z-index: 2;
-    text-align: center;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-    border-radius: 0 0 34px 34px;
-}
 
-.service-content h3 {
-    color: #ffffff;
-    font-family: 'Outfit-SemiBold', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    margin: 0 0 10px 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.service-content p {
-    color: #ffffff;
-    font-family: 'Abel-Regular', sans-serif;
-    font-size: 14px;
-    margin: 0 0 15px 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.service-content .ver-detalhes {
-    background: transparent;
-    color: #ffffff;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    font-family: 'Outfit-SemiBold', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-}
-
-.service-content .ver-detalhes:hover {
-    opacity: 0.8;
-    transform: translateY(-2px);
-}
 
 /* Removido posicionamento absoluto problemático - agora usando grid layout */
 
@@ -703,9 +601,6 @@
         gap: 40px;
     }
     
-    .services-grid {
-        padding: 40px 30px;
-    }
     
     .frame-49 {
         padding: 40px 30px;
@@ -746,11 +641,6 @@
         width: 100%;
     }
     
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 30px 20px;
-        gap: 20px;
-    }
     
     .frame-49 {
         padding: 30px 20px;
@@ -783,10 +673,6 @@
         padding: 10px 15px;
     }
     
-    .services-grid {
-        grid-template-columns: 1fr;
-        padding: 20px 15px;
-    }
     
     .frame-49 {
         padding: 20px 15px;

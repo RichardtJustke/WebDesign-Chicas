@@ -463,12 +463,12 @@ body {
 
 .discount-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #b95929;
+    box-shadow: 0 0 0 3px rgba(185, 89, 41, 0.1);
 }
 
 .discount-btn {
-    background: #667eea;
+    background: #b95929;
     color: white;
     border: none;
     padding: 0.75rem 1rem;
@@ -480,7 +480,7 @@ body {
 }
 
 .discount-btn:hover {
-    background: #5a67d8;
+    background: #a04d1f;
 }
 
 .discount-status {
@@ -517,7 +517,7 @@ body {
 }
 
 .total-row.total-final {
-    border-top: 2px solid #667eea;
+    border-top: 2px solid #b95929;
     margin-top: 0.5rem;
     padding-top: 1rem;
     font-size: 1.125rem;
@@ -539,7 +539,7 @@ body {
 }
 
 .total-value.total-price {
-    color: #667eea;
+    color: #b95929;
     font-size: 1.25rem;
 }
 
@@ -552,7 +552,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #b95929 0%, #d47a3a 100%);
     color: white;
     border: none;
     padding: 1rem 1.5rem;
@@ -569,7 +569,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(185, 89, 41, 0.4);
 }
 
 .btn-secondary {

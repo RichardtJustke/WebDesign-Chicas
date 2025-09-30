@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
+    <link rel="stylesheet" href="../service-cards.css">
     <link rel="stylesheet" href="buffet.css">
     <style>
         /* CSS simples para alternância de botões */
@@ -153,53 +154,71 @@
         </div>
     </div>
     
-    <!-- Grid de Serviços -->
-    <div class="services-grid">
-        <div class="service-card coquetéis-card">
-            <div class="service-content">
-                <h3>Coquetéis</h3>
-                <p>Serviço volante com finger foods</p>
-                <a href="#" class="ver-detalhes service-btn" data-service="coquetéis">Ver detalhes</a>
+    <!-- Seção de Cards de Serviços -->
+    <div class="service-cards-container">
+        <div class="service-card" data-service="coqueteis">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Coquetéis" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Coquetéis</h3>
+                    <p class="service-card-subtitle">Serviço volante com finger food</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card coffee-break-card">
-            <div class="service-content">
-                <h3>Coffee Break</h3>
-                <p>Perfeito para reuniões e conferências</p>
-                <a href="#" class="ver-detalhes service-btn" data-service="coffee-break">Ver detalhes</a>
+        <div class="service-card" data-service="coffee-break">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Coffee Break" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Coffee Break</h3>
+                    <p class="service-card-subtitle">Perfeito para reuniões e conferências</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card brunch-card">
-            <div class="service-content">
-                <h3>Brunch</h3>
-                <p>Mix café da manhã + almoço</p>
-                <a href="#" class="ver-detalhes service-btn" data-service="brunch">Ver detalhes</a>
+        <div class="service-card" data-service="brunch">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Brunch" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Brunch</h3>
+                    <p class="service-card-subtitle">Mix café da manhã + almoço</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card almoço-jantar-card">
-            <div class="service-content">
-                <h3>Almoço/Jantar</h3>
-                <p>Buffet quente completo</p>
-                <a href="#" class="ver-detalhes service-btn" data-service="almoço-jantar">Ver detalhes</a>
+        <div class="service-card" data-service="almoco-jantar">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Almoço/Jantar" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Almoço/Jantar</h3>
+                    <p class="service-card-subtitle">Buffet quente completo</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card sobremesas-card">
-            <div class="service-content">
-                <h3>Sobremesas & Doces</h3>
-                <p>Finalização doce com mesa temática</p>
-                <a href="#" class="ver-detalhes service-btn" data-service="sobremesas">Ver detalhes</a>
+        <div class="service-card" data-service="sobremesas">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Sobremesas & Doces" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Sobremesas & Doces</h3>
+                    <p class="service-card-subtitle">Finalização doce com mesa temática</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card bebidas-card">
-            <div class="service-content">
-                <h3>Bebidas & Bar</h3>
-                <p>Bar de drinks e espumantes</p>
-                <a href="#" class="ver-detalhes service-btn" data-service="bebidas">Ver detalhes</a>
+        <div class="service-card" data-service="bebidas">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Bebidas & Bar" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Bebidas & Bar</h3>
+                    <p class="service-card-subtitle">Bar de drinks e espumantes</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
     </div>
@@ -565,7 +584,6 @@ function openLoginPage() {
         
         // Cache de elementos
         elements = {
-            verDetalhesBtns: document.querySelectorAll('.ver-detalhes'),
             popups: document.querySelectorAll('.popup-overlay'),
             closeBtns: document.querySelectorAll('.close-btn'),
             contactBtns: document.querySelectorAll('.contact-btn'),
@@ -607,15 +625,6 @@ function openLoginPage() {
         document.addEventListener('click', function(e) {
             const target = e.target;
             
-            // Botão "Ver detalhes"
-            if (target.classList.contains('ver-detalhes')) {
-                e.preventDefault();
-                const serviceName = target.getAttribute('data-service');
-                if (serviceName) {
-                    openPopup(serviceName);
-                }
-                return;
-            }
             
             // Botão de fechar
             if (target.classList.contains('close-btn')) {
@@ -664,6 +673,7 @@ function openLoginPage() {
     }
 })();
 </script>
+<script src="../service-cards.js"></script>
 <script src="buffet.js"></script>
 <script src="buffet-optimization.js"></script>
 </body>

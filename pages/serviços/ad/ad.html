@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
+    <link rel="stylesheet" href="../service-cards.css">
     <link rel="stylesheet" href="ad.css">
     <link rel="stylesheet" href="../../../css/add-to-event-popup.css">
     <style>
@@ -170,57 +171,74 @@
         </div>
     </div>
     
-    <!-- Grid de Serviços -->
-    <div class="services-grid">
-        <div class="service-card fotografia-card">
-            <div class="service-content">
-                <h3>Fotografia</h3>
-                <p>Captura de momentos únicos e especiais</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+    <!-- Seção de Cards de Serviços -->
+    <div class="service-cards-container">
+        <div class="service-card" data-service="fotografia">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/ad/aarom-ore-iUCMLjQXD4o-unsplash.jpg" alt="Fotografia" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Fotografia</h3>
+                    <p class="service-card-subtitle">Cobertura completa do evento</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card social-media-card">
-            <div class="service-content">
-                <h3>Social Media</h3>
-                <p>Conteúdo para redes sociais e marketing</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="video">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/ad/aarom-ore-xixE8fHqUk0-unsplash.jpg" alt="Vídeo" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Vídeo</h3>
+                    <p class="service-card-subtitle">Filmagem e edição profissional</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card filmagem-card">
-            <div class="service-content">
-                <h3>Filmagem</h3>
-                <p>Vídeos profissionais e cobertura completa</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="drone">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/ad/asso-myron-rCElGEIgbjs-unsplash.jpg" alt="Drone" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Drone</h3>
+                    <p class="service-card-subtitle">Imagens aéreas espetaculares</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card cobertura-vivo-card">
-            <div class="service-content">
-                <h3>Cobertura ao Vivo</h3>
-                <p>Transmissão em tempo real do evento</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="social-media">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/ad/diana-macesanu-3ciHxbx9H0U-unsplash.jpg" alt="Social Media" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Social Media</h3>
+                    <p class="service-card-subtitle">Conteúdo para redes sociais</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card pacotes-360-card">
-            <div class="service-content">
-                <h3>Pacotes 360°</h3>
-                <p>Experiência imersiva completa</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="streaming">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/ad/diana-macesanu-fvPfMJL2wKw-unsplash.jpg" alt="Streaming" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Streaming</h3>
+                    <p class="service-card-subtitle">Transmissão ao vivo do evento</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card drone-card">
-            <div class="service-content">
-                <h3>Drone</h3>
-                <p>Imagens aéreas e perspectivas únicas</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="edicao">
+            <div class="service-card-image">
+                <img src="../../../assets/img g/ad/dose-media-DiTiYQx0mh4-unsplash.jpg" alt="Edição" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Edição</h3>
+                    <p class="service-card-subtitle">Pós-produção e finalização</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
     </div>
-
 
     
     <!-- Footer -->
@@ -282,6 +300,8 @@
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
 <script src="../../../js/add-to-event-popup.js"></script>
+<script src="../shared-dynamic-popup.js"></script>
+<script src="../service-cards.js"></script>
 
 <script>
 // Sistema simples de alternância de botões

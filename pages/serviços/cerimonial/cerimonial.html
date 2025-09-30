@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
+    <link rel="stylesheet" href="../service-cards.css">
     <link rel="stylesheet" href="cerimonial.css">
     <link rel="stylesheet" href="../../../css/add-to-event-popup.css">
     <style>
@@ -170,53 +171,71 @@
         </div>
     </div>
     
-    <!-- Grid de Serviços -->
-    <div class="services-grid">
-        <div class="service-card planejamento-card">
-            <div class="service-content">
-                <h3>Planejamento</h3>
-                <p>Estruturação completa do evento</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+    <!-- Seção de Cards de Serviços -->
+    <div class="service-cards-container">
+        <div class="service-card" data-service="planejamento">
+            <div class="service-card-image">
+                <img src="source/096c0ca8fab1703669ccb4f77706b912e79287a1.jpg" alt="Planejamento" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Planejamento</h3>
+                    <p class="service-card-subtitle">Estratégia completa do evento</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card consultoria-card">
-            <div class="service-content">
-                <h3>Consultoria</h3>
-                <p>Orientação especializada e personalizada</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="cronograma">
+            <div class="service-card-image">
+                <img src="source/0b5a5109fcf4c46993ef6b192d5c75c5571e7b4b.jpg" alt="Cronograma" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Cronograma</h3>
+                    <p class="service-card-subtitle">Timeline detalhada e organizada</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card coordenação-card">
-            <div class="service-content">
-                <h3>Coordenação do Dia</h3>
-                <p>Execução e supervisão no dia do evento</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="fornecedores">
+            <div class="service-card-image">
+                <img src="source/3fbe98da819e3a3071c066c277948f1b998c5a50.jpg" alt="Fornecedores" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Fornecedores</h3>
+                    <p class="service-card-subtitle">Rede de parceiros confiáveis</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card roteiro-card">
-            <div class="service-content">
-                <h3>Roteiro & Timeline</h3>
-                <p>Cronograma detalhado e organização temporal</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="execucao">
+            <div class="service-card-image">
+                <img src="source/4d021c1c4fe5279e1bfb81317723893c40a07d97.jpg" alt="Execução" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Execução</h3>
+                    <p class="service-card-subtitle">Coordenação no dia do evento</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card pós-evento-card">
-            <div class="service-content">
-                <h3>Pós-Evento</h3>
-                <p>Finalização e acompanhamento pós-evento</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="coordenacao">
+            <div class="service-card-image">
+                <img src="source/719164bff9d65f0c91aa2ac1cb8fdf5aba9434a1.jpg" alt="Coordenação" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Coordenação</h3>
+                    <p class="service-card-subtitle">Gestão completa do evento</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
         
-        <div class="service-card fornecedores-card">
-            <div class="service-content">
-                <h3>Gestão de Fornecedores</h3>
-                <p>Coordenação e supervisão de todos os fornecedores</p>
-                <a href="#" class="ver-detalhes service-btn">Ver detalhes</a>
+        <div class="service-card" data-service="producao">
+            <div class="service-card-image">
+                <img src="source/98f608e87d101120341bcafb9ce912fa8372aaa7.jpg" alt="Produção" />
+                <div class="service-card-overlay">
+                    <h3 class="service-card-title">Produção</h3>
+                    <p class="service-card-subtitle">Criação e desenvolvimento do evento</p>
+                    <a href="#" class="service-card-button">Ver detalhes</a>
+                </div>
             </div>
         </div>
     </div>
@@ -281,6 +300,7 @@
 <script src="../../../js/auth-new.js"></script>
 <script src="../../../js/navbar.js"></script>
 <script src="../../../js/add-to-event-popup.js"></script>
+<script src="../service-cards.js"></script>
 
 <script>
 // Sistema simples de alternância de botões

@@ -74,9 +74,6 @@
                 transition: opacity 0.3s ease, transform 0.3s ease;
             }
             
-            .service-card {
-                will-change: transform;
-                transform: translateZ(0);
                 backface-visibility: hidden;
             }
             

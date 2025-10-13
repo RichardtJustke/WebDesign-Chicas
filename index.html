@@ -17,6 +17,7 @@
             justify-content: center;
         }
         
+        /* Estilos para botões de login e usuário */
         #login-btn, #user-btn {
             transition: all 0.3s ease;
         }
@@ -33,7 +34,6 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             cursor: pointer;
-            transition: all 0.3s ease;
             min-width: 200px;
             text-align: center;
         }
@@ -43,6 +43,7 @@
             color: white;
         }
         
+        /* Dropdown menu */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -97,8 +98,25 @@
             display: none !important;
         }
         
-        #login-btn, #user-btn {
-            transition: all 0.3s ease;
+        /* Estilos para links do footer */
+        .footer a,
+        .footer-column a,
+        .footer-content .footer-links .footer-column ul li a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer a:hover,
+        .footer-column a:hover,
+        .footer-content .footer-links .footer-column ul li a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:visited,
+        .footer-content .footer-links .footer-column ul li a:link,
+        .footer-content .footer-links .footer-column ul li a:active {
+            color: #000000 !important;
         }
     </style>
 </head>
@@ -112,24 +130,12 @@
                 </div>
                 <nav class="menu">
                     <a href="index.html" class="nav-link">HOME</a>
-                    <a href="pages/portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                    <a href="pages/portifolio/portifolio.html" class="nav-link">PORTFÓLIO</a>
                     <a href="pages/sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
                 </nav>
                 <div class="login-btn">
-                    <!-- Botão de login (quando não logado) -->
-                    <button class="btn-login" id="login-btn">LOG IN</button>
-                    
-                    <!-- Botão do usuário (quando logado) -->
-                    <button class="btn-user" id="user-btn" style="display: none;">
-                        <span id="user-name">NOME DO USUARIO</span>
-                    </button>
-                    
-                    <!-- Dropdown do usuário -->
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="pages/dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                        <a href="pages/carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
-                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
-                    </div>
+                    <!-- Botão de contato direto -->
+                    <button class="btn-login" id="contact-btn">ENTRE EM CONTATO</button>
                 </div>
             </div>
         </header>
@@ -139,7 +145,7 @@
             <div class="container">
                 <div class="hero-rectangle">
                     <div class="hero-content">
-                        <h1>Seu evento corporativo,<br>impecável do início ao fim</h1>
+                        <h1>Seu evento corporativo,<br>impecável do início<br>ao fim</h1>
                         <p>Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.</p>
                     </div>
                     <div class="hero-image">
@@ -252,11 +258,11 @@
         <!-- Portfolio Section -->
         <section class="portfolio">
             <div class="container">
-                <h2>Portifólio</h2>
+                <h2>Portfólio</h2>
                 <p>Um recorte dos nossos últimos trabalhos. Veja por categoria ou acesse o portfólio completo.</p>
                 
                 <div class="portfolio-filters">
-                    <button class="filter-btn active">Ver portifólio</button>
+                    <button class="filter-btn active">Ver portfólio</button>
                     <button class="filter-btn">Todas</button>
                     <button class="filter-btn">Buffet</button>
                     <button class="filter-btn">Audiovisual</button>
@@ -289,20 +295,20 @@
                         <div class="footer-column">
                             <h4>Serviços</h4>
                             <ul>
-                                <li>Buffet</li>
-                                <li>Audiovisual</li>
-                                <li>RH</li>
-                                <li>Cerimonial</li>
+                                <li><a href="pages/serviços/buffet/buffet.html">Buffet</a></li>
+                                <li><a href="pages/serviços/ad/ad.html">Audiovisual</a></li>
+                                <li><a href="pages/serviços/rh/rh.html">RH</a></li>
+                                <li><a href="pages/serviços/cerimonial/cerimonial.html">Cerimonial</a></li>
                             </ul>
                         </div>
                         
                         <div class="footer-column">
                             <h4>Empresa</h4>
                             <ul>
-                                <li>Sobre</li>
-                                <li>Portifólio</li>
-                                <li>Contato</li>
-                                <li>Faça seu evento</li>
+                                <li><a href="pages/sobre/sobre.html">Sobre</a></li>
+                                <li><a href="pages/portifolio/portifolio.html">Portfólio</a></li>
+                                <li><a href="#" id="footer-contact">Contato</a></li>
+                                <li><a href="#" id="footer-create-event">Faça seu evento</a></li>
                             </ul>
                         </div>
                     </div>
@@ -310,16 +316,16 @@
                     <div class="footer-social">
                         <h4>Conecte-se</h4>
                         <div class="social-icons">
-                            <a href="#" class="social-icon instagram">
+                            <a href="https://instagram.com/chicaseventos" target="_blank" class="social-icon instagram">
                                 <img src="assets/icones/Group.svg" alt="Instagram" />
                             </a>
-                            <a href="#" class="social-icon linkedin">
+                            <a href="https://linkedin.com/company/chicaseventos" target="_blank" class="social-icon linkedin">
                                 <img src="assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
                             </a>
-                            <a href="#" class="social-icon facebook">
+                            <a href="https://facebook.com/chicaseventos" target="_blank" class="social-icon facebook">
                                 <img src="assets/icones/Facebook - Original.svg" alt="Facebook" />
                             </a>
-                            <a href="#" class="social-icon twitter">
+                            <a href="https://twitter.com/chicaseventos" target="_blank" class="social-icon twitter">
                                 <img src="assets/icones/Twitter - Original.svg" alt="Twitter" />
                             </a>
                         </div>
@@ -331,167 +337,100 @@
     
     <!-- JavaScript Global -->
     <script src="js/global.js"></script>
-    <script src="js/auth-new.js"></script>
-    <script src="js/navbar.js"></script>
     <script src="js/pages/index.js"></script>
     <script src="js/image-optimization.js"></script>
     
     <script>
-    // Sistema simples de alternância de botões
+    // Sistema de contato WhatsApp - Botão "ENTRE EM CONTATO"
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Sistema simples ativado no INDEX');
+        console.log('🚀 Sistema de contato WhatsApp ativado no INDEX');
         
-        const loginBtn = document.getElementById('login-btn');
-        const userBtn = document.getElementById('user-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const logoutBtn = document.getElementById('logout-btn');
+        const contactBtn = document.getElementById('contact-btn');
+        console.log('🔍 Botão encontrado:', contactBtn);
         
-        // Verificar se usuário está logado
-        function checkUserStatus() {
-            const sessionData = localStorage.getItem('chicasEventos_session');
-            
-            if (sessionData) {
-                try {
-                    const session = JSON.parse(sessionData);
-                    const now = new Date().getTime();
-                    const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
-                    
-                    if (now - session.timestamp < sessionTimeout) {
-                        // Usuário logado
-                        showUserButton(session.user);
-                        return true;
-                    } else {
-                        // Sessão expirada
-                        localStorage.removeItem('chicasEventos_session');
-                        showLoginButton();
-                        return false;
-                    }
-                } catch (error) {
-                    console.error('Erro ao verificar sessão:', error);
-                    showLoginButton();
-                    return false;
-                }
-            } else {
-                // Nenhuma sessão
-                showLoginButton();
-                return false;
-            }
-        }
-        
-        // Mostrar botão de login
-        function showLoginButton() {
-            if (loginBtn) {
-                loginBtn.style.display = 'block';
-                loginBtn.classList.remove('hidden');
-            }
-            if (userBtn) {
-                userBtn.style.display = 'none';
-                userBtn.classList.add('hidden');
-            }
-            console.log('✅ Botão LOGIN mostrado');
-        }
-        
-        // Mostrar botão do usuário
-        function showUserButton(user) {
-            if (loginBtn) {
-                loginBtn.style.display = 'none';
-                loginBtn.classList.add('hidden');
-            }
-            if (userBtn) {
-                userBtn.style.display = 'block';
-                userBtn.classList.remove('hidden');
-                
-                // Aplicar nome do usuário
-                if (user && user.nome) {
-                    const userNameElement = document.getElementById('user-name');
-                    if (userNameElement) {
-                        userNameElement.textContent = user.nome.toUpperCase();
-                    }
-                }
-            }
-            
-            console.log('✅ Botão USUÁRIO mostrado:', user?.nome);
-        }
-        
-        // Configurar dropdown
-        if (userBtn && dropdownMenu) {
-            userBtn.addEventListener('click', function(e) {
+        // Configurar evento de clique no botão de contato
+        if (contactBtn) {
+            console.log('✅ Configurando evento de clique...');
+            contactBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
+                console.log('🖱️ Botão "ENTRE EM CONTATO" clicado!');
                 
-                const isOpen = dropdownMenu.classList.contains('show');
+                // Redirecionar para WhatsApp
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de entrar em contato sobre os serviços da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 
-                if (isOpen) {
-                    dropdownMenu.classList.remove('show');
-                    userBtn.classList.remove('active');
-                    console.log('❌ Dropdown fechado');
-                } else {
-                    dropdownMenu.classList.add('show');
-                    userBtn.classList.add('active');
-                    console.log('✅ Dropdown aberto');
-                }
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+                window.open(whatsappUrl, '_blank');
             });
+            console.log('✅ Evento de clique configurado com sucesso!');
+        } else {
+            console.error('❌ Botão contact-btn não encontrado!');
         }
         
-        // Fechar dropdown ao clicar fora
-        document.addEventListener('click', function(e) {
-            if (userBtn && dropdownMenu && 
-                !userBtn.contains(e.target) && 
-                !dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.remove('show');
-                userBtn.classList.remove('active');
-            }
+        console.log('✅ Sistema de contato WhatsApp configurado no INDEX');
+        
+        // Sistema de links do footer
+        console.log('🔗 Configurando links do footer...');
+        
+        // Link de contato no footer
+        const footerContact = document.getElementById('footer-contact');
+        if (footerContact) {
+            footerContact.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('📞 Link de contato do footer clicado!');
+                
+                // Redirecionar para WhatsApp
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de entrar em contato sobre os serviços da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+                window.open(whatsappUrl, '_blank');
+            });
+            console.log('✅ Link de contato do footer configurado!');
+        }
+        
+        // Link "Faça seu evento" no footer
+        const footerCreateEvent = document.getElementById('footer-create-event');
+        if (footerCreateEvent) {
+            footerCreateEvent.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('🎉 Link "Faça seu evento" do footer clicado!');
+                
+                // Redirecionar para WhatsApp com mensagem específica
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de criar um evento com a Chicas Eventos. Podem me ajudar?';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+                window.open(whatsappUrl, '_blank');
+            });
+            console.log('✅ Link "Faça seu evento" do footer configurado!');
+        }
+        
+        console.log('✅ Sistema de links do footer configurado!');
+        
+        // Forçar cor preta nos links do footer via JavaScript
+        console.log('🎨 Forçando cor preta nos links do footer...');
+        
+        const footerLinks = document.querySelectorAll('.footer a, .footer-column a, .footer-links a');
+        footerLinks.forEach(link => {
+            link.style.color = '#000000';
+            link.style.textDecoration = 'none';
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#000000';
+                this.style.textDecoration = 'underline';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = '#000000';
+                this.style.textDecoration = 'none';
+            });
         });
         
-        // Configurar logout
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                if (confirm('Tem certeza que deseja sair da sua conta?')) {
-                    // Remover sessão
-                    localStorage.removeItem('chicasEventos_session');
-                    
-                    // Mostrar botão de login
-                    showLoginButton();
-                    
-                    console.log('✅ Logout realizado');
-                }
-            });
-        }
-        
-        // Configurar evento de clique no botão de login
-        if (loginBtn) {
-            loginBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('🖱️ Botão de login clicado!');
-                
-                // Redirecionar para página de login
-                const currentPath = window.location.pathname;
-                let loginPath = 'pages/login/login.html';
-                
-                // Ajustar caminho baseado na localização atual
-                if (currentPath.includes('/pages/')) {
-                    loginPath = '../login/login.html';
-                }
-                
-                console.log('🔄 Redirecionando para:', loginPath);
-                window.location.href = loginPath;
-            });
-        }
-        
-        // Verificar status inicial
-        checkUserStatus();
-        
-        // Verificar mudanças na sessão
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'chicasEventos_session') {
-                checkUserStatus();
-            }
-        });
-        
-        console.log('✅ Sistema simples configurado no INDEX');
+        console.log('✅ Cor preta forçada via JavaScript!');
     });
     </script>
+    
 </body>
 </html>

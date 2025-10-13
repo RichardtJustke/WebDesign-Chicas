@@ -22,6 +22,50 @@
             transition: all 0.3s ease;
         }
         
+        /* Forçar cor preta nos links do footer */
+        .footer a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-column a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer-column a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        /* Estilos ultra-específicos para forçar cor preta */
+        .footer-content .footer-links .footer-column ul li a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:visited {
+            color: #000000 !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:link {
+            color: #000000 !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:active {
+            color: #000000 !important;
+        }
+        
         #user-btn {
             background: transparent;
             color: #b95929;
@@ -171,20 +215,20 @@
                     <div class="footer-column">
                         <h4>Serviços</h4>
                         <ul>
-                            <li>Buffet</li>
-                            <li>Audiovisual</li>
-                            <li>RH</li>
-                            <li>Cerimonial</li>
+                            <li><a href="../serviços/buffet/buffet.html">Buffet</a></li>
+                            <li><a href="../serviços/ad/ad.html">Audiovisual</a></li>
+                            <li><a href="../serviços/rh/rh.html">RH</a></li>
+                            <li><a href="../serviços/cerimonial/cerimonial.html">Cerimonial</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h4>Empresa</h4>
                         <ul>
-                            <li>Sobre</li>
-                            <li>Portifólio</li>
-                            <li>Contato</li>
-                            <li>Faça seu evento</li>
+                            <li><a href="../sobre/sobre.html">Sobre</a></li>
+                            <li><a href="../portifolio/portifolio.html">Portifólio</a></li>
+                            <li><a href="#" id="footer-contact">Contato</a></li>
+                            <li><a href="#" id="footer-create-event">Faça seu evento</a></li>
                         </ul>
                     </div>
                 </div>
@@ -192,16 +236,16 @@
                 <div class="footer-social">
                     <h4>Conecte-se</h4>
                     <div class="social-icons">
-                        <a href="#" class="social-icon instagram">
+                        <a href="https://instagram.com/chicaseventos" target="_blank" class="social-icon instagram">
                             <img src="../../assets/icones/Group.svg" alt="Instagram" />
                         </a>
-                        <a href="#" class="social-icon linkedin">
+                        <a href="https://linkedin.com/company/chicaseventos" target="_blank" class="social-icon linkedin">
                             <img src="../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
                         </a>
-                        <a href="#" class="social-icon facebook">
+                        <a href="https://facebook.com/chicaseventos" target="_blank" class="social-icon facebook">
                             <img src="../../assets/icones/Facebook - Original.svg" alt="Facebook" />
                         </a>
-                        <a href="#" class="social-icon twitter">
+                        <a href="https://twitter.com/chicaseventos" target="_blank" class="social-icon twitter">
                             <img src="../../assets/icones/Twitter - Original.svg" alt="Twitter" />
                         </a>
                     </div>

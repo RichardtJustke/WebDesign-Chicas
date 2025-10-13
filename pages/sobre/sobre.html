@@ -95,6 +95,50 @@
         #login-btn, #user-btn {
             transition: all 0.3s ease;
         }
+        
+        /* Forçar cor preta nos links do footer */
+        .footer a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-column a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer-column a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        /* Estilos ultra-específicos para forçar cor preta */
+        .footer-content .footer-links .footer-column ul li a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:visited {
+            color: #000000 !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:link {
+            color: #000000 !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:active {
+            color: #000000 !important;
+        }
     </style>
 </head>
 <body>
@@ -111,20 +155,8 @@
                     <a href="sobre.html" class="nav-link active">SOBRE NÓS</a>
                 </nav>
                 <div class="login-btn">
-                    <!-- Botão de login (quando não logado) -->
-                    <button class="btn-login" id="login-btn">LOG IN</button>
-                    
-                    <!-- Botão do usuário (quando logado) -->
-                    <button class="btn-user" id="user-btn" style="display: none;">
-                        <span id="user-name">NOME DO USUARIO</span>
-                    </button>
-                    
-                    <!-- Dropdown do usuário -->
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                        <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
-                        <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
-                    </div>
+                    <!-- Botão de contato direto -->
+                    <button class="btn-login" id="contact-btn">ENTRE EM CONTATO</button>
                 </div>
             </div>
         </header>
@@ -264,20 +296,20 @@
                         <div class="footer-column">
                             <h4>Serviços</h4>
                             <ul>
-                                <li>Buffet</li>
-                                <li>Audiovisual</li>
-                                <li>RH</li>
-                                <li>Cerimonial</li>
+                                <li><a href="../serviços/buffet/buffet.html">Buffet</a></li>
+                                <li><a href="../serviços/ad/ad.html">Audiovisual</a></li>
+                                <li><a href="../serviços/rh/rh.html">RH</a></li>
+                                <li><a href="../serviços/cerimonial/cerimonial.html">Cerimonial</a></li>
                             </ul>
                         </div>
                         
                         <div class="footer-column">
                             <h4>Empresa</h4>
                             <ul>
-                                <li>Sobre</li>
-                                <li>Portifólio</li>
-                                <li>Contato</li>
-                                <li>Faça seu evento</li>
+                                <li><a href="sobre.html">Sobre</a></li>
+                                <li><a href="../portifolio/portifolio.html">Portifólio</a></li>
+                                <li><a href="#" id="footer-contact">Contato</a></li>
+                                <li><a href="#" id="footer-create-event">Faça seu evento</a></li>
                             </ul>
                         </div>
                     </div>
@@ -285,16 +317,16 @@
                     <div class="footer-social">
                         <h4>Conecte-se</h4>
                         <div class="social-icons">
-                            <a href="#" class="social-icon instagram">
+                            <a href="https://instagram.com/chicaseventos" target="_blank" class="social-icon instagram">
                                 <img src="../../assets/icones/Group.svg" alt="Instagram" />
                             </a>
-                            <a href="#" class="social-icon linkedin">
+                            <a href="https://linkedin.com/company/chicaseventos" target="_blank" class="social-icon linkedin">
                                 <img src="../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
                             </a>
-                            <a href="#" class="social-icon facebook">
+                            <a href="https://facebook.com/chicaseventos" target="_blank" class="social-icon facebook">
                                 <img src="../../assets/icones/Facebook - Original.svg" alt="Facebook" />
                             </a>
-                            <a href="#" class="social-icon twitter">
+                            <a href="https://twitter.com/chicaseventos" target="_blank" class="social-icon twitter">
                                 <img src="../../assets/icones/Twitter - Original.svg" alt="Twitter" />
                             </a>
                         </div>
@@ -306,159 +338,31 @@
 
     <!-- JavaScript Global -->
     <script src="../../js/global.js"></script>
-    <script src="../../js/auth-new.js"></script>
-    <script src="../../js/navbar.js"></script>
     
     <script>
-    // Sistema simples de alternância de botões
+    // Sistema simplificado - apenas contato WhatsApp
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Sistema simples ativado no SOBRE NÓS');
+        console.log('🚀 Sistema de contato ativado no SOBRE NÓS');
         
-        const loginBtn = document.getElementById('login-btn');
-        const userBtn = document.getElementById('user-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const logoutBtn = document.getElementById('logout-btn');
+        const contactBtn = document.getElementById('contact-btn');
         
-        // Verificar se usuário está logado
-        function checkUserStatus() {
-            const sessionData = localStorage.getItem('chicasEventos_session');
-            
-            if (sessionData) {
-                try {
-                    const session = JSON.parse(sessionData);
-                    const now = new Date().getTime();
-                    const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
-                    
-                    if (now - session.timestamp < sessionTimeout) {
-                        // Usuário logado
-                        showUserButton(session.user);
-                        return true;
-                    } else {
-                        // Sessão expirada
-                        localStorage.removeItem('chicasEventos_session');
-                        showLoginButton();
-                        return false;
-                    }
-                } catch (error) {
-                    console.error('Erro ao verificar sessão:', error);
-                    showLoginButton();
-                    return false;
-                }
-            } else {
-                // Nenhuma sessão
-                showLoginButton();
-                return false;
-            }
-        }
-        
-        // Mostrar botão de login
-        function showLoginButton() {
-            if (loginBtn) {
-                loginBtn.style.display = 'block';
-                loginBtn.classList.remove('hidden');
-            }
-            if (userBtn) {
-                userBtn.style.display = 'none';
-                userBtn.classList.add('hidden');
-            }
-            console.log('✅ Botão LOGIN mostrado');
-        }
-        
-        // Mostrar botão do usuário
-        function showUserButton(user) {
-            if (loginBtn) {
-                loginBtn.style.display = 'none';
-                loginBtn.classList.add('hidden');
-            }
-            if (userBtn) {
-                userBtn.style.display = 'block';
-                userBtn.classList.remove('hidden');
-                
-                // Aplicar nome do usuário
-                if (user && user.nome) {
-                    const userNameElement = document.getElementById('user-name');
-                    if (userNameElement) {
-                        userNameElement.textContent = user.nome.toUpperCase();
-                    }
-                }
-            }
-            
-            console.log('✅ Botão USUÁRIO mostrado:', user?.nome);
-        }
-        
-        // Configurar dropdown
-        if (userBtn && dropdownMenu) {
-            userBtn.addEventListener('click', function(e) {
+        // Configurar evento de clique no botão de contato
+        if (contactBtn) {
+            contactBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
+                console.log('🖱️ Botão de contato clicado no SOBRE NÓS!');
                 
-                const isOpen = dropdownMenu.classList.contains('show');
+                // Redirecionar para WhatsApp
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de entrar em contato sobre os serviços da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 
-                if (isOpen) {
-                    dropdownMenu.classList.remove('show');
-                    userBtn.classList.remove('active');
-                    console.log('❌ Dropdown fechado');
-                } else {
-                    dropdownMenu.classList.add('show');
-                    userBtn.classList.add('active');
-                    console.log('✅ Dropdown aberto');
-                }
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+                window.open(whatsappUrl, '_blank');
             });
         }
         
-        // Fechar dropdown ao clicar fora
-        document.addEventListener('click', function(e) {
-            if (userBtn && dropdownMenu && 
-                !userBtn.contains(e.target) && 
-                !dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.remove('show');
-                userBtn.classList.remove('active');
-            }
-        });
-        
-        // Configurar logout
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                if (confirm('Tem certeza que deseja sair da sua conta?')) {
-                    // Remover sessão
-                    localStorage.removeItem('chicasEventos_session');
-                    
-                    // Mostrar botão de login
-                    showLoginButton();
-                    
-                    console.log('✅ Logout realizado');
-                }
-            });
-        }
-        
-        // Verificar status inicial
-        checkUserStatus();
-        
-        // Configurar evento de clique no botão de login
-        if (loginBtn) {
-            loginBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('🖱️ Botão de login clicado no SOBRE NÓS!');
-                
-                // Redirecionar para página de login
-                const currentPath = window.location.pathname;
-                let loginPath = '../login/login.html';
-                
-                console.log('🔄 Redirecionando para:', loginPath);
-                window.location.href = loginPath;
-            });
-        }
-        
-        // Verificar mudanças na sessão
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'chicasEventos_session') {
-                checkUserStatus();
-            }
-        });
-        
-        console.log('✅ Sistema simples configurado no SOBRE NÓS');
+        console.log('✅ Sistema de contato configurado no SOBRE NÓS');
     });
     </script>
 </body>

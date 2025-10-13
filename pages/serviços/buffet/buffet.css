@@ -3,9 +3,7 @@
     box-sizing: border-box;
 }
 
-body {
-    padding-top: 0;
-}
+/* Removido padding-top - usando position sticky como na home */
 
 .buffet {
     background: #ffffff;
@@ -18,72 +16,7 @@ body {
     margin: 0 auto;
 }
 
-.footer {
-    background: transparent;
-    color: #333;
-    padding: 60px 0 30px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    gap: 70px;
-    align-items: start;
-}
-
-.footer-brand img {
-    height: 60px;
-    margin-bottom: 20px;
-}
-
-.footer-brand p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #666;
-}
-
-.copyright {
-    color: #999;
-    font-size: 14px;
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-}
-
-.footer-column h4 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--background-color);
-}
-
-.footer-column ul {
-    list-style: none;
-    margin-bottom: 0;
-    padding-left: 0;
-}
-
-.footer-column li {
-    margin-bottom: 10px;
-    color: var(--background-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.footer-column li:hover {
-    color: var(--accent-color);
-}
-
-.footer-social h4 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--background-color);
-}
+/* Estilos do footer removidos - usando shared-services.css */
 
 .social-icons {
     display: flex;
@@ -95,11 +28,11 @@ body {
     height: 40px;
     border-radius: 50%;
     background: transparent;
-    border: 2px solid var(--background-color);
+    border: 2px solid #333;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--background-color);
+    color: #333;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -110,8 +43,8 @@ body {
 }
 
 .social-icon:hover {
-    background: var(--accent-color);
-    color: var(--background-color);
+    background: #b95929;
+    color: white;
 }
 
 .despedida {
@@ -319,69 +252,7 @@ body {
 }
 
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    position: relative;
-}
-
-.logo {
-    justify-self: start;
-}
-
-.logo img {
-    height: 60px;
-}
-
-.menu {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    justify-content: center;
-    justify-self: center;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: #333;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #b95929;
-}
-
-.login-btn {
-    justify-self: end;
-}
-
-.btn-login {
-    background: transparent;
-    color: #b95929;
-    border: 2px solid #b95929;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-login:hover {
-    background: #b95929;
-    color: white;
-}
+/* Header styles moved to shared-services.css */
 
 .user-menu {
     position: relative;
@@ -546,40 +417,6 @@ body {
     margin: 0;
 }
 
-.frame-45 {
-    margin: 40px 0 0 0;
-    background: #b95929;
-    border-radius: 9px;
-    padding: 13px 45px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 336px;
-    height: 47px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
-}
-
-.frame-45:hover {
-    background: #a04a1f;
-}
-
-.ver-pacotes {
-    color: #ffffff;
-    text-align: center;
-    font-family: 'Outfit-SemiBold', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 /* Media Queries para Responsividade */
 @media (max-width: 1200px) {
@@ -602,9 +439,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 140px; /* Ajustar para header maior em mobile */
-    }
     
     .buffet {
         border-radius: 20px;
@@ -622,15 +456,7 @@ body {
         justify-content: center;
     }
     
-    .nav-link {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-    
-    .btn-login, .btn-user {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
+    /* Responsive styles moved to shared-services.css */
     
     .logo img {
         height: 50px;
@@ -670,9 +496,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    body {
-        padding-top: 160px; /* Ajustar para header ainda maior em mobile pequeno */
-    }
     
     .header {
         padding: 20px 0;
@@ -687,15 +510,7 @@ body {
         gap: 15px;
     }
     
-    .nav-link {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
-    
-    .btn-login, .btn-user {
-        padding: 8px 16px;
-        font-size: 12px;
-    }
+    /* Responsive styles moved to shared-services.css */
     
     .logo img {
         height: 40px;
@@ -716,11 +531,6 @@ body {
         line-height: 1.4;
     }
     
-    .frame-45 {
-        width: 280px;
-        height: 44px;
-        margin: 30px 0 0 0;
-    }
     
     
     .frame-47 {

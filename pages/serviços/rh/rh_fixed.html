@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicas Eventos - RH</title>
+    <link rel="icon" type="image/png" href="../../../assets/img g/logo/icone.png">
+    <link rel="shortcut icon" type="image/png" href="../../../assets/img g/logo/icone.png">
+    <link rel="apple-touch-icon" href="../../../assets/img g/logo/icone.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-services.css">
+    <link rel="stylesheet" href="../service-cards.css">
+    <link rel="stylesheet" href="rh.css">
+    <link rel="stylesheet" href="../../../css/add-to-event-popup.css">
+    <style>
+        /* CSS simplificado para botão de contato */
+        .login-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Estilos para o botão Adicionar ao Evento */
+        .add-to-event-btn {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .add-to-event-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .add-to-event-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Estilos para o popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .popup-overlay.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .popup-content h3 {
+            color: #b95929;
+            margin-bottom: 20px;
+        }
+        
+        .popup-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .popup-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-btn.primary {
+            background: #b95929;
+            color: white;
+        }
+        
+        .popup-btn.secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .popup-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+<div class="rh">
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../../../index.html">
+                    <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                </a>
+            </div>
+            <nav class="menu">
+                <a href="../../../index.html" class="nav-link">HOME</a>
+                <a href="../../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                <a href="../../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
+            </nav>
+            <div class="login-btn">
+                <!-- Botão de contato direto -->
+                <button class="btn-login" id="contact-btn">ENTRE EM CONTATO</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Seção de texto descritivo -->
+    <div class="frame-48">
+        <div class="group-13">
+            <div class="why-choose-us">
+                <h2>Recursos Humanos</h2>
+                <p>Nossa equipe de RH garante que todos os profissionais estejam alinhados com a excelência que você espera, proporcionando um atendimento impecável durante todo o evento.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Seção de serviços -->
+    <div class="services-section">
+        <div class="container">
+            <h3>Nossos Serviços de RH</h3>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>Recepção e Acolhimento</h4>
+                    <p>Profissionais treinados para receber seus convidados com cordialidade e eficiência.</p>
+                </div>
+                <div class="service-item">
+                    <h4>Controle de Acesso</h4>
+                    <p>Gestão completa do acesso ao evento, garantindo segurança e organização.</p>
+                </div>
+                <div class="service-item">
+                    <h4>Apoio Operacional</h4>
+                    <p>Equipe dedicada para apoiar todas as operações do evento de forma discreta e eficiente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                    <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- JavaScript Global -->
+<script src="../../../js/global.js"></script>
+<script src="../service-cards.js"></script>
+
+<script>
+// Sistema de contato WhatsApp - Botão "ENTRE EM CONTATO"
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Sistema de contato WhatsApp ativado no RH');
+    
+    const contactBtn = document.getElementById('contact-btn');
+    console.log('🔍 Botão encontrado:', contactBtn);
+    
+    // Configurar evento de clique no botão de contato
+    if (contactBtn) {
+        console.log('✅ Configurando evento de clique...');
+        contactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('🖱️ Botão "ENTRE EM CONTATO" clicado!');
+            
+            // Redirecionar para WhatsApp
+            const whatsappNumber = '5561995860092';
+            const message = 'Olá! Gostaria de entrar em contato sobre os serviços da Chicas Eventos.';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+            window.open(whatsappUrl, '_blank');
+        });
+        console.log('✅ Evento de clique configurado com sucesso!');
+    } else {
+        console.error('❌ Botão contact-btn não encontrado!');
+    }
+    
+    console.log('✅ Sistema de contato WhatsApp configurado no RH');
+});
+</script>
+</body>
+</html>

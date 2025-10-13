@@ -175,7 +175,7 @@ class AddToEventPopup {
             const target = e.target;
 
             // Abrir pop-up
-            if (target.classList.contains('adiconar-ao-evento') || target.classList.contains('add-to-event-btn')) {
+            if (target.classList.contains('adicionar-evento-btn')) {
                 e.preventDefault();
                 this.openPopup();
                 return;

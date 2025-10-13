@@ -41,8 +41,8 @@ function initGlobalFeatures() {
 
 // Inicializar botões de login
 function initLoginButtons() {
-    // Detectar todos os tipos de botões de login
-    const loginButtons = document.querySelectorAll('.btn-login, .log-in');
+    // Detectar todos os tipos de botões de login, EXCETO o botão de contato WhatsApp
+    const loginButtons = document.querySelectorAll('.btn-login:not(#contact-btn), .log-in');
     
     loginButtons.forEach(button => {
         // Adicionar cursor pointer se não tiver

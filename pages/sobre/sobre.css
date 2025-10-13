@@ -46,6 +46,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -60,6 +61,8 @@ body {
 
 .logo img {
     height: 60px;
+    width: auto;
+    object-fit: contain;
 }
 
 .menu {
@@ -78,6 +81,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     transition: color 0.3s ease;
+    font-family: 'Outfit', sans-serif;
 }
 
 .nav-link:hover {
@@ -101,6 +105,7 @@ body {
     letter-spacing: 0.2em;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
 }
 
 .btn-login:hover {
@@ -677,11 +682,16 @@ body {
     color: var(--light-gray);
     font-size: 0.85rem;
 }
-/* Footer */
+/* ===========================================
+   FOOTER NOVO - CRIADO DO ZERO
+   =========================================== */
+
+/* Footer Base */
 .footer {
-    background: linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+    background: #ffffff;
     color: #333;
     padding: 60px 0 30px;
+    width: 100%;
 }
 
 .footer-content {
@@ -689,28 +699,38 @@ body {
     grid-template-columns: 2fr 2fr 1fr;
     gap: 70px;
     align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Footer Brand */
+.footer-brand {
+    text-align: left;
 }
 
 .footer-brand img {
     height: 60px;
     margin-bottom: 20px;
+    display: block;
 }
 
 .footer-brand p {
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 20px;
-    color: #4a4a4a;
+    color: #666;
 }
 
 .copyright {
-    color: #666;
+    color: #999;
     font-size: 14px;
 }
 
+/* Footer Links */
 .footer-links {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
@@ -718,35 +738,38 @@ body {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #2a2a2a;
+    color: #333;
 }
 
 .footer-column ul {
     list-style: none;
-    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .footer-column li {
     margin-bottom: 10px;
-    color: #4a4a4a;
+    color: #666;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .footer-column li:hover {
-    color: #8B4513;
+    color: #b95929;
 }
 
+/* Footer Social */
 .footer-social h4 {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #292929;
+    color: #333;
 }
 
 .social-icons {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .social-icon {
@@ -754,11 +777,11 @@ body {
     height: 40px;
     border-radius: 50%;
     background: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid #b95929;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #494949;
+    color: #b95929;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -769,22 +792,63 @@ body {
 }
 
 .social-icon:hover {
-    background: #b3b3b3;
-    border-color: #ffffff;
+    background: #b95929;
     color: white;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* Responsividade do Header */
+@media (max-width: 1024px) {
     .nav-container {
         flex-direction: column;
         gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .menu {
+        position: static;
+        transform: none;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    .btn-login {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 0;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        gap: 15px;
     }
     
     .menu {
         gap: 20px;
-        position: static;
-        transform: none;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .btn-login {
+        padding: 8px 16px;
+        font-size: 12px;
     }
     
     .hero-title {
@@ -836,12 +900,52 @@ body {
         height: 300px;
     }
     
+    /* Footer Mobile - Centralizado */
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 40px;
         text-align: center;
     }
     
-    .social-links {
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-brand img {
+        margin: 0 auto 20px;
+        display: block;
+    }
+    
+    .footer-brand p {
+        text-align: center;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-column {
+        text-align: center;
+    }
+    
+    .footer-column h4 {
+        text-align: center;
+    }
+    
+    .footer-column ul {
+        text-align: center;
+    }
+    
+    .footer-social {
+        text-align: center;
+    }
+    
+    .footer-social h4 {
+        text-align: center;
+    }
+    
+    .social-icons {
         justify-content: center;
     }
 }
@@ -901,6 +1005,70 @@ body {
     .mapa-container {
         height: 250px;
         padding: 15px;
+    }
+    /* Footer Mobile Pequeno - Centralizado */
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-content {
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-brand img {
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    .footer-brand p {
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .footer-links {
+        gap: 20px;
+    }
+    
+    .footer-column {
+        text-align: center;
+    }
+    
+    .footer-column h4 {
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .footer-column ul {
+        text-align: center;
+    }
+    
+    .footer-social {
+        text-align: center;
+    }
+    
+    .footer-social h4 {
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .social-icon img {
+        width: 18px;
+        height: 18px;
     }
 }
 

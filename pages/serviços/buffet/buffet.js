@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Cache de elementos DOM para melhor performance
     const domCache = {
-        verPacotesBtn: null,
         packagesPopup: null,
         packagesCloseBtn: null,
         packageDetailPopup: null,
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar cache de elementos
     function initDOMCache() {
-        domCache.verPacotesBtn = document.getElementById('ver-pacotes-btn');
         domCache.packagesPopup = document.getElementById('packages-popup');
         domCache.packagesCloseBtn = document.querySelector('.packages-close-btn');
         domCache.packageDetailPopup = document.getElementById('package-detail-popup');
@@ -480,9 +478,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listeners otimizados
-    if (domCache.verPacotesBtn) {
-        domCache.verPacotesBtn.addEventListener('click', openPackagesPopup);
-    }
     
     if (domCache.packagesCloseBtn) {
         domCache.packagesCloseBtn.addEventListener('click', closePackagesPopup);

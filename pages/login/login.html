@@ -12,87 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
     <style>
-        /* CSS simples para alternância de botões - MESMO DO INDEX */
+        /* CSS simplificado para botão de contato */
         .login-btn {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        #login-btn, #user-btn {
-            transition: all 0.3s ease;
-        }
-        
-        #user-btn {
-            background: transparent;
-            color: #b95929;
-            border: 2px solid #b95929;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 200px;
-            text-align: center;
-        }
-        
-        #user-btn:hover {
-            background: #b95929;
-            color: white;
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            min-width: 200px;
-            z-index: 1000;
-            display: none;
-            margin-top: 5px;
-        }
-        
-        .dropdown-menu.show {
-            display: block;
-        }
-        
-        .dropdown-item {
-            display: block;
-            padding: 12px 16px;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #f8f9fa;
-            transition: background 0.2s ease;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .dropdown-item:hover {
-            background: #f8f9fa;
-        }
-        
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-item.logout {
-            color: #dc3545;
-            font-weight: bold;
-        }
-        
-        .dropdown-item.logout:hover {
-            background: #f8d7da;
         }
     </style>
 </head>
@@ -112,20 +37,8 @@
                 <a href="../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
             </nav>
             <div class="login-btn">
-                <!-- Botão de login (quando não logado) -->
-                <button class="btn-login" id="login-btn">LOG IN</button>
-                
-                <!-- Botão do usuário (quando logado) -->
-                <button class="btn-user" id="user-btn" style="display: none;">
-                    <span id="user-name">NOME DO USUARIO</span>
-                </button>
-                
-                <!-- Dropdown do usuário -->
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                    <a href="../carrinho/carrinho.html" class="dropdown-item">VER CARRINHO</a>
-                    <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
-                </div>
+                <!-- Botão de contato direto para WhatsApp -->
+                <button class="btn-login" id="contact-btn">ENTRE EM CONTATO</button>
             </div>
         </div>
     </header>
@@ -584,128 +497,34 @@ function addTestUserInfo() {
 </script>
 
 <script>
-// SISTEMA REFEITO DO ZERO - Alternância de botões
+// Sistema de contato WhatsApp - Botão "ENTRE EM CONTATO"
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Sistema REFEITO DO ZERO ativado no LOGIN');
+    console.log('🚀 Sistema de contato WhatsApp ativado no LOGIN');
     
-    const loginBtn = document.getElementById('login-btn');
-    const userBtn = document.getElementById('user-btn');
-    const dropdownMenu = document.getElementById('dropdown-menu');
-    const logoutBtn = document.getElementById('logout-btn');
+    const contactBtn = document.getElementById('contact-btn');
+    console.log('🔍 Botão encontrado:', contactBtn);
     
-    // Verificar se usuário está logado
-    function checkUserStatus() {
-        console.log('🔍 Verificando status do usuário...');
-        const sessionData = localStorage.getItem('chicasEventos_session');
-        
-        if (sessionData) {
-            try {
-                const session = JSON.parse(sessionData);
-                const now = new Date().getTime();
-                const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
-                
-                if (now - session.timestamp < sessionTimeout) {
-                    console.log('✅ Usuário logado:', session.user?.nome);
-                    showUserButton(session.user);
-                    return true;
-                } else {
-                    console.log('⏰ Sessão expirada');
-                    localStorage.removeItem('chicasEventos_session');
-                    showLoginButton();
-                    return false;
-                }
-            } catch (error) {
-                console.error('❌ Erro ao verificar sessão:', error);
-                showLoginButton();
-                return false;
-            }
-        } else {
-            console.log('❌ Nenhuma sessão encontrada');
-            showLoginButton();
-            return false;
-        }
-    }
-    
-    // Mostrar botão de login
-    function showLoginButton() {
-        console.log('🔄 Mostrando botão LOGIN');
-        loginBtn.style.display = 'block';
-        userBtn.style.display = 'none';
-        loginBtn.classList.remove('hidden');
-        userBtn.classList.add('hidden');
-    }
-    
-    // Mostrar botão do usuário
-    function showUserButton(user) {
-        console.log('🔄 Mostrando botão USUÁRIO');
-        loginBtn.style.display = 'none';
-        userBtn.style.display = 'block';
-        loginBtn.classList.add('hidden');
-        userBtn.classList.remove('hidden');
-        
-        if (user && user.nome) {
-            document.getElementById('user-name').textContent = user.nome.toUpperCase();
-        }
-    }
-    
-    // Configurar dropdown
-    if (userBtn && dropdownMenu) {
-        userBtn.addEventListener('click', function(e) {
+    // Configurar evento de clique no botão de contato
+    if (contactBtn) {
+        console.log('✅ Configurando evento de clique...');
+        contactBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            console.log('🖱️ Clique no botão do usuário');
+            console.log('🖱️ Botão "ENTRE EM CONTATO" clicado!');
             
-            const isOpen = dropdownMenu.classList.contains('show');
+            // Redirecionar para WhatsApp
+            const whatsappNumber = '5561995860092';
+            const message = 'Olá! Gostaria de entrar em contato sobre os serviços da Chicas Eventos.';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             
-            if (isOpen) {
-                dropdownMenu.classList.remove('show');
-                userBtn.classList.remove('active');
-                console.log('❌ Dropdown fechado');
-            } else {
-                dropdownMenu.classList.add('show');
-                userBtn.classList.add('active');
-                console.log('✅ Dropdown aberto');
-            }
+            console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+            window.open(whatsappUrl, '_blank');
         });
+        console.log('✅ Evento de clique configurado com sucesso!');
+    } else {
+        console.error('❌ Botão contact-btn não encontrado!');
     }
     
-    // Fechar dropdown ao clicar fora
-    document.addEventListener('click', function(e) {
-        if (userBtn && dropdownMenu && 
-            !userBtn.contains(e.target) && 
-            !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.remove('show');
-            userBtn.classList.remove('active');
-            console.log('🚪 Dropdown fechado por clique fora');
-        }
-    });
-    
-    // Configurar logout
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('🚪 Tentativa de logout');
-            
-            if (confirm('Tem certeza que deseja sair da sua conta?')) {
-                localStorage.removeItem('chicasEventos_session');
-                showLoginButton();
-                console.log('✅ Logout realizado com sucesso');
-            }
-        });
-    }
-    
-    // Verificar status inicial
-    checkUserStatus();
-    
-    // Verificar mudanças na sessão
-    window.addEventListener('storage', function(e) {
-        if (e.key === 'chicasEventos_session') {
-            console.log('🔄 Sessão alterada, verificando status...');
-            checkUserStatus();
-        }
-    });
-    
-    console.log('✅ Sistema REFEITO DO ZERO configurado no LOGIN');
+    console.log('✅ Sistema de contato WhatsApp configurado no LOGIN');
 });
 </script>
 </body>

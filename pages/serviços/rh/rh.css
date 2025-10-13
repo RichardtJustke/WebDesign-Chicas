@@ -29,6 +29,8 @@
     color: white;
 }
 
+/* Removido padding-top - usando position sticky como na home */
+
 .rh {
     background: #ffffff;
     border-radius: 50px;
@@ -40,72 +42,7 @@
     margin: 0 auto;
 }
 
-.footer {
-    background: transparent;
-    color: #333;
-    padding: 60px 0 30px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    gap: 70px;
-    align-items: start;
-}
-
-.footer-brand img {
-    height: 60px;
-    margin-bottom: 20px;
-}
-
-.footer-brand p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #666;
-}
-
-.copyright {
-    color: #999;
-    font-size: 14px;
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-}
-
-.footer-column h4 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--background-color);
-}
-
-.footer-column ul {
-    list-style: none;
-    margin-bottom: 0;
-    padding-left: 0;
-}
-
-.footer-column li {
-    margin-bottom: 10px;
-    color: var(--background-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.footer-column li:hover {
-    color: var(--accent-color);
-}
-
-.footer-social h4 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--background-color);
-}
+/* Estilos do footer removidos - usando shared-services.css */
 
 .social-icons {
     display: flex;
@@ -117,11 +54,11 @@
     height: 40px;
     border-radius: 50%;
     background: transparent;
-    border: 2px solid var(--background-color);
+    border: 2px solid #333;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--background-color);
+    color: #333;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -132,8 +69,8 @@
 }
 
 .social-icon:hover {
-    background: var(--accent-color);
-    color: var(--background-color);
+    background: #b95929;
+    color: white;
 }
 
 .despedida {
@@ -341,34 +278,7 @@
 }
 
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-/* Removido header duplicado que estava causando conflito */
-
-.logo-vertical-original-png-12 {
-    flex-shrink: 0;
-    width: 197.03px;
-    height: 98.52px;
-    position: relative;
-    object-fit: cover;
-    aspect-ratio: 197.03/98.52;
-}
-
-.menu {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-}
+/* Header styles moved to shared-services.css */
 
 .home {
     color: #110229;
@@ -553,39 +463,6 @@
     margin: 0 auto;
 }
 
-.frame-45 {
-    margin: 30px 0 0 0;
-    background: #b95929;
-    border-radius: 9px;
-    padding: 13px 45px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 336px;
-    height: 47px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.frame-45:hover {
-    background: #a04a1f;
-}
-
-.adiconar-ao-evento {
-    color: #ffffff;
-    text-align: center;
-    font-family: 'Outfit-SemiBold', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 /* Media Queries para Responsividade */
 @media (max-width: 1200px) {
@@ -619,6 +496,7 @@
 }
 
 @media (max-width: 768px) {
+    
     .rh {
         border-radius: 20px;
     }
@@ -662,13 +540,10 @@
         padding: 30px 20px;
     }
     
-    .frame-45 {
-        width: 100%;
-        max-width: 300px;
-    }
 }
 
 @media (max-width: 480px) {
+    
     .nav-bar {
         padding: 10px 15px;
     }
@@ -701,53 +576,7 @@
     }
 }
 
-/* Estilos para navegação */
-.nav-link {
-    text-decoration: none;
-    color: #333;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #b95929;
-}
-
-.logo {
-    justify-self: start;
-}
-
-.logo img {
-    height: 60px;
-}
-
-.login-btn {
-    justify-self: end;
-}
-
-/* Estilos para botões de login */
-.btn-login {
-    background: transparent;
-    color: #b95929;
-    border: 2px solid #b95929;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-login:hover {
-    background: #b95929;
-    color: white;
-}
+/* Navigation and button styles moved to shared-services.css */
 
 /* Estilos para dropdown menu */
 .user-menu {

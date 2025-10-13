@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (contactBtn) {
             contactBtn.addEventListener('click', function() {
-                const whatsappNumber = '5511999999999';
+                const whatsappNumber = '5561995860092';
                 const message = `Olá! Gostaria de saber mais sobre o serviço de ${popup.querySelector('#service-detail-title').textContent} da Chicas Eventos.`;
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');

@@ -56,24 +56,22 @@ body {
 }
 
 .logo {
-    padding: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    width: 217.03px;
-    position: relative;
 }
 
-.logo-vertical-original-png-12 {
-    flex-shrink: 0;
-    width: 152px;
-    height: 76px;
-    position: relative;
-    object-fit: cover;
-    aspect-ratio: 2/1;
+.logo img {
+    height: 60px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
 }
 
 .menu {
@@ -188,13 +186,34 @@ body {
 }
 
 .footer a {
-    color: var(--text-color);
-    text-decoration: none;
+    color: #000000 !important;
+    text-decoration: none !important;
     transition: color 0.3s ease;
 }
 
 .footer a:hover {
-    color: var(--primary-color);
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
+.footer-column a {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.footer-column a:hover {
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
+.footer-links a {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.footer-links a:hover {
+    color: #000000 !important;
+    text-decoration: underline !important;
 }
 
 /* Utilitários */
@@ -260,10 +279,100 @@ body {
         height: auto;
     }
     
+    .logo img {
+        height: 50px;
+    }
+    
     .footer {
         flex-direction: column;
         gap: 40px;
         text-align: center;
+    }
+    
+    /* Centralizar todos os elementos do footer em mobile */
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-brand img {
+        margin: 0 auto 20px;
+        display: block;
+    }
+    
+    .footer-brand p {
+        text-align: center;
+    }
+    
+    .footer-column {
+        text-align: center;
+    }
+    
+    .footer-column h4 {
+        text-align: center;
+    }
+    
+    .footer-column ul {
+        text-align: center;
+    }
+    
+    .footer-social {
+        text-align: center;
+    }
+    
+    .footer-social h4 {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 40px;
+    }
+    
+    /* Garantir centralização em telas muito pequenas */
+    .footer {
+        text-align: center;
+    }
+    
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-brand img {
+        margin: 0 auto 20px;
+        display: block;
+    }
+    
+    .footer-brand p {
+        text-align: center;
+    }
+    
+    .footer-column {
+        text-align: center;
+    }
+    
+    .footer-column h4 {
+        text-align: center;
+    }
+    
+    .footer-column ul {
+        text-align: center;
+    }
+    
+    .footer-social {
+        text-align: center;
+    }
+    
+    .footer-social h4 {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
     }
 }
 

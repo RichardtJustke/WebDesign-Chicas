@@ -18,10 +18,8 @@ class CartRedirect {
         document.addEventListener('click', (e) => {
             const target = e.target;
             
-            // Botões "Adicionar ao Evento" ou "Adicionar ao evento"
-            if (target.classList.contains('adiconar-ao-evento') || 
-                target.classList.contains('add-to-event-btn') ||
-                target.classList.contains('adicionar-evento-btn')) {
+            // Botões "Adicionar ao evento"
+            if (target.classList.contains('adicionar-evento-btn')) {
                 
                 e.preventDefault();
                 this.handleAddToCart();

@@ -105,38 +105,71 @@
         #login-btn, #user-btn {
             transition: all 0.3s ease;
         }
+        
+        /* Forçar cor preta nos links do footer */
+        .footer a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-column a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer-column a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        /* Estilos ultra-específicos para forçar cor preta */
+        .footer-content .footer-links .footer-column ul li a {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:hover {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:visited {
+            color: #000000 !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:link {
+            color: #000000 !important;
+        }
+        
+        .footer-content .footer-links .footer-column ul li a:active {
+            color: #000000 !important;
+        }
     </style>
 </head>
 <body>
 <div class="buffet">
-    <!-- Header/Navigation -->
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
-            </div>
-            <nav class="menu">
-                <a href="../../../index.html" class="nav-link">HOME</a>
-                <a href="../../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
-                <a href="../../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
-            </nav>
-            <div class="login-btn">
-                <!-- Botão de login (quando não logado) -->
-                <button class="btn-login" id="login-btn">LOG IN</button>
-                
-                <!-- Botão do usuário (quando logado) -->
-                <button class="btn-user" id="user-btn" style="display: none;">
-                    <span id="user-name">NOME DO USUARIO</span>
-                </button>
-                
-                <!-- Dropdown do usuário -->
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="../../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                    <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
+        <!-- Header/Navigation -->
+        <header class="header">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                </div>
+                <nav class="menu">
+                    <a href="../../../index.html" class="nav-link">HOME</a>
+                    <a href="../../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
+                    <a href="../../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
+                </nav>
+                <div class="login-btn">
+                    <!-- Botão de contato direto -->
+                    <button class="btn-login" id="contact-btn">ENTRE EM CONTATO</button>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
     
     <!-- Seção de texto descritivo -->
     <div class="frame-47">
@@ -148,9 +181,6 @@
             <div class="why-choose-us2">
                 <div class="card-pios-sob-medida-para-cada-ocasi-o-coquet-is-coffee-break-brunch-e-refei-es-completas-clique-nos-cart-es-para-ver-os-detalhes"> Cardápios sob medida para cada ocasião: coquetéis, coffee break, brunch e refeições completas. Clique nos cartões para ver os detalhes. </div>
             </div>
-        </div>
-        <div class="frame-45" id="ver-pacotes-btn">
-            <div class="ver-pacotes"> Ver pacotes </div>
         </div>
     </div>
     
@@ -320,52 +350,50 @@
     
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
-                    <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
-                    <p class="copyright">© 2025 . Justke Design</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="../../../assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
+                <p class="copyright">© 2025 . Justke Design</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="buffet.html">Buffet</a></li>
+                        <li><a href="../ad/ad.html">Audiovisual</a></li>
+                        <li><a href="../rh/rh.html">RH</a></li>
+                        <li><a href="../cerimonial/cerimonial.html">Cerimonial</a></li>
+                    </ul>
                 </div>
                 
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Serviços</h4>
-                        <ul>
-                            <li>Buffet</li>
-                            <li>Audiovisual</li>
-                            <li>RH</li>
-                            <li>Cerimonial</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Empresa</h4>
-                        <ul>
-                            <li>Sobre</li>
-                            <li>Portifólio</li>
-                            <li>Contato</li>
-                            <li>Faça seu evento</li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="../../sobre/sobre.html">Sobre</a></li>
+                        <li><a href="../../portifolio/portifolio.html">Portifólio</a></li>
+                        <li><a href="#" id="footer-contact">Contato</a></li>
+                        <li><a href="#" id="footer-create-event">Faça seu evento</a></li>
+                    </ul>
                 </div>
-                
-                <div class="footer-social">
-                    <h4>Conecte-se</h4>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon instagram">
-                            <img src="../../../assets/icones/Group.svg" alt="Instagram" />
-                        </a>
-                        <a href="#" class="social-icon linkedin">
-                            <img src="../../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
-                        </a>
-                        <a href="#" class="social-icon facebook">
-                            <img src="../../../assets/icones/Facebook - Original.svg" alt="Facebook" />
-                        </a>
-                        <a href="#" class="social-icon twitter">
-                            <img src="../../../assets/icones/Twitter - Original.svg" alt="Twitter" />
-                        </a>
-                    </div>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Conecte-se</h4>
+                <div class="social-icons">
+                    <a href="https://instagram.com/chicaseventos" target="_blank" class="social-icon instagram">
+                        <img src="../../../assets/icones/Group.svg" alt="Instagram" />
+                    </a>
+                    <a href="https://linkedin.com/company/chicaseventos" target="_blank" class="social-icon linkedin">
+                        <img src="../../../assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
+                    </a>
+                    <a href="https://facebook.com/chicaseventos" target="_blank" class="social-icon facebook">
+                        <img src="../../../assets/icones/Facebook - Original.svg" alt="Facebook" />
+                    </a>
+                    <a href="https://twitter.com/chicaseventos" target="_blank" class="social-icon twitter">
+                        <img src="../../../assets/icones/Twitter - Original.svg" alt="Twitter" />
+                    </a>
                 </div>
             </div>
         </div>
@@ -374,307 +402,120 @@
 
 <!-- JavaScript Global -->
 <script src="../../../js/global.js"></script>
-<script src="../../../js/auth-new.js"></script>
-<script src="../../../js/navbar.js"></script>
 
-<script>
-// Sistema simples de alternância de botões
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Sistema simples ativado no BUFFET');
-    
-    const loginBtn = document.getElementById('login-btn');
-    const userBtn = document.getElementById('user-btn');
-    const dropdownMenu = document.getElementById('dropdown-menu');
-    const logoutBtn = document.getElementById('logout-btn');
-    
-    // Verificar se usuário está logado
-    function checkUserStatus() {
-        const sessionData = localStorage.getItem('chicasEventos_session');
+    <script>
+    // Sistema de contato WhatsApp - Botão "ENTRE EM CONTATO"
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Sistema de contato WhatsApp ativado no BUFFET');
         
-        if (sessionData) {
-            try {
-                const session = JSON.parse(sessionData);
-                const now = new Date().getTime();
-                const sessionTimeout = 24 * 60 * 60 * 1000; // 24 horas
-                
-                if (now - session.timestamp < sessionTimeout) {
-                    // Usuário logado
-                    showUserButton(session.user);
-                    return true;
-                } else {
-                    // Sessão expirada
-                    localStorage.removeItem('chicasEventos_session');
-                    showLoginButton();
-                    return false;
-                }
-            } catch (error) {
-                console.error('Erro ao verificar sessão:', error);
-                showLoginButton();
-                return false;
-            }
-        } else {
-            // Nenhuma sessão
-            showLoginButton();
-            return false;
-        }
-    }
-    
-    // Mostrar botão de login
-    function showLoginButton() {
-        if (loginBtn) {
-            loginBtn.style.display = 'block';
-            loginBtn.classList.remove('hidden');
-        }
-        if (userBtn) {
-            userBtn.style.display = 'none';
-            userBtn.classList.add('hidden');
-        }
-        console.log('✅ Botão LOGIN mostrado');
-    }
-    
-    // Mostrar botão do usuário
-    function showUserButton(user) {
-        if (loginBtn) {
-            loginBtn.style.display = 'none';
-            loginBtn.classList.add('hidden');
-        }
-        if (userBtn) {
-            userBtn.style.display = 'block';
-            userBtn.classList.remove('hidden');
-            
-            // Aplicar nome do usuário
-            if (user && user.nome) {
-                const userNameElement = document.getElementById('user-name');
-                if (userNameElement) {
-                    userNameElement.textContent = user.nome.toUpperCase();
-                }
-            }
-        }
+        const contactBtn = document.getElementById('contact-btn');
+        console.log('🔍 Botão encontrado:', contactBtn);
         
-        console.log('✅ Botão USUÁRIO mostrado:', user?.nome);
-    }
-    
-    // Configurar dropdown
-    if (userBtn && dropdownMenu) {
-        userBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const isOpen = dropdownMenu.classList.contains('show');
-            
-            if (isOpen) {
-                dropdownMenu.classList.remove('show');
-                userBtn.classList.remove('active');
-                console.log('❌ Dropdown fechado');
-            } else {
-                dropdownMenu.classList.add('show');
-                userBtn.classList.add('active');
-                console.log('✅ Dropdown aberto');
-            }
-        });
-    }
-    
-    // Fechar dropdown ao clicar fora
-    document.addEventListener('click', function(e) {
-        if (userBtn && dropdownMenu && 
-            !userBtn.contains(e.target) && 
-            !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.remove('show');
-            userBtn.classList.remove('active');
-        }
-    });
-    
-    // Configurar logout
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            if (confirm('Tem certeza que deseja sair da sua conta?')) {
-                // Remover sessão
-                localStorage.removeItem('chicasEventos_session');
-                
-                // Mostrar botão de login
-                showLoginButton();
-                
-                console.log('✅ Logout realizado');
-            }
-        });
-    }
-    
-    // Event listener do botão de login é gerenciado pelo navbar.js
-    // Não adicionar event listener aqui para evitar conflitos
-    
-    // Verificar status inicial
-    checkUserStatus();
-    
-    // Verificar mudanças na sessão
-    window.addEventListener('storage', function(e) {
-        if (e.key === 'chicasEventos_session') {
-            checkUserStatus();
-        }
-    });
-    
-    console.log('✅ Sistema simples configurado no BUFFET');
-});
-
-// Função para abrir página de login
-function openLoginPage() {
-    console.log('🔄 Tentando abrir página de login...');
-    
-    // Caminhos corretos para sair da pasta serviços
-    const paths = [
-        '../../login/login.html',  // Sair de serviços/buffet para pages/login
-        '../../../pages/login/login.html',  // Caminho completo
-        '/pages/login/login.html'  // Caminho absoluto
-    ];
-    
-    // Tentar cada caminho
-    for (let i = 0; i < paths.length; i++) {
-        const path = paths[i];
-        console.log(`📍 Tentativa ${i + 1}: ${path}`);
-        
-        try {
-            // Primeira tentativa: window.open
-            const newWindow = window.open(path, '_blank');
-            if (newWindow && !newWindow.closed) {
-                console.log(`✅ Página de login aberta com window.open: ${path}`);
-                return;
-            }
-        } catch (error) {
-            console.log(`❌ window.open falhou para ${path}:`, error);
-        }
-        
-        try {
-            // Segunda tentativa: criar link e clicar
-            const link = document.createElement('a');
-            link.href = path;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            console.log(`✅ Página de login aberta com link dinâmico: ${path}`);
-            return;
-        } catch (error) {
-            console.log(`❌ Link dinâmico falhou para ${path}:`, error);
-        }
-    }
-    
-    // Última tentativa: redirecionamento
-    try {
-        window.location.href = '../../login/login.html';
-        console.log('✅ Redirecionando para página de login');
-    } catch (error) {
-        console.log('❌ Todas as tentativas falharam:', error);
-        alert('Erro ao abrir página de login. Tente navegar manualmente.');
-    }
-}
-
-
-// Sistema de Pop-ups Otimizado
-(function() {
-    'use strict';
-    
-    // Cache de elementos para melhor performance
-    let elements = null;
-    let isInitialized = false;
-    
-    function initPopups() {
-        if (isInitialized) return;
-        
-        // Cache de elementos
-        elements = {
-            popups: document.querySelectorAll('.popup-overlay'),
-            closeBtns: document.querySelectorAll('.close-btn'),
-            contactBtns: document.querySelectorAll('.contact-btn'),
-            galleryImages: document.querySelectorAll('.popup-gallery img')
-        };
-        
-        // Função otimizada para abrir pop-up
-        function openPopup(serviceName) {
-            const popup = document.getElementById(`popup-${serviceName}`);
-            if (popup) {
-                // Usar requestAnimationFrame para melhor performance
-                requestAnimationFrame(() => {
-                    popup.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-        }
-        
-        // Função otimizada para fechar pop-up
-        function closePopup(serviceName) {
-            const popup = document.getElementById(`popup-${serviceName}`);
-            if (popup) {
-                requestAnimationFrame(() => {
-                    popup.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            }
-        }
-        
-        // Função para fechar todos os pop-ups
-        function closeAllPopups() {
-            elements.popups.forEach(popup => {
-                popup.classList.remove('active');
-            });
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Event delegation para melhor performance
-        document.addEventListener('click', function(e) {
-            const target = e.target;
-            
-            
-            // Botão de fechar
-            if (target.classList.contains('close-btn')) {
+        // Configurar evento de clique no botão de contato
+        if (contactBtn) {
+            console.log('✅ Configurando evento de clique...');
+            contactBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const popup = target.closest('.popup-overlay');
-                if (popup) {
-                    const serviceName = popup.id.replace('popup-', '');
-                    closePopup(serviceName);
-                }
-                return;
-            }
-            
-            // Clicar no overlay
-            if (target.classList.contains('popup-overlay')) {
-                const serviceName = target.id.replace('popup-', '');
-                closePopup(serviceName);
-                return;
-            }
-            
-            // Botão de contato
-            if (target.classList.contains('contact-btn')) {
-                e.preventDefault();
-                const whatsappNumber = '5511999999999';
-                const message = 'Olá! Gostaria de saber mais sobre os serviços de buffet da Chicas Eventos.';
+                console.log('🖱️ Botão "ENTRE EM CONTATO" clicado!');
+                
+                // Redirecionar para WhatsApp
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de entrar em contato sobre os serviços de buffet da Chicas Eventos.';
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
                 window.open(whatsappUrl, '_blank');
-                return;
-            }
+            });
+            console.log('✅ Evento de clique configurado com sucesso!');
+        } else {
+            console.error('❌ Botão contact-btn não encontrado!');
+        }
+        
+        console.log('✅ Sistema de contato WhatsApp configurado no BUFFET');
+        
+        // Sistema de links do footer
+        console.log('🔗 Configurando links do footer...');
+        
+        // Link de contato no footer
+        const footerContact = document.getElementById('footer-contact');
+        if (footerContact) {
+            footerContact.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('📞 Link de contato do footer clicado!');
+                
+                // Redirecionar para WhatsApp
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de entrar em contato sobre os serviços de buffet da Chicas Eventos.';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+                window.open(whatsappUrl, '_blank');
+            });
+            console.log('✅ Link de contato do footer configurado!');
+        }
+        
+        // Link "Faça seu evento" no footer
+        const footerCreateEvent = document.getElementById('footer-create-event');
+        if (footerCreateEvent) {
+            footerCreateEvent.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('🎉 Link "Faça seu evento" do footer clicado!');
+                
+                // Redirecionar para WhatsApp com mensagem específica
+                const whatsappNumber = '5561995860092';
+                const message = 'Olá! Gostaria de criar um evento com a Chicas Eventos. Podem me ajudar?';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                console.log('🔄 Redirecionando para WhatsApp:', whatsappUrl);
+                window.open(whatsappUrl, '_blank');
+            });
+            console.log('✅ Link "Faça seu evento" do footer configurado!');
+        }
+        
+        console.log('✅ Sistema de links do footer configurado!');
+        
+        // Forçar cor preta nos links do footer via JavaScript
+        console.log('🎨 Forçando cor preta nos links do footer...');
+        
+        const footerLinks = document.querySelectorAll('.footer a, .footer-column a, .footer-links a');
+        footerLinks.forEach(link => {
+            link.style.color = '#000000';
+            link.style.textDecoration = 'none';
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#000000';
+                this.style.textDecoration = 'underline';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = '#000000';
+                this.style.textDecoration = 'none';
+            });
         });
         
-        // Fechar com ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeAllPopups();
-            }
-        });
-        
-        isInitialized = true;
-    }
-    
-    // Inicializar quando DOM estiver pronto
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPopups);
-    } else {
-        initPopups();
-    }
-})();
+        console.log('✅ Cor preta forçada via JavaScript!');
+    });
+
 </script>
 <script src="../service-cards.js"></script>
 <script src="buffet.js"></script>
 <script src="buffet-optimization.js"></script>
+
+<style>
+    /* CSS final para forçar cor preta - máxima prioridade */
+    .footer a, .footer-column a, .footer-links a, 
+    .footer-content .footer-links .footer-column ul li a,
+    .footer-content .footer-links .footer-column ul li a:link,
+    .footer-content .footer-links .footer-column ul li a:visited,
+    .footer-content .footer-links .footer-column ul li a:hover,
+    .footer-content .footer-links .footer-column ul li a:active {
+        color: #000000 !important;
+        text-decoration: none !important;
+    }
+    
+    .footer a:hover, .footer-column a:hover, .footer-links a:hover,
+    .footer-content .footer-links .footer-column ul li a:hover {
+        color: #000000 !important;
+        text-decoration: underline !important;
+    }
+</style>
 </body>
 </html>

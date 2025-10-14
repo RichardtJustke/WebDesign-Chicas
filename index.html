@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chicas Eventos - Home</title>
-    <link rel="icon" type="image/png" href="assets/img g/logo/icone.png">
-    <link rel="shortcut icon" type="image/png" href="assets/img g/logo/icone.png">
-    <link rel="apple-touch-icon" href="assets/img g/logo/icone.png">
+    <link rel="icon" type="image/png" href="assets/img%20g/logo/icone.png">
+    <link rel="shortcut icon" type="image/png" href="assets/img%20g/logo/icone.png">
+    <link rel="apple-touch-icon" href="assets/img%20g/logo/icone.png">
     <link rel="stylesheet" href="pages/index/style.css">
     <style>
         /* CSS simples para alternância de botões */
@@ -118,6 +118,37 @@
         .footer-content .footer-links .footer-column ul li a:active {
             color: #000000 !important;
         }
+        
+        /* Estilos para carregamento de imagens */
+        img {
+            transition: opacity 0.3s ease;
+        }
+        
+        img.image-loading {
+            opacity: 0.7;
+            filter: blur(1px);
+        }
+        
+        img.image-loaded {
+            opacity: 1;
+            filter: none;
+        }
+        
+        img.image-error {
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+        
+        /* Placeholder para imagens que falharam */
+        .image-placeholder {
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            min-height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -126,7 +157,7 @@
         <header class="header">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                    <img src="assets/img%20g/logo/CHICAS%20EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
                 </div>
                 <nav class="menu">
                     <a href="index.html" class="nav-link">HOME</a>
@@ -149,7 +180,7 @@
                         <p>Cuidamos de buffet, audiovisual, equipe e organização para que você impressione seus convidados sem se preocupar com nada.</p>
                     </div>
                     <div class="hero-image">
-                        <img src="pages/index/selective-focus-point-catering-buffet-food 2.png" alt="Evento corporativo" loading="lazy" />
+                        <img src="pages/index/selective-focus-point-catering-buffet-food%202.png" alt="Evento corporativo" loading="eager" />
                     </div>
                 </div>
             </div>
@@ -271,12 +302,12 @@
                 </div>
                 
                 <div class="portfolio-grid">
-                    <img src="pages/index/Rectangle 20.png" alt="Portfolio 1" loading="lazy" />
-                    <img src="pages/index/Rectangle 21.png" alt="Portfolio 2" loading="lazy" />
-                    <img src="pages/index/Rectangle 22.png" alt="Portfolio 3" loading="lazy" />
-                    <img src="pages/index/Rectangle 23.png" alt="Portfolio 4" loading="lazy" />
-                    <img src="pages/index/Rectangle 24.png" alt="Portfolio 5" loading="lazy" />
-                    <img src="pages/index/Rectangle 26.png" alt="Portfolio 6" loading="lazy" />
+                    <img src="pages/index/Rectangle%2020.png" alt="Portfolio 1" loading="lazy" />
+                    <img src="pages/index/Rectangle%2021.png" alt="Portfolio 2" loading="lazy" />
+                    <img src="pages/index/Rectangle%2022.png" alt="Portfolio 3" loading="lazy" />
+                    <img src="pages/index/Rectangle%2023.png" alt="Portfolio 4" loading="lazy" />
+                    <img src="pages/index/Rectangle%2024.png" alt="Portfolio 5" loading="lazy" />
+                    <img src="pages/index/Rectangle%2026.png" alt="Portfolio 6" loading="lazy" />
                 </div>
             </div>
         </section>
@@ -286,7 +317,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-brand">
-                        <img src="assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
+                        <img src="assets/img%20g/logo/CHICAS%20EVENTOS_LOGO_VERMELHO.png" alt="Chicas Eventos" />
                         <p>Transformamos cada evento em uma experiência única, com excelência, criatividade e cuidado em cada detalhe.</p>
                         <p class="copyright">© 2025 . Justke Design</p>
                     </div>
@@ -320,13 +351,13 @@
                                 <img src="assets/icones/Group.svg" alt="Instagram" />
                             </a>
                             <a href="https://linkedin.com/company/chicaseventos" target="_blank" class="social-icon linkedin">
-                                <img src="assets/icones/LinkedIn - Original.svg" alt="LinkedIn" />
+                                <img src="assets/icones/LinkedIn%20-%20Original.svg" alt="LinkedIn" />
                             </a>
                             <a href="https://facebook.com/chicaseventos" target="_blank" class="social-icon facebook">
-                                <img src="assets/icones/Facebook - Original.svg" alt="Facebook" />
+                                <img src="assets/icones/Facebook%20-%20Original.svg" alt="Facebook" />
                             </a>
                             <a href="https://twitter.com/chicaseventos" target="_blank" class="social-icon twitter">
-                                <img src="assets/icones/Twitter - Original.svg" alt="Twitter" />
+                                <img src="assets/icones/Twitter%20-%20Original.svg" alt="Twitter" />
                             </a>
                         </div>
                     </div>
@@ -341,6 +372,22 @@
     <script src="js/image-optimization.js"></script>
     
     <script>
+    // Sistema simples de carregamento de imagens
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🖼️ Carregando imagens...');
+        
+        // Aguardar um pouco e forçar recarregamento
+        setTimeout(() => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.complete || img.naturalHeight === 0) {
+                    const src = img.src;
+                    img.src = src + '?v=' + Date.now();
+                }
+            });
+        }, 500);
+    });
+    
     // Sistema de contato WhatsApp - Botão "ENTRE EM CONTATO"
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🚀 Sistema de contato WhatsApp ativado no INDEX');
@@ -430,6 +477,50 @@
         
         console.log('✅ Cor preta forçada via JavaScript!');
     });
+    </script>
+    
+    <!-- Scripts de otimização de imagens -->
+    <script src="js/image-optimization.js"></script>
+    
+    <!-- Service Worker temporariamente desabilitado -->
+    <script>
+        // Desabilitar service worker temporariamente para resolver problemas de cache
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                registrations.forEach(registration => {
+                    registration.unregister();
+                    console.log('🧹 Service Worker removido para resolver problemas de cache');
+                });
+            });
+        }
+        
+        // Sistema simplificado de carregamento de imagens
+        window.addEventListener('load', function() {
+            console.log('🖼️ Verificando carregamento de imagens...');
+            
+            // Forçar recarregamento de todas as imagens
+            const images = document.querySelectorAll('img');
+            images.forEach((img, index) => {
+                const originalSrc = img.src;
+                
+                // Adicionar timestamp para evitar cache
+                img.src = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 't=' + Date.now();
+                
+                // Configurar retry em caso de erro
+                img.onerror = function() {
+                    console.warn('⚠️ Erro ao carregar:', originalSrc);
+                    setTimeout(() => {
+                        this.src = originalSrc + '?retry=' + Date.now();
+                    }, 1000);
+                };
+                
+                img.onload = function() {
+                    console.log('✅ Imagem carregada:', originalSrc);
+                };
+            });
+            
+            console.log(`📊 Processando ${images.length} imagens...`);
+        });
     </script>
     
 </body>

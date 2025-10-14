@@ -1,6 +1,61 @@
 /* CSS para Cards de Serviços - Chicas Eventos */
 /* Baseado no design da imagem fornecida */
 
+/* FORÇA IMAGENS A PREENCHER TODO O ESPAÇO - PRIORIDADE MÁXIMA */
+.service-card {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.service-card-image {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    z-index: 1 !important;
+}
+
+.service-card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 20px !important;
+    transform: scale(1) !important;
+}
+
+/* REGRAS ESPECÍFICAS PARA TODAS AS IMAGENS DOS CARDS */
+.service-cards-container .service-card .service-card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 20px !important;
+}
+
 /* Container principal dos cards */
 .service-cards-container {
     display: grid;
@@ -32,16 +87,33 @@
 
 /* Imagem do card */
 .service-card-image {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     overflow: hidden;
+    border-radius: 20px;
+    z-index: 1;
 }
 
 .service-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.3s ease;
+    display: block;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .service-card:hover .service-card-image img {
@@ -51,16 +123,19 @@
 /* Overlay gradiente escuro */
 .service-card-overlay {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     padding: 40px 30px 30px;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 20px;
 }
 
 /* Título do serviço */
@@ -101,6 +176,7 @@
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    pointer-events: auto;
 }
 
 .service-card-button:hover {
@@ -122,6 +198,35 @@
         height: 350px;
     }
     
+    .service-card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        z-index: 1;
+    }
+    
+    .service-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        border-radius: 20px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    
     .service-card-title {
         font-size: 22px;
     }
@@ -140,6 +245,35 @@
     
     .service-card {
         height: 300px;
+    }
+    
+    .service-card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        z-index: 1;
+    }
+    
+    .service-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        border-radius: 20px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
     }
     
     .service-card-overlay {
@@ -167,6 +301,35 @@
     
     .service-card {
         height: 280px;
+    }
+    
+    .service-card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        z-index: 1;
+    }
+    
+    .service-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        border-radius: 20px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
     }
     
     .service-card-overlay {

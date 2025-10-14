@@ -4,11 +4,11 @@ const IMAGE_CACHE = 'chicas-image-cache-v1';
 
 // Lista de imagens críticas para cache
 const CRITICAL_IMAGES = [
-    'assets/img g/logo/CHICAS EVENTOS_LOGO_VERMELHO.png',
-    'pages/index/selective-focus-point-catering-buffet-food 2.png',
-    'assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg',
-    'assets/img g/ad/dose-media-DiTiYQx0mh4-unsplash.jpg',
-    'assets/img g/rh/austin-distel-tLZhFRLj6nY-unsplash.jpg'
+    'assets/img%20g/logo/CHICAS%20EVENTOS_LOGO_VERMELHO.png',
+    'pages/index/selective-focus-point-catering-buffet-food%202.png',
+    'assets/img%20g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg',
+    'assets/img%20g/ad/dose-media-DiTiYQx0mh4-unsplash.jpg',
+    'assets/img%20g/rh/austin-distel-tLZhFRLj6nY-unsplash.jpg'
 ];
 
 // Instalar Service Worker

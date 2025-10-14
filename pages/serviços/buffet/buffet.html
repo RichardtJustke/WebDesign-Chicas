@@ -12,8 +12,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-services.css">
     <link rel="stylesheet" href="../service-cards.css">
+    <link rel="stylesheet" href="../force-image-fill.css">
     <link rel="stylesheet" href="buffet.css">
     <style>
+        /* FORÇA IMAGENS DOS CARDS A PREENCHER TODO O ESPAÇO DE CIMA A BAIXO */
+        .service-card {
+            height: 400px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .service-card-image {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            border-radius: 20px !important;
+            z-index: 1 !important;
+        }
+        
+        .service-card-image img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            outline: none !important;
+            border-radius: 20px !important;
+            vertical-align: top !important;
+        }
+        
         /* CSS simples para alternância de botões */
         .login-btn {
             position: relative;
@@ -188,7 +228,7 @@
     <div class="service-cards-container">
         <div class="service-card" data-service="coqueteis">
             <div class="service-card-image">
-                <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Coquetéis" />
+                <img src="../../../assets/imagserv/coqueteis/coq1.jpg" alt="Coquetéis" />
                 <div class="service-card-overlay">
                     <h3 class="service-card-title">Coquetéis</h3>
                     <p class="service-card-subtitle">Serviço volante com finger food</p>
@@ -199,7 +239,7 @@
         
         <div class="service-card" data-service="coffee-break">
             <div class="service-card-image">
-                <img src="../../../assets/img g/buffet/chuttersnap-a5Cobl3QB5A-unsplash.jpg" alt="Coffee Break" />
+                <img src="../../../assets/imagserv/coffee_break/cb1.jpeg" alt="Coffee Break" />
                 <div class="service-card-overlay">
                     <h3 class="service-card-title">Coffee Break</h3>
                     <p class="service-card-subtitle">Perfeito para reuniões e conferências</p>
@@ -210,7 +250,7 @@
         
         <div class="service-card" data-service="brunch">
             <div class="service-card-image">
-                <img src="../../../assets/img g/buffet/engin-akyurt-6dPXcMvniHU-unsplash.jpg" alt="Brunch" />
+                <img src="../../../assets/imagserv/brunch/bb1.jpeg" alt="Brunch" />
                 <div class="service-card-overlay">
                     <h3 class="service-card-title">Brunch</h3>
                     <p class="service-card-subtitle">Mix café da manhã + almoço</p>
@@ -221,7 +261,7 @@
         
         <div class="service-card" data-service="almoco-jantar">
             <div class="service-card-image">
-                <img src="../../../assets/img g/buffet/dan-burton-5JtuW6PqGKE-unsplash.jpg" alt="Almoço/Jantar" />
+                <img src="../../../assets/imagserv/almoco_jantar/aljn1.jpg" alt="Almoço/Jantar" />
                 <div class="service-card-overlay">
                     <h3 class="service-card-title">Almoço/Jantar</h3>
                     <p class="service-card-subtitle">Buffet quente completo</p>
@@ -232,7 +272,7 @@
         
         <div class="service-card" data-service="sobremesas">
             <div class="service-card-image">
-                <img src="../../../assets/img g/buffet/edwin-petrus-Ri2dPW_kP0k-unsplash.jpg" alt="Sobremesas & Doces" />
+                <img src="../../../assets/imagserv/sobremesas/ss1.png" alt="Sobremesas & Doces" />
                 <div class="service-card-overlay">
                     <h3 class="service-card-title">Sobremesas & Doces</h3>
                     <p class="service-card-subtitle">Finalização doce com mesa temática</p>
@@ -243,7 +283,7 @@
         
         <div class="service-card" data-service="bebidas">
             <div class="service-card-image">
-                <img src="../../../assets/img g/buffet/alexander-fae-uo9TCt61o30-unsplash.jpg" alt="Bebidas & Bar" />
+                <img src="../../../assets/imagserv/bebida_bar/bbb1.jpg" alt="Bebidas & Bar" />
                 <div class="service-card-overlay">
                     <h3 class="service-card-title">Bebidas & Bar</h3>
                     <p class="service-card-subtitle">Bar de drinks e espumantes</p>
@@ -419,7 +459,7 @@
                 console.log('🖱️ Botão "ENTRE EM CONTATO" clicado!');
                 
                 // Redirecionar para WhatsApp
-                const whatsappNumber = '5561995860092';
+                const whatsappNumber = '55919191722306';
                 const message = 'Olá! Gostaria de entrar em contato sobre os serviços de buffet da Chicas Eventos.';
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 
@@ -444,7 +484,7 @@
                 console.log('📞 Link de contato do footer clicado!');
                 
                 // Redirecionar para WhatsApp
-                const whatsappNumber = '5561995860092';
+                const whatsappNumber = '55919191722306';
                 const message = 'Olá! Gostaria de entrar em contato sobre os serviços de buffet da Chicas Eventos.';
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 
@@ -462,7 +502,7 @@
                 console.log('🎉 Link "Faça seu evento" do footer clicado!');
                 
                 // Redirecionar para WhatsApp com mensagem específica
-                const whatsappNumber = '5561995860092';
+                const whatsappNumber = '55919191722306';
                 const message = 'Olá! Gostaria de criar um evento com a Chicas Eventos. Podem me ajudar?';
                 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
                 

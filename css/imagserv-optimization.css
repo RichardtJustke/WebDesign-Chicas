@@ -1,0 +1,240 @@
+/**
+ * CSS de otimização para imagens imagserv
+ * Estilos para lazy loading, transições e responsividade
+ */
+
+/* Container base para imagens imagserv */
+.imagserv-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagserv-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Estados de carregamento */
+.imagserv-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+.imagserv-container img.loaded + ::before,
+.imagserv-container::before:has(+ img.loaded) {
+    display: none;
+}
+
+/* Imagens otimizadas */
+img[src*="imagserv"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.3s ease;
+    will-change: opacity, transform;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+}
+
+img[src*="imagserv"].loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+img[src*="imagserv"]:not(.loaded) {
+    transform: scale(0.95);
+}
+
+/* Lazy loading placeholder */
+img[src*="imagserv"][data-src] {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img[src*="imagserv"][data-src]::after {
+    content: 'Carregando...';
+    color: #666;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Responsividade para diferentes tamanhos */
+@media (max-width: 768px) {
+    img[src*="imagserv"] {
+        min-height: 150px;
+    }
+    
+    .imagserv-container {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    img[src*="imagserv"] {
+        min-height: 120px;
+    }
+}
+
+/* Otimizações para WebP */
+picture img[src*="imagserv"] {
+    transition: opacity 0.3s ease;
+}
+
+picture img[src*="imagserv"].webp-fallback {
+    filter: none;
+}
+
+/* Efeitos de hover para imagens */
+.imagserv-container:hover img[src*="imagserv"] {
+    transform: scale(1.05);
+}
+
+/* Grid responsivo para galeria de imagens */
+.imagserv-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.imagserv-gallery .imagserv-container {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+/* Categorias específicas */
+.imagserv-category {
+    margin-bottom: 30px;
+}
+
+.imagserv-category h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #b95929;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Otimizações para conexão lenta */
+@media (prefers-reduced-data: reduce) {
+    img[src*="imagserv"] {
+        filter: blur(1px);
+        opacity: 0.8;
+    }
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+    .imagserv-container {
+        background: #2d3748;
+    }
+    
+    .imagserv-container::before {
+        background: linear-gradient(90deg, #4a5568 25%, #2d3748 50%, #4a5568 75%);
+    }
+}
+
+/* Animações */
+@keyframes shimmer {
+    0% { 
+        background-position: 200% 0; 
+    }
+    100% { 
+        background-position: -200% 0; 
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicar animação de entrada */
+.imagserv-container.animate-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Otimizações de performance */
+img[src*="imagserv"] {
+    contain: layout style paint;
+    content-visibility: auto;
+}
+
+/* Regras específicas para cards de serviços */
+.service-card-image img[src*="imagserv"] {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    border-radius: 20px !important;
+}
+
+/* Fallback para navegadores antigos */
+.no-webp img[src*="imagserv"] {
+    filter: none;
+}
+
+/* Indicador de carregamento */
+.imagserv-loading {
+    position: relative;
+}
+
+.imagserv-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #b95929;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Otimizações para impressão */
+@media print {
+    img[src*="imagserv"] {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+    
+    .imagserv-container::before {
+        display: none !important;
+    }
+}

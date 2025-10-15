@@ -120,21 +120,6 @@
                 <a href="../../portifolio/portifolio.html" class="nav-link">PORTIFÓLIO</a>
                 <a href="../../sobre/sobre.html" class="nav-link">SOBRE NÓS</a>
             </nav>
-            <div class="login-btn">
-                <!-- Botão de login (quando não logado) -->
-                <button class="btn-login" id="login-btn">LOG IN</button>
-                
-                <!-- Botão do usuário (quando logado) -->
-                <button class="btn-user" id="user-btn" style="display: none;">
-                    <span id="user-name">NOME DO USUARIO</span>
-                </button>
-                
-                <!-- Dropdown do usuário -->
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="../../dashboard/dashboard.html" class="dropdown-item">MEUS EVENTOS</a>
-                    <a href="#" class="dropdown-item" id="logout-btn">SAIR DA CONTA</a>
-                </div>
-            </div>
         </div>
     </header>
     
@@ -673,8 +658,9 @@ function openLoginPage() {
     }
 })();
 </script>
-<script src="../service-cards.js"></script>
 <script src="buffet.js"></script>
 <script src="buffet-optimization.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="../service-cards.js"></script> </body>
 </body>
 </html>

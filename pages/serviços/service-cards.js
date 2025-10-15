@@ -525,69 +525,138 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`✅ Popup do serviço ${service.title} aberto`);
     }
     
-    // Função para criar popup do serviço
-    function createServicePopup() {
-        const popup = document.createElement('div');
-        popup.id = 'service-detail-popup';
-        popup.className = 'service-detail-popup-overlay';
-        popup.innerHTML = `
-            <div class="service-detail-popup-content">
-                <div class="service-detail-popup-header">
-                    <h2 id="service-detail-title">Serviço</h2>
-                    <button class="service-detail-close-btn">&times;</button>
+function createServicePopup() {
+    const popup = document.createElement('div');
+    popup.id = 'service-detail-popup';
+    popup.className = 'service-detail-popup-overlay';
+    
+    popup.innerHTML = `
+        <div class="service-detail-popup-content">
+            <div class="service-detail-popup-header">
+                <h2 id="service-detail-title">Serviço</h2>
+                <button class="service-detail-close-btn">&times;</button>
+            </div>
+            <div class="service-detail-popup-body">
+                <div class="service-detail-left">
+                    <div class="service-detail-description">
+                        <h3 id="service-detail-description">Descrição</h3>
+                        <p id="service-detail-details">Detalhes do serviço</p>
+                    </div>
+                    <div class="service-detail-features">
+                        <h3>O que está incluso:</h3>
+                        <ul id="service-detail-features"></ul>
+                    </div>
+                    <button class="contact-service-btn">Falar com especialista</button>
+                    <button id="hire-service-btn-action" class="contact-service-btn">Contratar</button>
                 </div>
-                <div class="service-detail-popup-body">
-                    <div class="service-detail-left">
-                        <div class="service-detail-description">
-                            <h3 id="service-detail-description">Descrição</h3>
-                            <p id="service-detail-details">Detalhes do serviço</p>
-                        </div>
-                        <div class="service-detail-features">
-                            <h3>O que está incluso:</h3>
-                            <ul id="service-detail-features">
-                                <!-- Características serão preenchidas dinamicamente -->
-                            </ul>
-                        </div>
-                        <button class="contact-service-btn">Falar com especialista</button>
+                <div class="service-detail-right">
+                    <div class="service-detail-main-image">
+                        <img id="service-detail-main-image" src="" alt="Imagem principal" />
                     </div>
-                    <div class="service-detail-right">
-                        <div class="service-detail-main-image">
-                            <img id="service-detail-main-image" src="" alt="Imagem principal" />
-                        </div>
-                        <div class="service-detail-gallery" id="service-detail-gallery">
-                            <!-- Galeria será preenchida dinamicamente -->
-                        </div>
-                    </div>
+                    <div class="service-detail-gallery" id="service-detail-gallery"></div>
                 </div>
             </div>
+        </div>
+    `;
+
+    function openHireForm() {
+        const serviceTitle = popup.querySelector('#service-detail-title').textContent;
+        const popupBody = popup.querySelector('.service-detail-popup-body');
+        
+        popupBody.innerHTML = `
+            <div class="service-form-container">
+                <h3>Formulário de Contratação</h3>
+                <p>Serviço: <strong>${serviceTitle}</strong></p>
+                <form id="hire-form">
+                    <fieldset>
+                        <legend>Informações do Cliente</legend>
+                        <input type="text" id="client-name" placeholder="Nome Completo" required>
+                        <input type="tel" id="client-phone" placeholder="Telefone (com DDD)" required>
+                        <input type="email" id="client-email" placeholder="E-mail" required>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Informações do Evento</legend>
+                        <input type="text" id="event-name" placeholder="Nome do Evento" required>
+                        <input type="text" id="event-date" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Data do Evento" required>
+                        <input type="number" id="event-guests" placeholder="Número de Convidados" min="1" required>
+                        <input type="text" id="event-location" placeholder="Local do Evento" required>
+                        <textarea id="event-notes" placeholder="Observações (opcional)" rows="3"></textarea>
+                    </fieldset>
+                    <button type="submit" class="form-submit-btn">Enviar Pedido por E-mail</button>
+                </form>
+            </div>
         `;
-        
-        // Event listeners para o popup
-        const closeBtn = popup.querySelector('.service-detail-close-btn');
-        const contactBtn = popup.querySelector('.contact-service-btn');
-        
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeServicePopup);
-        }
-        
-        if (contactBtn) {
-            contactBtn.addEventListener('click', function() {
-                const whatsappNumber = '5511999999999';
-                const message = `Olá! Gostaria de saber mais sobre o serviço de ${popup.querySelector('#service-detail-title').textContent} da Chicas Eventos.`;
-                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-            });
-        }
-        
-        // Fechar ao clicar no overlay
-        popup.addEventListener('click', function(e) {
-            if (e.target === popup) {
-                closeServicePopup();
-            }
+
+        popup.querySelector('#hire-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitButton = this.querySelector('.form-submit-btn');
+    submitButton.textContent = 'Enviando...'; 
+    submitButton.disabled = true;
+
+    const serviceID = 'service_yz0sdv9';
+    const templateID = 'template_ohdms8p';
+    const publicKey = 'm6maIknWwx_bnC-q8';
+
+    const templateParams = {
+        servico_titulo: serviceTitle,
+        nome_cliente: document.getElementById('client-name').value,
+        telefone_cliente: document.getElementById('client-phone').value,
+        email_cliente: document.getElementById('client-email').value,
+        nome_evento: document.getElementById('event-name').value,
+        data_evento: document.getElementById('event-date').value,
+        num_convidados: document.getElementById('event-guests').value,
+        local_evento: document.getElementById('event-location').value,
+        observacoes: document.getElementById('event-notes').value || 'Nenhuma'
+    };
+
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
+        .then(function(response) {
+            console.log('E-mail enviado com SUCESSO!', response.status, response.text);
+            alert('Pedido enviado com sucesso! Entraremos em contato em breve.');
+            closeServicePopup();
+        }, function(error) {
+            console.error('FALHA ao enviar o e-mail.', error);
+            alert('Ocorreu um erro ao enviar seu pedido. Por favor, tente novamente.');
+            submitButton.textContent = 'Enviar Pedido por E-mail'; // Restaura o botão
+            submitButton.disabled = false;
         });
-        
-        return popup;
+});
     }
+    
+    // Event listeners para o popup
+    const closeBtn = popup.querySelector('.service-detail-close-btn');
+    const contactBtn = popup.querySelector('.contact-service-btn');
+    const hireBtn = popup.querySelector('#hire-service-btn-action'); // **MUDANÇA AQUI**: Selecionando pelo ID
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeServicePopup);
+    }
+    
+    if (contactBtn) {
+        contactBtn.addEventListener('click', function() {
+            // Ação do WhatsApp continua a mesma
+            const whatsappNumber = '5511999999999';
+            const message = `Olá! Gostaria de saber mais sobre o serviço de ${popup.querySelector('#service-detail-title').textContent} da Chicas Eventos.`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+
+    // **MUDANÇA PRINCIPAL AQUI**
+    // Adiciona o listener ao botão "Contratar" para chamar a função que abre o formulário
+    if (hireBtn) {
+        hireBtn.addEventListener('click', openHireForm);
+    }
+    
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            closeServicePopup();
+        }
+    });
+    
+    return popup;
+}
     
     // Função para fechar popup do serviço
     function closeServicePopup() {
